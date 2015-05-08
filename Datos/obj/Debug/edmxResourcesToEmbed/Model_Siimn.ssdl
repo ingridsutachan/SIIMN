@@ -1,0 +1,1678 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="siimnModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="siimnModelStoreContainer">
+    <EntitySet Name="acucentr" EntityType="siimnModel.Store.acucentr" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="cajero" EntityType="siimnModel.Store.cajero" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="campoformedios" EntityType="siimnModel.Store.campoformedios" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="centrocostos" EntityType="siimnModel.Store.centrocostos" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="ciudad" EntityType="siimnModel.Store.ciudad" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="cliente" EntityType="siimnModel.Store.cliente" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="compania" EntityType="siimnModel.Store.compania" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="comprobante" EntityType="siimnModel.Store.comprobante" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="conceptospagos" EntityType="siimnModel.Store.conceptospagos" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="conexuser" EntityType="siimnModel.Store.conexuser" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="datosusuario" EntityType="siimnModel.Store.datosusuario" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="departamento" EntityType="siimnModel.Store.departamento" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="formaspago" EntityType="siimnModel.Store.formaspago" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="formato" EntityType="siimnModel.Store.formato" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="formatomedios" EntityType="siimnModel.Store.formatomedios" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="formatosbpyg" EntityType="siimnModel.Store.formatosbpyg" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="inflacion" EntityType="siimnModel.Store.inflacion" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="maebanta" EntityType="siimnModel.Store.maebanta" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="maecli" EntityType="siimnModel.Store.maecli" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="maeconcc" EntityType="siimnModel.Store.maeconcc" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="maeconta" EntityType="siimnModel.Store.maeconta" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="maenits" EntityType="siimnModel.Store.maenits" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="maepagos" EntityType="siimnModel.Store.maepagos" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="maetrac" EntityType="siimnModel.Store.maetrac" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="maetribut" EntityType="siimnModel.Store.maetribut" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="modulo" EntityType="siimnModel.Store.modulo" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="moduloppal" EntityType="siimnModel.Store.moduloppal" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="movimi" EntityType="siimnModel.Store.movimi" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="pais" EntityType="siimnModel.Store.pais" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="parametro" EntityType="siimnModel.Store.parametro" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="permiso" EntityType="siimnModel.Store.permiso" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="presupuesto" EntityType="siimnModel.Store.presupuesto" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="saldoscuentas" EntityType="siimnModel.Store.saldoscuentas" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="sucursal" EntityType="siimnModel.Store.sucursal" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="tipoformato" EntityType="siimnModel.Store.tipoformato" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="tiponit" EntityType="siimnModel.Store.tiponit" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="usuario" EntityType="siimnModel.Store.usuario" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="usuariocia" EntityType="siimnModel.Store.usuariocia" store:Type="Tables" Schema="siimn" />
+    <EntitySet Name="vendedor" EntityType="siimnModel.Store.vendedor" store:Type="Tables" Schema="siimn" />
+    <AssociationSet Name="fk_campo10formato" Association="siimnModel.Store.fk_campo10formato">
+      <End Role="campoformedios" EntitySet="campoformedios" />
+      <End Role="formatomedios" EntitySet="formatomedios" />
+    </AssociationSet>
+    <AssociationSet Name="fk_campo11formato" Association="siimnModel.Store.fk_campo11formato">
+      <End Role="campoformedios" EntitySet="campoformedios" />
+      <End Role="formatomedios" EntitySet="formatomedios" />
+    </AssociationSet>
+    <AssociationSet Name="fk_campo12formato" Association="siimnModel.Store.fk_campo12formato">
+      <End Role="campoformedios" EntitySet="campoformedios" />
+      <End Role="formatomedios" EntitySet="formatomedios" />
+    </AssociationSet>
+    <AssociationSet Name="fk_campo13formato" Association="siimnModel.Store.fk_campo13formato">
+      <End Role="campoformedios" EntitySet="campoformedios" />
+      <End Role="formatomedios" EntitySet="formatomedios" />
+    </AssociationSet>
+    <AssociationSet Name="fk_campo14formato" Association="siimnModel.Store.fk_campo14formato">
+      <End Role="campoformedios" EntitySet="campoformedios" />
+      <End Role="formatomedios" EntitySet="formatomedios" />
+    </AssociationSet>
+    <AssociationSet Name="fk_campo15formato" Association="siimnModel.Store.fk_campo15formato">
+      <End Role="campoformedios" EntitySet="campoformedios" />
+      <End Role="formatomedios" EntitySet="formatomedios" />
+    </AssociationSet>
+    <AssociationSet Name="fk_campo16formato" Association="siimnModel.Store.fk_campo16formato">
+      <End Role="campoformedios" EntitySet="campoformedios" />
+      <End Role="formatomedios" EntitySet="formatomedios" />
+    </AssociationSet>
+    <AssociationSet Name="fk_campo1formato" Association="siimnModel.Store.fk_campo1formato">
+      <End Role="campoformedios" EntitySet="campoformedios" />
+      <End Role="formatomedios" EntitySet="formatomedios" />
+    </AssociationSet>
+    <AssociationSet Name="fk_campo2formato" Association="siimnModel.Store.fk_campo2formato">
+      <End Role="campoformedios" EntitySet="campoformedios" />
+      <End Role="formatomedios" EntitySet="formatomedios" />
+    </AssociationSet>
+    <AssociationSet Name="fk_campo3formato" Association="siimnModel.Store.fk_campo3formato">
+      <End Role="campoformedios" EntitySet="campoformedios" />
+      <End Role="formatomedios" EntitySet="formatomedios" />
+    </AssociationSet>
+    <AssociationSet Name="fk_campo4formato" Association="siimnModel.Store.fk_campo4formato">
+      <End Role="campoformedios" EntitySet="campoformedios" />
+      <End Role="formatomedios" EntitySet="formatomedios" />
+    </AssociationSet>
+    <AssociationSet Name="fk_campo5formato" Association="siimnModel.Store.fk_campo5formato">
+      <End Role="campoformedios" EntitySet="campoformedios" />
+      <End Role="formatomedios" EntitySet="formatomedios" />
+    </AssociationSet>
+    <AssociationSet Name="fk_campo6formato" Association="siimnModel.Store.fk_campo6formato">
+      <End Role="campoformedios" EntitySet="campoformedios" />
+      <End Role="formatomedios" EntitySet="formatomedios" />
+    </AssociationSet>
+    <AssociationSet Name="fk_campo7formato" Association="siimnModel.Store.fk_campo7formato">
+      <End Role="campoformedios" EntitySet="campoformedios" />
+      <End Role="formatomedios" EntitySet="formatomedios" />
+    </AssociationSet>
+    <AssociationSet Name="fk_campo8formato" Association="siimnModel.Store.fk_campo8formato">
+      <End Role="campoformedios" EntitySet="campoformedios" />
+      <End Role="formatomedios" EntitySet="formatomedios" />
+    </AssociationSet>
+    <AssociationSet Name="fk_campo9formato" Association="siimnModel.Store.fk_campo9formato">
+      <End Role="campoformedios" EntitySet="campoformedios" />
+      <End Role="formatomedios" EntitySet="formatomedios" />
+    </AssociationSet>
+    <AssociationSet Name="fk_centroacucentro" Association="siimnModel.Store.fk_centroacucentro">
+      <End Role="centrocostos" EntitySet="centrocostos" />
+      <End Role="acucentr" EntitySet="acucentr" />
+    </AssociationSet>
+    <AssociationSet Name="fk_centromovimi" Association="siimnModel.Store.fk_centromovimi">
+      <End Role="centrocostos" EntitySet="centrocostos" />
+      <End Role="movimi" EntitySet="movimi" />
+    </AssociationSet>
+    <AssociationSet Name="fk_centropresupuesto" Association="siimnModel.Store.fk_centropresupuesto">
+      <End Role="centrocostos" EntitySet="centrocostos" />
+      <End Role="presupuesto" EntitySet="presupuesto" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ciaacucentro" Association="siimnModel.Store.fk_ciaacucentro">
+      <End Role="sucursal" EntitySet="sucursal" />
+      <End Role="acucentr" EntitySet="acucentr" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ciamovimi" Association="siimnModel.Store.fk_ciamovimi">
+      <End Role="sucursal" EntitySet="sucursal" />
+      <End Role="movimi" EntitySet="movimi" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ciapagos" Association="siimnModel.Store.fk_ciapagos">
+      <End Role="sucursal" EntitySet="sucursal" />
+      <End Role="maepagos" EntitySet="maepagos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ciapresupuesto" Association="siimnModel.Store.fk_ciapresupuesto">
+      <End Role="sucursal" EntitySet="sucursal" />
+      <End Role="presupuesto" EntitySet="presupuesto" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ciasucursal" Association="siimnModel.Store.fk_ciasucursal">
+      <End Role="compania" EntitySet="compania" />
+      <End Role="sucursal" EntitySet="sucursal" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ciausxcia" Association="siimnModel.Store.fk_ciausxcia">
+      <End Role="sucursal" EntitySet="sucursal" />
+      <End Role="usuariocia" EntitySet="usuariocia" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ciudadcliente" Association="siimnModel.Store.fk_ciudadcliente">
+      <End Role="ciudad" EntitySet="ciudad" />
+      <End Role="cliente" EntitySet="cliente" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ciudadnits" Association="siimnModel.Store.fk_ciudadnits">
+      <End Role="ciudad" EntitySet="ciudad" />
+      <End Role="maenits" EntitySet="maenits" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ciudadsucursal" Association="siimnModel.Store.fk_ciudadsucursal">
+      <End Role="ciudad" EntitySet="ciudad" />
+      <End Role="sucursal" EntitySet="sucursal" />
+    </AssociationSet>
+    <AssociationSet Name="fk_clientedatoscliente" Association="siimnModel.Store.fk_clientedatoscliente">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="maecli" EntitySet="maecli" />
+    </AssociationSet>
+    <AssociationSet Name="fk_compromovimi" Association="siimnModel.Store.fk_compromovimi">
+      <End Role="comprobante" EntitySet="comprobante" />
+      <End Role="movimi" EntitySet="movimi" />
+    </AssociationSet>
+    <AssociationSet Name="fk_comprtrac" Association="siimnModel.Store.fk_comprtrac">
+      <End Role="comprobante" EntitySet="comprobante" />
+      <End Role="maetrac" EntitySet="maetrac" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cuentaacucentro" Association="siimnModel.Store.fk_cuentaacucentro">
+      <End Role="maeconta" EntitySet="maeconta" />
+      <End Role="acucentr" EntitySet="acucentr" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cuentacueaju" Association="siimnModel.Store.fk_cuentacueaju">
+      <End Role="maeconta" EntitySet="maeconta" />
+      <End Role="maeconta1" EntitySet="maeconta" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cuentacuecierre" Association="siimnModel.Store.fk_cuentacuecierre">
+      <End Role="maeconta" EntitySet="maeconta" />
+      <End Role="maeconta1" EntitySet="maeconta" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cuentacuecor" Association="siimnModel.Store.fk_cuentacuecor">
+      <End Role="maeconta" EntitySet="maeconta" />
+      <End Role="maeconta1" EntitySet="maeconta" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cuentafinforbpyg" Association="siimnModel.Store.fk_cuentafinforbpyg">
+      <End Role="maeconta" EntitySet="maeconta" />
+      <End Role="formatosbpyg" EntitySet="formatosbpyg" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cuentainifombpyg" Association="siimnModel.Store.fk_cuentainifombpyg">
+      <End Role="maeconta" EntitySet="maeconta" />
+      <End Role="formatosbpyg" EntitySet="formatosbpyg" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cuentamaecli" Association="siimnModel.Store.fk_cuentamaecli">
+      <End Role="maeconta" EntitySet="maeconta" />
+      <End Role="maecli" EntitySet="maecli" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cuentamovimi" Association="siimnModel.Store.fk_cuentamovimi">
+      <End Role="maeconta" EntitySet="maeconta" />
+      <End Role="movimi" EntitySet="movimi" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cuentapagos" Association="siimnModel.Store.fk_cuentapagos">
+      <End Role="maeconta" EntitySet="maeconta" />
+      <End Role="maepagos" EntitySet="maepagos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cuentapresupuesto" Association="siimnModel.Store.fk_cuentapresupuesto">
+      <End Role="maeconta" EntitySet="maeconta" />
+      <End Role="presupuesto" EntitySet="presupuesto" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cuentasaldos" Association="siimnModel.Store.fk_cuentasaldos">
+      <End Role="maeconta" EntitySet="maeconta" />
+      <End Role="saldoscuentas" EntitySet="saldoscuentas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_deptociudad" Association="siimnModel.Store.fk_deptociudad">
+      <End Role="departamento" EntitySet="departamento" />
+      <End Role="ciudad" EntitySet="ciudad" />
+    </AssociationSet>
+    <AssociationSet Name="fk_formatomedioscuenta" Association="siimnModel.Store.fk_formatomedioscuenta">
+      <End Role="formatomedios" EntitySet="formatomedios" />
+      <End Role="maeconta" EntitySet="maeconta" />
+    </AssociationSet>
+    <AssociationSet Name="fk_modulocajero" Association="siimnModel.Store.fk_modulocajero">
+      <End Role="modulo" EntitySet="modulo" />
+      <End Role="cajero" EntitySet="cajero" />
+    </AssociationSet>
+    <AssociationSet Name="fk_moduloformato" Association="siimnModel.Store.fk_moduloformato">
+      <End Role="moduloppal" EntitySet="moduloppal" />
+      <End Role="formato" EntitySet="formato" />
+    </AssociationSet>
+    <AssociationSet Name="fk_modulomovimi" Association="siimnModel.Store.fk_modulomovimi">
+      <End Role="moduloppal" EntitySet="moduloppal" />
+      <End Role="movimi" EntitySet="movimi" />
+    </AssociationSet>
+    <AssociationSet Name="fk_moduloparametro" Association="siimnModel.Store.fk_moduloparametro">
+      <End Role="moduloppal" EntitySet="moduloppal" />
+      <End Role="parametro" EntitySet="parametro" />
+    </AssociationSet>
+    <AssociationSet Name="fk_moduloppalmodulo" Association="siimnModel.Store.fk_moduloppalmodulo">
+      <End Role="moduloppal" EntitySet="moduloppal" />
+      <End Role="modulo" EntitySet="modulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_modulotrac" Association="siimnModel.Store.fk_modulotrac">
+      <End Role="moduloppal" EntitySet="moduloppal" />
+      <End Role="maetrac" EntitySet="maetrac" />
+    </AssociationSet>
+    <AssociationSet Name="fk_nitacucentro" Association="siimnModel.Store.fk_nitacucentro">
+      <End Role="maenits" EntitySet="maenits" />
+      <End Role="acucentr" EntitySet="acucentr" />
+    </AssociationSet>
+    <AssociationSet Name="fk_nitcuenta" Association="siimnModel.Store.fk_nitcuenta">
+      <End Role="maenits" EntitySet="maenits" />
+      <End Role="maeconta" EntitySet="maeconta" />
+    </AssociationSet>
+    <AssociationSet Name="fk_nitmovimi" Association="siimnModel.Store.fk_nitmovimi">
+      <End Role="maenits" EntitySet="maenits" />
+      <End Role="movimi" EntitySet="movimi" />
+    </AssociationSet>
+    <AssociationSet Name="fk_nitpagos" Association="siimnModel.Store.fk_nitpagos">
+      <End Role="maenits" EntitySet="maenits" />
+      <End Role="maepagos" EntitySet="maepagos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_nittrib" Association="siimnModel.Store.fk_nittrib">
+      <End Role="maenits" EntitySet="maenits" />
+      <End Role="maetribut" EntitySet="maetribut" />
+    </AssociationSet>
+    <AssociationSet Name="fk_paisdept" Association="siimnModel.Store.fk_paisdept">
+      <End Role="pais" EntitySet="pais" />
+      <End Role="departamento" EntitySet="departamento" />
+    </AssociationSet>
+    <AssociationSet Name="fk_permmod" Association="siimnModel.Store.fk_permmod">
+      <End Role="modulo" EntitySet="modulo" />
+      <End Role="permiso" EntitySet="permiso" />
+    </AssociationSet>
+    <AssociationSet Name="fk_sucursalinfla" Association="siimnModel.Store.fk_sucursalinfla">
+      <End Role="sucursal" EntitySet="sucursal" />
+      <End Role="inflacion" EntitySet="inflacion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_sucursalsaldos" Association="siimnModel.Store.fk_sucursalsaldos">
+      <End Role="sucursal" EntitySet="sucursal" />
+      <End Role="saldoscuentas" EntitySet="saldoscuentas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_sucursalvendedor" Association="siimnModel.Store.fk_sucursalvendedor">
+      <End Role="sucursal" EntitySet="sucursal" />
+      <End Role="vendedor" EntitySet="vendedor" />
+    </AssociationSet>
+    <AssociationSet Name="fk_tipodocmovimi" Association="siimnModel.Store.fk_tipodocmovimi">
+      <End Role="maetrac" EntitySet="maetrac" />
+      <End Role="movimi" EntitySet="movimi" />
+    </AssociationSet>
+    <AssociationSet Name="fk_tipodtocliente" Association="siimnModel.Store.fk_tipodtocliente">
+      <End Role="tiponit" EntitySet="tiponit" />
+      <End Role="cliente" EntitySet="cliente" />
+    </AssociationSet>
+    <AssociationSet Name="fk_tipoformato" Association="siimnModel.Store.fk_tipoformato">
+      <End Role="tipoformato" EntitySet="tipoformato" />
+      <End Role="formato" EntitySet="formato" />
+    </AssociationSet>
+    <AssociationSet Name="fk_tiponitnits" Association="siimnModel.Store.fk_tiponitnits">
+      <End Role="tiponit" EntitySet="tiponit" />
+      <End Role="maenits" EntitySet="maenits" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usercia" Association="siimnModel.Store.fk_usercia">
+      <End Role="compania" EntitySet="compania" />
+      <End Role="conexuser" EntitySet="conexuser" />
+    </AssociationSet>
+    <AssociationSet Name="fk_userconex" Association="siimnModel.Store.fk_userconex">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="conexuser" EntitySet="conexuser" />
+    </AssociationSet>
+    <AssociationSet Name="fk_userperm" Association="siimnModel.Store.fk_userperm">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="permiso" EntitySet="permiso" />
+    </AssociationSet>
+    <AssociationSet Name="fk_userusxcia" Association="siimnModel.Store.fk_userusxcia">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="usuariocia" EntitySet="usuariocia" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario" Association="siimnModel.Store.fk_usuario">
+      <End Role="datosusuario" EntitySet="datosusuario" />
+      <End Role="usuario" EntitySet="usuario" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuarioactmovimi" Association="siimnModel.Store.fk_usuarioactmovimi">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="movimi" EntitySet="movimi" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuariomovimi" Association="siimnModel.Store.fk_usuariomovimi">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="movimi" EntitySet="movimi" />
+    </AssociationSet>
+    <AssociationSet Name="fk_vendedorcliente" Association="siimnModel.Store.fk_vendedorcliente">
+      <End Role="vendedor" EntitySet="vendedor" />
+      <End Role="maecli" EntitySet="maecli" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="acucentr">
+    <Key>
+      <PropertyRef Name="idacucentr" />
+    </Key>
+    <Property Name="idacucentr" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idsucursal" Type="int" Nullable="false" />
+    <Property Name="anio" Type="varchar" MaxLength="4" />
+    <Property Name="mes" Type="int" Nullable="false" />
+    <Property Name="idcentro" Type="int" />
+    <Property Name="idnit" Type="int" />
+    <Property Name="idcuenta" Type="int" Nullable="false" />
+    <Property Name="saldomes" Type="decimal" Nullable="false" Precision="16" Scale="2" />
+    <Property Name="debimes" Type="decimal" Nullable="false" Precision="16" Scale="2" />
+    <Property Name="credimes" Type="decimal" Nullable="false" Precision="16" Scale="2" />
+  </EntityType>
+  <EntityType Name="cajero">
+    <Key>
+      <PropertyRef Name="idcajero" />
+    </Key>
+    <Property Name="idcajero" Type="int" Nullable="false" />
+    <Property Name="nombrecaje" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="usuariocaje" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="clave" Type="char" Nullable="false" MaxLength="32" />
+    <Property Name="idmodulo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="campoformedios">
+    <Key>
+      <PropertyRef Name="idcampoformato" />
+    </Key>
+    <Property Name="idcampoformato" Type="int" Nullable="false" />
+    <Property Name="nombrecampo" Type="varchar" Nullable="false" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="centrocostos">
+    <Key>
+      <PropertyRef Name="idcentro" />
+    </Key>
+    <Property Name="idcentro" Type="int" Nullable="false" />
+    <Property Name="nombrecentro" Type="varchar" Nullable="false" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="ciudad">
+    <Key>
+      <PropertyRef Name="idciudad" />
+    </Key>
+    <Property Name="idciudad" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="codigodepto" Type="int" Nullable="false" />
+    <Property Name="codigociudad" Type="varchar" Nullable="false" MaxLength="3" />
+    <Property Name="nombreciudad" Type="varchar" Nullable="false" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="idcliente" />
+    </Key>
+    <Property Name="idcliente" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idtipodto" Type="int" Nullable="false" />
+    <Property Name="documento" Type="varchar" Nullable="false" MaxLength="12" />
+    <Property Name="digito" Type="varchar" MaxLength="1" />
+    <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="idciudad" Type="int" Nullable="false" />
+    <Property Name="direccion" Type="varchar" MaxLength="45" />
+    <Property Name="telefono" Type="varchar" MaxLength="10" />
+    <Property Name="celular" Type="varchar" MaxLength="10" />
+    <Property Name="fax" Type="varchar" MaxLength="10" />
+    <Property Name="email" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="compania">
+    <Key>
+      <PropertyRef Name="idcompania" />
+    </Key>
+    <Property Name="idcompania" Type="int" Nullable="false" />
+    <Property Name="nombrecia" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="nit" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="digito" Type="varchar" Nullable="false" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="comprobante">
+    <Key>
+      <PropertyRef Name="codigcomprob" />
+    </Key>
+    <Property Name="codigcomprob" Type="int" Nullable="false" />
+    <Property Name="descripcomprob" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="consecutivo" Type="bit" Nullable="false" />
+    <Property Name="numsiguiente" Type="int" />
+    <Property Name="codigootra" Type="varchar" Nullable="false" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="conceptospagos">
+    <Key>
+      <PropertyRef Name="idconceptospago" />
+    </Key>
+    <Property Name="idconceptospago" Type="int" Nullable="false" />
+    <Property Name="descripconcep" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="cuenta" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="codformaspago" Type="varchar" Nullable="false" MaxLength="2" />
+    <Property Name="porcentaje" Type="decimal" Nullable="false" Precision="3" Scale="2" />
+  </EntityType>
+  <EntityType Name="conexuser">
+    <Key>
+      <PropertyRef Name="idconexion" />
+    </Key>
+    <Property Name="idconexion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idusuario" Type="int" Nullable="false" />
+    <Property Name="idcompania" Type="int" Nullable="false" />
+    <Property Name="fechaconex" Type="datetime" Nullable="false" />
+    <Property Name="fechadescon" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="datosusuario">
+    <Key>
+      <PropertyRef Name="idusuariodat" />
+    </Key>
+    <Property Name="idusuariodat" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="cedula" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="nombresusuario" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="apellidosusuario" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="telefonousuario" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="direccionusuario" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="departamento">
+    <Key>
+      <PropertyRef Name="iddept" />
+    </Key>
+    <Property Name="iddept" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idpais" Type="int" Nullable="false" />
+    <Property Name="codigodepto" Type="varchar" Nullable="false" MaxLength="2" />
+    <Property Name="nombredept" Type="varchar" Nullable="false" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="formaspago">
+    <Key>
+      <PropertyRef Name="idformaspago" />
+    </Key>
+    <Property Name="idformaspago" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="codformaspago" Type="varchar" Nullable="false" MaxLength="2" />
+    <Property Name="nombreforma" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="sivence" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="formato">
+    <Key>
+      <PropertyRef Name="idformato" />
+    </Key>
+    <Property Name="idformato" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idmoduloppal" Type="int" Nullable="false" />
+    <Property Name="codigofor" Type="int" Nullable="false" />
+    <Property Name="codigotipo" Type="int" Nullable="false" />
+    <Property Name="activo" Type="bit" Nullable="false" />
+    <Property Name="fila" Type="int" />
+    <Property Name="columna" Type="int" />
+    <Property Name="condensa" Type="bit" Nullable="false" />
+    <Property Name="presentacion" Type="varchar" MaxLength="45" />
+    <Property Name="titulo" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="formatomedios">
+    <Key>
+      <PropertyRef Name="idformatomedios" />
+    </Key>
+    <Property Name="idformatomedios" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="numeroformatos" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="idcampo1" Type="int" Nullable="false" />
+    <Property Name="idcampo2" Type="int" Nullable="false" />
+    <Property Name="idcampo3" Type="int" Nullable="false" />
+    <Property Name="idcampo4" Type="int" Nullable="false" />
+    <Property Name="idcampo5" Type="int" Nullable="false" />
+    <Property Name="idcampo6" Type="int" Nullable="false" />
+    <Property Name="idcampo7" Type="int" Nullable="false" />
+    <Property Name="idcampo8" Type="int" Nullable="false" />
+    <Property Name="idcampo9" Type="int" Nullable="false" />
+    <Property Name="idcampo10" Type="int" Nullable="false" />
+    <Property Name="idcampo11" Type="int" />
+    <Property Name="idcampo12" Type="int" />
+    <Property Name="idcampo13" Type="int" />
+    <Property Name="idcampo14" Type="int" />
+    <Property Name="idcampo15" Type="int" />
+    <Property Name="idcampo16" Type="int" />
+  </EntityType>
+  <EntityType Name="formatosbpyg">
+    <Key>
+      <PropertyRef Name="idformato" />
+    </Key>
+    <Property Name="idformato" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="tipoformato" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="clasemayor" Type="varchar" MaxLength="1" />
+    <Property Name="linea" Type="varchar" MaxLength="2" />
+    <Property Name="nombref" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="cuentaini" Type="int" />
+    <Property Name="cuentafin" Type="int" />
+  </EntityType>
+  <EntityType Name="inflacion">
+    <Key>
+      <PropertyRef Name="idinflacion" />
+    </Key>
+    <Property Name="idinflacion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idsucursal" Type="int" Nullable="false" />
+    <Property Name="mes" Type="varchar" Nullable="false" MaxLength="2" />
+    <Property Name="inflamensual" Type="decimal" Nullable="false" Precision="4" Scale="2" />
+  </EntityType>
+  <EntityType Name="maebanta">
+    <Key>
+      <PropertyRef Name="idbanta" />
+    </Key>
+    <Property Name="idbanta" Type="int" Nullable="false" />
+    <Property Name="codigobanta" Type="varchar" Nullable="false" MaxLength="2" />
+    <Property Name="nombrebanta" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="tipobanta" Type="varchar" Nullable="false" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="maecli">
+    <Key>
+      <PropertyRef Name="codigocli" />
+    </Key>
+    <Property Name="codigocli" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idcliente" Type="int" Nullable="false" />
+    <Property Name="facturanombre" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="bloqueado" Type="bit" Nullable="false" />
+    <Property Name="direccionenvio" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="plazo" Type="int" Nullable="false" />
+    <Property Name="cupo" Type="decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="descuento" Type="decimal" Nullable="false" Precision="3" Scale="2" />
+    <Property Name="regimen" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="grancotribu" Type="bit" Nullable="false" />
+    <Property Name="ppago1" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="ppago2" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="causareteica" Type="bit" Nullable="false" />
+    <Property Name="aplicareteica" Type="bit" Nullable="false" />
+    <Property Name="causareteiva" Type="bit" Nullable="false" />
+    <Property Name="descuentareteiva" Type="bit" Nullable="false" />
+    <Property Name="retexcomprar" Type="bit" Nullable="false" />
+    <Property Name="descontretenvend" Type="bit" Nullable="false" />
+    <Property Name="porretencion" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="jefecompra" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="comprador" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="cuenta" Type="int" Nullable="false" />
+    <Property Name="idvendedor" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="maeconcc">
+    <Key>
+      <PropertyRef Name="idconcepto" />
+    </Key>
+    <Property Name="idconcepto" Type="int" Nullable="false" />
+    <Property Name="descripconcepto" Type="varchar" Nullable="false" MaxLength="45" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6035: The relationship 'fk_cuentaconceptos' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+      -->
+  <EntityType Name="maeconta">
+    <Key>
+      <PropertyRef Name="idcuenta" />
+    </Key>
+    <Property Name="idcuenta" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="cuenta" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="tipocta" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="70" />
+    <Property Name="pidenit" Type="bit" Nullable="false" />
+    <Property Name="centro" Type="bit" Nullable="false" />
+    <Property Name="ajustesinteg" Type="bit" Nullable="false" />
+    <Property Name="idnitajustes" Type="int" />
+    <Property Name="cueaju" Type="int" />
+    <Property Name="cuencorre" Type="int" />
+    <Property Name="ajudoc" Type="varchar" MaxLength="1" />
+    <Property Name="retencion" Type="bit" Nullable="false" />
+    <Property Name="porete" Type="decimal" Precision="4" Scale="2" />
+    <Property Name="conceprete" Type="varchar" MaxLength="70" />
+    <Property Name="reteica" Type="bit" Nullable="false" />
+    <Property Name="poreteica" Type="decimal" Precision="4" Scale="2" />
+    <Property Name="concepreteica" Type="varchar" MaxLength="45" />
+    <Property Name="cuentacierre" Type="int" />
+    <Property Name="codformatomedios" Type="int" />
+  </EntityType>
+  <EntityType Name="maenits">
+    <Key>
+      <PropertyRef Name="idnit" />
+    </Key>
+    <Property Name="idnit" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idtiponit" Type="int" Nullable="false" />
+    <Property Name="nit" Type="varchar" Nullable="false" MaxLength="12" />
+    <Property Name="digito" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="nombrenit" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="idciudad" Type="int" Nullable="false" />
+    <Property Name="acteconomic" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="direccion" Type="varchar" MaxLength="60" />
+    <Property Name="telefono" Type="varchar" MaxLength="10" />
+    <Property Name="celular" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="email" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="maepagos">
+    <Key>
+      <PropertyRef Name="idpagos" />
+    </Key>
+    <Property Name="idpagos" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idsucursal" Type="int" Nullable="false" />
+    <Property Name="anio" Type="varchar" Nullable="false" MaxLength="4" />
+    <Property Name="mes" Type="int" Nullable="false" />
+    <Property Name="cuenta" Type="int" Nullable="false" />
+    <Property Name="idnit" Type="int" Nullable="false" />
+    <Property Name="saldomes" Type="decimal" Nullable="false" Precision="16" Scale="2" />
+    <Property Name="debimes" Type="decimal" Nullable="false" Precision="16" Scale="2" />
+    <Property Name="credimes" Type="decimal" Nullable="false" Precision="16" Scale="2" />
+  </EntityType>
+  <EntityType Name="maetrac">
+    <Key>
+      <PropertyRef Name="idtransaccion" />
+    </Key>
+    <Property Name="idtransaccion" Type="int" Nullable="false" />
+    <Property Name="codigotrac" Type="varchar" Nullable="false" MaxLength="2" />
+    <Property Name="idmoduloppal" Type="int" Nullable="false" />
+    <Property Name="nombretrac" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="afectasaldo" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="afectaotro" Type="bit" Nullable="false" />
+    <Property Name="generaasiento" Type="bit" Nullable="false" />
+    <Property Name="consecutivo" Type="bit" Nullable="false" />
+    <Property Name="numeroactual" Type="int" />
+    <Property Name="codigcomp" Type="int" />
+  </EntityType>
+  <EntityType Name="maetribut">
+    <Key>
+      <PropertyRef Name="idtributario" />
+    </Key>
+    <Property Name="idtributario" Type="int" Nullable="false" />
+    <Property Name="codigotrib" Type="varchar" Nullable="false" MaxLength="5" />
+    <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="tope" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="idnittope" Type="int" />
+  </EntityType>
+  <EntityType Name="modulo">
+    <Key>
+      <PropertyRef Name="idmodulo" />
+    </Key>
+    <Property Name="idmodulo" Type="int" Nullable="false" />
+    <Property Name="idmoduloppal" Type="int" Nullable="false" />
+    <Property Name="nombremod" Type="varchar" Nullable="false" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="moduloppal">
+    <Key>
+      <PropertyRef Name="idmodulo" />
+    </Key>
+    <Property Name="idmodulo" Type="int" Nullable="false" />
+    <Property Name="codigmoduloppal" Type="varchar" Nullable="false" MaxLength="2" />
+    <Property Name="nombremodppal" Type="varchar" Nullable="false" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="movimi">
+    <Key>
+      <PropertyRef Name="idmovimiento" />
+    </Key>
+    <Property Name="idmovimiento" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idasiento" Type="varchar" Nullable="false" MaxLength="18" />
+    <Property Name="idsucursal" Type="int" Nullable="false" />
+    <Property Name="mes" Type="int" Nullable="false" />
+    <Property Name="anio" Type="varchar" Nullable="false" MaxLength="4" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="documento" Type="varchar" Nullable="false" MaxLength="15" />
+    <Property Name="idmoduloimprime" Type="int" Nullable="false" />
+    <Property Name="idtipodocumento" Type="int" />
+    <Property Name="codigcomprob" Type="int" Nullable="false" />
+    <Property Name="cuenta" Type="int" Nullable="false" />
+    <Property Name="detalle" Type="varchar" Nullable="false" MaxLength="55" />
+    <Property Name="idcentro" Type="int" />
+    <Property Name="idnit" Type="int" />
+    <Property Name="referencia" Type="varchar" MaxLength="10" />
+    <Property Name="valordebito" Type="decimal" Nullable="false" Precision="16" Scale="2" />
+    <Property Name="valorcredito" Type="decimal" Nullable="false" Precision="16" Scale="2" />
+    <Property Name="baseimpuesto" Type="decimal" Nullable="false" Precision="16" Scale="2" />
+    <Property Name="valorica" Type="decimal" Nullable="false" Precision="16" Scale="2" />
+    <Property Name="entrada" Type="int" />
+    <Property Name="asientofijo" Type="bit" Nullable="false" />
+    <Property Name="actualizado" Type="bit" Nullable="false" />
+    <Property Name="idusuario" Type="int" Nullable="false" />
+    <Property Name="fechagrabacion" Type="datetime" Nullable="false" />
+    <Property Name="idusuarioact" Type="int" />
+    <Property Name="fechaact" Type="datetime" />
+    <Property Name="eliminado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pais">
+    <Key>
+      <PropertyRef Name="idpais" />
+    </Key>
+    <Property Name="idpais" Type="int" Nullable="false" />
+    <Property Name="codpais" Type="varchar" Nullable="false" MaxLength="3" />
+    <Property Name="nombrepais" Type="varchar" Nullable="false" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="parametro">
+    <Key>
+      <PropertyRef Name="idparametro" />
+    </Key>
+    <Property Name="idparametro" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombreparametro" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="idmoduloppal" Type="int" Nullable="false" />
+    <Property Name="descriparam" Type="varchar" Nullable="false" MaxLength="70" />
+    <Property Name="valorparam" Type="varchar" Nullable="false" MaxLength="75" />
+  </EntityType>
+  <EntityType Name="permiso">
+    <Key>
+      <PropertyRef Name="idpermiso" />
+    </Key>
+    <Property Name="idpermiso" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idusuario" Type="int" Nullable="false" />
+    <Property Name="idmodulo" Type="int" Nullable="false" />
+    <Property Name="permitido" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="presupuesto">
+    <Key>
+      <PropertyRef Name="idpresupuesto" />
+    </Key>
+    <Property Name="idpresupuesto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idsucursal" Type="int" Nullable="false" />
+    <Property Name="cuenta" Type="int" Nullable="false" />
+    <Property Name="idcentro" Type="int" Nullable="false" />
+    <Property Name="anio" Type="varchar" Nullable="false" MaxLength="4" />
+    <Property Name="mes" Type="int" Nullable="false" />
+    <Property Name="cantidad" Type="decimal" Nullable="false" Precision="16" Scale="2" />
+  </EntityType>
+  <EntityType Name="saldoscuentas">
+    <Key>
+      <PropertyRef Name="idsaldoscuentas" />
+    </Key>
+    <Property Name="idsaldoscuentas" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idsucursal" Type="int" Nullable="false" />
+    <Property Name="cuenta" Type="int" Nullable="false" />
+    <Property Name="anio" Type="varchar" Nullable="false" MaxLength="4" />
+    <Property Name="mes" Type="int" Nullable="false" />
+    <Property Name="saldomes" Type="decimal" Nullable="false" Precision="16" Scale="2" />
+    <Property Name="credimes" Type="decimal" Nullable="false" Precision="16" Scale="2" />
+    <Property Name="debimes" Type="decimal" Nullable="false" Precision="16" Scale="2" />
+  </EntityType>
+  <EntityType Name="sucursal">
+    <Key>
+      <PropertyRef Name="idsucursal" />
+    </Key>
+    <Property Name="idsucursal" Type="int" Nullable="false" />
+    <Property Name="idcompania" Type="int" Nullable="false" />
+    <Property Name="nombresucursal" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="idciudad" Type="int" Nullable="false" />
+    <Property Name="direccion" Type="varchar" Nullable="false" MaxLength="70" />
+    <Property Name="telefono" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="paginaocorreo" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tipoformato">
+    <Key>
+      <PropertyRef Name="codigotipo" />
+    </Key>
+    <Property Name="codigotipo" Type="int" Nullable="false" />
+    <Property Name="nombretipo" Type="varchar" Nullable="false" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="tiponit">
+    <Key>
+      <PropertyRef Name="idtiponit" />
+    </Key>
+    <Property Name="idtiponit" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="codigtiponit" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="nombretipo" Type="varchar" Nullable="false" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="idusuario" />
+    </Key>
+    <Property Name="idusuario" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idusuariodatos" Type="int" Nullable="false" />
+    <Property Name="user" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="contrasena" Type="char" Nullable="false" MaxLength="32" />
+    <Property Name="fechaulticonex" Type="datetime" />
+    <Property Name="ultimobloqueo" Type="datetime" />
+    <Property Name="intentosfallidos" Type="int" Nullable="false" />
+    <Property Name="bloqueado" Type="bit" Nullable="false" />
+    <Property Name="conectado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="usuariocia">
+    <Key>
+      <PropertyRef Name="idusercia" />
+    </Key>
+    <Property Name="idusercia" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idcompania" Type="int" Nullable="false" />
+    <Property Name="idusuario" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vendedor">
+    <Key>
+      <PropertyRef Name="idvendedor" />
+    </Key>
+    <Property Name="idvendedor" Type="int" Nullable="false" />
+    <Property Name="nombrevendedor" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="cedula" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="tipo" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="telefono" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="emailvend" Type="varchar" MaxLength="45" />
+    <Property Name="direcvend" Type="varchar" MaxLength="45" />
+    <Property Name="activo" Type="bit" Nullable="false" />
+    <Property Name="comisionrango" Type="bit" Nullable="false" />
+    <Property Name="comision" Type="decimal" Nullable="false" Precision="6" Scale="2" />
+    <Property Name="idcompania" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_campo10formato">
+    <End Role="campoformedios" Type="siimnModel.Store.campoformedios" Multiplicity="1" />
+    <End Role="formatomedios" Type="siimnModel.Store.formatomedios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="campoformedios">
+        <PropertyRef Name="idcampoformato" />
+      </Principal>
+      <Dependent Role="formatomedios">
+        <PropertyRef Name="idcampo10" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_campo11formato">
+    <End Role="campoformedios" Type="siimnModel.Store.campoformedios" Multiplicity="0..1" />
+    <End Role="formatomedios" Type="siimnModel.Store.formatomedios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="campoformedios">
+        <PropertyRef Name="idcampoformato" />
+      </Principal>
+      <Dependent Role="formatomedios">
+        <PropertyRef Name="idcampo11" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_campo12formato">
+    <End Role="campoformedios" Type="siimnModel.Store.campoformedios" Multiplicity="0..1" />
+    <End Role="formatomedios" Type="siimnModel.Store.formatomedios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="campoformedios">
+        <PropertyRef Name="idcampoformato" />
+      </Principal>
+      <Dependent Role="formatomedios">
+        <PropertyRef Name="idcampo12" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_campo13formato">
+    <End Role="campoformedios" Type="siimnModel.Store.campoformedios" Multiplicity="0..1" />
+    <End Role="formatomedios" Type="siimnModel.Store.formatomedios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="campoformedios">
+        <PropertyRef Name="idcampoformato" />
+      </Principal>
+      <Dependent Role="formatomedios">
+        <PropertyRef Name="idcampo13" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_campo14formato">
+    <End Role="campoformedios" Type="siimnModel.Store.campoformedios" Multiplicity="0..1" />
+    <End Role="formatomedios" Type="siimnModel.Store.formatomedios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="campoformedios">
+        <PropertyRef Name="idcampoformato" />
+      </Principal>
+      <Dependent Role="formatomedios">
+        <PropertyRef Name="idcampo14" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_campo15formato">
+    <End Role="campoformedios" Type="siimnModel.Store.campoformedios" Multiplicity="0..1" />
+    <End Role="formatomedios" Type="siimnModel.Store.formatomedios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="campoformedios">
+        <PropertyRef Name="idcampoformato" />
+      </Principal>
+      <Dependent Role="formatomedios">
+        <PropertyRef Name="idcampo15" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_campo16formato">
+    <End Role="campoformedios" Type="siimnModel.Store.campoformedios" Multiplicity="0..1" />
+    <End Role="formatomedios" Type="siimnModel.Store.formatomedios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="campoformedios">
+        <PropertyRef Name="idcampoformato" />
+      </Principal>
+      <Dependent Role="formatomedios">
+        <PropertyRef Name="idcampo16" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_campo1formato">
+    <End Role="campoformedios" Type="siimnModel.Store.campoformedios" Multiplicity="1" />
+    <End Role="formatomedios" Type="siimnModel.Store.formatomedios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="campoformedios">
+        <PropertyRef Name="idcampoformato" />
+      </Principal>
+      <Dependent Role="formatomedios">
+        <PropertyRef Name="idcampo1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_campo2formato">
+    <End Role="campoformedios" Type="siimnModel.Store.campoformedios" Multiplicity="1" />
+    <End Role="formatomedios" Type="siimnModel.Store.formatomedios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="campoformedios">
+        <PropertyRef Name="idcampoformato" />
+      </Principal>
+      <Dependent Role="formatomedios">
+        <PropertyRef Name="idcampo2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_campo3formato">
+    <End Role="campoformedios" Type="siimnModel.Store.campoformedios" Multiplicity="1" />
+    <End Role="formatomedios" Type="siimnModel.Store.formatomedios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="campoformedios">
+        <PropertyRef Name="idcampoformato" />
+      </Principal>
+      <Dependent Role="formatomedios">
+        <PropertyRef Name="idcampo3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_campo4formato">
+    <End Role="campoformedios" Type="siimnModel.Store.campoformedios" Multiplicity="1" />
+    <End Role="formatomedios" Type="siimnModel.Store.formatomedios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="campoformedios">
+        <PropertyRef Name="idcampoformato" />
+      </Principal>
+      <Dependent Role="formatomedios">
+        <PropertyRef Name="idcampo4" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_campo5formato">
+    <End Role="campoformedios" Type="siimnModel.Store.campoformedios" Multiplicity="1" />
+    <End Role="formatomedios" Type="siimnModel.Store.formatomedios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="campoformedios">
+        <PropertyRef Name="idcampoformato" />
+      </Principal>
+      <Dependent Role="formatomedios">
+        <PropertyRef Name="idcampo5" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_campo6formato">
+    <End Role="campoformedios" Type="siimnModel.Store.campoformedios" Multiplicity="1" />
+    <End Role="formatomedios" Type="siimnModel.Store.formatomedios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="campoformedios">
+        <PropertyRef Name="idcampoformato" />
+      </Principal>
+      <Dependent Role="formatomedios">
+        <PropertyRef Name="idcampo6" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_campo7formato">
+    <End Role="campoformedios" Type="siimnModel.Store.campoformedios" Multiplicity="1" />
+    <End Role="formatomedios" Type="siimnModel.Store.formatomedios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="campoformedios">
+        <PropertyRef Name="idcampoformato" />
+      </Principal>
+      <Dependent Role="formatomedios">
+        <PropertyRef Name="idcampo7" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_campo8formato">
+    <End Role="campoformedios" Type="siimnModel.Store.campoformedios" Multiplicity="1" />
+    <End Role="formatomedios" Type="siimnModel.Store.formatomedios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="campoformedios">
+        <PropertyRef Name="idcampoformato" />
+      </Principal>
+      <Dependent Role="formatomedios">
+        <PropertyRef Name="idcampo8" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_campo9formato">
+    <End Role="campoformedios" Type="siimnModel.Store.campoformedios" Multiplicity="1" />
+    <End Role="formatomedios" Type="siimnModel.Store.formatomedios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="campoformedios">
+        <PropertyRef Name="idcampoformato" />
+      </Principal>
+      <Dependent Role="formatomedios">
+        <PropertyRef Name="idcampo9" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_centroacucentro">
+    <End Role="centrocostos" Type="siimnModel.Store.centrocostos" Multiplicity="0..1" />
+    <End Role="acucentr" Type="siimnModel.Store.acucentr" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="centrocostos">
+        <PropertyRef Name="idcentro" />
+      </Principal>
+      <Dependent Role="acucentr">
+        <PropertyRef Name="idcentro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_centromovimi">
+    <End Role="centrocostos" Type="siimnModel.Store.centrocostos" Multiplicity="0..1" />
+    <End Role="movimi" Type="siimnModel.Store.movimi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="centrocostos">
+        <PropertyRef Name="idcentro" />
+      </Principal>
+      <Dependent Role="movimi">
+        <PropertyRef Name="idcentro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_centropresupuesto">
+    <End Role="centrocostos" Type="siimnModel.Store.centrocostos" Multiplicity="1" />
+    <End Role="presupuesto" Type="siimnModel.Store.presupuesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="centrocostos">
+        <PropertyRef Name="idcentro" />
+      </Principal>
+      <Dependent Role="presupuesto">
+        <PropertyRef Name="idcentro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ciaacucentro">
+    <End Role="sucursal" Type="siimnModel.Store.sucursal" Multiplicity="1" />
+    <End Role="acucentr" Type="siimnModel.Store.acucentr" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sucursal">
+        <PropertyRef Name="idsucursal" />
+      </Principal>
+      <Dependent Role="acucentr">
+        <PropertyRef Name="idsucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ciamovimi">
+    <End Role="sucursal" Type="siimnModel.Store.sucursal" Multiplicity="1" />
+    <End Role="movimi" Type="siimnModel.Store.movimi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sucursal">
+        <PropertyRef Name="idsucursal" />
+      </Principal>
+      <Dependent Role="movimi">
+        <PropertyRef Name="idsucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ciapagos">
+    <End Role="sucursal" Type="siimnModel.Store.sucursal" Multiplicity="1" />
+    <End Role="maepagos" Type="siimnModel.Store.maepagos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sucursal">
+        <PropertyRef Name="idsucursal" />
+      </Principal>
+      <Dependent Role="maepagos">
+        <PropertyRef Name="idsucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ciapresupuesto">
+    <End Role="sucursal" Type="siimnModel.Store.sucursal" Multiplicity="1" />
+    <End Role="presupuesto" Type="siimnModel.Store.presupuesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sucursal">
+        <PropertyRef Name="idsucursal" />
+      </Principal>
+      <Dependent Role="presupuesto">
+        <PropertyRef Name="idsucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ciasucursal">
+    <End Role="compania" Type="siimnModel.Store.compania" Multiplicity="1" />
+    <End Role="sucursal" Type="siimnModel.Store.sucursal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="compania">
+        <PropertyRef Name="idcompania" />
+      </Principal>
+      <Dependent Role="sucursal">
+        <PropertyRef Name="idcompania" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ciausxcia">
+    <End Role="sucursal" Type="siimnModel.Store.sucursal" Multiplicity="1" />
+    <End Role="usuariocia" Type="siimnModel.Store.usuariocia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sucursal">
+        <PropertyRef Name="idsucursal" />
+      </Principal>
+      <Dependent Role="usuariocia">
+        <PropertyRef Name="idcompania" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ciudadcliente">
+    <End Role="ciudad" Type="siimnModel.Store.ciudad" Multiplicity="1" />
+    <End Role="cliente" Type="siimnModel.Store.cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ciudad">
+        <PropertyRef Name="idciudad" />
+      </Principal>
+      <Dependent Role="cliente">
+        <PropertyRef Name="idciudad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ciudadnits">
+    <End Role="ciudad" Type="siimnModel.Store.ciudad" Multiplicity="1" />
+    <End Role="maenits" Type="siimnModel.Store.maenits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ciudad">
+        <PropertyRef Name="idciudad" />
+      </Principal>
+      <Dependent Role="maenits">
+        <PropertyRef Name="idciudad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ciudadsucursal">
+    <End Role="ciudad" Type="siimnModel.Store.ciudad" Multiplicity="1" />
+    <End Role="sucursal" Type="siimnModel.Store.sucursal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ciudad">
+        <PropertyRef Name="idciudad" />
+      </Principal>
+      <Dependent Role="sucursal">
+        <PropertyRef Name="idciudad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_clientedatoscliente">
+    <End Role="cliente" Type="siimnModel.Store.cliente" Multiplicity="1" />
+    <End Role="maecli" Type="siimnModel.Store.maecli" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="idcliente" />
+      </Principal>
+      <Dependent Role="maecli">
+        <PropertyRef Name="idcliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_compromovimi">
+    <End Role="comprobante" Type="siimnModel.Store.comprobante" Multiplicity="1" />
+    <End Role="movimi" Type="siimnModel.Store.movimi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="comprobante">
+        <PropertyRef Name="codigcomprob" />
+      </Principal>
+      <Dependent Role="movimi">
+        <PropertyRef Name="codigcomprob" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_comprtrac">
+    <End Role="comprobante" Type="siimnModel.Store.comprobante" Multiplicity="0..1" />
+    <End Role="maetrac" Type="siimnModel.Store.maetrac" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="comprobante">
+        <PropertyRef Name="codigcomprob" />
+      </Principal>
+      <Dependent Role="maetrac">
+        <PropertyRef Name="codigcomp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cuentaacucentro">
+    <End Role="maeconta" Type="siimnModel.Store.maeconta" Multiplicity="1" />
+    <End Role="acucentr" Type="siimnModel.Store.acucentr" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="maeconta">
+        <PropertyRef Name="idcuenta" />
+      </Principal>
+      <Dependent Role="acucentr">
+        <PropertyRef Name="idcuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cuentacueaju">
+    <End Role="maeconta" Type="siimnModel.Store.maeconta" Multiplicity="0..1" />
+    <End Role="maeconta1" Type="siimnModel.Store.maeconta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="maeconta">
+        <PropertyRef Name="idcuenta" />
+      </Principal>
+      <Dependent Role="maeconta1">
+        <PropertyRef Name="cueaju" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cuentacuecierre">
+    <End Role="maeconta" Type="siimnModel.Store.maeconta" Multiplicity="0..1" />
+    <End Role="maeconta1" Type="siimnModel.Store.maeconta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="maeconta">
+        <PropertyRef Name="idcuenta" />
+      </Principal>
+      <Dependent Role="maeconta1">
+        <PropertyRef Name="cuentacierre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cuentacuecor">
+    <End Role="maeconta" Type="siimnModel.Store.maeconta" Multiplicity="0..1" />
+    <End Role="maeconta1" Type="siimnModel.Store.maeconta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="maeconta">
+        <PropertyRef Name="idcuenta" />
+      </Principal>
+      <Dependent Role="maeconta1">
+        <PropertyRef Name="cuencorre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cuentafinforbpyg">
+    <End Role="maeconta" Type="siimnModel.Store.maeconta" Multiplicity="0..1" />
+    <End Role="formatosbpyg" Type="siimnModel.Store.formatosbpyg" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="maeconta">
+        <PropertyRef Name="idcuenta" />
+      </Principal>
+      <Dependent Role="formatosbpyg">
+        <PropertyRef Name="cuentafin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cuentainifombpyg">
+    <End Role="maeconta" Type="siimnModel.Store.maeconta" Multiplicity="0..1" />
+    <End Role="formatosbpyg" Type="siimnModel.Store.formatosbpyg" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="maeconta">
+        <PropertyRef Name="idcuenta" />
+      </Principal>
+      <Dependent Role="formatosbpyg">
+        <PropertyRef Name="cuentaini" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cuentamaecli">
+    <End Role="maeconta" Type="siimnModel.Store.maeconta" Multiplicity="1" />
+    <End Role="maecli" Type="siimnModel.Store.maecli" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="maeconta">
+        <PropertyRef Name="idcuenta" />
+      </Principal>
+      <Dependent Role="maecli">
+        <PropertyRef Name="cuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cuentamovimi">
+    <End Role="maeconta" Type="siimnModel.Store.maeconta" Multiplicity="1" />
+    <End Role="movimi" Type="siimnModel.Store.movimi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="maeconta">
+        <PropertyRef Name="idcuenta" />
+      </Principal>
+      <Dependent Role="movimi">
+        <PropertyRef Name="cuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cuentapagos">
+    <End Role="maeconta" Type="siimnModel.Store.maeconta" Multiplicity="1" />
+    <End Role="maepagos" Type="siimnModel.Store.maepagos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="maeconta">
+        <PropertyRef Name="idcuenta" />
+      </Principal>
+      <Dependent Role="maepagos">
+        <PropertyRef Name="cuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cuentapresupuesto">
+    <End Role="maeconta" Type="siimnModel.Store.maeconta" Multiplicity="1" />
+    <End Role="presupuesto" Type="siimnModel.Store.presupuesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="maeconta">
+        <PropertyRef Name="idcuenta" />
+      </Principal>
+      <Dependent Role="presupuesto">
+        <PropertyRef Name="cuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cuentasaldos">
+    <End Role="maeconta" Type="siimnModel.Store.maeconta" Multiplicity="1" />
+    <End Role="saldoscuentas" Type="siimnModel.Store.saldoscuentas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="maeconta">
+        <PropertyRef Name="idcuenta" />
+      </Principal>
+      <Dependent Role="saldoscuentas">
+        <PropertyRef Name="cuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_deptociudad">
+    <End Role="departamento" Type="siimnModel.Store.departamento" Multiplicity="1" />
+    <End Role="ciudad" Type="siimnModel.Store.ciudad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="departamento">
+        <PropertyRef Name="iddept" />
+      </Principal>
+      <Dependent Role="ciudad">
+        <PropertyRef Name="codigodepto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_formatomedioscuenta">
+    <End Role="formatomedios" Type="siimnModel.Store.formatomedios" Multiplicity="0..1" />
+    <End Role="maeconta" Type="siimnModel.Store.maeconta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="formatomedios">
+        <PropertyRef Name="idformatomedios" />
+      </Principal>
+      <Dependent Role="maeconta">
+        <PropertyRef Name="codformatomedios" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_modulocajero">
+    <End Role="modulo" Type="siimnModel.Store.modulo" Multiplicity="1" />
+    <End Role="cajero" Type="siimnModel.Store.cajero" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="modulo">
+        <PropertyRef Name="idmodulo" />
+      </Principal>
+      <Dependent Role="cajero">
+        <PropertyRef Name="idmodulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_moduloformato">
+    <End Role="moduloppal" Type="siimnModel.Store.moduloppal" Multiplicity="1" />
+    <End Role="formato" Type="siimnModel.Store.formato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="moduloppal">
+        <PropertyRef Name="idmodulo" />
+      </Principal>
+      <Dependent Role="formato">
+        <PropertyRef Name="idmoduloppal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_modulomovimi">
+    <End Role="moduloppal" Type="siimnModel.Store.moduloppal" Multiplicity="1" />
+    <End Role="movimi" Type="siimnModel.Store.movimi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="moduloppal">
+        <PropertyRef Name="idmodulo" />
+      </Principal>
+      <Dependent Role="movimi">
+        <PropertyRef Name="idmoduloimprime" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_moduloparametro">
+    <End Role="moduloppal" Type="siimnModel.Store.moduloppal" Multiplicity="1" />
+    <End Role="parametro" Type="siimnModel.Store.parametro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="moduloppal">
+        <PropertyRef Name="idmodulo" />
+      </Principal>
+      <Dependent Role="parametro">
+        <PropertyRef Name="idmoduloppal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_moduloppalmodulo">
+    <End Role="moduloppal" Type="siimnModel.Store.moduloppal" Multiplicity="1" />
+    <End Role="modulo" Type="siimnModel.Store.modulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="moduloppal">
+        <PropertyRef Name="idmodulo" />
+      </Principal>
+      <Dependent Role="modulo">
+        <PropertyRef Name="idmoduloppal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_modulotrac">
+    <End Role="moduloppal" Type="siimnModel.Store.moduloppal" Multiplicity="1" />
+    <End Role="maetrac" Type="siimnModel.Store.maetrac" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="moduloppal">
+        <PropertyRef Name="idmodulo" />
+      </Principal>
+      <Dependent Role="maetrac">
+        <PropertyRef Name="idmoduloppal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_nitacucentro">
+    <End Role="maenits" Type="siimnModel.Store.maenits" Multiplicity="0..1" />
+    <End Role="acucentr" Type="siimnModel.Store.acucentr" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="maenits">
+        <PropertyRef Name="idnit" />
+      </Principal>
+      <Dependent Role="acucentr">
+        <PropertyRef Name="idnit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_nitcuenta">
+    <End Role="maenits" Type="siimnModel.Store.maenits" Multiplicity="0..1" />
+    <End Role="maeconta" Type="siimnModel.Store.maeconta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="maenits">
+        <PropertyRef Name="idnit" />
+      </Principal>
+      <Dependent Role="maeconta">
+        <PropertyRef Name="idnitajustes" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_nitmovimi">
+    <End Role="maenits" Type="siimnModel.Store.maenits" Multiplicity="0..1" />
+    <End Role="movimi" Type="siimnModel.Store.movimi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="maenits">
+        <PropertyRef Name="idnit" />
+      </Principal>
+      <Dependent Role="movimi">
+        <PropertyRef Name="idnit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_nitpagos">
+    <End Role="maenits" Type="siimnModel.Store.maenits" Multiplicity="1" />
+    <End Role="maepagos" Type="siimnModel.Store.maepagos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="maenits">
+        <PropertyRef Name="idnit" />
+      </Principal>
+      <Dependent Role="maepagos">
+        <PropertyRef Name="idnit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_nittrib">
+    <End Role="maenits" Type="siimnModel.Store.maenits" Multiplicity="0..1" />
+    <End Role="maetribut" Type="siimnModel.Store.maetribut" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="maenits">
+        <PropertyRef Name="idnit" />
+      </Principal>
+      <Dependent Role="maetribut">
+        <PropertyRef Name="idnittope" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_paisdept">
+    <End Role="pais" Type="siimnModel.Store.pais" Multiplicity="1" />
+    <End Role="departamento" Type="siimnModel.Store.departamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pais">
+        <PropertyRef Name="idpais" />
+      </Principal>
+      <Dependent Role="departamento">
+        <PropertyRef Name="idpais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_permmod">
+    <End Role="modulo" Type="siimnModel.Store.modulo" Multiplicity="1" />
+    <End Role="permiso" Type="siimnModel.Store.permiso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="modulo">
+        <PropertyRef Name="idmodulo" />
+      </Principal>
+      <Dependent Role="permiso">
+        <PropertyRef Name="idmodulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_sucursalinfla">
+    <End Role="sucursal" Type="siimnModel.Store.sucursal" Multiplicity="1" />
+    <End Role="inflacion" Type="siimnModel.Store.inflacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sucursal">
+        <PropertyRef Name="idsucursal" />
+      </Principal>
+      <Dependent Role="inflacion">
+        <PropertyRef Name="idsucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_sucursalsaldos">
+    <End Role="sucursal" Type="siimnModel.Store.sucursal" Multiplicity="1" />
+    <End Role="saldoscuentas" Type="siimnModel.Store.saldoscuentas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sucursal">
+        <PropertyRef Name="idsucursal" />
+      </Principal>
+      <Dependent Role="saldoscuentas">
+        <PropertyRef Name="idsucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_sucursalvendedor">
+    <End Role="sucursal" Type="siimnModel.Store.sucursal" Multiplicity="1" />
+    <End Role="vendedor" Type="siimnModel.Store.vendedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sucursal">
+        <PropertyRef Name="idsucursal" />
+      </Principal>
+      <Dependent Role="vendedor">
+        <PropertyRef Name="idcompania" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_tipodocmovimi">
+    <End Role="maetrac" Type="siimnModel.Store.maetrac" Multiplicity="0..1" />
+    <End Role="movimi" Type="siimnModel.Store.movimi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="maetrac">
+        <PropertyRef Name="idtransaccion" />
+      </Principal>
+      <Dependent Role="movimi">
+        <PropertyRef Name="idtipodocumento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_tipodtocliente">
+    <End Role="tiponit" Type="siimnModel.Store.tiponit" Multiplicity="1" />
+    <End Role="cliente" Type="siimnModel.Store.cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tiponit">
+        <PropertyRef Name="idtiponit" />
+      </Principal>
+      <Dependent Role="cliente">
+        <PropertyRef Name="idtipodto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_tipoformato">
+    <End Role="tipoformato" Type="siimnModel.Store.tipoformato" Multiplicity="1" />
+    <End Role="formato" Type="siimnModel.Store.formato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipoformato">
+        <PropertyRef Name="codigotipo" />
+      </Principal>
+      <Dependent Role="formato">
+        <PropertyRef Name="codigotipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_tiponitnits">
+    <End Role="tiponit" Type="siimnModel.Store.tiponit" Multiplicity="1" />
+    <End Role="maenits" Type="siimnModel.Store.maenits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tiponit">
+        <PropertyRef Name="idtiponit" />
+      </Principal>
+      <Dependent Role="maenits">
+        <PropertyRef Name="idtiponit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usercia">
+    <End Role="compania" Type="siimnModel.Store.compania" Multiplicity="1" />
+    <End Role="conexuser" Type="siimnModel.Store.conexuser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="compania">
+        <PropertyRef Name="idcompania" />
+      </Principal>
+      <Dependent Role="conexuser">
+        <PropertyRef Name="idcompania" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_userconex">
+    <End Role="usuario" Type="siimnModel.Store.usuario" Multiplicity="1" />
+    <End Role="conexuser" Type="siimnModel.Store.conexuser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="idusuario" />
+      </Principal>
+      <Dependent Role="conexuser">
+        <PropertyRef Name="idusuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_userperm">
+    <End Role="usuario" Type="siimnModel.Store.usuario" Multiplicity="1" />
+    <End Role="permiso" Type="siimnModel.Store.permiso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="idusuario" />
+      </Principal>
+      <Dependent Role="permiso">
+        <PropertyRef Name="idusuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_userusxcia">
+    <End Role="usuario" Type="siimnModel.Store.usuario" Multiplicity="1" />
+    <End Role="usuariocia" Type="siimnModel.Store.usuariocia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="idusuario" />
+      </Principal>
+      <Dependent Role="usuariocia">
+        <PropertyRef Name="idusuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario">
+    <End Role="datosusuario" Type="siimnModel.Store.datosusuario" Multiplicity="1" />
+    <End Role="usuario" Type="siimnModel.Store.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="datosusuario">
+        <PropertyRef Name="idusuariodat" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="idusuariodatos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuarioactmovimi">
+    <End Role="usuario" Type="siimnModel.Store.usuario" Multiplicity="0..1" />
+    <End Role="movimi" Type="siimnModel.Store.movimi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="idusuario" />
+      </Principal>
+      <Dependent Role="movimi">
+        <PropertyRef Name="idusuarioact" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuariomovimi">
+    <End Role="usuario" Type="siimnModel.Store.usuario" Multiplicity="1" />
+    <End Role="movimi" Type="siimnModel.Store.movimi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="idusuario" />
+      </Principal>
+      <Dependent Role="movimi">
+        <PropertyRef Name="idusuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_vendedorcliente">
+    <End Role="vendedor" Type="siimnModel.Store.vendedor" Multiplicity="1" />
+    <End Role="maecli" Type="siimnModel.Store.maecli" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vendedor">
+        <PropertyRef Name="idvendedor" />
+      </Principal>
+      <Dependent Role="maecli">
+        <PropertyRef Name="idvendedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
