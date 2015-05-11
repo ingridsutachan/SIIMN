@@ -1564,5 +1564,16 @@ namespace Negocios.Contable
                 throw ex;
             }
         }
+
+        public void GenerarAsientoAjuste(int mes,DateTime fecha, string detalle, int comprobante, decimal tasa, string documento, string anio, int sucursal, int usuario)
+        {
+            try
+            {
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

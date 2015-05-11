@@ -134,7 +134,7 @@
             // lbl_tasa
             // 
             this.lbl_tasa.AutoSize = true;
-            this.lbl_tasa.BackColor = System.Drawing.Color.DarkCyan;
+            this.lbl_tasa.BackColor = System.Drawing.Color.LightSeaGreen;
             this.lbl_tasa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_tasa.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lbl_tasa.Location = new System.Drawing.Point(12, 109);

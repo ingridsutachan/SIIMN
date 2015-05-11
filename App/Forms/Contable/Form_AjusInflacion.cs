@@ -41,6 +41,8 @@ namespace App.Forms.Contable
 
         private bool Simsj;
 
+        private decimal tasa;
+
         public Form_AjusInflacion()
         {
             this.negocioComprobante = new Comprobantesn();
@@ -152,6 +154,7 @@ namespace App.Forms.Contable
         {
             cbx_mes.SelectedIndex = DateTime.Now.Month - 1;
             lbl_fecha.Visible = false;
+            lbl_tasa.Visible = false;
             txt_detalle.Clear();
             cbx_comprobante.SelectedIndex = 1;
             txt_numero.Clear();
@@ -193,7 +196,7 @@ namespace App.Forms.Contable
         private void Btn_generar_Click(object sender, EventArgs e)
         {
             this.ValidarGenerar();
-            if (existe)
+            if (!existe)
             {
                 btn_generar.Enabled = false;
                 using (Form_ProgresBar fwait = new Form_ProgresBar())
@@ -256,6 +259,14 @@ namespace App.Forms.Contable
 
         public void GenerarAsientoAjuste()
         {
+            try
+            {
+                this.negocioAsiento.GenerarAsientoAjuste(int.Parse(cbx_mes.SelectedValue.ToString()), Convert.ToDateTime(lbl_fecha.Text), txt_detalle.Text, int.Parse(cbx_comprobante.SelectedValue.ToString()), this.tasa, txt_numero.Text, this.aniotrabajo, Program.compa, Program.iduser);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("SE PRESENTO UN ERROR." + ex.Message, "ERROR");
+            }
         }
 
         private void Form_AjusInflacion_FormClosing(object sender, FormClosingEventArgs e)
@@ -281,7 +292,7 @@ namespace App.Forms.Contable
             txt_detalle.Text = "PAAG   " + CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(int.Parse(cbx_mes.SelectedValue.ToString()));
             txt_detalle.Focus();
         }
-        
+
         private void cbx_mes_SelectionChangeCommitted(object sender, EventArgs e)
         {
             lbl_fecha.Text = "01/" + cbx_mes.SelectedValue.ToString() + "/" + this.aniotrabajo;
@@ -296,10 +307,11 @@ namespace App.Forms.Contable
             {
                 try
                 {
-                    decimal tasa = this.negocioInflacion.ExisteInflacionMes(this.aniotrabajo, int.Parse(cbx_mes.SelectedValue.ToString()), Program.compa);
+                   this.tasa = this.negocioInflacion.ExisteInflacionMes(this.aniotrabajo, int.Parse(cbx_mes.SelectedValue.ToString()), Program.compa);
                     if (tasa != 0)
                     {
-                        lbl_tasa.Text = lbl_tasa.Text + "  " + tasa.ToString();
+                        lbl_tasa.Text = "TASA A APLICAR" + "  " + tasa.ToString();
+                        lbl_tasa.Visible = true;
                         txt_numero.Focus();
                     }
                     else

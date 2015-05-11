@@ -124,6 +124,8 @@ namespace App.Forms.Contable
             this.menu_asientnumero = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_graficos = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_especial = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_Retefuente = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_Reteica = new System.Windows.Forms.ToolStripMenuItem();
             this.menucuenta1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -208,6 +210,7 @@ namespace App.Forms.Contable
             // 
             // menu_porajustes
             // 
+            this.menu_porajustes.Enabled = false;
             this.menu_porajustes.Name = "menu_porajustes";
             this.menu_porajustes.Size = new System.Drawing.Size(367, 22);
             this.menu_porajustes.Text = "8. PORCENTAJE DE AJUSTES POR INFLACIÓN";
@@ -245,6 +248,7 @@ namespace App.Forms.Contable
             // 
             // menu_ajustesinfla
             // 
+            this.menu_ajustesinfla.Enabled = false;
             this.menu_ajustesinfla.Name = "menu_ajustesinfla";
             this.menu_ajustesinfla.Size = new System.Drawing.Size(365, 22);
             this.menu_ajustesinfla.Text = "2. AJUSTES POR INFLACIÓN ";
@@ -298,10 +302,12 @@ namespace App.Forms.Contable
             // 
             // menu_certificados
             // 
+            this.menu_certificados.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menu_Retefuente,
+            this.menu_Reteica});
             this.menu_certificados.Name = "menu_certificados";
             this.menu_certificados.Size = new System.Drawing.Size(365, 22);
             this.menu_certificados.Text = "5. CERTIFICADOS DE RETENCIÓN / ICA";
-            this.menu_certificados.Click += new System.EventHandler(this.menu_certificados_Click);
             // 
             // menu_desactualizar
             // 
@@ -796,6 +802,20 @@ namespace App.Forms.Contable
             this.menu_especial.Size = new System.Drawing.Size(81, 20);
             this.menu_especial.Text = "5. ESPECIAL";
             // 
+            // menu_Retefuente
+            // 
+            this.menu_Retefuente.Name = "menu_Retefuente";
+            this.menu_Retefuente.Size = new System.Drawing.Size(230, 22);
+            this.menu_Retefuente.Text = "1. RETENCION EN LA FUENTE";
+            this.menu_Retefuente.Click += new System.EventHandler(this.menu_Retefuente_Click);
+            // 
+            // menu_Reteica
+            // 
+            this.menu_Reteica.Name = "menu_Reteica";
+            this.menu_Reteica.Size = new System.Drawing.Size(230, 22);
+            this.menu_Reteica.Text = "2. RETENCION ICA";
+            this.menu_Reteica.Click += new System.EventHandler(this.menu_Reteica_Click);
+            // 
             // Frmmenucont
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -908,6 +928,8 @@ namespace App.Forms.Contable
         private System.Windows.Forms.ToolStripMenuItem menu_balvarmes;
         private System.Windows.Forms.ToolStripMenuItem menu_cuencent;
         private System.Windows.Forms.ToolStripMenuItem menu_centroycuent;
+        private System.Windows.Forms.ToolStripMenuItem menu_Retefuente;
+        private System.Windows.Forms.ToolStripMenuItem menu_Reteica;
 
 
     }

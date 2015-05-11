@@ -37,7 +37,7 @@ namespace App.Forms.Contable
         {
             this.negocioAsiento = new asientosn();
             this.negocioParametro = new Parametrosn();
-                        this.InitializeComponent();
+            this.InitializeComponent();
             this.tipo = tipoc;
             this.titulo();
             btn_no.Focus();
@@ -65,7 +65,7 @@ namespace App.Forms.Contable
                 else
                 {
                     this.existe = false;
-                    MessageBox.Show("YA SE REALIZO CIERRE DE CUENTAS DE RESULTADO" , "ERROR", MessageBoxButtons.OK);
+                    MessageBox.Show("YA SE REALIZO CIERRE DE CUENTAS DE RESULTADO", "ERROR", MessageBoxButtons.OK);
                 }
             }
             else
@@ -142,7 +142,7 @@ namespace App.Forms.Contable
             {
                 if (this.tipo == 1)
                 {
-                     this.negocioAsiento.GenerarAsientoCierreEstado(this.anio, Program.compa, Program.iduser);
+                    this.negocioAsiento.GenerarAsientoCierreEstado(this.anio, Program.compa, Program.iduser);
                 }
                 else
                 {
