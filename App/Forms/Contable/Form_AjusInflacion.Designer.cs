@@ -40,7 +40,7 @@
             this.cbx_comprobante = new System.Windows.Forms.ComboBox();
             this.menu_botones = new System.Windows.Forms.ToolStrip();
             this.btn_nuevo = new System.Windows.Forms.ToolStripButton();
-            this.btn_guardar = new System.Windows.Forms.ToolStripButton();
+            this.btn_generar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btn_salir = new System.Windows.Forms.ToolStripButton();
             this.lbl_fecha = new System.Windows.Forms.Label();
@@ -65,7 +65,9 @@
             this.cbx_mes.Location = new System.Drawing.Point(123, 31);
             this.cbx_mes.Name = "cbx_mes";
             this.cbx_mes.Size = new System.Drawing.Size(169, 21);
-            this.cbx_mes.TabIndex = 74;
+            this.cbx_mes.TabIndex = 1;
+            this.cbx_mes.SelectionChangeCommitted += new System.EventHandler(this.cbx_mes_SelectionChangeCommitted);
+            this.cbx_mes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EnterTabVal_KeyPress);
             this.cbx_mes.Leave += new System.EventHandler(this.Cbx_mes_Leave);
             // 
             // label1
@@ -96,7 +98,8 @@
             this.txt_detalle.MaxLength = 55;
             this.txt_detalle.Name = "txt_detalle";
             this.txt_detalle.Size = new System.Drawing.Size(337, 20);
-            this.txt_detalle.TabIndex = 79;
+            this.txt_detalle.TabIndex = 2;
+            this.txt_detalle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EnterTabVal_KeyPress);
             // 
             // label4
             // 
@@ -115,7 +118,7 @@
             this.txt_numero.MaxLength = 15;
             this.txt_numero.Name = "txt_numero";
             this.txt_numero.Size = new System.Drawing.Size(122, 20);
-            this.txt_numero.TabIndex = 85;
+            this.txt_numero.TabIndex = 4;
             this.txt_numero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EnterTabVal_KeyPress);
             // 
             // label5
@@ -149,7 +152,9 @@
             this.cbx_comprobante.Location = new System.Drawing.Point(123, 81);
             this.cbx_comprobante.Name = "cbx_comprobante";
             this.cbx_comprobante.Size = new System.Drawing.Size(215, 21);
-            this.cbx_comprobante.TabIndex = 91;
+            this.cbx_comprobante.TabIndex = 3;
+            this.cbx_comprobante.Enter += new System.EventHandler(this.cbx_comprobante_Enter);
+            this.cbx_comprobante.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EnterTabVal_KeyPress);
             this.cbx_comprobante.Leave += new System.EventHandler(this.cbx_comprobante_Leave);
             // 
             // menu_botones
@@ -157,7 +162,7 @@
             this.menu_botones.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menu_botones.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btn_nuevo,
-            this.btn_guardar,
+            this.btn_generar,
             this.toolStripSeparator2,
             this.btn_salir});
             this.menu_botones.Location = new System.Drawing.Point(0, 0);
@@ -177,16 +182,17 @@
             this.btn_nuevo.ToolTipText = "Nuevo(Ctrl+N)";
             this.btn_nuevo.Click += new System.EventHandler(this.Btn_nuevo_Click);
             // 
-            // btn_guardar
+            // btn_generar
             // 
-            this.btn_guardar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_guardar.Enabled = false;
-            this.btn_guardar.Image = global::App.Properties.Resources.update;
-            this.btn_guardar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_guardar.Name = "btn_guardar";
-            this.btn_guardar.Size = new System.Drawing.Size(28, 28);
-            this.btn_guardar.Text = "Guardar";
-            this.btn_guardar.ToolTipText = "Guardar(Ctrl+G)";
+            this.btn_generar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_generar.Enabled = false;
+            this.btn_generar.Image = global::App.Properties.Resources.update;
+            this.btn_generar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_generar.Name = "btn_generar";
+            this.btn_generar.Size = new System.Drawing.Size(28, 28);
+            this.btn_generar.Text = "Guardar";
+            this.btn_generar.ToolTipText = "Guardar(Ctrl+G)";
+            this.btn_generar.Click += new System.EventHandler(this.Btn_generar_Click);
             // 
             // toolStripSeparator2
             // 
@@ -257,7 +263,7 @@
         private System.Windows.Forms.ComboBox cbx_comprobante;
         private System.Windows.Forms.ToolStrip menu_botones;
         private System.Windows.Forms.ToolStripButton btn_nuevo;
-        private System.Windows.Forms.ToolStripButton btn_guardar;
+        private System.Windows.Forms.ToolStripButton btn_generar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btn_salir;
         private System.Windows.Forms.Label lbl_fecha;

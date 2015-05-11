@@ -1,0 +1,60 @@
+CREATE DATABASE  IF NOT EXISTS `contable` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `contable`;
+-- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
+--
+-- Host: localhost    Database: contable
+-- ------------------------------------------------------
+-- Server version	5.6.14-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `presupuesto`
+--
+
+DROP TABLE IF EXISTS `presupuesto`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `presupuesto` (
+  `idpresupuesto` int(11) NOT NULL AUTO_INCREMENT,
+  `anio` varchar(4) NOT NULL COMMENT 'año de presupuesto',
+  `idmes` int(11) NOT NULL COMMENT 'mes de presupuesto',
+  `cuenta` varchar(12) NOT NULL COMMENT 'cuenta que se le asigna el presupuesto',
+  `cantidad` int(10) NOT NULL COMMENT 'presupuesto para la respectiva cuenta',
+  PRIMARY KEY (`idpresupuesto`),
+  KEY `fk_mes_idx` (`idmes`),
+  KEY `fk_cuenta_idx` (`cuenta`),
+  CONSTRAINT `fk_cuenta` FOREIGN KEY (`cuenta`) REFERENCES `maeconta` (`cuenta`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_mes` FOREIGN KEY (`idmes`) REFERENCES `mes` (`idmes`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COMMENT='Presupueto';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `presupuesto`
+--
+
+LOCK TABLES `presupuesto` WRITE;
+/*!40000 ALTER TABLE `presupuesto` DISABLE KEYS */;
+INSERT INTO `presupuesto` VALUES (15,'2013',1,'11050505',400),(16,'2013',2,'11050505',44052),(17,'2013',3,'11050505',0),(18,'2013',4,'11050505',0),(19,'2013',5,'11050505',0),(20,'2013',6,'11050505',121),(21,'2013',7,'11050505',21),(22,'2013',8,'11050505',21),(23,'2013',9,'11050505',21),(24,'2013',10,'11050505',21),(25,'2013',11,'11050505',12),(26,'2013',12,'11050505',212),(27,'2015',1,'11050505',600),(28,'2015',2,'11050505',0),(29,'2015',3,'11050505',0),(30,'2015',4,'11050505',600),(31,'2015',5,'11050505',0),(32,'2015',6,'11050505',0),(33,'2015',7,'11050505',0),(34,'2015',8,'11050505',0),(35,'2015',9,'11050505',0),(36,'2015',10,'11050505',0),(37,'2015',11,'11050505',0),(38,'2015',12,'11050505',0);
+/*!40000 ALTER TABLE `presupuesto` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2014-03-19 17:44:29

@@ -29,19 +29,29 @@ namespace App.Forms.Contable
 
         private inflacionn negocioInflacion;
 
+        private asientosn negocioAsiento;
+
         private string aniotrabajo;
 
         private bool usrClose;
 
         private Funciones funtions;
 
+        private bool existe;
+
+        private bool Simsj;
+
         public Form_AjusInflacion()
         {
             this.negocioComprobante = new Comprobantesn();
             this.negocioParametro = new Parametrosn();
             this.negocioInflacion = new inflacionn();
+            this.negocioAsiento = new asientosn();
             this.funtions = new Funciones();
+            this.Simsj = false;
             this.InitializeComponent();
+            this.CargarMeses();
+            this.CargarComprobantes();
         }
 
         #region TECLAS DE ACCESO
@@ -64,6 +74,15 @@ namespace App.Forms.Contable
                     if (btn_nuevo.Enabled == true)
                     {
                         this.Btn_nuevo_Click(sender, eve);
+                        return true;
+                    }
+
+                    break;
+
+                case Keys.Control | Keys.G:
+                    if (btn_generar.Enabled == true)
+                    {
+                        this.Btn_generar_Click(sender, eve);
                         return true;
                     }
 
@@ -128,13 +147,34 @@ namespace App.Forms.Contable
             cbx_mes.SelectedIndex = DateTime.Now.Month - 1;
         }
 
+
+        private void VaciaryHabilitarCampos()
+        {
+            cbx_mes.SelectedIndex = DateTime.Now.Month - 1;
+            lbl_fecha.Visible = false;
+            txt_detalle.Clear();
+            cbx_comprobante.SelectedIndex = 1;
+            txt_numero.Clear();
+            cbx_mes.Enabled = false;
+            txt_detalle.Enabled = false;
+            cbx_comprobante.Enabled = false;
+            txt_numero.Enabled = false;
+        }
+
+        private void HabilitarCampos()
+        {
+            cbx_mes.Enabled = true;
+            txt_detalle.Enabled = true;
+            cbx_comprobante.Enabled = true;
+            txt_numero.Enabled = true;
+        }
+
         #endregion
 
         # region BOTONES
 
         private void Btn_nuevo_Click(object sender, EventArgs e)
         {
-            this.CargarMeses();
             try
             {
                 this.aniotrabajo = this.negocioParametro.AnioTrabajo();
@@ -144,11 +184,60 @@ namespace App.Forms.Contable
                 MessageBox.Show("SE PRESENTO UN ERROR." + ex.Message, "ERROR");
             }
 
-            cbx_mes.Enabled = true;
-            txt_detalle.Enabled = true;
+            this.HabilitarCampos();
             cbx_mes.Focus();
             btn_nuevo.Enabled = false;
-            btn_guardar.Enabled = true;
+            btn_generar.Enabled = true;
+        }
+
+        private void Btn_generar_Click(object sender, EventArgs e)
+        {
+            this.ValidarGenerar();
+            if (existe)
+            {
+                btn_generar.Enabled = false;
+                using (Form_ProgresBar fwait = new Form_ProgresBar())
+                {
+                    fwait.Title = "GENERAR AJUSTE DE INFLACIÓN";
+                    fwait.Message = "ESPERE MIENTRAS SE REALIZA EL PROCESO";
+                    fwait.Picture = Properties.Resources.siimn;
+                    fwait.ActionToExecute = GenerarAsientoAjuste;
+                    if (fwait.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        MessageBox.Show("ASIENTO GENERADO");
+                    }
+                    else
+                    {
+                        MessageBox.Show("ERROR");
+                    }
+                }
+
+                this.VaciaryHabilitarCampos();
+            }
+        }
+
+        private void ValidarGenerar()
+        {
+            if (!string.Empty.Equals(txt_detalle.Text) && !string.Empty.Equals(txt_numero.Text))
+            {
+                try
+                {
+                    this.existe = this.negocioAsiento.ExisteAsiento(txt_numero.Text, int.Parse(cbx_comprobante.SelectedValue.ToString()), Program.compa);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("SE PRESENTO UN ERROR." + ex.Message, "ERROR");
+                }
+
+                if (this.existe)
+                {
+                    MessageBox.Show("EL NUMERO DE ASIENTO YA EXISTE", "ERROR", MessageBoxButtons.OK);
+                }
+            }
+            else
+            {
+                MessageBox.Show("DIGITE TODOS LOS DATOS", "ERROR", MessageBoxButtons.OK);
+            }
         }
 
         private void Btn_salir_Click(object sender, EventArgs e)
@@ -164,6 +253,10 @@ namespace App.Forms.Contable
         #endregion
 
         #region EVENTOS FORMULARIO
+
+        public void GenerarAsientoAjuste()
+        {
+        }
 
         private void Form_AjusInflacion_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -183,31 +276,43 @@ namespace App.Forms.Contable
 
         private void Cbx_mes_Leave(object sender, EventArgs e)
         {
-            lbl_fecha.Text = "01/" + cbx_mes.SelectedValue.ToString() +"/"+ this.aniotrabajo;
+            lbl_fecha.Text = "01/" + cbx_mes.SelectedValue.ToString() + "/" + this.aniotrabajo;
             lbl_fecha.Visible = true;
-            txt_detalle.Text = "PAAG   " + CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(int.Parse(cbx_mes.SelectedItem.ToString()));
+            txt_detalle.Text = "PAAG   " + CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(int.Parse(cbx_mes.SelectedValue.ToString()));
+            txt_detalle.Focus();
+        }
+        
+        private void cbx_mes_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            lbl_fecha.Text = "01/" + cbx_mes.SelectedValue.ToString() + "/" + this.aniotrabajo;
+            lbl_fecha.Visible = true;
+            txt_detalle.Text = "PAAG   " + CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(int.Parse(cbx_mes.SelectedValue.ToString()));
             txt_detalle.Focus();
         }
 
         private void cbx_comprobante_Leave(object sender, EventArgs e)
         {
-            try
+            if (this.Simsj == false)
             {
-                decimal tasa = this.negocioInflacion.ExisteInflacionMes(this.aniotrabajo, int.Parse(cbx_mes.SelectedValue.ToString()), Program.compa);
-                if (tasa != 0)
+                try
                 {
-                    lbl_tasa.Text = lbl_tasa.Text + "  " + tasa.ToString();
-                    txt_numero.Focus();
+                    decimal tasa = this.negocioInflacion.ExisteInflacionMes(this.aniotrabajo, int.Parse(cbx_mes.SelectedValue.ToString()), Program.compa);
+                    if (tasa != 0)
+                    {
+                        lbl_tasa.Text = lbl_tasa.Text + "  " + tasa.ToString();
+                        txt_numero.Focus();
+                    }
+                    else
+                    {
+                        MessageBox.Show("NO SE DIGITO TASA PARA ESTE MES", "ERROR", MessageBoxButtons.OK);
+                        this.Simsj = true;
+                        cbx_mes.Focus();
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("NO SE DIGITO TASA PARA ESTE MES", "ERROR", MessageBoxButtons.OK);
-                    cbx_mes.Focus();
+                    MessageBox.Show("SE PRESENTO UN ERROR." + ex.Message, "ERROR");
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("SE PRESENTO UN ERROR." + ex.Message, "ERROR");
             }
         }
 
@@ -224,6 +329,20 @@ namespace App.Forms.Contable
             }
         }
 
+        private void EnterTab_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
+        }
+
         #endregion
+
+        private void cbx_comprobante_Enter(object sender, EventArgs e)
+        {
+            this.Simsj = false;
+        }
     }
 }

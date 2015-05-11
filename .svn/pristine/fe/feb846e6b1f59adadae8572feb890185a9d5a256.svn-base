@@ -1,0 +1,509 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="siimnModelStoreContainer" CdmEntityContainer="siimnEntities">
+    <EntitySetMapping Name="cajero">
+      <EntityTypeMapping TypeName="siimnModel.cajero">
+        <MappingFragment StoreEntitySet="cajero">
+          <ScalarProperty Name="idcajero" ColumnName="idcajero" />
+          <ScalarProperty Name="nombrecaje" ColumnName="nombrecaje" />
+          <ScalarProperty Name="usuariocaje" ColumnName="usuariocaje" />
+          <ScalarProperty Name="clave" ColumnName="clave" />
+          <ScalarProperty Name="idmodulo" ColumnName="idmodulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="campoformedios">
+      <EntityTypeMapping TypeName="siimnModel.campoformedios">
+        <MappingFragment StoreEntitySet="campoformedios">
+          <ScalarProperty Name="idcampoformato" ColumnName="idcampoformato" />
+          <ScalarProperty Name="nombrecampo" ColumnName="nombrecampo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="centrocostos">
+      <EntityTypeMapping TypeName="siimnModel.centrocostos">
+        <MappingFragment StoreEntitySet="centrocostos">
+          <ScalarProperty Name="idcentro" ColumnName="idcentro" />
+          <ScalarProperty Name="nombrecentro" ColumnName="nombrecentro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ciudad">
+      <EntityTypeMapping TypeName="siimnModel.ciudad">
+        <MappingFragment StoreEntitySet="ciudad">
+          <ScalarProperty Name="idciudad" ColumnName="idciudad" />
+          <ScalarProperty Name="codigodepto" ColumnName="codigodepto" />
+          <ScalarProperty Name="codigociudad" ColumnName="codigociudad" />
+          <ScalarProperty Name="nombreciudad" ColumnName="nombreciudad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cliente">
+      <EntityTypeMapping TypeName="siimnModel.cliente">
+        <MappingFragment StoreEntitySet="cliente">
+          <ScalarProperty Name="idcliente" ColumnName="idcliente" />
+          <ScalarProperty Name="idtipodto" ColumnName="idtipodto" />
+          <ScalarProperty Name="documento" ColumnName="documento" />
+          <ScalarProperty Name="digito" ColumnName="digito" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idciudad" ColumnName="idciudad" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="celular" ColumnName="celular" />
+          <ScalarProperty Name="fax" ColumnName="fax" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="compania">
+      <EntityTypeMapping TypeName="siimnModel.compania">
+        <MappingFragment StoreEntitySet="compania">
+          <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+          <ScalarProperty Name="nombrecia" ColumnName="nombrecia" />
+          <ScalarProperty Name="nit" ColumnName="nit" />
+          <ScalarProperty Name="digito" ColumnName="digito" />
+          <ScalarProperty Name="idsucursal" ColumnName="idsucursal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comprobante">
+      <EntityTypeMapping TypeName="siimnModel.comprobante">
+        <MappingFragment StoreEntitySet="comprobante">
+          <ScalarProperty Name="codigcomprob" ColumnName="codigcomprob" />
+          <ScalarProperty Name="descripcomprob" ColumnName="descripcomprob" />
+          <ScalarProperty Name="consecutivo" ColumnName="consecutivo" />
+          <ScalarProperty Name="numsiguiente" ColumnName="numsiguiente" />
+          <ScalarProperty Name="codigootra" ColumnName="codigootra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="conceptospagos">
+      <EntityTypeMapping TypeName="siimnModel.conceptospagos">
+        <MappingFragment StoreEntitySet="conceptospagos">
+          <ScalarProperty Name="idconceptospago" ColumnName="idconceptospago" />
+          <ScalarProperty Name="descripconcep" ColumnName="descripconcep" />
+          <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+          <ScalarProperty Name="codformaspago" ColumnName="codformaspago" />
+          <ScalarProperty Name="porcentaje" ColumnName="porcentaje" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="conexuser">
+      <EntityTypeMapping TypeName="siimnModel.conexuser">
+        <MappingFragment StoreEntitySet="conexuser">
+          <ScalarProperty Name="idconexion" ColumnName="idconexion" />
+          <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+          <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+          <ScalarProperty Name="fechaconex" ColumnName="fechaconex" />
+          <ScalarProperty Name="fechadescon" ColumnName="fechadescon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="datosusuario">
+      <EntityTypeMapping TypeName="siimnModel.datosusuario">
+        <MappingFragment StoreEntitySet="datosusuario">
+          <ScalarProperty Name="idusuariodat" ColumnName="idusuariodat" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="nombresusuario" ColumnName="nombresusuario" />
+          <ScalarProperty Name="apellidosusuario" ColumnName="apellidosusuario" />
+          <ScalarProperty Name="telefonousuario" ColumnName="telefonousuario" />
+          <ScalarProperty Name="direccionusuario" ColumnName="direccionusuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="departamento">
+      <EntityTypeMapping TypeName="siimnModel.departamento">
+        <MappingFragment StoreEntitySet="departamento">
+          <ScalarProperty Name="iddept" ColumnName="iddept" />
+          <ScalarProperty Name="idpais" ColumnName="idpais" />
+          <ScalarProperty Name="codigodepto" ColumnName="codigodepto" />
+          <ScalarProperty Name="nombredept" ColumnName="nombredept" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="formaspago">
+      <EntityTypeMapping TypeName="siimnModel.formaspago">
+        <MappingFragment StoreEntitySet="formaspago">
+          <ScalarProperty Name="codformaspago" ColumnName="codformaspago" />
+          <ScalarProperty Name="nombreforma" ColumnName="nombreforma" />
+          <ScalarProperty Name="sivence" ColumnName="sivence" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="formato">
+      <EntityTypeMapping TypeName="siimnModel.formato">
+        <MappingFragment StoreEntitySet="formato">
+          <ScalarProperty Name="idformato" ColumnName="idformato" />
+          <ScalarProperty Name="codigofor" ColumnName="codigofor" />
+          <ScalarProperty Name="codigotipo" ColumnName="codigotipo" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="fila" ColumnName="fila" />
+          <ScalarProperty Name="columna" ColumnName="columna" />
+          <ScalarProperty Name="condensa" ColumnName="condensa" />
+          <ScalarProperty Name="presentacion" ColumnName="presentacion" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="formatomedios">
+      <EntityTypeMapping TypeName="siimnModel.formatomedios">
+        <MappingFragment StoreEntitySet="formatomedios">
+          <ScalarProperty Name="numeroformatos" ColumnName="numeroformatos" />
+          <ScalarProperty Name="idcampo1" ColumnName="idcampo1" />
+          <ScalarProperty Name="idcampo2" ColumnName="idcampo2" />
+          <ScalarProperty Name="idcampo3" ColumnName="idcampo3" />
+          <ScalarProperty Name="idcampo4" ColumnName="idcampo4" />
+          <ScalarProperty Name="idcampo5" ColumnName="idcampo5" />
+          <ScalarProperty Name="idcampo6" ColumnName="idcampo6" />
+          <ScalarProperty Name="idcampo7" ColumnName="idcampo7" />
+          <ScalarProperty Name="idcampo8" ColumnName="idcampo8" />
+          <ScalarProperty Name="idcampo9" ColumnName="idcampo9" />
+          <ScalarProperty Name="idcampo10" ColumnName="idcampo10" />
+          <ScalarProperty Name="idcampo11" ColumnName="idcampo11" />
+          <ScalarProperty Name="idcampo12" ColumnName="idcampo12" />
+          <ScalarProperty Name="idcampo13" ColumnName="idcampo13" />
+          <ScalarProperty Name="idcampo14" ColumnName="idcampo14" />
+          <ScalarProperty Name="idcampo15" ColumnName="idcampo15" />
+          <ScalarProperty Name="idcampo16" ColumnName="idcampo16" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="formatosbpyg">
+      <EntityTypeMapping TypeName="siimnModel.formatosbpyg">
+        <MappingFragment StoreEntitySet="formatosbpyg">
+          <ScalarProperty Name="idformato" ColumnName="idformato" />
+          <ScalarProperty Name="tipoformato" ColumnName="tipoformato" />
+          <ScalarProperty Name="clasemayor" ColumnName="clasemayor" />
+          <ScalarProperty Name="linea" ColumnName="linea" />
+          <ScalarProperty Name="nombref" ColumnName="nombref" />
+          <ScalarProperty Name="cuentaini" ColumnName="cuentaini" />
+          <ScalarProperty Name="cuentafin" ColumnName="cuentafin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inflacion">
+      <EntityTypeMapping TypeName="siimnModel.inflacion">
+        <MappingFragment StoreEntitySet="inflacion">
+          <ScalarProperty Name="idinflacion" ColumnName="idinflacion" />
+          <ScalarProperty Name="mes" ColumnName="mes" />
+          <ScalarProperty Name="inflamensual" ColumnName="inflamensual" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="maebanta">
+      <EntityTypeMapping TypeName="siimnModel.maebanta">
+        <MappingFragment StoreEntitySet="maebanta">
+          <ScalarProperty Name="codigobanta" ColumnName="codigobanta" />
+          <ScalarProperty Name="nombrebanta" ColumnName="nombrebanta" />
+          <ScalarProperty Name="tipobanta" ColumnName="tipobanta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="maecli">
+      <EntityTypeMapping TypeName="siimnModel.maecli">
+        <MappingFragment StoreEntitySet="maecli">
+          <ScalarProperty Name="codigocli" ColumnName="codigocli" />
+          <ScalarProperty Name="facturanombre" ColumnName="facturanombre" />
+          <ScalarProperty Name="bloqueado" ColumnName="bloqueado" />
+          <ScalarProperty Name="direccionenvio" ColumnName="direccionenvio" />
+          <ScalarProperty Name="plazo" ColumnName="plazo" />
+          <ScalarProperty Name="cupo" ColumnName="cupo" />
+          <ScalarProperty Name="descuento" ColumnName="descuento" />
+          <ScalarProperty Name="regimen" ColumnName="regimen" />
+          <ScalarProperty Name="grancotribu" ColumnName="grancotribu" />
+          <ScalarProperty Name="ppago1" ColumnName="ppago1" />
+          <ScalarProperty Name="ppago2" ColumnName="ppago2" />
+          <ScalarProperty Name="causareteica" ColumnName="causareteica" />
+          <ScalarProperty Name="aplicareteica" ColumnName="aplicareteica" />
+          <ScalarProperty Name="causareteiva" ColumnName="causareteiva" />
+          <ScalarProperty Name="descuentareteiva" ColumnName="descuentareteiva" />
+          <ScalarProperty Name="retexcomprar" ColumnName="retexcomprar" />
+          <ScalarProperty Name="descontretenvend" ColumnName="descontretenvend" />
+          <ScalarProperty Name="porretencion" ColumnName="porretencion" />
+          <ScalarProperty Name="jefecompra" ColumnName="jefecompra" />
+          <ScalarProperty Name="comprador" ColumnName="comprador" />
+          <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+          <ScalarProperty Name="idvendedor" ColumnName="idvendedor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="maeconcc">
+      <EntityTypeMapping TypeName="siimnModel.maeconcc">
+        <MappingFragment StoreEntitySet="maeconcc">
+          <ScalarProperty Name="idconcepto" ColumnName="idconcepto" />
+          <ScalarProperty Name="descripconcepto" ColumnName="descripconcepto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="maeconta">
+      <EntityTypeMapping TypeName="siimnModel.maeconta">
+        <MappingFragment StoreEntitySet="maeconta">
+          <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+          <ScalarProperty Name="tipocta" ColumnName="tipocta" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="pidenit" ColumnName="pidenit" />
+          <ScalarProperty Name="centro" ColumnName="centro" />
+          <ScalarProperty Name="ajustesinteg" ColumnName="ajustesinteg" />
+          <ScalarProperty Name="idnitajustes" ColumnName="idnitajustes" />
+          <ScalarProperty Name="cueaju" ColumnName="cueaju" />
+          <ScalarProperty Name="cuencorre" ColumnName="cuencorre" />
+          <ScalarProperty Name="ajudoc" ColumnName="ajudoc" />
+          <ScalarProperty Name="retencion" ColumnName="retencion" />
+          <ScalarProperty Name="porete" ColumnName="porete" />
+          <ScalarProperty Name="conceprete" ColumnName="conceprete" />
+          <ScalarProperty Name="cuentacierre" ColumnName="cuentacierre" />
+          <ScalarProperty Name="reteica" ColumnName="reteica" />
+          <ScalarProperty Name="formatomedios" ColumnName="formatomedios" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="maenits">
+      <EntityTypeMapping TypeName="siimnModel.maenits">
+        <MappingFragment StoreEntitySet="maenits">
+          <ScalarProperty Name="idnit" ColumnName="idnit" />
+          <ScalarProperty Name="idtiponit" ColumnName="idtiponit" />
+          <ScalarProperty Name="nit" ColumnName="nit" />
+          <ScalarProperty Name="digito" ColumnName="digito" />
+          <ScalarProperty Name="idciudad" ColumnName="idciudad" />
+          <ScalarProperty Name="nombrenit" ColumnName="nombrenit" />
+          <ScalarProperty Name="acteconomic" ColumnName="acteconomic" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="celular" ColumnName="celular" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="maepagos">
+      <EntityTypeMapping TypeName="siimnModel.maepagos">
+        <MappingFragment StoreEntitySet="maepagos">
+          <ScalarProperty Name="idpagos" ColumnName="idpagos" />
+          <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+          <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+          <ScalarProperty Name="idnit" ColumnName="idnit" />
+          <ScalarProperty Name="saldoene" ColumnName="saldoene" />
+          <ScalarProperty Name="saldopago" ColumnName="saldopago" />
+          <ScalarProperty Name="debipago" ColumnName="debipago" />
+          <ScalarProperty Name="credipago" ColumnName="credipago" />
+          <ScalarProperty Name="debianio" ColumnName="debianio" />
+          <ScalarProperty Name="credianio" ColumnName="credianio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="maetrac">
+      <EntityTypeMapping TypeName="siimnModel.maetrac">
+        <MappingFragment StoreEntitySet="maetrac">
+          <ScalarProperty Name="codigotrac" ColumnName="codigotrac" />
+          <ScalarProperty Name="nombretrac" ColumnName="nombretrac" />
+          <ScalarProperty Name="afectasaldo" ColumnName="afectasaldo" />
+          <ScalarProperty Name="afectaotro" ColumnName="afectaotro" />
+          <ScalarProperty Name="generaasiento" ColumnName="generaasiento" />
+          <ScalarProperty Name="consecutivo" ColumnName="consecutivo" />
+          <ScalarProperty Name="numeroactual" ColumnName="numeroactual" />
+          <ScalarProperty Name="codigcomp" ColumnName="codigcomp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="maetribut">
+      <EntityTypeMapping TypeName="siimnModel.maetribut">
+        <MappingFragment StoreEntitySet="maetribut">
+          <ScalarProperty Name="codigotrib" ColumnName="codigotrib" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="tope" ColumnName="tope" />
+          <ScalarProperty Name="idnittope" ColumnName="idnittope" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="modulo">
+      <EntityTypeMapping TypeName="siimnModel.modulo">
+        <MappingFragment StoreEntitySet="modulo">
+          <ScalarProperty Name="idmodulo" ColumnName="idmodulo" />
+          <ScalarProperty Name="idmoduloppal" ColumnName="idmoduloppal" />
+          <ScalarProperty Name="nombremod" ColumnName="nombremod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="moduloppal">
+      <EntityTypeMapping TypeName="siimnModel.moduloppal">
+        <MappingFragment StoreEntitySet="moduloppal">
+          <ScalarProperty Name="idmoduloppal" ColumnName="idmoduloppal" />
+          <ScalarProperty Name="nombremodppal" ColumnName="nombremodppal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="movimi">
+      <EntityTypeMapping TypeName="siimnModel.movimi">
+        <MappingFragment StoreEntitySet="movimi">
+          <ScalarProperty Name="idmovimiento" ColumnName="idmovimiento" />
+          <ScalarProperty Name="idasiento" ColumnName="idasiento" />
+          <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+          <ScalarProperty Name="mes" ColumnName="mes" />
+          <ScalarProperty Name="anio" ColumnName="anio" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="documento" ColumnName="documento" />
+          <ScalarProperty Name="idmoduloimprime" ColumnName="idmoduloimprime" />
+          <ScalarProperty Name="idtipodocumento" ColumnName="idtipodocumento" />
+          <ScalarProperty Name="codigcomprob" ColumnName="codigcomprob" />
+          <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+          <ScalarProperty Name="detalle" ColumnName="detalle" />
+          <ScalarProperty Name="idcentro" ColumnName="idcentro" />
+          <ScalarProperty Name="idnit" ColumnName="idnit" />
+          <ScalarProperty Name="referencia" ColumnName="referencia" />
+          <ScalarProperty Name="valordebito" ColumnName="valordebito" />
+          <ScalarProperty Name="valorcredito" ColumnName="valorcredito" />
+          <ScalarProperty Name="asientofijo" ColumnName="asientofijo" />
+          <ScalarProperty Name="actualizado" ColumnName="actualizado" />
+          <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+          <ScalarProperty Name="fechagrabacion" ColumnName="fechagrabacion" />
+          <ScalarProperty Name="idusuarioact" ColumnName="idusuarioact" />
+          <ScalarProperty Name="fechaact" ColumnName="fechaact" />
+          <ScalarProperty Name="baseimpuesto" ColumnName="baseimpuesto" />
+          <ScalarProperty Name="valorica" ColumnName="valorica" />
+          <ScalarProperty Name="entrada" ColumnName="entrada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pais">
+      <EntityTypeMapping TypeName="siimnModel.pais">
+        <MappingFragment StoreEntitySet="pais">
+          <ScalarProperty Name="idpais" ColumnName="idpais" />
+          <ScalarProperty Name="nombrepais" ColumnName="nombrepais" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="parametro">
+      <EntityTypeMapping TypeName="siimnModel.parametro">
+        <MappingFragment StoreEntitySet="parametro">
+          <ScalarProperty Name="idparametro" ColumnName="idparametro" />
+          <ScalarProperty Name="nombreparametro" ColumnName="nombreparametro" />
+          <ScalarProperty Name="idmoduloppal" ColumnName="idmoduloppal" />
+          <ScalarProperty Name="descriparam" ColumnName="descriparam" />
+          <ScalarProperty Name="valorparam" ColumnName="valorparam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="permiso">
+      <EntityTypeMapping TypeName="siimnModel.permiso">
+        <MappingFragment StoreEntitySet="permiso">
+          <ScalarProperty Name="idpermiso" ColumnName="idpermiso" />
+          <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+          <ScalarProperty Name="idmodulo" ColumnName="idmodulo" />
+          <ScalarProperty Name="permitido" ColumnName="permitido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="presupuesto">
+      <EntityTypeMapping TypeName="siimnModel.presupuesto">
+        <MappingFragment StoreEntitySet="presupuesto">
+          <ScalarProperty Name="idpresupuesto" ColumnName="idpresupuesto" />
+          <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+          <ScalarProperty Name="anio" ColumnName="anio" />
+          <ScalarProperty Name="mes" ColumnName="mes" />
+          <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="saldoscuentas">
+      <EntityTypeMapping TypeName="siimnModel.saldoscuentas">
+        <MappingFragment StoreEntitySet="saldoscuentas">
+          <ScalarProperty Name="idsaldoscuentas" ColumnName="idsaldoscuentas" />
+          <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+          <ScalarProperty Name="anio" ColumnName="anio" />
+          <ScalarProperty Name="mes" ColumnName="mes" />
+          <ScalarProperty Name="saldocuenta" ColumnName="saldocuenta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="saldospagos">
+      <EntityTypeMapping TypeName="siimnModel.saldospagos">
+        <MappingFragment StoreEntitySet="saldospagos">
+          <ScalarProperty Name="idsaldospagos" ColumnName="idsaldospagos" />
+          <ScalarProperty Name="idnit" ColumnName="idnit" />
+          <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+          <ScalarProperty Name="mes" ColumnName="mes" />
+          <ScalarProperty Name="anio" ColumnName="anio" />
+          <ScalarProperty Name="saldo" ColumnName="saldo" />
+          <ScalarProperty Name="movimiento" ColumnName="movimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sucursal">
+      <EntityTypeMapping TypeName="siimnModel.sucursal">
+        <MappingFragment StoreEntitySet="sucursal">
+          <ScalarProperty Name="idsucursal" ColumnName="idsucursal" />
+          <ScalarProperty Name="nombresucursal" ColumnName="nombresucursal" />
+          <ScalarProperty Name="idciudad" ColumnName="idciudad" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="paginaocorreo" ColumnName="paginaocorreo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipodocumento">
+      <EntityTypeMapping TypeName="siimnModel.tipodocumento">
+        <MappingFragment StoreEntitySet="tipodocumento">
+          <ScalarProperty Name="idtipodocumento" ColumnName="idtipodocumento" />
+          <ScalarProperty Name="descriptipodoc" ColumnName="descriptipodoc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipoformato">
+      <EntityTypeMapping TypeName="siimnModel.tipoformato">
+        <MappingFragment StoreEntitySet="tipoformato">
+          <ScalarProperty Name="codigotipo" ColumnName="codigotipo" />
+          <ScalarProperty Name="nombretipo" ColumnName="nombretipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tiponit">
+      <EntityTypeMapping TypeName="siimnModel.tiponit">
+        <MappingFragment StoreEntitySet="tiponit">
+          <ScalarProperty Name="idtiponit" ColumnName="idtiponit" />
+          <ScalarProperty Name="nombretipo" ColumnName="nombretipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario">
+      <EntityTypeMapping TypeName="siimnModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+          <ScalarProperty Name="idusuariodat" ColumnName="idusuariodat" />
+          <ScalarProperty Name="user" ColumnName="user" />
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+          <ScalarProperty Name="fechaulticonex" ColumnName="fechaulticonex" />
+          <ScalarProperty Name="ultimobloqueo" ColumnName="ultimobloqueo" />
+          <ScalarProperty Name="intentosfallidos" ColumnName="intentosfallidos" />
+          <ScalarProperty Name="bloqueado" ColumnName="bloqueado" />
+          <ScalarProperty Name="conectado" ColumnName="conectado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuariocia">
+      <EntityTypeMapping TypeName="siimnModel.usuariocia">
+        <MappingFragment StoreEntitySet="usuariocia">
+          <ScalarProperty Name="idusercia" ColumnName="idusercia" />
+          <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+          <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vendedor">
+      <EntityTypeMapping TypeName="siimnModel.vendedor">
+        <MappingFragment StoreEntitySet="vendedor">
+          <ScalarProperty Name="idvendedor" ColumnName="idvendedor" />
+          <ScalarProperty Name="nombrevendedor" ColumnName="nombrevendedor" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="emailvend" ColumnName="emailvend" />
+          <ScalarProperty Name="direcvend" ColumnName="direcvend" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="comisionrango" ColumnName="comisionrango" />
+          <ScalarProperty Name="comision" ColumnName="comision" />
+          <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

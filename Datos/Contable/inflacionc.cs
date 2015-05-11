@@ -82,7 +82,7 @@ namespace Datos.Contable
             {
                 using (siimnEntities bd = new siimnEntities())
                 {
-                    var query = bd.inflacion.Where(inf => inf.anio == anio && inf.idsucursal == sucursal && inf.inflamensual != 0 && inf.mes == mes);
+                    var query = bd.inflacion.AsEnumerable().Where(inf => inf.anio == anio && inf.idsucursal == sucursal && inf.inflamensual != 0 && inf.mes == mes);
                     if (query.Count() > 0)
                     {
                         return query.First().inflamensual;

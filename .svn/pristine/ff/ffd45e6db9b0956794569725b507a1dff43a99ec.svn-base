@@ -1,0 +1,101 @@
+﻿////*********************************************************
+//
+//    <copyright file="ubicacionc.cs" company="Marketing Software de Colombia LTDA">
+//    @Autor Ingrid Sutachan
+//    @fecha 01 marzo 2014
+//    </copyright>
+//
+////*********************************************************
+namespace Datos.Contable
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Entities;
+
+    /// <summary>
+    /// Clase de ubicacion en capa de datos
+    /// </summary>
+    public class Ubicacionc
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Ubicacionc"/> class.
+        /// </summary>
+        public Ubicacionc()
+        {
+        }
+
+        /// <summary>
+        /// Cargar pais.
+        /// </summary>
+        /// <returns>lista de paises que se encuentran en la tabla pais de la bd</returns>
+        public List<pais> CargarPais()
+        {
+            List<pais> paises = new List<pais>();
+            using (contableEntities bd = new contableEntities())
+            {
+                try
+                {
+                    var query = bd.pais.ToList();
+                    paises = query;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return paises;
+        }
+
+        /// <summary>
+        /// Cargar los departamentos respectivos al identificador del pais
+        /// </summary>
+        /// <param name="idpais">identificador del pais</param>
+        /// <returns>lista de departamentos que se encuentran en la tabla pais de la bd</returns>
+        public List<departamento> CargarDpto(int idpais)
+        {
+            List<departamento> deptos = new List<departamento>();
+
+            using (contableEntities bd = new contableEntities())
+            {
+                try
+                {
+                    var query = bd.departamento.Where(dep => dep.idpais == idpais).ToList();
+                    deptos = query;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return deptos;
+        }
+
+        /// <summary>
+        /// Cargar ciudad
+        /// </summary>
+        /// <param name="iddepto">identificador del departamento</param>
+        /// <returns>lista de departamentos que se encuentran en la tabla pais de la bd</returns>
+        public List<ciudad> CargarCiudad(int iddepto)
+        {
+            List<ciudad> ciudades = new List<ciudad>();
+
+            using (contableEntities bd = new contableEntities())
+            {
+                try
+                {
+                    var query = bd.ciudad.Where(ciu => ciu.iddpto == iddepto).ToList();
+                    ciudades = query;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return ciudades;
+        }
+    }
+}

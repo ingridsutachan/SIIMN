@@ -12,7 +12,7 @@ C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\Datos\bin\Debug\D
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\Datos\bin\Debug\Entities.dll
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\Datos\bin\Debug\MySql.Data.dll
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\Datos\bin\Debug\Entities.pdb
-C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\Datos\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\Datos\obj\Debug\Datos.dll
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\Datos\obj\Debug\Datos.pdb
 C:\Users\Ingrid Sutachan\Documents\Visual Studio 2010\Projects\Siimn\Datos\bin\Debug\MySql.Data.dll
+C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\SIIMN\Datos\obj\Debug\Datos.csprojResolveAssemblyReference.cache

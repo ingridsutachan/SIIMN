@@ -136,7 +136,6 @@ C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\bin\Debug\Neg
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\bin\Debug\Datos.pdb
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\bin\Debug\Entities.pdb
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\bin\Debug\Negocios.pdb
-C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Cartera.FormCarteraMenu.resources
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Cartera.Form_CruceFactura.resources
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Cartera.Form_Crucesaldos.resources
@@ -241,8 +240,6 @@ C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Nomina.Form_NominaMenu.resources
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Properties.Resources.resources
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Contable.Form_Cuenta.es-CO.resources
-C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\GenerateResource.read.1.tlog
-C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\es-CO\App.resources.dll
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.exe
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.pdb
@@ -282,3 +279,5 @@ C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn1\App\bin\Debug\App.exe.config
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn1\App\obj\x86\Debug\App.exe
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn1\App\obj\x86\Debug\App.pdb
+C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\SIIMN\App\obj\x86\Debug\App.csprojResolveAssemblyReference.cache
+C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\SIIMN\App\obj\x86\Debug\App.csproj.GenerateResource.Cache

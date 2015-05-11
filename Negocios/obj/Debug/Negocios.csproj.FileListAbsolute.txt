@@ -13,6 +13,6 @@ C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\Negocios\bin\Debu
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\Negocios\bin\Debug\Entities.dll
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\Negocios\bin\Debug\Datos.pdb
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\Negocios\bin\Debug\Entities.pdb
-C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\Negocios\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\Negocios\obj\Debug\Negocios.dll
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\Negocios\obj\Debug\Negocios.pdb
+C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\SIIMN\Negocios\obj\Debug\Negocios.csprojResolveAssemblyReference.cache

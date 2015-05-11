@@ -297,16 +297,17 @@ namespace App.Forms.Contable
             }
         }
 
-        #endregion
-
         private void Datetime_Leave(object sender, EventArgs e)
         {
             DateTimePicker date = (DateTimePicker)sender;
             if (!date.Value.Year.ToString().Equals(this.anio))
             {
-                MessageBox.Show("DIGITE EL AÑO:"+anio,"ERROR",MessageBoxButtons.OK);
+                MessageBox.Show("DIGITE EL AÑO:" + anio, "ERROR", MessageBoxButtons.OK);
                 date.Focus();
             }
         }
+
+        #endregion
+  
     }
 }

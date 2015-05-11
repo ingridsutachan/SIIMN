@@ -7,7 +7,7 @@ C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\Entities\bin\Debu
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\Entities\bin\Debug\Entities.dll
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\Entities\bin\Debug\Entities.pdb
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\Entities\bin\Debug\MySql.Data.dll
-C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\Entities\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\Entities\obj\Debug\Entities.dll
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\Entities\obj\Debug\Entities.pdb
 C:\Users\Ingrid Sutachan\Documents\Visual Studio 2010\Projects\Siimn\Entities\bin\Debug\MySql.Data.dll
+C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\SIIMN\Entities\obj\Debug\Entities.csprojResolveAssemblyReference.cache
