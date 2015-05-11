@@ -1,0 +1,93 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using App.Forms.Contable.Reportes.Types;
+using Entities.Types;
+using Negocios.Contable;
+
+namespace App.Forms.Contable.Reportes
+{
+    public partial class Form_ReporteNits : Form
+    {
+        private Nitsn negocioNits;
+
+        public Form_ReporteNits()
+        {
+            this.negocioNits = new Nitsn();
+
+            InitializeComponent();
+        }
+
+        private void btn_ordenumero_Click(object sender, EventArgs e)
+        {
+            List<NitsDataSource> nits = new List<NitsDataSource>();
+            nits = this.negocioNits.CargarNitsReporte(Program.compa);
+            List<NitsDataSourceReports> nitsR = new List<NitsDataSourceReports>();
+            foreach (NitsDataSource item in nits)
+            {
+                NitsDataSourceReports nitR = new NitsDataSourceReports();
+                nitR.Nit = item.Nit;
+                nitR.Digito = item.Digito;
+                nitR.Nombrenit = item.Nombrenit;
+                nitR.Direccion = item.Direccion;
+                nitR.Telefono = item.Telefono;
+                nitR.Nombredpto = item.Nombredpto;
+                nitR.Nombreciudad = item.Nombreciudad;
+                nitR.NombreCia = item.NombreCia;
+                nitsR.Add(nitR);
+            }
+
+            // Create a CrystalReport1 object
+            ReporteNits reportnit = new ReporteNits();
+            // Set the DataSource of the report
+            reportnit.SetDataSource(nitsR);
+            // Set the Report Source to ReportView 
+            crystal_reportnits.ReportSource = reportnit;
+            crystal_reportnits.Visible = true;
+            this.Width = 1009;
+            this.Height = 397;
+            crystal_reportnits.Zoom(90);
+            btn_ordenombre.Visible = false;
+            btn_ordenumero.Visible = false;
+        }
+
+        private void btn_ordenombre_Click(object sender, EventArgs e)
+        {
+            List<NitsDataSource> nits = new List<NitsDataSource>();
+            nits = this.negocioNits.CargarNitsReporteNombre(Program.compa);
+         
+            List<NitsDataSourceReports> nitsR = new List<NitsDataSourceReports>();
+            foreach (NitsDataSource item in nits)
+            {
+                NitsDataSourceReports nitR = new NitsDataSourceReports();
+                nitR.Nit = item.Nit;
+                nitR.Digito = item.Digito;
+                nitR.Nombrenit = item.Nombrenit;
+                nitR.Direccion = item.Direccion;
+                nitR.Telefono = item.Telefono;
+                nitR.Nombredpto = item.Nombredpto;
+                nitR.Nombreciudad = item.Nombreciudad;
+                nitR.NombreCia = item.NombreCia;
+                nitsR.Add(nitR);
+            }
+
+            // Create a CrystalReport1 object
+            ReporteNits reportnit = new ReporteNits();
+            // Set the DataSource of the report
+            reportnit.SetDataSource(nitsR);
+            // Set the Report Source to ReportView 
+            crystal_reportnits.ReportSource = reportnit;
+             this.Width = 1009;
+             this.Height =  397;
+            crystal_reportnits.Zoom(90);
+            crystal_reportnits.Visible = true;
+            btn_ordenombre.Visible = false;
+            btn_ordenumero.Visible = false;
+        }
+    }
+}

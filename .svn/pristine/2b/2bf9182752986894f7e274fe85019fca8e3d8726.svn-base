@@ -1,0 +1,430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="contableModelStoreContainer" CdmEntityContainer="contableEntities">
+    <EntitySetMapping Name="cajero">
+      <EntityTypeMapping TypeName="contableModel.cajero">
+        <MappingFragment StoreEntitySet="cajero">
+          <ScalarProperty Name="codigocaje" ColumnName="codigocaje" />
+          <ScalarProperty Name="tipocaje" ColumnName="tipocaje" />
+          <ScalarProperty Name="usuariocaje" ColumnName="usuariocaje" />
+          <ScalarProperty Name="nombrecaje" ColumnName="nombrecaje" />
+          <ScalarProperty Name="claverecibos" ColumnName="claverecibos" />
+          <ScalarProperty Name="cedulacaje" ColumnName="cedulacaje" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="centro">
+      <EntityTypeMapping TypeName="contableModel.centro">
+        <MappingFragment StoreEntitySet="centro">
+          <ScalarProperty Name="idcentro" ColumnName="idcentro" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ciudad">
+      <EntityTypeMapping TypeName="contableModel.ciudad">
+        <MappingFragment StoreEntitySet="ciudad">
+          <ScalarProperty Name="idciudad" ColumnName="idciudad" />
+          <ScalarProperty Name="nombciudad" ColumnName="nombciudad" />
+          <ScalarProperty Name="iddpto" ColumnName="iddpto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="compania">
+      <EntityTypeMapping TypeName="contableModel.compania">
+        <MappingFragment StoreEntitySet="compania">
+          <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+          <ScalarProperty Name="nombrecia" ColumnName="nombrecia" />
+          <ScalarProperty Name="nit" ColumnName="nit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comprobante">
+      <EntityTypeMapping TypeName="contableModel.comprobante">
+        <MappingFragment StoreEntitySet="comprobante">
+          <ScalarProperty Name="codicomp" ColumnName="codicomp" />
+          <ScalarProperty Name="descomp" ColumnName="descomp" />
+          <ScalarProperty Name="consecu" ColumnName="consecu" />
+          <ScalarProperty Name="numsigui" ColumnName="numsigui" />
+          <ScalarProperty Name="codotra" ColumnName="codotra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="conceptospago">
+      <EntityTypeMapping TypeName="contableModel.conceptospago">
+        <MappingFragment StoreEntitySet="conceptospago">
+          <ScalarProperty Name="codigoconpa" ColumnName="codigoconpa" />
+          <ScalarProperty Name="nombreconcepto" ColumnName="nombreconcepto" />
+          <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+          <ScalarProperty Name="codigoforpago" ColumnName="codigoforpago" />
+          <ScalarProperty Name="porcentaje" ColumnName="porcentaje" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="coneusuar">
+      <EntityTypeMapping TypeName="contableModel.coneusuar">
+        <MappingFragment StoreEntitySet="coneusuar">
+          <ScalarProperty Name="iduser" ColumnName="iduser" />
+          <ScalarProperty Name="fechacon" ColumnName="fechacon" />
+          <ScalarProperty Name="compania" ColumnName="compania" />
+          <ScalarProperty Name="conectado" ColumnName="conectado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="datosusuario">
+      <EntityTypeMapping TypeName="contableModel.datosusuario">
+        <MappingFragment StoreEntitySet="datosusuario">
+          <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+          <ScalarProperty Name="nombresusuario" ColumnName="nombresusuario" />
+          <ScalarProperty Name="apellidosusuario" ColumnName="apellidosusuario" />
+          <ScalarProperty Name="telefonousuario" ColumnName="telefonousuario" />
+          <ScalarProperty Name="direccionusuario" ColumnName="direccionusuario" />
+          <ScalarProperty Name="correousuario" ColumnName="correousuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="departamento">
+      <EntityTypeMapping TypeName="contableModel.departamento">
+        <MappingFragment StoreEntitySet="departamento">
+          <ScalarProperty Name="iddept" ColumnName="iddept" />
+          <ScalarProperty Name="nombredep" ColumnName="nombredep" />
+          <ScalarProperty Name="idpais" ColumnName="idpais" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="formaspago">
+      <EntityTypeMapping TypeName="contableModel.formaspago">
+        <MappingFragment StoreEntitySet="formaspago">
+          <ScalarProperty Name="codigoforpago" ColumnName="codigoforpago" />
+          <ScalarProperty Name="nombreforma" ColumnName="nombreforma" />
+          <ScalarProperty Name="sivence" ColumnName="sivence" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inflacion">
+      <EntityTypeMapping TypeName="contableModel.inflacion">
+        <MappingFragment StoreEntitySet="inflacion">
+          <ScalarProperty Name="idinflacion" ColumnName="idinflacion" />
+          <ScalarProperty Name="idmes" ColumnName="idmes" />
+          <ScalarProperty Name="inflamensual" ColumnName="inflamensual" />
+          <ScalarProperty Name="mescerrado" ColumnName="mescerrado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="maebanta">
+      <EntityTypeMapping TypeName="contableModel.maebanta">
+        <MappingFragment StoreEntitySet="maebanta">
+          <ScalarProperty Name="codigobanta" ColumnName="codigobanta" />
+          <ScalarProperty Name="nombrebantal" ColumnName="nombrebantal" />
+          <ScalarProperty Name="tipobanta" ColumnName="tipobanta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="maecli">
+      <EntityTypeMapping TypeName="contableModel.maecli">
+        <MappingFragment StoreEntitySet="maecli">
+          <ScalarProperty Name="codigocli" ColumnName="codigocli" />
+          <ScalarProperty Name="nit" ColumnName="nit" />
+          <ScalarProperty Name="digito" ColumnName="digito" />
+          <ScalarProperty Name="nombrecli" ColumnName="nombrecli" />
+          <ScalarProperty Name="factnombr" ColumnName="factnombr" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="idpais" ColumnName="idpais" />
+          <ScalarProperty Name="iddpto" ColumnName="iddpto" />
+          <ScalarProperty Name="idciudad" ColumnName="idciudad" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="direnvio" ColumnName="direnvio" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="celular" ColumnName="celular" />
+          <ScalarProperty Name="fax" ColumnName="fax" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="plazo" ColumnName="plazo" />
+          <ScalarProperty Name="cupomes" ColumnName="cupomes" />
+          <ScalarProperty Name="descuento" ColumnName="descuento" />
+          <ScalarProperty Name="regimen" ColumnName="regimen" />
+          <ScalarProperty Name="idvendedor" ColumnName="idvendedor" />
+          <ScalarProperty Name="grancontrib" ColumnName="grancontrib" />
+          <ScalarProperty Name="causareteica" ColumnName="causareteica" />
+          <ScalarProperty Name="aplicareteica" ColumnName="aplicareteica" />
+          <ScalarProperty Name="causreteiva" ColumnName="causreteiva" />
+          <ScalarProperty Name="desconreteiva" ColumnName="desconreteiva" />
+          <ScalarProperty Name="retexcomprar" ColumnName="retexcomprar" />
+          <ScalarProperty Name="desconretevender" ColumnName="desconretevender" />
+          <ScalarProperty Name="porretencion" ColumnName="porretencion" />
+          <ScalarProperty Name="jefecompr" ColumnName="jefecompr" />
+          <ScalarProperty Name="comprador" ColumnName="comprador" />
+          <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="maeconcc">
+      <EntityTypeMapping TypeName="contableModel.maeconcc">
+        <MappingFragment StoreEntitySet="maeconcc">
+          <ScalarProperty Name="codigocon" ColumnName="codigocon" />
+          <ScalarProperty Name="nombrecon" ColumnName="nombrecon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="maeconta">
+      <EntityTypeMapping TypeName="contableModel.maeconta">
+        <MappingFragment StoreEntitySet="maeconta">
+          <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+          <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+          <ScalarProperty Name="tipocta" ColumnName="tipocta" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="pidenit" ColumnName="pidenit" />
+          <ScalarProperty Name="centro" ColumnName="centro" />
+          <ScalarProperty Name="ajustesinteg" ColumnName="ajustesinteg" />
+          <ScalarProperty Name="nitajustes" ColumnName="nitajustes" />
+          <ScalarProperty Name="cueaju" ColumnName="cueaju" />
+          <ScalarProperty Name="cuencorre" ColumnName="cuencorre" />
+          <ScalarProperty Name="ajudoc" ColumnName="ajudoc" />
+          <ScalarProperty Name="cuentret" ColumnName="cuentret" />
+          <ScalarProperty Name="porete" ColumnName="porete" />
+          <ScalarProperty Name="concepret" ColumnName="concepret" />
+          <ScalarProperty Name="cuentacierreimp" ColumnName="cuentacierreimp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="maenits">
+      <EntityTypeMapping TypeName="contableModel.maenits">
+        <MappingFragment StoreEntitySet="maenits">
+          <ScalarProperty Name="idnit" ColumnName="idnit" />
+          <ScalarProperty Name="nit" ColumnName="nit" />
+          <ScalarProperty Name="digito" ColumnName="digito" />
+          <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+          <ScalarProperty Name="idtiponit" ColumnName="idtiponit" />
+          <ScalarProperty Name="idpais" ColumnName="idpais" />
+          <ScalarProperty Name="iddept" ColumnName="iddept" />
+          <ScalarProperty Name="idciudad" ColumnName="idciudad" />
+          <ScalarProperty Name="nomnit" ColumnName="nomnit" />
+          <ScalarProperty Name="acteconomica" ColumnName="acteconomica" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="celular" ColumnName="celular" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="maepagos">
+      <EntityTypeMapping TypeName="contableModel.maepagos">
+        <MappingFragment StoreEntitySet="maepagos">
+          <ScalarProperty Name="idpagos" ColumnName="idpagos" />
+          <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+          <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+          <ScalarProperty Name="idnit" ColumnName="idnit" />
+          <ScalarProperty Name="codigotrib" ColumnName="codigotrib" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="maetrac">
+      <EntityTypeMapping TypeName="contableModel.maetrac">
+        <MappingFragment StoreEntitySet="maetrac">
+          <ScalarProperty Name="codigotrac" ColumnName="codigotrac" />
+          <ScalarProperty Name="nombretrac" ColumnName="nombretrac" />
+          <ScalarProperty Name="afectasaldo" ColumnName="afectasaldo" />
+          <ScalarProperty Name="afectaotros" ColumnName="afectaotros" />
+          <ScalarProperty Name="generaasiento" ColumnName="generaasiento" />
+          <ScalarProperty Name="consecutivo" ColumnName="consecutivo" />
+          <ScalarProperty Name="numeroactual" ColumnName="numeroactual" />
+          <ScalarProperty Name="codicomp" ColumnName="codicomp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="maetribub">
+      <EntityTypeMapping TypeName="contableModel.maetribub">
+        <MappingFragment StoreEntitySet="maetribub">
+          <ScalarProperty Name="codigotrib" ColumnName="codigotrib" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="tope" ColumnName="tope" />
+          <ScalarProperty Name="nittope" ColumnName="nittope" />
+          <ScalarProperty Name="nomnit" ColumnName="nomnit" />
+          <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mes">
+      <EntityTypeMapping TypeName="contableModel.mes">
+        <MappingFragment StoreEntitySet="mes">
+          <ScalarProperty Name="idmes" ColumnName="idmes" />
+          <ScalarProperty Name="nombremes" ColumnName="nombremes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="modulo">
+      <EntityTypeMapping TypeName="contableModel.modulo">
+        <MappingFragment StoreEntitySet="modulo">
+          <ScalarProperty Name="idmodulo" ColumnName="idmodulo" />
+          <ScalarProperty Name="nombmodulo" ColumnName="nombmodulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="movimi">
+      <EntityTypeMapping TypeName="contableModel.movimi">
+        <MappingFragment StoreEntitySet="movimi">
+          <ScalarProperty Name="idmovimi" ColumnName="idmovimi" />
+          <ScalarProperty Name="documento" ColumnName="documento" />
+          <ScalarProperty Name="idcentro" ColumnName="idcentro" />
+          <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+          <ScalarProperty Name="idasiento" ColumnName="idasiento" />
+          <ScalarProperty Name="idmes" ColumnName="idmes" />
+          <ScalarProperty Name="anio" ColumnName="anio" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="codicomp" ColumnName="codicomp" />
+          <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+          <ScalarProperty Name="idnit" ColumnName="idnit" />
+          <ScalarProperty Name="cheque" ColumnName="cheque" />
+          <ScalarProperty Name="descrip" ColumnName="descrip" />
+          <ScalarProperty Name="valorcredito" ColumnName="valorcredito" />
+          <ScalarProperty Name="valordebito" ColumnName="valordebito" />
+          <ScalarProperty Name="imprime" ColumnName="imprime" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="fechagraba" ColumnName="fechagraba" />
+          <ScalarProperty Name="actualizado" ColumnName="actualizado" />
+          <ScalarProperty Name="usuarioactu" ColumnName="usuarioactu" />
+          <ScalarProperty Name="fechaactualiz" ColumnName="fechaactualiz" />
+          <ScalarProperty Name="asientofijo" ColumnName="asientofijo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pais">
+      <EntityTypeMapping TypeName="contableModel.pais">
+        <MappingFragment StoreEntitySet="pais">
+          <ScalarProperty Name="idpais" ColumnName="idpais" />
+          <ScalarProperty Name="nombpais" ColumnName="nombpais" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="parametros">
+      <EntityTypeMapping TypeName="contableModel.parametros">
+        <MappingFragment StoreEntitySet="parametros">
+          <ScalarProperty Name="idparametro" ColumnName="idparametro" />
+          <ScalarProperty Name="nombreparam" ColumnName="nombreparam" />
+          <ScalarProperty Name="descripparam" ColumnName="descripparam" />
+          <ScalarProperty Name="valorparam" ColumnName="valorparam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="presupuesto">
+      <EntityTypeMapping TypeName="contableModel.presupuesto">
+        <MappingFragment StoreEntitySet="presupuesto">
+          <ScalarProperty Name="idpresupuesto" ColumnName="idpresupuesto" />
+          <ScalarProperty Name="anio" ColumnName="anio" />
+          <ScalarProperty Name="idmes" ColumnName="idmes" />
+          <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+          <ScalarProperty Name="codcentro" ColumnName="codcentro" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="saldoscuentas">
+      <EntityTypeMapping TypeName="contableModel.saldoscuentas">
+        <MappingFragment StoreEntitySet="saldoscuentas">
+          <ScalarProperty Name="idsaldoscuentas" ColumnName="idsaldoscuentas" />
+          <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+          <ScalarProperty Name="anio" ColumnName="anio" />
+          <ScalarProperty Name="idmes" ColumnName="idmes" />
+          <ScalarProperty Name="saldo" ColumnName="saldo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tiponit">
+      <EntityTypeMapping TypeName="contableModel.tiponit">
+        <MappingFragment StoreEntitySet="tiponit">
+          <ScalarProperty Name="idtiponit" ColumnName="idtiponit" />
+          <ScalarProperty Name="nombretipo" ColumnName="nombretipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario">
+      <EntityTypeMapping TypeName="contableModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+          <ScalarProperty Name="user" ColumnName="user" />
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+          <ScalarProperty Name="fechaultconex" ColumnName="fechaultconex" />
+          <ScalarProperty Name="ultimobloqueo" ColumnName="ultimobloqueo" />
+          <ScalarProperty Name="intentosfallidos" ColumnName="intentosfallidos" />
+          <ScalarProperty Name="bloqueado" ColumnName="bloqueado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vendedor">
+      <EntityTypeMapping TypeName="contableModel.vendedor">
+        <MappingFragment StoreEntitySet="vendedor">
+          <ScalarProperty Name="idvendedor" ColumnName="idvendedor" />
+          <ScalarProperty Name="codigovend" ColumnName="codigovend" />
+          <ScalarProperty Name="nombrevend" ColumnName="nombrevend" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="direcvend" ColumnName="direcvend" />
+          <ScalarProperty Name="emailvend" ColumnName="emailvend" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="comisionrango" ColumnName="comisionrango" />
+          <ScalarProperty Name="comision" ColumnName="comision" />
+          <ScalarProperty Name="compania" ColumnName="compania" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="permiso" TypeName="contableModel.permiso" StoreEntitySet="permiso">
+      <EndProperty Name="modulo">
+        <ScalarProperty Name="idmodulo" ColumnName="modulo" />
+      </EndProperty>
+      <EndProperty Name="usuario">
+        <ScalarProperty Name="idusuario" ColumnName="iduser" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="movvend">
+      <EntityTypeMapping TypeName="contableModel.movvend">
+        <MappingFragment StoreEntitySet="movvend">
+          <ScalarProperty Name="venta" ColumnName="venta" />
+          <ScalarProperty Name="comision" ColumnName="comision" />
+          <ScalarProperty Name="anio" ColumnName="anio" />
+          <ScalarProperty Name="idmes" ColumnName="idmes" />
+          <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+          <ScalarProperty Name="idvendedor" ColumnName="idvendedor" />
+          <ScalarProperty Name="idmovvend" ColumnName="idmovvend" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="formato">
+      <EntityTypeMapping TypeName="contableModel.formato">
+        <MappingFragment StoreEntitySet="formato">
+          <ScalarProperty Name="cuentafinal" ColumnName="cuentafinal" />
+          <ScalarProperty Name="cuentainicial" ColumnName="cuentainicial" />
+          <ScalarProperty Name="nombref" ColumnName="nombref" />
+          <ScalarProperty Name="linea" ColumnName="linea" />
+          <ScalarProperty Name="clasemayor" ColumnName="clasemayor" />
+          <ScalarProperty Name="tipoformato" ColumnName="tipoformato" />
+          <ScalarProperty Name="idbalance" ColumnName="idbalance" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="formatogeneral">
+      <EntityTypeMapping TypeName="contableModel.formatogeneral">
+        <MappingFragment StoreEntitySet="formatogeneral">
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="presentacion" ColumnName="presentacion" />
+          <ScalarProperty Name="condensa" ColumnName="condensa" />
+          <ScalarProperty Name="columna" ColumnName="columna" />
+          <ScalarProperty Name="fila" ColumnName="fila" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="codigotipoforma" ColumnName="codigotipoforma" />
+          <ScalarProperty Name="codigofor" ColumnName="codigofor" />
+          <ScalarProperty Name="idformato" ColumnName="idformato" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipoformato">
+      <EntityTypeMapping TypeName="contableModel.tipoformato">
+        <MappingFragment StoreEntitySet="tipoformato">
+          <ScalarProperty Name="nombretipo" ColumnName="nombretipo" />
+          <ScalarProperty Name="tipoformato1" ColumnName="tipoformato" />
+          <ScalarProperty Name="codigotipo" ColumnName="codigotipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

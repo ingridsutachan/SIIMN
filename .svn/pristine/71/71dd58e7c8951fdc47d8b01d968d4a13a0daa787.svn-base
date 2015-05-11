@@ -1,0 +1,60 @@
+﻿// -----------------------------------------------------------------------
+// <copyright file="inflacionn.cs" company="">
+// TODO: Update copyright text.
+// </copyright>
+// -----------------------------------------------------------------------
+
+namespace Negocios.Contable
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using Datos.Contable;
+    using Entities.Types;
+    using Entities;
+
+    /// <summary>
+    /// TODO: Update summary.
+    /// </summary>
+    public class inflacionn
+    {
+        private inflacionc persistencia;
+
+        public inflacionn()
+        {
+            this.persistencia = new inflacionc();
+        }
+
+        public List<InflacionDataSource> CargarDatos()
+        {
+            List<InflacionDataSource> inflas = new List<InflacionDataSource>();
+            var items = this.persistencia.CargarDatos();
+            foreach (var item in items)
+            {
+                InflacionDataSource infla = new InflacionDataSource();
+                infla.Mes = item.mes;
+                infla.inflacion = item.inflamensual;
+                inflas.Add(infla);
+            }
+
+            return inflas;
+        }
+
+        public bool GuardarInflacion(List<InflacionDataSource> infla)
+        {
+            bool result = false;
+            List<inflacion> inflaciones = new List<inflacion>();
+            foreach (InflacionDataSource item in infla)
+            {
+                inflacion inf = new inflacion();
+                inf.mes = item.Mes;
+                inf.inflamensual = item.inflacion;
+                inflaciones.Add(inf);
+            }
+            result = this.persistencia.GuardarInflacion(inflaciones);
+
+            return result;
+        }
+    }
+}

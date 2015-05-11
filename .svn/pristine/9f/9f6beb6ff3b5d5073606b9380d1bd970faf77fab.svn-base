@@ -1,0 +1,67 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using App.Forms.Contable.reportes.Types;
+using Entities.Types;
+using Negocios.Contable;
+
+namespace App.Forms.Contable.reportes
+{
+    public partial class Form_ReportCuenta : Form
+    {
+        private Cuentan negocioCuenta;
+
+        public Form_ReportCuenta()
+        {
+            this.negocioCuenta = new Cuentan();
+            this.InitializeComponent();
+            txt_cuentainiinforme.Focus();
+        }
+
+        private void ts_informe_ButtonClick(object sender, EventArgs e)
+        {
+            List<CuentaDataSource> cuentas = new List<CuentaDataSource>();
+            cuentas = this.negocioCuenta.CargarInforme(txt_cuentainiinforme.Text, txt_cuentafininforme.Text);
+            List<CuentaDataSourceReports> cuentasR = new List<CuentaDataSourceReports>();
+            foreach (CuentaDataSource item in cuentas)
+            {
+                CuentaDataSourceReports cuentaR = new CuentaDataSourceReports();
+                cuentaR.Cuenta = item.Cuenta;
+                cuentaR.Nombre = item.Nombre;
+                cuentaR.Pidenit = item.Pidenit == true ? "SI" : "NO";
+                cuentaR.Tipocta = item.Tipocta;
+                cuentaR.Centro = item.Centro == true ? "SI" : "NO";
+                cuentaR.Cueaju = item.Cueaju;
+                cuentaR.Ajudoc = item.Ajudoc;
+                cuentasR.Add(cuentaR);
+            }
+
+            // Create a CrystalReport1 object
+            ReporteCuentas reportcuenta = new ReporteCuentas();
+            // Set the DataSource of the report
+            reportcuenta.SetDataSource(cuentasR);
+            // Set the Report Source to ReportView 
+            crystal_reportecuenta.ReportSource = reportcuenta;
+            this.Size = new Size(919, 509);
+            this.crystal_reportecuenta.Visible = true;
+            this.lbl_cuentafinal.Visible = false;
+            this.lbl_cuentainicial.Visible = false;
+            this.txt_cuentainiinforme.Visible = false;
+            txt_cuentafininforme.Visible = false;
+            lbl_fecha.Visible = false;
+            fecha_informecuenta.Visible = false;
+            this.CenterToScreen();
+        }
+
+        private void btn_salir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+    }
+}

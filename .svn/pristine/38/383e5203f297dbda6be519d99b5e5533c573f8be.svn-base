@@ -1,0 +1,61 @@
+﻿// -----------------------------------------------------------------------
+// <copyright file="inflacionc.cs" company="">
+// TODO: Update copyright text.
+// </copyright>
+// -----------------------------------------------------------------------
+
+namespace Datos.Contable
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using Entities;
+
+    /// <summary>
+    /// TODO: Update summary.
+    /// </summary>
+    public class inflacionc
+    {
+        public inflacionc()
+        {
+        }
+
+        public List<inflacion> CargarDatos()
+        {
+            List<inflacion> infla = new List<inflacion>();
+            using (contableEntities bd = new contableEntities())
+            {
+                var query = bd.inflacion.ToList();
+                infla = query;
+            }
+
+            return infla;
+        }
+
+        public bool GuardarInflacion(List<inflacion> infla)
+        {
+            bool result = false;
+            using (contableEntities bd = new contableEntities())
+            {
+                try
+                {
+                    foreach (inflacion item in infla)
+                    {
+                        var query = bd.inflacion.Where(inf => inf.idmes == item.idmes).First();
+                        query.inflamensual = item.inflamensual;
+                    }
+
+                    bd.SaveChanges();
+                    result = true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return result;
+        }
+    }
+}

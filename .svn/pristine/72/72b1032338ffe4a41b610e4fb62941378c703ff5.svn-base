@@ -1,0 +1,160 @@
+﻿////*********************************************************
+//
+//    <copyright file="frmcomprobantes.cs" company="Marketing Software de Colombia LTDA">
+//    @Autor Ingrid Sutachan
+//    @fecha 01 marzo 2014
+//    </copyright>
+//
+////*********************************************************
+namespace Negocios.Contable
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using Entities.Types;
+    using Entities;
+    using Datos.Contable;
+
+    /// <summary>
+    /// TODO: Update summary.
+    /// </summary>
+    public class tributariosn
+    {
+        private tributariosc persistencia;
+
+        public tributariosn()
+        {
+            this.persistencia = new tributariosc();
+        }
+
+        public List<TributarioDataSource> CargarDatos()
+        {
+            List<TributarioDataSource> tribut = new List<TributarioDataSource>();
+            try
+            {
+                var items = this.persistencia.CargarTributario();
+                foreach (var item in items)
+                {
+                    TributarioDataSource tri = new TributarioDataSource();
+                    tri.Codigo = item.codigotrib;
+                    tri.NombreTrib = item.nombre;
+                    tri.Tope = item.tope;
+                    tri.NitTope = item.nittope;
+                    tri.NombreNitTipe = item.nomnit;
+                    tribut.Add(tri);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return tribut;
+        }
+
+        public bool GuardarTribut(TributarioDataSource tribut)
+        {
+            bool result = true;
+            maetribub tri = new maetribub();
+            tri.codigotrib = tribut.Codigo;
+            tri.idcompania = tribut.IdCompania;
+            tri.nombre = tribut.NombreTrib;
+            tri.nittope = tribut.NitTope;
+            tri.tope = tribut.Tope;
+            tri.nomnit = tribut.NombreNitTipe;
+            try
+            {
+                result = this.persistencia.GuardarTribut(tri);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
+        public TributarioDataSource DevolverDatos(string codigo)
+        {
+            TributarioDataSource tribut = new TributarioDataSource();
+            try
+            {
+                var item = this.persistencia.DevolverDatos(codigo);
+                tribut.Codigo = item.codigotrib;
+                tribut.NombreTrib = item.nombre;
+                tribut.Tope = item.tope;
+                tribut.NitTope = item.nittope;
+                tribut.NombreNitTipe = item.nittope;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return tribut;
+        }
+
+        public bool ActualizarTribut(TributarioDataSource tribut)
+        {
+            bool result = true;
+            maetribub tri = new maetribub();
+            tri.codigotrib = tribut.Codigo;
+            tri.idcompania = tribut.IdCompania;
+            tri.nombre = tribut.NombreTrib;
+            tri.nittope = tribut.NitTope;
+            tri.tope = tribut.Tope;
+            tri.nomnit = tribut.NombreNitTipe;
+            try
+            {
+                result = this.persistencia.ActualizarTribut(tri);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
+        public bool EliminarTribut(string codigo)
+        {
+            bool result = false;
+            try
+            {
+                result = this.persistencia.EliminarTributario(codigo);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
+        public List<TributarioDataSource> BuscarTribut(string buscar)
+        {
+            List<TributarioDataSource> tribut = new List<TributarioDataSource>();
+            try
+            {
+                var items = this.persistencia.BuscarTributario(buscar);
+                foreach (var item in items)
+                {
+                    TributarioDataSource tri = new TributarioDataSource();
+                    tri.Codigo = item.codigotrib;
+                    tri.NombreTrib = item.nombre;
+                    tri.Tope = item.tope;
+                    tri.NitTope = item.nittope;
+                    tri.NombreNitTipe = item.nomnit;
+                    tribut.Add(tri);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return tribut;
+        }
+    }
+}

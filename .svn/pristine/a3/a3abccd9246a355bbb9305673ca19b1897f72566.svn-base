@@ -1,0 +1,161 @@
+﻿////*********************************************************
+//
+//    <copyright file="presupueston.cs" company="Marketing Software de Colombia LTDA">
+//    @Autor Ingrid Sutachan
+//    @fecha 01 marzo 2014
+//    </copyright>
+//
+////*********************************************************
+namespace Negocios.Contable
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Datos.Contable;
+    using Entities;
+    using Entities.Types;
+
+    /// <summary>
+    /// Clase de Presupuesto Negocios
+    /// </summary>
+    public class Presupueston
+    {
+        /// <summary>
+        ///  Instancia de Capa de Datos
+        /// </summary>
+        private Presupuestoc persistencia;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Presupueston" /> class.
+        /// </summary>
+        public Presupueston()
+        {
+            this.persistencia = new Presupuestoc();
+        }
+
+        /// <summary>
+        /// Devolvers the presu.
+        /// </summary>
+        /// <param name="anio">Año de presupuesto</param>
+        /// <param name="cuenta">la cuenta de presupuesto</param>
+        /// <returns>lista de presupuesto respectivo al año y a la cuenta</returns>
+        public List<PresupDataSource> DevolverPresu(short anio, string cuenta, int centro)
+        {
+            List<PresupDataSource> datasSource = new List<PresupDataSource>();
+            try
+            {
+                var items = this.persistencia.DevuelvePres(anio, cuenta, centro).OrderBy(m => m.mes);
+
+                foreach (var item in items)
+                {
+                    PresupDataSource ds = new PresupDataSource();
+                    ds.Anio = item.anio;
+                    ds.Cuenta = item.cuenta;
+                    ds.Mes = item.mes;
+                    ds.Presupuesto = item.cantidad;
+                    datasSource.Add(ds);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return datasSource;
+        }
+
+        /// <summary>
+        /// Guarda presupuesto
+        /// </summary>
+        /// <param name="pres">Presupuesto a guardar</param>
+        public bool GuardarPresup(List<PresupDataSource> presup)
+        {
+            bool result = false;
+            try
+            {
+                List<presupuesto> presu = new List<presupuesto>();
+                foreach (PresupDataSource item in presup)
+                {
+                    presupuesto pres = new presupuesto();
+                    pres.anio = item.Anio;
+                    pres.mes = item.Mes;
+                    pres.cuenta = item.Cuenta;
+                    pres.cantidad = item.Presupuesto;
+                    presu.Add(pres);
+                }
+                result = this.persistencia.GuardarPre(presu);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Actualiza el presupuesto
+        /// </summary>
+        /// <param name="presup">presupuesto a actualizar</param>
+        public bool UpdatePresupuesto(List<PresupDataSource> presup)
+        {
+            bool result = false;
+            try
+            {
+                List<presupuesto> presu = new List<presupuesto>();
+                foreach (PresupDataSource item in presup)
+                {
+                    presupuesto pres = new presupuesto();
+                    pres.anio = item.Anio;
+                    pres.mes = item.Mes;
+                    pres.cuenta = item.Cuenta;
+                    pres.cantidad = item.Presupuesto;
+                    pres.idcentro = item.IdCentro;
+                    presu.Add(pres);
+                }
+                result = this.persistencia.UpdatePresup(presu);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Eliminars the cuenta.
+        /// </summary>
+        /// <param name="anio">Anio a eliminar</param>
+        /// <param name="cuenta">Cuenta a eliminar.</param>
+        /// <returns>Booleano si la cuenta se elimino </returns>
+        public bool EliminarPresupuesto(PresupDataSource presup)
+        {
+            bool result = false;
+            try
+            {
+                result = this.persistencia.EliminarPresu(presup.Anio, presup.Cuenta);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
+
+
+        public bool ExistePresupuesto(short anio, string cuenta, int centro)
+        {
+            try
+            {
+                return this.persistencia.ExistePresupuesto(anio, cuenta, centro);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+    }
+}

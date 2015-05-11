@@ -1,0 +1,234 @@
+﻿////*********************************************************
+//
+//    <copyright file="Form_inflacion.cs" company="Marketing Software de Colombia LTDA">
+//    @Autor Ingrid Sutachan
+//    @fecha 26 febrero 2015
+//    </copyright>
+//
+////*********************************************************
+namespace App.Forms.Contable
+{
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.Globalization;
+    using System.Linq;
+    using System.Text;
+    using System.Windows.Forms;
+    using Entities.Types;
+    using Negocios.Contable;
+
+    public partial class Form_Inflacion : Form
+    {
+        private inflacionn negocioInflacion;
+
+        private bool usrClose;
+
+        private Funciones funtions;
+
+        private int ContadorPunto;
+
+        private object Txtsender;
+
+        public Form_Inflacion()
+        {
+            this.InitializeComponent();
+            this.negocioInflacion = new inflacionn();
+            this.funtions = new Funciones();
+            this.CargarCampos();
+        }
+
+        #region TECLAS DE ACCESO
+
+        /// <summary>
+        /// Teclas de Acceso a los botones
+        /// </summary>
+        /// <param name="msg">A <see cref="T:System.Windows.Forms.Message" />mensaje del proceso</param>
+        /// <param name="keyData">un <see cref="T:System.Windows.Forms.Keys" /> valor tecla que recibe.</param>
+        /// <returns>
+        /// true si las teclas correspondiente son ingresadas
+        /// </returns>
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            EventArgs eve = new EventArgs();
+            object sender = new object();
+            switch (keyData)
+            {
+                case Keys.Control | Keys.G:
+                    if (btn_guardar.Enabled == true)
+                    {
+                        this.Btn_guardar_Click(sender, eve);
+                        return true;
+                    }
+
+                    break;
+
+                case Keys.Escape:
+
+                    if (btn_salir.Enabled == true)
+                    {
+                        this.Btn_salir_Click(sender, eve);
+                        return true;
+                    }
+
+                    break;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        #endregion
+
+        #region DATOS
+
+        private void CargarCampos()
+        {
+            List<InflacionDataSource> inflac = new List<InflacionDataSource>();
+            inflac = this.negocioInflacion.CargarDatos(Program.compa);
+            txtenero.Text = Convert.ToString(inflac[0].inflacion) + ".00";
+            txtfebrero.Text = Convert.ToString(inflac[1].inflacion) + ".00";
+            txtmarzo.Text = Convert.ToString(inflac[2].inflacion) + ".00";
+            txtabril.Text = Convert.ToString(inflac[3].inflacion) + ".00";
+            txtmayo.Text = Convert.ToString(inflac[4].inflacion) + ".00";
+            txtjunio.Text = Convert.ToString(inflac[5].inflacion) + ".00";
+            txtjulio.Text = Convert.ToString(inflac[6].inflacion) + ".00";
+            txtagosto.Text = Convert.ToString(inflac[7].inflacion) + ".00";
+            txtsepti.Text = Convert.ToString(inflac[8].inflacion) + ".00";
+            txtoctu.Text = Convert.ToString(inflac[9].inflacion) + ".00";
+            txtnov.Text = Convert.ToString(inflac[10].inflacion) + ".00";
+            txtdici.Text = Convert.ToString(inflac[11].inflacion) + ".00";
+            this.Sumar();
+        }
+
+        private void Sumar()
+        {
+
+            decimal acumulado = decimal.Parse(txtenero.Text) + decimal.Parse(txtfebrero.Text) + decimal.Parse(txtmarzo.Text) + decimal.Parse(txtabril.Text)
+                + decimal.Parse(txtmayo.Text) + decimal.Parse(txtjunio.Text) + decimal.Parse(txtjulio.Text) + decimal.Parse(txtagosto.Text)
+                + decimal.Parse(txtsepti.Text) + decimal.Parse(txtoctu.Text) + decimal.Parse(txtnov.Text) + decimal.Parse(txtdici.Text);
+            txt_acumulado.Text = Convert.ToString(acumulado);
+
+        }
+
+        #endregion
+
+        #region BOTONES
+
+        private void Btn_guardar_Click(object sender, EventArgs e)
+        {
+            bool guardar = this.ValidarCampos();
+            if (guardar)
+            {
+                List<InflacionDataSource> inflac = new List<InflacionDataSource>();
+
+                inflac[0].inflacion = decimal.Parse(txtenero.Text);
+                inflac[1].inflacion = decimal.Parse(txtfebrero.Text);
+                inflac[2].inflacion = decimal.Parse(txtmarzo.Text);
+                inflac[3].inflacion = decimal.Parse(txtabril.Text);
+                inflac[4].inflacion = decimal.Parse(txtmayo.Text);
+                inflac[5].inflacion = decimal.Parse(txtjunio.Text);
+                inflac[6].inflacion = decimal.Parse(txtjulio.Text);
+                inflac[7].inflacion = decimal.Parse(txtagosto.Text);
+                inflac[8].inflacion = decimal.Parse(txtsepti.Text);
+                inflac[9].inflacion = decimal.Parse(txtoctu.Text);
+                inflac[10].inflacion = decimal.Parse(txtnov.Text);
+                inflac[11].inflacion = decimal.Parse(txtdici.Text);
+                bool guardo = this.negocioInflacion.GuardarInflacion(inflac);
+                if (guardo)
+                {
+                    MessageBox.Show("Los ajustes han sido Guardados", "GUARDAR", MessageBoxButtons.OK);
+                }
+            }
+        }
+
+        private void Btn_salir_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("ESTA SEGURO QUE DESEA SALIR?", "SALIR", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                this.usrClose = true;
+                this.Close();
+            }
+        }
+
+        #endregion
+
+        #region CERRAR FORMULARIO
+
+        private void Frm_inflacion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!this.usrClose)
+            {
+                DialogResult result = MessageBox.Show("ESTA SEGURO QUE DESEA SALIR?", "SALIR", MessageBoxButtons.YesNo);
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        #endregion
+
+        #region VALIDACIONES
+
+        private void ValidaDecimal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Tab)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+                this.Sumar();
+            }
+            else
+            {
+               // if (this.Txtsender == sender && c)
+                    e.Handled = this.funtions.ValidacionDecimal(e).Handled;
+            }
+        }
+
+        /// <summary>
+        /// evento cuando entra al textbox porcentaje de retencion
+        /// </summary>
+        /// <param name="sender">el origen del evento</param>
+        /// <param name="e">The <see cref="EventArgs"/> instancia contiene datos del evento</param>
+        private void Decimal_Enter(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = Convert.ToString(tb.Tag);
+        }
+
+        /// <summary>
+        /// evento cuando sale al textbox porcentaje de retencion
+        /// </summary>
+        /// <param name="sender">el origen del evento</param>
+        /// <param name="e">The <see cref="EventArgs"/> instancia contiene datos del evento</param>
+        private void Decimal_Leave(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            decimal numero = default(decimal);
+            bool bln = decimal.TryParse(tb.Text, out numero);
+            tb.Tag = numero;
+            tb.Text = string.Format("{0:00.00}", numero);
+        }
+
+        private bool ValidarCampos()
+        {
+            if (!txtenero.Text.Equals(string.Empty) && !txtfebrero.Text.Equals(string.Empty) && !txtmarzo.Text.Equals(string.Empty)
+            && !txtmayo.Text.Equals(string.Empty) && !txtjunio.Text.Equals(string.Empty) && !txtjulio.Text.Equals(string.Empty)
+            && !txtagosto.Text.Equals(string.Empty) && !txtsepti.Text.Equals(string.Empty) && !txtoctu.Text.Equals(string.Empty)
+            && !txtnov.Text.Equals(string.Empty) && !txtdici.Text.Equals(string.Empty))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+                MessageBox.Show("POR FAVOR INGRESE TODOS LOS CAMPOS", "ERROR", MessageBoxButtons.OK);
+            }
+        }
+
+        #endregion
+    }
+}

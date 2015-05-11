@@ -1,0 +1,433 @@
+﻿////*********************************************************
+//
+//    <copyright file="Form_VisualContable.cs" company="Marketing Software de Colombia LTDA">
+//    @Autor Ingrid Sutachan
+//    @fecha 11 febrero 2015
+//    </copyright>
+//
+////*********************************************************
+
+namespace App.Forms.Contable
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Windows.Forms;
+    using Entities.Types;
+    using Negocios.Contable;
+    using System.Drawing;
+
+    public partial class Form_VisualContable : Form
+    {
+        private Cuentan negocioCuenta;
+
+        private Presupueston negocioPresupuesto;
+
+        private string busqueda;
+
+        private string menub;
+
+        private Form_Cuenta formcuenta;
+
+        private Frmpresupuesto frmpresupuesto;
+
+        public Form_VisualContable(string buscar, string menu, Form_Cuenta formcuenta)
+        {
+            this.negocioCuenta = new Cuentan();
+            this.InitializeComponent();
+            this.busqueda = buscar;
+            this.menub = menu;
+            this.formcuenta = formcuenta;
+            this.Visual();
+        }
+
+        public Form_VisualContable(string buscar, string menu, Frmpresupuesto frmpresupuesto)
+        {
+            // TODO: Complete member initialization
+            this.negocioPresupuesto = new Presupueston();
+            this.InitializeComponent();
+            this.busqueda = buscar;
+            this.menub = menu;
+            this.frmpresupuesto = frmpresupuesto;
+            this.Visual();
+        }
+
+        #region TECLAS DE ACCESO
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.B))
+            {
+                ts_buscar.ShowDropDown();
+                return true;
+            }
+
+            if (keyData == Keys.Escape)
+            {
+                EventArgs eve = new EventArgs();
+                object sender = new object();
+                this.Btn_salir_Click(sender, eve);
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        #endregion
+
+        #region NOMBRES COLUMNAS
+
+        private void NombresColumnaCuenta()
+        {
+            dgv_busqueda.Columns[0].HeaderText = "CUENTA";
+            dgv_busqueda.Columns[1].HeaderText = "NOMBRE";
+            dgv_busqueda.Columns[2].HeaderText = "TIPO DE CUENTA";
+            dgv_busqueda.Columns[3].HeaderText = "PIDE NIT";
+            dgv_busqueda.Columns[4].HeaderText = "CENTRO COSTOS";
+            dgv_busqueda.Columns[5].HeaderText = "AJUSTES INTEGRALES";
+            dgv_busqueda.Columns[16].HeaderText = "NIT AJUSTES";
+            dgv_busqueda.Columns[7].HeaderText = "CUENTA AJUSTES";
+            dgv_busqueda.Columns[8].HeaderText = "CUENTA CORRECION";
+            dgv_busqueda.Columns[9].HeaderText = "D/C";
+            dgv_busqueda.Columns[10].HeaderText = "RETENCION";
+            dgv_busqueda.Columns[11].HeaderText = "% RETENCION";
+            dgv_busqueda.Columns[12].HeaderText = "CONCEP. RETENCION";
+            dgv_busqueda.Columns[13].HeaderText = "CUENTA CIERRE IMP";
+            dgv_busqueda.Columns[14].HeaderText = "FORMATO MEDIOS";
+            dgv_busqueda.Columns[15].HeaderText = "RETEICA";
+            dgv_busqueda.Columns[6].Visible = false;
+            dgv_busqueda.Columns[16].DisplayIndex = 6;
+            dgv_busqueda.Columns[0].Width = 90;
+            dgv_busqueda.Columns[1].Width = 250;
+            dgv_busqueda.Columns[2].Width = 70;
+            dgv_busqueda.Columns[3].Width = 70;
+            dgv_busqueda.Columns[4].Width = 70;
+            dgv_busqueda.Columns[5].Width = 70;
+            dgv_busqueda.Columns[6].Width = 90;
+            dgv_busqueda.Columns[7].Width = 90;
+            dgv_busqueda.Columns[8].Width = 90;
+            dgv_busqueda.Columns[9].Width = 50;
+            dgv_busqueda.Columns[10].Width = 90;
+            dgv_busqueda.Columns[12].Width = 70;
+            dgv_busqueda.Columns[13].Width = 100;
+            dgv_busqueda.Columns[14].Width = 90;
+            dgv_busqueda.Size = new Size(980, 410);
+        }
+
+        private void NombresColumnaPresupuesto()
+        {
+            dgv_busqueda.Columns[0].HeaderText = "AÑO";
+            dgv_busqueda.Columns[1].HeaderText = "MES";
+            dgv_busqueda.Columns[2].HeaderText = "CUENTA";
+            dgv_busqueda.Columns[3].HeaderText = "PRESUPUESTO";
+            dgv_busqueda.Columns[4].HeaderText = "NOMB MES";
+            dgv_busqueda.Columns[5].HeaderText = "CENTRO";
+            dgv_busqueda.Columns[6].HeaderText = "SUCURSAL";
+            dgv_busqueda.Columns[4].Visible = false;
+            dgv_busqueda.Columns[6].Visible = false;
+            dgv_busqueda.Columns[3].DisplayIndex = 6;
+            dgv_busqueda.Size = new Size(400, 470);
+            dgv_busqueda.Columns[3].Width = 120;
+        }
+
+        #endregion
+
+        #region VISUAL
+
+        private void Visual()
+        {
+            switch (this.busqueda)
+            {
+                case "cuenta":
+
+                    this.Text = "CUENTAS";
+                    ts_buscar1.Text = "NUMERO DE CUENTA";
+                    ts_buscar2.Text = "NOMBRE";
+                    ts_buscar3.Text = "TIPO CUENTA";
+                    ts_buscar4.Visible = false;
+                    List<CuentaDataSource> tablacuentas = new List<CuentaDataSource>();
+                    try
+                    {
+                        tablacuentas = this.negocioCuenta.Busqueda("todos", "todos");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("SE PRESENTO UN ERROR. " + ex.Message);
+                    }
+
+                    dgv_busqueda.DataSource = tablacuentas;
+                    this.NombresColumnaCuenta();
+                    break;
+
+                case "presupuesto":
+
+                    this.Size = new Size(465, 600);
+                    txt_busqueda.Size = new Size(285, 20);
+                    this.Text = "PRESUPUESTO";
+                    ts_buscar1.Text = "AÑO";
+                    ts_buscar2.Text = "CUENTA";
+                    ts_buscar3.Text = "CENTRO";
+                    ts_buscar4.Visible = false;
+                    List<PresupDataSource> tablapresupuesto = new List<PresupDataSource>();
+                    try
+                    {
+                        tablapresupuesto = this.negocioPresupuesto.Busqueda("todos", "todos");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("SE PRESENTO UN ERROR. " + ex.Message);
+                    }
+                    dgv_busqueda.DataSource = tablapresupuesto;
+                    this.NombresColumnaPresupuesto();
+                    break;
+
+            }
+        }
+
+        private void Ts_buscar_Click(object sender, EventArgs e)
+        {
+            ToolStrip tb = (ToolStrip)sender;
+            lbl_buscar.Text = tb.Text;
+        }
+
+        #endregion
+
+        #region EVENTOS FORMULARIO
+
+        private void Btn_salir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            switch (this.busqueda)
+            {
+                case "cuenta":
+                    this.formcuenta.BotonesHabit();
+                    break;
+            }
+        }
+
+        private void Form_VisualContable_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            switch (this.busqueda)
+            {
+                case "cuenta":
+                    this.formcuenta.BotonesHabit();
+                    break;
+            }
+        }
+
+        private void Txt_busqueda_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Down)
+            {
+                e.Handled = false;
+                SendKeys.Send("{TAB}");
+                dgv_busqueda.Focus();
+            }
+        }
+
+        private void Txt_busqueda_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                e.Handled = false;
+                SendKeys.Send("{TAB}");
+                dgv_busqueda.Focus();
+            }
+
+            switch (this.busqueda)
+            {
+                case "cuenta":
+                    List<CuentaDataSource> buscarcuenta = new List<CuentaDataSource>();
+                    try
+                    {
+                        buscarcuenta = this.negocioCuenta.Busqueda(lbl_buscar.Text.ToLower(), txt_busqueda.Text);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("SE PRESENTO UN ERROR. " + ex.Message, "ERROR");
+                    }
+
+                    dgv_busqueda.DataSource = buscarcuenta;
+                    this.NombresColumnaCuenta();
+                    break;
+
+                case "presupuesto":
+                    List<PresupDataSource> buscarpresu = new List<PresupDataSource>();
+                    try
+                    {
+                        buscarpresu = this.negocioPresupuesto.Busqueda(lbl_buscar.Text.ToLower(), txt_busqueda.Text);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("SE PRESENTO UN ERROR. " + ex.Message, "ERROR");
+                    }
+
+                    dgv_busqueda.DataSource = buscarpresu;
+                    this.NombresColumnaPresupuesto();
+                    break;
+            }
+        }
+
+        #endregion
+
+        #region EVENTOS DATAGRIDVIEX
+
+        private void Dgv_busqueda_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgv_busqueda.CurrentRow.Cells[0].Value != null)
+            {
+                this.EventosTabla(dgv_busqueda.CurrentRow.Cells[0].Value.ToString());
+            }
+        }
+
+        private void Dgv_busqueda_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == (char)Keys.Enter)
+            {
+                if (dgv_busqueda.CurrentRow.Cells[0].Value != null)
+                {
+                    this.EventosTabla(dgv_busqueda.CurrentRow.Cells[0].Value.ToString());
+                }
+            }
+
+            if (e.KeyCode == Keys.Up)
+            {
+                if (dgv_busqueda.CurrentRow.Index == 0)
+                {
+                    txt_busqueda.Focus();
+                }
+            }
+        }
+
+        private void EventosTabla(string valor)
+        {
+            switch (this.busqueda)
+            {
+                case "cuenta":
+                    switch (this.menub)
+                    {
+                        case "editar":
+                            this.Close();
+                            this.formcuenta.CargarDatos(valor);
+                            this.formcuenta.Show();
+                            break;
+
+                        case "eliminar":
+
+                            bool validcue = false;
+                            try
+                            {
+                                validcue = this.negocioCuenta.ValidarCuentaEliminar(valor);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("SE PRESENTO UN ERROR. " + ex.Message, "ERROR");
+                            }
+
+                            if (validcue)
+                            {
+                                DialogResult result = MessageBox.Show("ESTA SEGURO QUE DESEA ELIMINAR?", "ELIMINAR", MessageBoxButtons.YesNo);
+                                if (result == DialogResult.Yes)
+                                {
+                                    bool val = false;
+                                    try
+                                    {
+                                        val = this.negocioCuenta.EliminarCuenta(valor);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show("SE PRESENTO UN ERROR. " + ex.Message, "ERROR");
+                                    }
+
+                                    if (val)
+                                    {
+                                        MessageBox.Show("ESTE REGISTRO FUE ELIMINADO", "ELIMINAR", MessageBoxButtons.OK);
+                                        this.Close();
+                                        this.formcuenta.BotonesHabit();
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("ESTA CUENTA NO PUEDE SER ELIMINADA", "ELIMINAR", MessageBoxButtons.OK);
+                            }
+
+                            break;
+
+                        case "buscar":
+                            this.Close();
+                            this.formcuenta.DevolverCuenta(valor);
+                            break;
+                    }
+
+                    break;
+            }
+        }
+
+        #endregion
+
+        /* /// <summary>
+        /// Eliminars the presupuesto.
+        /// </summary>
+        private void EliminarPresupuesto()
+        {
+            PresupDataSource presup = new PresupDataSource();
+            presup.Anio = short.Parse(txtanio.Text);
+            presup.Cuenta = txtnumcuent.Text;
+            presup.IdCentro = int.Parse(txt_centro.Text);
+            bool result1 = false;
+            if (result1)
+            {
+
+                //dgvpresu.Visible = true;
+                DialogResult result = MessageBox.Show("Esta seguro que desea eliminar?", "ELIMINAR", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        if (this.negocioPresupuesto.EliminarPresupuesto(presup))
+                        {
+                            MessageBox.Show("El presupuesto fue eliminado", "ERROR", MessageBoxButtons.OK);
+                        }
+
+                        this.CamposVacios();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Se presento un error. " + ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("El presupuesto no Existe", "No Existe", MessageBoxButtons.OK);
+                txtanio.Text = string.Empty;
+                txtnumcuent.Text = string.Empty;
+                txtnomcue.Text = string.Empty;
+            }
+        }
+
+
+        /// <summary>
+        /// Buscars the presupuesto.
+        /// </summary>
+        private void BuscarPresupuesto()
+        {
+            PresupDataSource presup = new PresupDataSource();
+            int valor = 0;
+            string cuenta = !int.TryParse(txtnumcuent.Text, out valor) ? txtnomcue.Text : txtnumcuent.Text;
+            presup.Anio = short.Parse(txtanio.Text);
+            presup.Cuenta = cuenta;
+            bool result = false;
+            if (result)
+            {
+                //dgvpresu.Visible = true;
+            }
+            else
+            {
+                txtanio.Text = string.Empty;
+                txtnumcuent.Text = string.Empty;
+                txtnomcue.Text = string.Empty;
+            }
+        }*/
+    }
+}

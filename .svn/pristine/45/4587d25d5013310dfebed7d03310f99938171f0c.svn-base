@@ -1,0 +1,121 @@
+﻿// -----------------------------------------------------------------------
+// <copyright file="ConceptoPagoD.cs" company="">
+// TODO: Update copyright text.
+// </copyright>
+// -----------------------------------------------------------------------
+
+namespace Datos.Cartera
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using Entities;
+
+
+    /// <summary>
+    /// TODO: Update summary.
+    /// </summary>
+    public class ConceptoPagoD
+    {
+        public ConceptoPagoD()
+        {
+        }
+
+        public List<conceptospago> CargarConcePago()
+        {
+            List<conceptospago> conpago = new List<conceptospago>();
+            using (contableEntities bd = new contableEntities())
+            {
+                var query = bd.conceptospago.Include("formaspago").Include("maeconta").ToList();
+                conpago = query;
+            }
+
+            return conpago;
+        }
+
+
+        public bool ExisteConPago(string codigo)
+        {
+            bool existe = false;
+            using (contableEntities bd = new contableEntities())
+            {
+                var query = bd.conceptospago.Where(con => con.codigoconpa == codigo).Count();
+                existe = query > 0 ? true : false;
+            }
+
+            return existe;
+        }
+
+        public bool GuardoConPago(conceptospago conpa)
+        {
+            bool guardo = false;
+            using (contableEntities bd = new contableEntities())
+            {
+                bd.conceptospago.Add(conpa);
+                bd.SaveChanges();
+                guardo = true;
+            }
+
+            return guardo;
+        }
+
+        public bool ActualizarConPago(conceptospago conpa)
+        {
+            bool guardo = false;
+            using (contableEntities bd = new contableEntities())
+            {
+                var query = bd.conceptospago.Where(con => con.codigoconpa == conpa.codigoconpa).First();
+                query.nombreconcepto= conpa.nombreconcepto;
+                query.codigoforpago = conpa.codigoforpago;
+                query.cuenta = conpa.cuenta;
+                query.porcentaje = conpa.porcentaje;
+                bd.SaveChanges();
+                guardo = true;
+            }
+
+            return guardo;
+        }
+
+        public conceptospago DevolverConPago(string id)
+        {
+            conceptospago conpa = new conceptospago();
+            using (contableEntities bd = new contableEntities())
+            {
+                var query = bd.conceptospago.Include("formaspago").Include("maeconta").Where(con => con.codigoconpa == id).First();
+                conpa = query;
+            }
+
+            return conpa;
+        }
+
+        public bool EliminaConPa(string id)
+        {
+            bool elimina = false;
+            using (contableEntities bd = new contableEntities())
+            {
+                var query = bd.conceptospago.Where(con => con.codigoconpa == id).First();
+                bd.conceptospago.Remove(query);
+                bd.SaveChanges();
+                elimina = true;
+            }
+
+            return elimina;
+        }
+
+        public List<conceptospago> BuscarConPa(string buscar)
+        {
+            List<conceptospago> conpa = new List<conceptospago>();
+            using (contableEntities bd = new contableEntities())
+            {
+                var query = bd.conceptospago.Include("formaspago").Include("maeconta").Where(con => con.codigoconpa.Contains(buscar) || con.nombreconcepto.Contains(buscar));
+                if (query.Count() > 0)
+                {
+                    conpa = query.ToList();
+                }
+            }
+
+            return conpa;
+        }
+    }
+}

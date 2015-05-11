@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace App.Forms.Contable.Reportes
+{
+    public partial class Form_ReporteLibros : Form
+    {
+        private Form_LibroMayor form_LibroMayor;
+        private string p;
+        private List<Entities.Types.SaldosCuentasDataSource> balance;
+        private string p_2;
+        private bool p_3;
+
+        public Form_ReporteLibros()
+        {
+            InitializeComponent();
+        }
+
+        public Form_ReporteLibros(Form_LibroMayor form_LibroMayor, string p, List<Entities.Types.SaldosCuentasDataSource> balance, string p_2, bool p_3)
+        {
+            // TODO: Complete member initialization
+            this.form_LibroMayor = form_LibroMayor;
+            this.p = p;
+            this.balance = balance;
+            this.p_2 = p_2;
+            this.p_3 = p_3;
+        }
+    }
+}

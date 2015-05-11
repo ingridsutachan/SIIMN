@@ -1,0 +1,110 @@
+﻿// -----------------------------------------------------------------------
+// <copyright file="Class1.cs" company="">
+// TODO: Update copyright text.
+// </copyright>
+// -----------------------------------------------------------------------
+
+namespace Datos.General
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using Entities;
+
+    /// <summary>
+    /// TODO: Update summary.
+    /// </summary>
+    public class Parametrosc
+    {
+        public Parametrosc()
+        {
+        }
+
+        public List<parametros> CargarDatosComprobante()
+        {
+            List<parametros> param = new List<parametros>();
+            using (contableEntities bd = new contableEntities())
+            {
+                var query = bd.parametros.Where(par => par.nombreparam == "cueniniing" || par.nombreparam == "cuenfining" || par.nombreparam == "cueninicos"
+                    || par.nombreparam == "cuenfincos" || par.nombreparam == "cuenuti" || par.nombreparam == "codcomp" || par.nombreparam == "descomp").ToList();
+                param = query;
+            }
+
+            return param;
+        }
+
+        public bool GuardarDatosComprobante(List<parametros> param)
+        {
+            bool result = false;
+            using (contableEntities bd = new contableEntities())
+            {
+                var query = bd.parametros.Where(par => par.nombreparam == "cueniniing").First();
+                query.valorparam = param[0].valorparam;
+                var query1 = bd.parametros.Where(par => par.nombreparam == "cuenfining").First();
+                query1.valorparam = param[1].valorparam;
+                var query2 = bd.parametros.Where(par => par.nombreparam == "cueninicos").First();
+                query2.valorparam = param[2].valorparam;
+                var query3 = bd.parametros.Where(par => par.nombreparam == "cuenfincos").First();
+                query3.valorparam = param[3].valorparam;
+                var query4 = bd.parametros.Where(par => par.nombreparam == "cuenuti").First();
+                query4.valorparam = param[4].valorparam;
+                var query5 = bd.parametros.Where(par => par.nombreparam == "codcomp").First();
+                query5.valorparam = param[5].valorparam;
+                var query6 = bd.parametros.Where(par => par.nombreparam == "descomp").First();
+                query6.valorparam = param[6].valorparam;
+                bd.SaveChanges();
+                result = true;
+            }
+
+            return result;
+        }
+
+        public List<parametros> CargarDatosAsiento()
+        {
+            List<parametros> param = new List<parametros>();
+            using (contableEntities bd = new contableEntities())
+            {
+                var query = bd.parametros.Where(par => par.nombreparam == "cuentacaja" || par.nombreparam == "cuentarete" || par.nombreparam == "cuentaica"
+                    || par.nombreparam == "cuentainteres" || par.nombreparam == "cuentacomis" || par.nombreparam == "cuentadto" || par.nombreparam == "cuentacheq"
+                    || par.nombreparam == "2cheque" || par.nombreparam == "2retenc" || par.nombreparam == "cuentasocio").ToList();
+                param = query;
+            }
+
+            return param;
+        }
+
+        public bool GuardarDatosAsiento(List<parametros> param)
+        {
+            bool result = false;
+            using (contableEntities bd = new contableEntities())
+            {
+                var query = bd.parametros.Where(par => par.nombreparam == "cuentacaja").First();
+                query.valorparam = param[0].valorparam;
+                var query1 = bd.parametros.Where(par => par.nombreparam == "cuentarete").First();
+                query1.valorparam = param[1].valorparam;
+                var query2 = bd.parametros.Where(par => par.nombreparam == "cuentaica").First();
+                query2.valorparam = param[2].valorparam;
+                var query3 = bd.parametros.Where(par => par.nombreparam == "cuentainteres").First();
+                query3.valorparam = param[3].valorparam;
+                var query4 = bd.parametros.Where(par => par.nombreparam == "cuentacomis").First();
+                query4.valorparam = param[4].valorparam;
+                var query5 = bd.parametros.Where(par => par.nombreparam == "cuentadto").First();
+                query5.valorparam = param[5].valorparam;
+                var query6 = bd.parametros.Where(par => par.nombreparam == "cuentacheq").First();
+                query6.valorparam = param[6].valorparam;
+                var query7 = bd.parametros.Where(par => par.nombreparam == "2cheque").First();
+                query7.valorparam = param[7].valorparam;
+                var query8 = bd.parametros.Where(par => par.nombreparam == "2retenc").First();
+                query8.valorparam = param[8].valorparam;
+                var query9  = bd.parametros.Where(par => par.nombreparam == "cuentasocio").First();
+                query9.valorparam = param[9].valorparam;
+                bd.SaveChanges();
+                result = true;
+            }
+
+            return result;
+        }
+
+         }
+}

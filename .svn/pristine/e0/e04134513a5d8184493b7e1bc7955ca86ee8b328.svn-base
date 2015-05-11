@@ -1,0 +1,216 @@
+﻿namespace App.Forms.Contable
+{
+    partial class Frmcentro
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt_nombre = new System.Windows.Forms.TextBox();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btn_nuevo = new System.Windows.Forms.ToolStripButton();
+            this.btn_editar = new System.Windows.Forms.ToolStripButton();
+            this.btn_eliminar = new System.Windows.Forms.ToolStripButton();
+            this.btn_buscar = new System.Windows.Forms.ToolStripButton();
+            this.btn_imprimir = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btn_guardar = new System.Windows.Forms.ToolStripButton();
+            this.btn_cancelar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btn_salir = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(2, 64);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "NOMBRE";
+            // 
+            // txt_nombre
+            // 
+            this.txt_nombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txt_nombre.Enabled = false;
+            this.txt_nombre.Location = new System.Drawing.Point(79, 61);
+            this.txt_nombre.MaxLength = 45;
+            this.txt_nombre.Name = "txt_nombre";
+            this.txt_nombre.Size = new System.Drawing.Size(214, 20);
+            this.txt_nombre.TabIndex = 45;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btn_nuevo,
+            this.btn_editar,
+            this.btn_eliminar,
+            this.btn_buscar,
+            this.btn_imprimir,
+            this.toolStripSeparator1,
+            this.btn_guardar,
+            this.btn_cancelar,
+            this.toolStripSeparator2,
+            this.btn_salir});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(318, 31);
+            this.toolStrip1.TabIndex = 66;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btn_nuevo
+            // 
+            this.btn_nuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_nuevo.Image = global::App.Properties.Resources.new24;
+            this.btn_nuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_nuevo.Name = "btn_nuevo";
+            this.btn_nuevo.Size = new System.Drawing.Size(28, 28);
+            this.btn_nuevo.Text = "Nuevo";
+            this.btn_nuevo.ToolTipText = "Nuevo(Ctrl+N)";
+            // 
+            // btn_editar
+            // 
+            this.btn_editar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_editar.Image = global::App.Properties.Resources.edit24;
+            this.btn_editar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_editar.Name = "btn_editar";
+            this.btn_editar.Size = new System.Drawing.Size(28, 28);
+            this.btn_editar.Text = "Editar";
+            this.btn_editar.ToolTipText = "Editar(Ctrl+E)";
+            // 
+            // btn_eliminar
+            // 
+            this.btn_eliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_eliminar.Image = global::App.Properties.Resources.delete24;
+            this.btn_eliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_eliminar.Name = "btn_eliminar";
+            this.btn_eliminar.Size = new System.Drawing.Size(28, 28);
+            this.btn_eliminar.Text = "Eliminar";
+            this.btn_eliminar.ToolTipText = "Eliminar(Ctrl+D)";
+            // 
+            // btn_buscar
+            // 
+            this.btn_buscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_buscar.Image = global::App.Properties.Resources.search24;
+            this.btn_buscar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_buscar.Name = "btn_buscar";
+            this.btn_buscar.Size = new System.Drawing.Size(28, 28);
+            this.btn_buscar.Text = "Buscar";
+            this.btn_buscar.ToolTipText = "Buscar(Ctrl+B)";
+            // 
+            // btn_imprimir
+            // 
+            this.btn_imprimir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_imprimir.Image = global::App.Properties.Resources.printer24;
+            this.btn_imprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_imprimir.Name = "btn_imprimir";
+            this.btn_imprimir.Size = new System.Drawing.Size(28, 28);
+            this.btn_imprimir.Text = "Imprimir";
+            this.btn_imprimir.ToolTipText = "Imprimir (Ctrl+P)";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            // 
+            // btn_guardar
+            // 
+            this.btn_guardar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_guardar.Enabled = false;
+            this.btn_guardar.Image = global::App.Properties.Resources.save24;
+            this.btn_guardar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_guardar.Name = "btn_guardar";
+            this.btn_guardar.Size = new System.Drawing.Size(28, 28);
+            this.btn_guardar.Text = "Guardar";
+            this.btn_guardar.ToolTipText = "Guardar(Ctrl+G)";
+            // 
+            // btn_cancelar
+            // 
+            this.btn_cancelar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_cancelar.Enabled = false;
+            this.btn_cancelar.Image = global::App.Properties.Resources.cancel24;
+            this.btn_cancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_cancelar.Name = "btn_cancelar";
+            this.btn_cancelar.Size = new System.Drawing.Size(28, 28);
+            this.btn_cancelar.Text = "Cancelar";
+            this.btn_cancelar.ToolTipText = "Cancelar(Ctrl+Z)";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            // 
+            // btn_salir
+            // 
+            this.btn_salir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_salir.Image = global::App.Properties.Resources.salir24;
+            this.btn_salir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_salir.Name = "btn_salir";
+            this.btn_salir.Size = new System.Drawing.Size(28, 28);
+            this.btn_salir.Text = "Salir";
+            this.btn_salir.ToolTipText = "Salir(Esc)";
+            // 
+            // Frmcentro
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(318, 124);
+            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.txt_nombre);
+            this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "Frmcentro";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "CENTRO DE COSTOS";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Frmcentro_FormClosing);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txt_nombre;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton btn_nuevo;
+        private System.Windows.Forms.ToolStripButton btn_editar;
+        private System.Windows.Forms.ToolStripButton btn_eliminar;
+        private System.Windows.Forms.ToolStripButton btn_buscar;
+        private System.Windows.Forms.ToolStripButton btn_imprimir;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton btn_guardar;
+        private System.Windows.Forms.ToolStripButton btn_cancelar;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton btn_salir;
+    }
+}

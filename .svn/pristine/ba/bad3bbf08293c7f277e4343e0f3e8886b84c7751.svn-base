@@ -1,0 +1,98 @@
+﻿namespace App.Forms.Contable.reportes
+{
+    partial class Form_ReporteNits
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.btn_ordenumero = new System.Windows.Forms.Button();
+            this.btn_ordenombre = new System.Windows.Forms.Button();
+            this.crystal_reportnits = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.reporteNits1 = new App.Forms.Contable.reportes.ReporteNits();
+            this.SuspendLayout();
+            // 
+            // btn_ordenumero
+            // 
+            this.btn_ordenumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ordenumero.Location = new System.Drawing.Point(77, 34);
+            this.btn_ordenumero.Name = "btn_ordenumero";
+            this.btn_ordenumero.Size = new System.Drawing.Size(238, 23);
+            this.btn_ordenumero.TabIndex = 1;
+            this.btn_ordenumero.Text = "1. ORDENADO POR NÚMERO";
+            this.btn_ordenumero.UseVisualStyleBackColor = true;
+            this.btn_ordenumero.Click += new System.EventHandler(this.btn_ordenumero_Click);
+            // 
+            // btn_ordenombre
+            // 
+            this.btn_ordenombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ordenombre.Location = new System.Drawing.Point(359, 34);
+            this.btn_ordenombre.Name = "btn_ordenombre";
+            this.btn_ordenombre.Size = new System.Drawing.Size(238, 23);
+            this.btn_ordenombre.TabIndex = 2;
+            this.btn_ordenombre.Text = "2. ORDENADO POR NOMBRE";
+            this.btn_ordenombre.UseVisualStyleBackColor = true;
+            this.btn_ordenombre.Click += new System.EventHandler(this.btn_ordenombre_Click);
+            // 
+            // crystal_reportnits
+            // 
+            this.crystal_reportnits.ActiveViewIndex = 0;
+            this.crystal_reportnits.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            //this.crystal_reportnits.CachedPageNumberPerDoc = 10;
+            this.crystal_reportnits.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystal_reportnits.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crystal_reportnits.Location = new System.Drawing.Point(0, 0);
+            this.crystal_reportnits.Name = "crystal_reportnits";
+            this.crystal_reportnits.ReportSource = this.reporteNits1;
+            this.crystal_reportnits.ShowExportButton = false;
+            this.crystal_reportnits.ShowGroupTreeButton = false;
+            this.crystal_reportnits.ShowParameterPanelButton = false;
+            this.crystal_reportnits.Size = new System.Drawing.Size(654, 126);
+            this.crystal_reportnits.TabIndex = 0;
+            this.crystal_reportnits.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.crystal_reportnits.Visible = false;
+            // 
+            // Form_ReporteNits
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(654, 126);
+            this.Controls.Add(this.btn_ordenombre);
+            this.Controls.Add(this.btn_ordenumero);
+            this.Controls.Add(this.crystal_reportnits);
+            this.Name = "Form_ReporteNits";
+            this.Text = "REPORTE NITS O TERCEROS";
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystal_reportnits;
+        private System.Windows.Forms.Button btn_ordenumero;
+        private System.Windows.Forms.Button btn_ordenombre;
+        private ReporteNits reporteNits1;
+    }
+}

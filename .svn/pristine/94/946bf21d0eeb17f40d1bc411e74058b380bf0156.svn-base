@@ -1,0 +1,94 @@
+﻿// -----------------------------------------------------------------------
+// <copyright file="Parametrosn.cs" company="">
+// TODO: Update copyright text.
+// </copyright>
+// -----------------------------------------------------------------------
+
+namespace Negocios.General
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using Datos.General;
+    using Entities.Types;
+    using Entities;
+    /// <summary>
+    /// TODO: Update summary.
+    /// </summary>
+    public class Parametrosn
+    {
+        private Parametrosc persistencia;
+
+        public Parametrosn()
+        {
+            this.persistencia = new Parametrosc();
+        }
+
+        public List<ParametrosDataSource> CargarDatosComprobante()
+        {
+            List<ParametrosDataSource> parame = new List<ParametrosDataSource>();
+            var items = this.persistencia.CargarDatosComprobante();
+            foreach (var item in items)
+            {
+                ParametrosDataSource param = new ParametrosDataSource();
+                param.IdParametro = item.idparametro;
+                param.NombreParametro = item.nombreparametro;
+                param.DescripParametro = item.descriparam;
+                param.ValorParametro = item.valorparam;
+                parame.Add(param);
+            }
+            return parame;
+        }
+
+        public bool GuardarDatosComprobante(List<ParametrosDataSource> items)
+        {
+            bool result = false;
+            List<parametro> parame = new List<parametro>();
+            foreach (var item in items)
+            {
+                parametro param = new parametro();
+                param.idparametro = item.IdParametro;
+                param.nombreparametro = item.NombreParametro;
+                param.descriparam = item.DescripParametro;
+                param.valorparam = item.ValorParametro;
+                parame.Add(param);
+            }
+            result = this.persistencia.GuardarDatosComprobante(parame);
+            return result;
+        }
+
+        public List<ParametrosDataSource> CargarDatosAsiento()
+        {
+            List<ParametrosDataSource> parame = new List<ParametrosDataSource>();
+            var items = this.persistencia.CargarDatosAsiento();
+            foreach (var item in items)
+            {
+                ParametrosDataSource param = new ParametrosDataSource();
+                param.IdParametro = item.idparametro;
+                param.NombreParametro = item.nombreparametro;
+                param.DescripParametro = item.descriparam;
+                param.ValorParametro = item.valorparam;
+                parame.Add(param);
+            }
+            return parame;
+        }
+
+        public bool GuardarDatosAsiento(List<ParametrosDataSource> items)
+        {
+            bool result = false;
+            List<parametro> parame = new List<parametro>();
+            foreach (var item in items)
+            {
+                parametro param = new parametro();
+                param.idparametro = item.IdParametro;
+                param.nombreparametro = item.NombreParametro;
+                param.descriparam = item.DescripParametro;
+                param.valorparam = item.ValorParametro;
+                parame.Add(param);
+            }
+            result = this.persistencia.GuardarDatosAsiento(parame);
+            return result;
+        }
+    }
+}

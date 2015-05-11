@@ -197,7 +197,6 @@ C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Contable.FrmTributario.resources
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Contable.Frmvisualizarcuentas.resources
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Contable.frm_auxcuenta.resources
-C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Contable.Frm_auxiliar.resources
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Contable.Frm_BalanceGeneral.resources
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Contable.Frm_centrosimpr.resources
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Contable.frm_certificados.resources
@@ -209,7 +208,6 @@ C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Contable.Form_Formatos.resources
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Contable.Form_Inflacion.resources
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Contable.Frm_MediosMag.resources
-C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Contable.Frm_Pyg.resources
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Contable.Frm_Saldosnit.resources
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Contable.Frm_varpresup.resources
 C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Contable.Reportes.Form_ReportCuenta.resources
@@ -275,3 +273,12 @@ C:\Users\Ingrid Sutachan\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86
 C:\Users\Ingrid Sutachan\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Contable.Reportes.Form_ReportePyg.resources
 C:\Users\Ingrid Sutachan\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Contable.Form_ProgresBar.resources
 C:\Users\Ingrid Sutachan\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Contable.Form_CierreCuentas.resources
+C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Contable.Form_CierreCuentas.resources
+C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Contable.Form_ProgresBar.resources
+C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Contable.Form_Auxiliar.resources
+C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Contable.Form_Pyg.resources
+C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Contable.Reportes.Form_ReporteLibros.resources
+C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn\App\obj\x86\Debug\App.Forms.Contable.Reportes.Form_ReportePyg.resources
+C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn1\App\bin\Debug\App.exe.config
+C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn1\App\obj\x86\Debug\App.exe
+C:\Users\MARKETING\Documents\Visual Studio 2010\Projects\Siimn1\App\obj\x86\Debug\App.pdb

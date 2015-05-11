@@ -1,0 +1,177 @@
+﻿namespace Entities.Types
+{
+    using System;
+
+    /// <summary>
+    /// Clase cuenta data source
+    /// </summary>
+    public class CuentaDataSource
+    {
+        /// <summary>
+        /// Gets or sets the cuenta.
+        /// </summary>
+        /// <value>
+        /// The cuenta.
+        /// </value>
+        public string Cuenta { get; set; }
+
+        /// <summary>
+        /// Gets or sets the nombre.
+        /// </summary>
+        /// <value>
+        /// The nombre.
+        /// </value>
+        public string Nombre { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tipocta.
+        /// </summary>
+        /// <value>
+        /// The tipocta.
+        /// </value>
+        public string Tipocta { get; set; }
+
+        /// <summary>
+        /// Gets or sets the pidenit.
+        /// </summary>
+        /// <value>
+        /// The pidenit.
+        /// </value>
+        public bool Pidenit { get; set; }
+
+        /// <summary>
+        /// Gets or sets the centro.
+        /// </summary>
+        /// <value>
+        /// The centro.
+        /// </value>
+        public bool Centro { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ajusteinteg.
+        /// </summary>
+        /// <value>
+        /// The ajusteinteg.
+        /// </value>
+        public bool Ajusteinteg { get; set; }
+
+        /// <summary>
+        /// Gets or sets the nitajustes.
+        /// </summary>
+        /// <value>
+        /// The nitajustes.
+        /// </value>
+        public int? IdNitajustes { get; set; }
+
+        /// <summary>
+        /// Gets or sets the cueaju.
+        /// </summary>
+        /// <value>
+        /// The cueaju.
+        /// </value>
+        public string Cueaju { get; set; }
+
+        /// <summary>
+        /// Gets or sets the cuencorre.
+        /// </summary>
+        /// <value>
+        /// The cuencorre.
+        /// </value>
+        public string Cuencorre { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ajudoc.
+        /// </summary>
+        /// <value>
+        /// The ajudoc.
+        /// </value>
+        public string Ajudoc { get; set; }
+
+        /// <summary>
+        /// Gets or sets the cuentret.
+        /// </summary>
+        /// <value>
+        /// The cuentret.
+        /// </value>
+        public bool Cuentret { get; set; }
+
+        /// <summary>
+        /// Gets or sets the porete.
+        /// </summary>
+        /// <value>
+        /// The porete.
+        /// </value>
+        public decimal? Porete { get; set; }
+
+        /// <summary>
+        /// Gets or sets the concepret.
+        /// </summary>
+        /// <value>
+        /// The concepret.
+        /// </value>
+        public string Concepret { get; set; }
+
+        /// <summary>
+        /// Gets or sets the cuentacierreimp.
+        /// </summary>
+        /// <value>
+        /// The cuentacierreimp.
+        /// </value>
+        public string Cuentacierreimp { get; set; }
+
+        public string FormatoMedios { get; set; }
+
+        public bool ReteIca { get; set; }
+
+        public string Nit { get; set; }
+    }
+
+    /// <summary>
+    /// Clase presupuesto data source
+    /// </summary>
+    public class PresupDataSource
+    {
+        /// <summary>
+        /// Gets or sets the anio.
+        /// </summary>
+        /// <value>
+        /// The anio.
+        /// </value>
+        public short Anio { get; set; }
+
+        /// <summary>
+        /// Gets or sets the mes.
+        /// </summary>
+        /// <value>
+        /// The mes.
+        /// </value>
+        public string Mes { get; set; }
+
+        /// <summary>
+        /// Gets or sets the cuenta.
+        /// </summary>
+        /// <value>
+        /// The cuenta.
+        /// </value>
+        public string Cuenta { get; set; }
+
+        /// <summary>
+        /// Gets or sets the presupuesto.
+        /// </summary>
+        /// <value>
+        /// The presupuesto.
+        /// </value>
+        public decimal Presupuesto { get; set; }
+
+        /// <summary>
+        /// Gets or sets the nombre mes.
+        /// </summary>
+        /// <value>
+        /// The nombre mes.
+        /// </value>
+        public string NombreMes { get; set; }
+
+        public int IdCentro { get; set; }
+
+    }
+}

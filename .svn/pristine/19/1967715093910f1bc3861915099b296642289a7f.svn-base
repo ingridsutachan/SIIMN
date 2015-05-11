@@ -1,0 +1,753 @@
+﻿////*********************************************************
+//
+//    <copyright file="frmcuenta.cs" company="Marketing Software de Colombia LTDA">
+//    @Autor Ingrid Sutachan
+//    @fecha 01 marzo 2014
+//    </copyright>
+//
+////*********************************************************
+namespace App.Forms.Contable
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Windows.Forms;
+    using Entities.Types;
+    using Negocios.Contable;
+    using Negocios.General;
+
+    /// <summary>
+    /// Clase de formulario cuenta
+    /// </summary>
+    public partial class Form_Cuenta : Form
+    {
+        #region INSTANCIAS DE OBJETOS
+
+        /// <summary>
+        /// instacia la cuenta de la capa negocios
+        /// </summary>
+        private Cuentan negocioCuenta;
+
+        private Empresan negocioEmpresa;
+
+        /// <summary>
+        /// variable para manejar cierre de formulario
+        /// </summary>
+        private bool usrClose;
+
+        private Funciones funtions;
+
+        private string cuentaedit;
+
+        #endregion
+
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Form_Cuenta"/> class.
+        /// </summary>
+        public Form_Cuenta()
+        {
+            this.usrClose = false;
+            this.InitializeComponent();
+            this.negocioCuenta = new Cuentan();
+            this.funtions = new Funciones();
+            this.negocioEmpresa = new Empresan();
+            this.NombreEmpresa();
+            this.AutoCompletar();
+        }
+
+        #region BOTONES CLICK
+
+        private void btn_nuevo_Click(object sender, EventArgs e)
+        {
+            this.CamposVacios();
+            this.CamposActivos();
+            this.txtnumcu.Focus();
+            this.AutoCompletar();
+            this.btn_guardar.Enabled = true;
+            this.btn_editar.Enabled = false;
+            this.btn_eliminar.Enabled = false;
+            this.btn_imprimir.Enabled = false;
+        }
+
+        private void btn_editar_Click(object sender, EventArgs e)
+        {
+            Form_VisualContable frm = new Form_VisualContable("cuenta", "editar", this);
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
+            this.BotonesInhab();
+        }
+
+        private void btn_eliminar_Click(object sender, EventArgs e)
+        {
+            Form_VisualContable frm = new Form_VisualContable("cuenta", "eliminar", this);
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
+            this.BotonesInhab();
+
+        }
+
+        private void btn_buscar_Click(object sender, EventArgs e)
+        {
+            Form_VisualContable frm = new Form_VisualContable("cuenta", "buscar", this);
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
+            this.BotonesInhab();
+        }
+
+        private void btn_imprimir_Click(object sender, EventArgs e)
+        {
+            reportes.Form_reportecuentas frm = new reportes.Form_reportecuentas();
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
+        }
+
+        private void btn_guardar_Click(object sender, EventArgs e)
+        {
+            bool result = this.Validarguardar();
+            if (result)
+            {
+                CuentaDataSource cuenta = new CuentaDataSource();
+                cuenta = this.GuardarDatos();
+                bool guardo = false;
+                if (txtnumcu.ReadOnly == false)
+                {
+                    try
+                    {
+                        guardo = this.negocioCuenta.GuardarCuenta(cuenta);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("SE PRESENTO UN ERROR. " + ex.Message, "ERROR");
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        guardo = this.negocioCuenta.ActualizarCuenta(cuenta);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("SE PRESENTO UN ERROR. " + ex.Message, "ERROR");
+                    }
+                }
+                if (guardo)
+                {
+                    this.CamposVacios();
+                    this.CamposInactivos();
+                    MessageBox.Show("LA CUENTA FUE GUARDADA EXITOSAMENTE", "GUARDAR", MessageBoxButtons.OK);
+                }
+            }
+        }
+
+        private void btn_cancelar_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("ESTA SEGURO QUE DESEA CANCELAR?", "CANCELAR", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                this.CamposVacios();
+                this.CamposInactivos();
+                this.BotonesHabit();
+            }
+        }
+
+        private void btn_salir_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("ESTA SEGURO QUE DESEA SALIR?", "SALIR", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                this.usrClose = true;
+                this.Close();
+            }
+        }
+
+        #endregion
+
+        #region RECIBE ENTER GENERA TAB
+
+        private void EnterTab_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = false;
+                SendKeys.Send("{TAB}");
+            }
+        }
+
+        private void EnterValidacion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = false;
+                SendKeys.Send("{TAB}");
+            }
+            else
+            {
+                e.Handled = this.funtions.ValidacionNumerico(e).Handled;
+            }
+        }
+
+        private void Validacion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = this.funtions.ValidacionNumerico(e).Handled;
+            }
+        }
+
+        private void txtporcrete_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = false;
+                SendKeys.Send("{TAB}");
+            }
+            else
+            {
+                e.Handled = this.funtions.ValidacionDecimal(e).Handled;
+            }
+        }
+
+        /// <summary>
+        /// Handles the KeyPress event of the Txtdoc control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="KeyPressEventArgs"/> instance containing the event data.</param>
+        private void Txtdoc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
+
+            if (e.Handled = char.IsLetter(e.KeyChar))
+            {
+                e.Handled = e.KeyChar == (char)67 ? false : e.KeyChar == (char)68 ? false : e.KeyChar == (char)99 ? false : e.KeyChar == (char)100 ? false : true;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtcuenaju_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != (char)Keys.Enter)
+            {
+                e.Handled = this.funtions.ValidacionNumerico(e).Handled;
+            }
+        }
+
+        private void txtcuncor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != (char)Keys.Enter)
+            {
+                e.Handled = this.funtions.ValidacionNumerico(e).Handled;
+            }
+        }
+
+        private void txtcierre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != (char)Keys.Enter)
+            {
+                e.Handled = this.funtions.ValidacionNumerico(e).Handled;
+            }
+        }
+
+        private void txtnumcu_KeyUp(object sender, KeyEventArgs e)
+        {
+            int tamanio = txtnumcu.Text.Length;
+            if (!txtnumcu.Text.Equals(string.Empty) && (tamanio != 3 && tamanio != 5 && tamanio != 7 && tamanio != 11))
+            {
+                txt_nombrecuenta.Text = this.negocioCuenta.DevolverNombre(txtnumcu.Text);
+            }
+            else
+            {
+                txt_nombrecuenta.Text = string.Empty;
+            }
+            if (e.KeyCode == Keys.Enter)
+            {
+                bool valida = this.ValidarCuenta();
+                e.Handled = valida == false ? false : true;
+                if (e.Handled == true)
+                {
+                    btn_guardar.Enabled = true;
+                    SendKeys.Send("{TAB}");
+                }
+                else
+                {
+                    btn_guardar.Enabled = true;
+                }
+            }
+        }
+
+        #endregion
+
+        #region VALIDACIONES
+
+        private void ValidaCuentaAjuste_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string result = this.funtions.ValidaCuentaoNombre(txtcuenaju.Text);
+                txt_nombrecuentaajuste.Text = result;
+                if (result.Equals("Cuenta General") || result.Equals("Cuenta no Existente"))
+                {
+                    e.Handled = true;
+                }
+                else
+                {
+                    e.Handled = false;
+                    SendKeys.Send("{TAB}");
+                }
+            }
+        }
+
+        private void ValidaCuentaCorrec_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string result = this.funtions.ValidaCuentaoNombre(txtcuncor.Text);
+                txt_nombrecuentacorre.Text = result;
+                if (result.Equals("Cuenta General") || result.Equals("Cuenta no Existente"))
+                {
+                    e.Handled = true;
+                }
+                else
+                {
+                    e.Handled = false;
+                    SendKeys.Send("{TAB}");
+                }
+            }
+        }
+
+        private void ValidaCuentaCierre_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string result = this.funtions.ValidaCuentaoNombre(txtcierre.Text);
+                txt_nomcucierre.Text = result;
+                if (result.Equals("Cuenta General") || result.Equals("Cuenta no Existente"))
+                {
+                    e.Handled = true;
+                }
+                else
+                {
+                    e.Handled = false;
+                    SendKeys.Send("{TAB}");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validarguardars this instance.
+        /// </summary>
+        /// <returns>booleano si guarda o no guarda</returns>
+        private bool Validarguardar()
+        {
+            bool result = false;
+            if (!txtnumcu.Text.Equals(string.Empty) && !txtnombre.Text.Equals(string.Empty) &&
+                     (radio_general.Checked == true || radio_detalle.Checked == true)
+                && ((check_ajustes.Checked == true
+                     && !txtnitajus.Text.Equals(string.Empty) && !txtcuenaju.Text.Equals(string.Empty) &&
+                     !txtcuncor.Text.Equals(string.Empty)) || (check_ajustes.Checked == false
+                     && txtnitajus.Text.Equals(string.Empty) && txtcuenaju.Text.Equals(string.Empty) &&
+                     txtcuncor.Text.Equals(string.Empty))) && ((check_cuentaret.Checked == true
+                     && !txtporcrete.Text.Equals(string.Empty) && !txtconcerete.Text.Equals(string.Empty)) ||
+                    (check_cuentaret.Checked == false && txtporcrete.Text.Equals(string.Empty) &&
+                    txtconcerete.Text.Equals(string.Empty))))
+            {
+                bool cuentaexiste = false;
+                try
+                {
+                    cuentaexiste = this.negocioCuenta.ExisteCuenta(txtnumcu.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("SE PRESENTO UN ERROR. " + ex.Message, "ERROR");
+                }
+
+                if (!cuentaexiste)
+                {
+                    result = true;
+                }
+                else
+                {
+                    if (txtnumcu.ReadOnly == false)
+                    {
+                        MessageBox.Show("LA CUENTA INGRESADO YA EXISTE", "ERROR", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        result = true;
+                    }
+                }
+            }
+            else
+            {
+                result = false;
+                MessageBox.Show("DEBE INGRESAR TODOS LOS DATOS", "ERROR", MessageBoxButtons.OK);
+            }
+
+            return result;
+        }
+
+        private void ValidaCuenta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != (char)Keys.Enter)
+            {
+                e.Handled = this.funtions.ValidacionNumerico(e).Handled;
+            }
+        }
+
+        private bool ValidarCuenta()
+        {
+            bool result = false;
+            bool existe = false;
+            existe = this.negocioCuenta.VerificarCuentaVal(txtnumcu.Text);
+            if (existe == true)
+            {
+                txt_nombrecuenta.Text = "CUENTA EXISTENTE";
+            }
+            else
+            {
+                int tamanio = txtnumcu.Text.Length;
+                if (tamanio == 3 || tamanio == 5 || tamanio == 7 || tamanio == 9 || tamanio == 11)
+                {
+                    txt_nombrecuenta.Text = "CUENTA NO ACEPTADA";
+                    result = false;
+                }
+                else if (tamanio == 1)
+                {
+                    result = true;
+                }
+                else if (tamanio == 2)
+                {
+                    result = this.negocioCuenta.VerificarCuentaVal(txtnumcu.Text.Substring(0, 1));
+                    if (result == false)
+                    {
+                        txt_nombrecuenta.Text = "CUENTA MAYOR NO EXISTE";
+                    }
+                }
+                else if (tamanio == 4 || tamanio == 6 || tamanio == 8 || tamanio == 10 || tamanio == 12)
+                {
+                    result = this.negocioCuenta.VerificarCuentaVal(txtnumcu.Text.Substring(0, tamanio - 2));
+                    if (result == false)
+                    {
+                        txt_nombrecuenta.Text = "CUENTA MAYOR NO EXISTE";
+                    }
+                }
+            }
+            return result;
+        }
+
+        #endregion
+
+        #region CERRAR FORMULARIO
+
+        /// <summary>
+        /// Handles the Click event of the Salircuent control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void Salircuent_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("ESTA SEGURO QUE DESEA SALIR?", "SALIR", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                this.usrClose = true;
+                this.Close();
+            }
+        }
+
+        /// <summary>
+        /// Handles the FormClosing event of the Frmcuenta control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="FormClosingEventArgs"/> instance containing the event data.</param>
+        private void Frmcuenta_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!this.usrClose)
+            {
+                DialogResult result = MessageBox.Show("ESTA SEGURO QUE DESEA SALIR?", "SALIR", MessageBoxButtons.YesNo);
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
+        #endregion
+
+        #region DATOS
+
+        private void AutoCompletar()
+        {
+            CuentaDataSource cuenta = new CuentaDataSource();
+            AutoCompleteStringCollection cuentas = new AutoCompleteStringCollection();
+            try
+            {
+                var items = this.negocioCuenta.CargarCuenta();
+
+                foreach (var item in items)
+                {
+                    cuentas.Add(item.Cuenta);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("SE PRESENTO UN ERROR." + ex.Message, "ERROR");
+            }
+
+            txtcuenaju.AutoCompleteCustomSource = cuentas;
+            txtcuncor.AutoCompleteCustomSource = cuentas;
+            txtcierre.AutoCompleteCustomSource = cuentas;
+            txtnumcu.AutoCompleteCustomSource = cuentas;
+        }
+
+        private void NombreEmpresa()
+        {
+            try
+            {
+                lbl_nombre.Text = this.negocioEmpresa.DevolverNombre(Program.compa);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("SE PRESENTO UN ERROR." + ex.Message, "ERROR");
+            }
+        }
+
+        private CuentaDataSource GuardarDatos()
+        {
+            CuentaDataSource cuenta = new CuentaDataSource();
+            cuenta.Cuenta = txtnumcu.Text;
+            cuenta.Tipocta = radio_general.Checked == true ? "M" : "A";
+            cuenta.Nombre = txtnombre.Text;
+            cuenta.Pidenit = check_pidenit.Checked;
+            cuenta.Centro = check_centro.Checked;
+            cuenta.Ajusteinteg = check_ajustes.Checked;
+            if (check_ajustes.Checked == false)
+            {
+                cuenta.IdNitajustes = null;
+                cuenta.Cueaju = null;
+                cuenta.Cuencorre = null;
+                cuenta.Ajudoc = null;
+            }
+            else
+            {
+                cuenta.IdNitajustes = int.Parse(txtnitajus.Text);
+                cuenta.Cueaju = txtcuenaju.Text;
+                cuenta.Cuencorre = txtcuncor.Text;
+                cuenta.Ajudoc = txtdoc.Text;
+            }
+            cuenta.Cuentret = check_cuentaret.Checked;
+            if (check_cuentaret.Checked == false)
+            {
+                cuenta.Porete = null;
+                cuenta.Concepret = null;
+                cuenta.Cuentacierreimp = null;
+            }
+            else
+            {
+                cuenta.Porete = decimal.Parse(txtporcrete.Text);
+                cuenta.Concepret = txtconcerete.Text;
+                cuenta.Cuentacierreimp = txtcierre.Text;
+            }
+
+            cuenta.ReteIca = check_reteica.Checked;
+            if (txt_mediosmag.Text.Equals(string.Empty))
+            {
+                cuenta.FormatoMedios = null;
+            }
+            else
+            {
+                cuenta.FormatoMedios = txt_mediosmag.Text;
+            }
+            return cuenta;
+        }
+
+        public void CargarDatos(string cuenta)
+        {
+            CuentaDataSource ds = new CuentaDataSource();
+            try
+            {
+                ds = this.negocioCuenta.DevolverDatos(cuenta);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("SE PRESENTO UN ERROR. " + ex.Message, "ERROR");
+            }
+
+            this.CamposActivos();
+            this.cuentaedit = ds.Cuenta;
+            txtnumcu.Text = ds.Cuenta;
+            txtnumcu.ReadOnly = true;
+            txtnombre.Text = ds.Nombre;
+            check_pidenit.Checked = ds.Pidenit;
+            check_centro.Checked = ds.Centro;
+            check_ajustes.Checked = ds.Ajusteinteg;
+            check_cuentaret.Checked = ds.Cuentret;
+            txtdoc.Text = ds.Ajudoc;
+            txtnitajus.Text = Convert.ToString(ds.IdNitajustes);
+            txtcuenaju.Text = ds.Cueaju;
+            txtcuncor.Text = ds.Cuencorre;
+            txtporcrete.Text = Convert.ToString(ds.Porete);
+            txtconcerete.Text = ds.Concepret;
+            txtcierre.Text = ds.Cuentacierreimp;
+            radio_general.Checked = ds.Tipocta == "MAYOR" ? true : false;
+            radio_detalle.Checked = ds.Tipocta == "AUXILIAR" ? true : false;
+            btn_guardar.Enabled = true;
+            check_reteica.Checked = ds.ReteIca;
+            txt_mediosmag.Text = Convert.ToString(ds.FormatoMedios);
+        }
+
+        public void DevolverCuenta(string codig)
+        {
+        }
+        #endregion
+
+        #region ACTIVACION,DESACTIVACION Y LIMPIEZA DE CAMPOS
+
+        private void CamposVacios()
+        {
+            txtnumcu.Text = string.Empty;
+            txtnombre.Text = string.Empty;
+            check_pidenit.Checked = false;
+            check_centro.Checked = false;
+            check_ajustes.Checked = false;
+            txtnitajus.Text = string.Empty;
+            txtcuenaju.Text = string.Empty;
+            txt_nombrecuentaajuste.Text = string.Empty;
+            txt_nombrecuentacorre.Text = string.Empty;
+            txtcuncor.Text = string.Empty;
+            check_cuentaret.Checked = false;
+            txtporcrete.Text = string.Empty;
+            txtconcerete.Text = string.Empty;
+            txtcierre.Text = string.Empty;
+            txt_nomcucierre.Text = string.Empty;
+            txt_mediosmag.Text = string.Empty;
+            check_reteica.Checked = false;
+            radio_detalle.Checked = false;
+            radio_general.Checked = false;
+
+        }
+
+        private void CamposActivos()
+        {
+            txtnombre.Enabled = true;
+            radio_general.Enabled = true;
+            radio_detalle.Enabled = true;
+            check_pidenit.Enabled = true;
+            check_centro.Enabled = true;
+            check_ajustes.Enabled = true;
+            check_cuentaret.Enabled = true;
+            txtnumcu.Enabled = true;
+            txt_mediosmag.Enabled = true;
+            check_reteica.Enabled = true;
+        }
+
+        private void CamposInactivos()
+        {
+            txtnumcu.Enabled = false;
+            txtnombre.Enabled = false;
+            check_pidenit.Enabled = false;
+            check_centro.Enabled = false;
+            check_ajustes.Enabled = false;
+            txtnitajus.Enabled = false;
+            txtcuenaju.Enabled = false;
+            txt_nombrecuentaajuste.Enabled = false;
+            txt_nombrecuentacorre.Enabled = false;
+            txtcuncor.Enabled = false;
+            check_cuentaret.Enabled = false;
+            txtporcrete.Enabled = false;
+            txtconcerete.Enabled = false;
+            txtcierre.Enabled = false;
+            txt_nomcucierre.Enabled = false;
+            txt_mediosmag.Enabled = false;
+            radio_detalle.Enabled = false;
+            radio_general.Enabled = false;
+            btn_guardar.Enabled = false;
+            check_reteica.Enabled = false;
+        }
+
+        /// <summary>
+        /// Handles the CheckedChanged event of the Check_cuentaret control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void Check_cuentaret_CheckedChanged(object sender, EventArgs e)
+        {
+            if (check_cuentaret.Checked)
+            {
+                txtporcrete.Enabled = true;
+                txtconcerete.Enabled = true;
+                txtcierre.Enabled = true;
+                txtporcrete.Text = "0.0";
+            }
+            else
+            {
+                txtporcrete.Enabled = false;
+                txtconcerete.Enabled = false;
+                txtcierre.Enabled = false;
+                txtporcrete.Text = string.Empty;
+                txtconcerete.Text = string.Empty;
+                txtcierre.Text = string.Empty;
+                txt_nomcucierre.Text = string.Empty;
+            }
+        }
+
+        /// <summary>
+        /// Handles the CheckedChanged event of the Check_ajustes control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void Check_ajustes_CheckedChanged(object sender, EventArgs e)
+        {
+            if (check_ajustes.Checked)
+            {
+                txtcuenaju.Enabled = true;
+                txtnitajus.Enabled = true;
+                txtcuncor.Enabled = true;
+                txtdoc.Enabled = true;
+                txtdoc.Text = "D";
+            }
+            else
+            {
+                txtcuenaju.Enabled = false;
+                txtnitajus.Enabled = false;
+                txtcuncor.Enabled = false;
+                txtdoc.Enabled = false;
+                txtcuenaju.Text = string.Empty;
+                txtnitajus.Text = string.Empty;
+                txtcuncor.Text = string.Empty;
+                txtdoc.Text = string.Empty;
+                txt_nombrecuentaajuste.Text = string.Empty;
+                txt_nombrecuentacorre.Text = string.Empty;
+            }
+        }
+
+        private void BotonesInhab()
+        {
+            btn_buscar.Enabled = false;
+            btn_editar.Enabled = false;
+            btn_eliminar.Enabled = false;
+            btn_nuevo.Enabled = false;
+        }
+
+        public void BotonesHabit()
+        {
+            btn_buscar.Enabled = true;
+            btn_editar.Enabled = true;
+            btn_eliminar.Enabled = true;
+            btn_nuevo.Enabled = true;
+        }
+
+        #endregion
+    }
+}

@@ -1,0 +1,55 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using App.Forms.Contable.reportes.Types;
+using Entities.Types;
+using Negocios.Contable;
+
+namespace App.Forms.Contable.reportes
+{
+
+    public partial class Form_reportecuentas : Form
+    {
+        private Cuentan negocioCuenta;
+
+        public Form_reportecuentas()
+        {
+            this.negocioCuenta = new Cuentan();
+
+            InitializeComponent();
+        }
+
+        private void Form_reportecuentas_Load(object sender, EventArgs e)
+        {
+            List<CuentaDataSource> cuentas = new List<CuentaDataSource>();
+            cuentas = this.negocioCuenta.CargarCuentaReporte(Program.compa);
+            List<CuentaDataSourceReports> cuentasR = new List<CuentaDataSourceReports>();
+            foreach (CuentaDataSource item in cuentas)
+            {
+                CuentaDataSourceReports cuentaR = new CuentaDataSourceReports();
+                cuentaR.Cuenta = item.Cuenta;
+                cuentaR.Nombre = item.Nombre;
+                cuentaR.Pidenit = item.Pidenit == true ? "SI" : "NO";
+                cuentaR.Tipocta = item.Tipocta;
+                cuentaR.Centro = item.Centro == true ? "SI" : "NO";
+                cuentaR.Cueaju = item.Cueaju;
+                cuentaR.Ajudoc = item.Ajudoc;
+                cuentaR.NombreCia = item.NombreCia;
+                cuentaR.Nit = item.Nit;
+                cuentasR.Add(cuentaR);
+            }
+
+            // Create a CrystalReport1 object
+            ReporteCuentas reportcuenta = new ReporteCuentas();
+            // Set the DataSource of the report
+            reportcuenta.SetDataSource(cuentasR);
+            // Set the Report Source to ReportView 
+            crystal_reportecuenta.ReportSource = reportcuenta;
+        }
+    }
+}

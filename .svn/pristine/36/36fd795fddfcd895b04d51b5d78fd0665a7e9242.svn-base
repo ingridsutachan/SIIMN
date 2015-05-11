@@ -1,0 +1,226 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using Entities.Types;
+using Negocios.Contable;
+using Negocios.General;
+using App.Forms.Contable.Reportes.Types;
+using System.Globalization;
+
+namespace App.Forms.Contable.Reportes
+{
+    public partial class Form_ReportePresupuesto : Form
+    {
+        private Presupueston negocioPresupuesto;
+
+        private Empresan negocioEmpresa;
+
+        private Cuentan negocioCuenta;
+
+        private Centron negocioCentro;
+
+        private Funciones funtions;
+
+        private int validacuenta;
+
+        private int validacentro;
+
+        public Form_ReportePresupuesto()
+        {
+            this.negocioPresupuesto = new Presupueston();
+            this.negocioEmpresa = new Empresan();
+            this.negocioCuenta = new Cuentan();
+            this.negocioCentro = new Centron();
+            this.funtions = new Funciones();
+            this.InitializeComponent();
+        }
+
+        private void btn_informe_ButtonClick(object sender, EventArgs e)
+        {
+            List<PresupDataSource> presupuesto = new List<PresupDataSource>();
+            presupuesto = this.negocioPresupuesto.DevolverPresu(txt_anio.Text, txt_cuenta.Text, int.Parse(txt_centro.Text), Program.compa);
+            EmpresaDataSource empresa = new EmpresaDataSource();
+            empresa = this.negocioEmpresa.DevolverDatosEmpresa(Program.compa);
+            List<PresupShowDataSourceReporte> presupR = new List<PresupShowDataSourceReporte>();
+            foreach (PresupDataSource item in presupuesto)
+            {
+                PresupShowDataSourceReporte presupDev = new PresupShowDataSourceReporte();
+                presupDev.Anio = item.Anio;
+                presupDev.NombreMes = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(item.IdMes);
+                presupDev.Cuenta = item.Cuenta;
+                presupDev.NombreCuenta = item.NombreCuenta;
+                presupDev.IdCentro = item.IdCentro;
+                presupDev.NombreCentro = item.NombreCentro;
+                presupDev.Presupuesto = item.Presupuesto;
+                presupDev.NombreEmpresa = empresa.Nombrecia;
+                presupDev.NombreSucursal = empresa.NombreSucursal;
+                presupDev.NitEmpresa = empresa.NitCia;
+                presupDev.Digito = empresa.DigitoCia;
+                presupDev.Fecha = fecha_informepres.Value.ToShortDateString();
+                presupR.Add(presupDev);
+            }
+
+            ReportePresupuesto reportpresup = new ReportePresupuesto();
+            reportpresup.SetDataSource(presupR);
+            crystal_Presupuesto.ReportSource = reportpresup;
+            this.Size = new Size(1003, 583);
+            crystal_Presupuesto.Size = new Size(987, 519);
+            this.crystal_Presupuesto.Visible = true;
+            this.lbl_cuenta.Visible = false;
+            this.lbl_anio.Visible = false;
+            this.txt_anio.Visible = false;
+            this.txt_descripcentro.Visible = false;
+            this.txt_nombrecuentaini.Visible = false;
+            txt_cuenta.Visible = false;
+            lbl_centro.Visible = false;
+            txt_centro.Visible = false;
+            lbl_fecha.Visible = false;
+            fecha_informepres.Visible = false;
+            this.CenterToScreen();
+        }
+
+        private void EnterAnio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
+            else
+            {
+                e.Handled = this.funtions.ValidacionNumerico(e).Handled;
+            }
+        }
+
+        private void EnterValidar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != (char)Keys.Enter)
+            {
+                e.Handled = this.funtions.ValidacionNumerico(e).Handled;
+            }
+        }
+
+        private void Txtnumcuent_KeyUp(object sender, KeyEventArgs e)
+        {
+            this.validacentro = 1;
+            TextBox tb = (TextBox)sender;
+            if ((!"CUENTA MAYOR".Equals(this.GetNextControl((Control)sender, true).Text)
+               && !"CUENTA NO EXISTENTE".Equals(this.GetNextControl((Control)sender, true).Text)) || this.validacuenta == 0)
+            {
+                int tamanio = tb.Text.Length;
+                if (!tb.Text.Equals(string.Empty) && (tamanio != 3 && tamanio != 5 && tamanio != 7 && tamanio != 11))
+                {
+                    try
+                    {
+                        this.GetNextControl((Control)sender, true).Text = this.negocioCuenta.DevolverNombre(tb.Text);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK);
+                    }
+                }
+                else
+                {
+                    this.GetNextControl((Control)sender, true).Text = string.Empty;
+                }
+            }
+            else if (this.validacuenta == 1)
+            {
+                this.validacuenta = 0;
+            }
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = false;
+                SendKeys.Send("{TAB}");
+            }
+        }
+
+        private void Txtnumcuent_Leave(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (!string.Empty.Equals(tb.Text))
+            {
+                string mensaje = this.funtions.ValidarOtraCuenta(tb.Text);
+                if (!string.Empty.Equals(mensaje))
+                {
+                    tb.Focus();
+                    this.GetNextControl((Control)sender, true).Text = mensaje;
+                    this.validacuenta = 1;
+                }
+            }
+            else if (this.validacentro != 0)
+            {
+                tb.Focus();
+            }
+        }
+
+        private void Txt_centro_Leave(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (!string.Empty.Equals(tb.Text))
+            {
+                if (!this.ExisteCentro())
+                {
+                    txt_descripcentro.Text = "CENTRO NO EXISTE";
+                    this.validacentro = 1;
+                    btn_informe.Enabled = false;
+                    tb.Focus();
+                }
+                else
+                {
+                    if (this.ExistePresupuesto())
+                    {
+                                                                        btn_informe.Enabled = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("EL PRESUPUESTO YA EXISTE", "ERROR", MessageBoxButtons.OK);
+                        
+                        this.validacentro = 1;
+                        SendKeys.Send("{TAB}");
+                    }
+                }
+            }
+            else if (this.validacuenta != 0)
+            {
+                tb.Focus();
+            }
+        }
+
+        private bool ExisteCentro()
+        {
+            bool result = false;
+            try
+            {
+                result = this.negocioCentro.ExisteCentro(int.Parse(txt_centro.Text));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK);
+            }
+
+            return result;
+        }
+
+        private bool ExistePresupuesto()
+        {
+            bool validapresupuesto = true;
+            try
+            {
+                validapresupuesto = this.negocioPresupuesto.ExistePresupuesto(txt_anio.Text, txt_cuenta.Text, int.Parse(txt_centro.Text), Program.compa);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK);
+            }
+
+            return validapresupuesto;
+        }
+    }
+}

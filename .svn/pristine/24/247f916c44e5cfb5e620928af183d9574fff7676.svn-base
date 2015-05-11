@@ -1,0 +1,105 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using Negocios.Contable;
+
+namespace App.Forms.Contable
+{
+    public partial class Form_Actualizar : Form
+    {
+        private asientosn Negocio_Asiento;
+
+       // private string botonclick;
+
+        private Comprobantesn negocio_Comprobante;
+
+        public int tipoact;
+
+        public Form_Actualizar(int tipo)
+        {
+            this.Negocio_Asiento = new asientosn();
+            this.negocio_Comprobante = new Comprobantesn();
+            InitializeComponent();
+            tipoact = tipo;
+            this.ValidarTipo(tipoact);
+            this.CargarComprobantes();
+        }
+
+        private void CargarComprobantes()
+        {
+            try
+            {
+                cbx_comprobante.DataSource = this.negocio_Comprobante.CargarDatos();
+                cbx_comprobante.ValueMember = "Codigo";
+                cbx_comprobante.DisplayMember = "Descricompro";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Se presento un error. " + ex.Message);
+            }
+        }
+
+        private void ValidarTipo(int tipo)
+        {
+            if (tipo == 1)
+            {
+                panel_actodos.Visible = true;
+             }
+            if (tipo == 2)
+            {
+                pan_actuno.Visible = true;
+            }
+       
+        }
+        private void btn_actualizar_Click(object sender, EventArgs e)
+        {
+            if (this.tipoact==1)
+            {
+                DialogResult actual = MessageBox.Show("ESTA SEGURO QUE DESEA ACTUALIZAR TODOS LOS ASIENTOS?", "ACTUALIZAR ASIENTOS", MessageBoxButtons.YesNo);
+                if (actual == DialogResult.Yes)
+                {
+                    int cantasient = this.Negocio_Asiento.ActualizarTodosAsientos(dt_desde.Value, dt_hasta.Value);
+                    if (cantasient > 0)
+                    {
+                        MessageBox.Show(cantasient + "ASIENTOS HAN SIDO ACTUALIZADOS", "ACTUALIZAR ASIENTOS", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        MessageBox.Show("NINGUN ASIENTO HA SIDO ACTUALIZADO", "ACTUALIZAR ASIENTOS", MessageBoxButtons.OK);
+
+                    }
+                }
+            }
+            else if (this.tipoact==2)
+            {
+                DialogResult actual = MessageBox.Show("ESTA SEGURO QUE DESEA ACTUALIZAR EL ASIENTO?", "ACTUALIZAR ASIENTOS", MessageBoxButtons.YesNo);
+                if (actual == DialogResult.Yes)
+                {
+                    bool existe = this.Negocio_Asiento.ExisteAsiento(txt_numeroasiento.Text, int.Parse(cbx_comprobante.SelectedValue.ToString()));
+                    if (existe)
+                    {
+                        bool actualiza = this.Negocio_Asiento.ActualizarUnAsiento(int.Parse(cbx_comprobante.SelectedValue.ToString()), txt_numeroasiento.Text);
+                        if (actualiza)
+                        {
+                            MessageBox.Show("ASIENTO HA SIDO ACTUALIZADO", "ACTUALIZAR ASIENTOS", MessageBoxButtons.OK);
+                        }
+                        else
+                        {
+                            MessageBox.Show("NINGUN ASIENTO HA SIDO ACTUALIZADO", "ACTUALIZAR ASIENTOS", MessageBoxButtons.OK);
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("EL ASIENTO NO EXISTE", "ACTUALIZAR ASIENTO", MessageBoxButtons.OK);
+                    }
+                }
+            }
+        }
+    }
+}

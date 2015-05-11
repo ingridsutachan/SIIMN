@@ -578,7 +578,8 @@
     </Key>
     <Property Name="idinflacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="idsucursal" Type="Int32" Nullable="false" />
-    <Property Name="mes" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="false" />
+    <Property Name="anio" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="false" />
+    <Property Name="mes" Type="Int32" Nullable="false" />
     <Property Name="inflamensual" Type="Decimal" Nullable="false" />
     <NavigationProperty Name="sucursal" Relationship="siimnModel.fk_sucursalinfla" FromRole="inflacion" ToRole="sucursal" />
   </EntityType>

@@ -1,0 +1,244 @@
+﻿////*********************************************************
+//
+//    <copyright file="frmcentro.cs" company="Marketing Software de Colombia LTDA">
+//    @Autor Ingrid Sutachan
+//    @fecha 01 marzo 2014
+//    </copyright>
+//
+////*********************************************************
+namespace App.Forms.Contable
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Windows.Forms;
+    using Entities.Types;
+    using Negocios.Contable;
+
+    /// <summary>
+    /// Calse formulario centro
+    /// </summary>
+    public partial class Frmcentro : Form
+    {
+        /// <summary>
+        /// instacia de la capa de negocios de centro de costos
+        /// </summary>
+        private Centron negociocentro;
+
+        /// <summary>
+        /// identificador de centro de costos
+        /// </summary>
+        private int idcentro;
+
+        /// <summary>
+        /// variable para manejar cierre de formulario
+        /// </summary>
+        private bool usrClose;
+
+             /// <summary>
+        /// Initializes a new instance of the <see cref="Frmcentro"/> class.
+        /// </summary>
+        public Frmcentro()
+        {
+            this.InitializeComponent();
+            this.negociocentro = new Centron();
+            this.CargarDatos();
+        }
+
+        #region VISAULIZACION
+
+        /// <summary>
+        /// Cargar datos
+        /// </summary>
+        private void CargarDatos()
+        {
+           /* List<CentroDataSource> centro = new List<CentroDataSource>();
+            centro = this.negociocentro.CargarCentro();
+            dgv_centro.DataSource = centro;
+            dgv_centro.Columns[0].HeaderText = "Código";
+            dgv_centro.Columns[1].HeaderText = "Nombre";
+            dgv_centro.Columns[0].Width = 85;
+            dgv_centro.Columns[1].Width = 150;
+            dgv_centro.Columns[2].Visible = false;*/
+        }
+        #endregion
+
+        #region GUARDAR DATOS
+
+        /// <summary>
+        /// Guardar campos
+        /// </summary>
+        /// <returns>centro de costos con los campos a guardar</returns>
+        private CentroDataSource GuardarCampos()
+        {
+            CentroDataSource cen = new CentroDataSource();
+            cen.Nombrecentro = txt_nombre.Text;
+            cen.IdCompania = Program.compa;
+            return cen;
+        }
+
+        /// <summary>
+        /// Handles the Click event of the Btn_guardar control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void Btn_guardar_Click(object sender, EventArgs e)
+        {
+            if (!txt_nombre.Text.Equals(string.Empty))
+            {
+                if (txt_nombre.ReadOnly == false)
+                {
+                    CentroDataSource cen = new CentroDataSource();
+                    cen = this.GuardarCampos();
+                    try
+                    {
+                        bool guardar = this.negociocentro.GuardarCentro(cen);
+                        if (guardar)
+                        {
+                            MessageBox.Show("El centro de costos ha sido Guardado", "GUARDAR", MessageBoxButtons.OK);
+                            this.CargarDatos();
+                            txt_nombre.Text = string.Empty;
+                            txt_nombre.Enabled = false;
+                            btn_guardar.Visible = false;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Se presento un error. " + ex.Message);
+                    }
+                }
+
+                else
+                {
+                    CentroDataSource cen = new CentroDataSource();
+                    cen = this.GuardarCampos();
+                    cen.Codcentro = this.idcentro;
+                    try
+                    {
+                        bool guardo = this.negociocentro.ActualizarCentro(cen);
+                        if (guardo)
+                        {
+                            MessageBox.Show("El centro de costos ha sido Actualizado", "ACTUALIZAR", MessageBoxButtons.OK);
+                            this.CargarDatos();
+                            txt_nombre.Text = string.Empty;
+                            txt_nombre.Enabled = false;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Se presento un error. " + ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe ingresar el campo ", "ERROR", MessageBoxButtons.OK);
+            }
+        }
+        #endregion
+
+        #region BOTONES CLICK
+
+        /// <summary>
+        /// Handles the Click event of the Btn_nuevo control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void Btn_nuevo_Click(object sender, EventArgs e)
+        {
+            txt_nombre.Enabled = true;
+            btn_guardar.Enabled = true;
+           
+        }
+
+        /// <summary>
+        /// Handles the Click event of the Btn_editar control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void Btn_editar_Click(object sender, EventArgs e)
+        {
+            
+            txt_nombre.Enabled = true;
+            btn_guardar.Enabled = true;
+         
+            CentroDataSource cen = new CentroDataSource();
+            cen = this.negociocentro.DevolverDatos(1);
+            this.idcentro = cen.Codcentro;
+            txt_nombre.Text = cen.Nombrecentro;
+        }
+
+        /// <summary>
+        /// Handles the Click event of the Btn_eliminar control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void Btn_eliminar_Click(object sender, EventArgs e)
+        {
+            
+            DialogResult result = MessageBox.Show("Esta seguro que desea eliminar?", "ELIMINAR", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    if (this.negociocentro.EliminarCentro(1))
+                    {
+                        MessageBox.Show("eliminado");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Se presento un error. " + ex.Message);
+                }
+
+                this.CargarDatos();
+            }
+        }
+
+        /// <summary>
+        /// Handles the Click event of the Btn_buscar control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void Btn_buscar_Click(object sender, EventArgs e)
+        {
+            
+        }
+        #endregion
+
+       
+        #region SALIR FORMULARIO
+
+        /// <summary>
+        /// Handles the Click event of the Salircuent control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void Salircuent_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Esta seguro que desea salir?", "SALIR", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                this.usrClose = true;
+                this.Close();
+            }
+        }
+
+        /// <summary>
+        /// Handles the FormClosing event of the Frmcentro control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="FormClosingEventArgs"/> instance containing the event data.</param>
+        private void Frmcentro_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!this.usrClose)
+            {
+                DialogResult result = MessageBox.Show("Esta seguro que desea salir?", "SALIR", MessageBoxButtons.YesNo);
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
+        #endregion
+    }
+}

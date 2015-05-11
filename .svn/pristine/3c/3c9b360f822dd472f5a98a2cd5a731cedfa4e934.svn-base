@@ -1,0 +1,222 @@
+﻿////*********************************************************
+//
+//    <copyright file="centron.cs" company="Marketing Software de Colombia LTDA">
+//    @Autor Ingrid Sutachan
+//    @fecha 01 marzo 2014
+//    </copyright>
+//
+////*********************************************************
+namespace Negocios.Contable
+{
+    using System;
+    using System.Collections.Generic;
+    using Datos.Contable;
+    using Entities;
+    using Entities.Types;
+
+    /// <summary>
+    /// Clase centro capa de negocios
+    /// </summary>
+    public class Centron
+    {
+        /// <summary>
+        /// instacia la capa de datos 
+        /// </summary>
+        private Centroc persistencia;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Centron"/> class.
+        /// </summary>
+        public Centron()
+        {
+            this.persistencia = new Centroc();
+        }
+
+        /// <summary>
+        /// Cargar centro
+        /// </summary>
+        /// <returns>lista de los centro de costos encontrados en la tabla de la db</returns>
+        public List<CentroDataSource> CargarCentro()
+        {
+            List<CentroDataSource> centro = new List<CentroDataSource>();
+            try
+            {
+                var items = this.persistencia.CargarCentro();
+                foreach (var item in items)
+                {
+                    CentroDataSource cen = new CentroDataSource();
+                    cen.Codcentro = item.idcentro;
+                    cen.Nombrecentro = item.nombrecentro;
+                    centro.Add(cen);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return centro;
+        }
+
+        /// <summary>
+        /// Guardar centro.
+        /// </summary>
+        /// <param name="cent">centro de costos a guardar</param>
+        public bool GuardarCentro(CentroDataSource cent)
+        {
+            bool result = false;
+            centrocostos centro = new centrocostos();
+            centro.idcentro = cent.Codcentro;
+            centro.nombrecentro = cent.Nombrecentro;
+            try
+            {
+                result = this.persistencia.GuardarCentro(centro);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Devolver datos
+        /// </summary>
+        /// <param name="idcentro">identificador de centro a devolver datos</param>
+        /// <returns>centro respectivo al identificador de centro</returns>
+        public CentroDataSource DevolverDatos(int idcentro)
+        {
+            CentroDataSource centr = new CentroDataSource();
+            try
+            {
+                var item = this.persistencia.DevolverDatos(idcentro);
+                centr.Codcentro = item.idcentro;
+                centr.Nombrecentro = item.nombrecentro;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return centr;
+        }
+
+        /// <summary>
+        /// Actualizar centro
+        /// </summary>
+        /// <param name="cent">centro de costos a actualizar</param>
+        public bool ActualizarCentro(CentroDataSource cent)
+        {
+            bool result = false;
+            centrocostos centro = new centrocostos();
+            centro.idcentro = cent.Codcentro;
+            centro.nombrecentro = cent.Nombrecentro;
+            try
+            {
+                result = this.persistencia.ActualizarCentro(centro);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Eliminar centro
+        /// </summary>
+        /// <param name="idcentro">identificador de centro de costos a eliminar</param>
+        /// <returns>booleano que rectifica si se elimino el centro</returns>
+        public bool EliminarCentro(int idcentro)
+        {
+            bool result = false;
+            try
+            {
+                result = this.persistencia.EliminarCentro(idcentro);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Buscar centro
+        /// </summary>
+        /// <param name="buscar">texto a buscar en la tabla</param>
+        /// <returns>lista de los registros que contienen la busqueda</returns>
+        public List<CentroDataSource> BuscarCentro(string buscar)
+        {
+            List<CentroDataSource> centro = new List<CentroDataSource>();
+            try
+            {
+                var items = this.persistencia.BuscarCentro(buscar);
+                foreach (var item in items)
+                {
+                    CentroDataSource cen = new CentroDataSource();
+                    cen.Codcentro = item.idcentro;
+                    cen.Nombrecentro = item.nombrecentro;
+                    centro.Add(cen);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return centro;
+        }
+        /// <summary>
+        /// Devolver datos
+        /// </summary>
+        /// <param name="idcentro">identificador de centro a devolver datos</param>
+        /// <returns>centro respectivo al identificador de centro</returns>
+        public CentroDataSource DevolverAmbos(string buscar, string tipo)
+        {
+            CentroDataSource centr = new CentroDataSource();
+            try
+            {
+                var item = this.persistencia.DevolverAmbos(buscar, tipo);
+                centr.Codcentro = item.idcentro;
+                centr.Nombrecentro = item.nombrecentro;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return centr;
+        }
+
+        public bool ExisteCentro(int campo)
+        {
+            try
+            {
+                return this.persistencia.ExisteCentro(campo);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public string DevolverNombre(int codcentro)
+        {
+            string nombre;
+            try
+            {
+                nombre = this.persistencia.DevolverNombre(codcentro);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return nombre;
+        }
+    }
+}

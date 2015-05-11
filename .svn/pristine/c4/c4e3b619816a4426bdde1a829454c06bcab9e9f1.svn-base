@@ -1,0 +1,258 @@
+﻿////*********************************************************
+//
+//    <copyright file="comprobantesc.cs" company="Marketing Software de Colombia LTDA">
+//    @Autor Ingrid Sutachan
+//    @fecha 01 marzo 2014
+//    </copyright>
+//
+////*********************************************************
+namespace Datos.Contable
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using Entities;
+
+    /// <summary>
+    /// Clase de comprobantes capa datos
+    /// </summary>
+    public class Comprobantesc
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Comprobantesc"/> class.
+        /// </summary>
+        public Comprobantesc()
+        {
+        }
+
+        /// <summary>
+        /// Cargar comprobantes.
+        /// </summary>
+        /// <returns>lista de los comprobantes en la tabla de la bd</returns>
+        public List<comprobante> CargarComprobantes()
+        {
+            List<comprobante> tipocomp = new List<comprobante>();
+            using (siimnEntities bd = new siimnEntities())
+            {
+                try
+                {
+                    tipocomp = bd.comprobante.ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return tipocomp;
+        }
+
+        /// <summary>
+        /// Guardar comprobante
+        /// </summary>
+        /// <param name="comprob">comprovante a guardar</param>
+        public bool GuardarComprob(comprobante comprob)
+        {
+            bool result = false;
+            using (siimnEntities bd = new siimnEntities())
+            {
+                comprobante com = new comprobante();
+                try
+                {
+                    com.descripcomprob = comprob.descripcomprob;
+                    com.consecutivo = comprob.consecutivo;
+                    com.numsiguiente = comprob.numsiguiente;
+                    com.codigootra = comprob.codigootra;
+                    bd.comprobante.Add(com);
+                    bd.SaveChanges();
+                    result = true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Devolver datos
+        /// </summary>
+        /// <param name="idcomp">identificador del comprobante</param>
+        /// <returns>comprobante respectivo al identificador</returns>
+        public comprobante DevolverDatos(int idcomp)
+        {
+            comprobante compr = new comprobante();
+            using (siimnEntities bd = new siimnEntities())
+            {
+                try
+                {
+                    var query = bd.comprobante.Where(tip => tip.codigcomprob == idcomp).First();
+                    compr = query;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return compr;
+        }
+
+        /// <summary>
+        /// Actualiza el comprobante
+        /// </summary>
+        /// <param name="comp">comprobante a actualizar</param>
+        public bool ActualizaCompr(comprobante comp)
+        {
+            bool result = false;
+            using (siimnEntities bd = new siimnEntities())
+            {
+                try
+                {
+                    var query = bd.comprobante.Where(tip => tip.codigcomprob == comp.codigcomprob).First();
+                    query.descripcomprob = comp.descripcomprob;
+                    query.consecutivo = comp.consecutivo;
+                    query.numsiguiente = comp.numsiguiente;
+                    query.codigootra = comp.codigootra;
+                    bd.SaveChanges();
+                    result = true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Eliminar el comprobante
+        /// </summary>
+        /// <param name="idcompro">identificador de comprobante</param>
+        /// <returns>booleano que rectifica si se elimina el compreobante</returns>
+        public bool EliminarCompro(int idcompro)
+        {
+            bool result = false;
+            using (siimnEntities bd = new siimnEntities())
+            {
+                try
+                {
+                    var query = bd.comprobante.Where(tip => tip.codigcomprob == idcompro).First();
+                    bd.comprobante.Remove(query);
+                    bd.SaveChanges();
+                    result = true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Buscar comprobante
+        /// </summary>
+        /// <param name="buscar">texto a buscar</param>
+        /// <returns>lista de registros que contienen el texto a buscar</returns>
+        public List<comprobante> BuscarComprobante(string buscar)
+        {
+            List<comprobante> comprob = new List<comprobante>();
+            using (siimnEntities bd = new siimnEntities())
+            {
+                try
+                {
+                    var query = bd.comprobante.Where(tip => tip.descripcomprob.Contains(buscar)).ToList();
+                    comprob = query;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return comprob;
+        }
+
+        public int DevolverId(string nombre)
+        {
+            int id;
+            using (siimnEntities bd = new siimnEntities())
+            {
+                try
+                {
+                    var query = bd.comprobante.Where(com => com.descripcomprob == nombre).First();
+                    id = query.codigcomprob;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return id;
+        }
+
+        public bool ExisteComproNomb(string nombre)
+        {
+            bool existe = false;
+            using (siimnEntities bd = new siimnEntities())
+            {
+                try
+                {
+                    var query = bd.comprobante.Where(com => com.descripcomprob == nombre).Count();
+                    existe = query > 0 ? true : false;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return existe;
+        }
+
+        public bool ExisteComproId(int id)
+        {
+            bool existe = false;
+            using (siimnEntities bd = new siimnEntities())
+            {
+                try
+                {
+                    var query = bd.comprobante.Where(com => com.codigcomprob == id).Count();
+                    existe = query > 0 ? true : false;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return existe;
+        }
+
+        public bool DevolverConsecutivo(int codcompro)
+        {
+            bool consec;
+            using (siimnEntities bd = new siimnEntities())
+            {
+                try
+                {
+                    var query = bd.comprobante.Where(com => com.codigcomprob == codcompro).First();
+                    consec = query.consecutivo;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return consec;
+        }
+    }
+}

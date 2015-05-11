@@ -1,0 +1,82 @@
+﻿
+namespace App.Forms.Contable.Reportes
+{
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.Linq;
+    using System.Text;
+    using System.Windows.Forms;
+    using Negocios.Contable;
+    using Entities.Types;
+    using App.Forms.Contable.Reportes.Types;
+
+
+    public partial class Form_ReporteCentro : Form
+    {
+        private Frmcentro frmcentro;
+
+        private Centron negocioCentro;
+
+        public Form_ReporteCentro()
+        {
+            this.InitializeComponent();
+        }
+
+        public Form_ReporteCentro(Frmcentro frmcentro)
+        {
+            // TODO: Complete member initialization
+            this.frmcentro = frmcentro;
+            this.InitializeComponent();
+            this.negocioCentro = new Centron();
+            this.GenerarReporte();
+        }
+
+
+        #region METODOS FORMULARIO
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+                EventArgs eve = new EventArgs();
+                object sender = new object();
+                this.Close();
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void Form_ReporteCentro_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.frmcentro.BotonesHabit();
+        }
+
+        #endregion
+
+        #region REPORTE
+
+        private void GenerarReporte()
+        {
+            List<CentroDataSourceShow> centro = new List<CentroDataSourceShow>();
+            centro = this.negocioCentro.CargarInforme();
+            List<CentroDataSourceReporte> centroR = new List<CentroDataSourceReporte>();
+            this.Size = new Size(840, 566);
+            foreach (CentroDataSourceShow item in centro)
+            {
+                CentroDataSourceReporte centrR = new CentroDataSourceReporte();
+                centrR.Codigo = item.Codcentro ?? default(int);
+                centrR.NombreCentro = item.Nombrecentro;
+                centroR.Add(centrR);
+            }
+            ReporteCentro reportcentro = new ReporteCentro();
+            reportcentro.SetDataSource(centroR);
+            crystal_reportcentro.ReportSource = reportcentro;
+        }
+
+        #endregion
+    }
+}

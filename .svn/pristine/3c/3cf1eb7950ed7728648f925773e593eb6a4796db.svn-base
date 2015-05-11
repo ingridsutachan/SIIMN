@@ -1,0 +1,114 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using Negocios.Contable;
+using Entities;
+using Entities.Types;
+using App.Forms.Contable.reportes.Types;
+
+namespace App.Forms.Contable
+{
+    public partial class Form_MovsinAct : Form
+    {
+        private asientosn negocio_Asiento;
+
+        private reportes.Form_ReporteMovSinAct formularioReporte;
+
+        public Form_MovsinAct()
+        {
+            this.negocio_Asiento = new asientosn();
+            this.formularioReporte = new reportes.Form_ReporteMovSinAct();
+
+            InitializeComponent();
+
+            this.CargarMeses();
+        }
+
+        private void CargarMeses()
+        {
+            try
+            {
+                txt_anio.Text = Convert.ToString(DateTime.Now.Year);
+               // combo_mesde.DataSource = this.negocio_Asiento.CargarMeses();
+                combo_mesde.ValueMember = "Idmes";
+                combo_mesde.DisplayMember = "NombreMes";
+                // combo_mesde.SelectedIndex = DateTime.Now.Month;
+               // cbx_meshasta.DataSource = this.negocio_Asiento.CargarMeses();
+                cbx_meshasta.ValueMember = "Idmes";
+                cbx_meshasta.DisplayMember = "NombreMes";
+                cbx_meshasta.SelectedIndex = DateTime.Now.Month - 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Se presento un error. " + ex.Message);
+            }
+        }
+
+        private void btn_generar_Click(object sender, EventArgs e)
+        {
+            /*bool todcomp = false;
+            bool toddoc = false;
+
+            if (txt_compro.Text.Equals("**") || txt_compro.Text.Equals("*"))
+            {
+                todcomp = true;
+                txt_compro.Text = "0";
+            }
+            if (txt_docin.Text.Contains("*") || txt_docfin.Text.Contains("*"))
+            {
+                toddoc = true;
+                txt_docin.Text = "0";
+                txt_docfin.Text = "0";
+            }
+           /* bool existe = this.negocio_Asiento.ExisMovimiSinAct(txt_anio.Text, int.Parse(combo_mesde.SelectedValue.ToString()), int.Parse(cbx_meshasta.SelectedValue.ToString()),
+                                              int.Parse(txt_compro.Text), int.Parse(txt_docin.Text), int.Parse(txt_docfin.Text), todcomp, toddoc);
+            if (existe)
+            {
+                List<AsientoDataSource> asiento = new List<AsientoDataSource>();
+                asiento = this.negocio_Asiento.DevolverAsientoSinAct(txt_anio.Text, int.Parse(combo_mesde.SelectedValue.ToString()), int.Parse(cbx_meshasta.SelectedValue.ToString()),
+                                              int.Parse(txt_compro.Text), int.Parse(txt_docin.Text), int.Parse(txt_docfin.Text), todcomp, toddoc); 
+                List<AsientoDataSourceReporte> asientosR = new List<AsientoDataSourceReporte>();
+                foreach (AsientoDataSource item in asiento)
+                {
+                    AsientoDataSourceReporte asientoR = new AsientoDataSourceReporte();
+
+                    asientoR.anio = item.anio;
+                    asientoR.Cheque = item.Cheque;
+                    asientoR.Codcompr = item.Codcompr;
+                    asientoR.Cuenta = item.Cuenta;
+                    asientoR.Descripcion = item.Descripcion;
+                    asientoR.Documento = item.Documento;
+                    asientoR.Fecha = item.Fecha;
+                    asientoR.FechaImpr = dtt_fecha.Value;
+                    asientoR.Idcentro = (int)item.Idcentro;
+                    asientoR.MesDe = combo_mesde.SelectedText;
+                    asientoR.MesHasta = cbx_meshasta.SelectedText;
+                    asientoR.nit = item.nit;
+                    asientoR.NombreCia = item.NombreCompa;
+                    asientoR.Nombrecomprobante = item.Nombrecomprobante;
+                    asientoR.Valorcredito = item.Valorcredito;
+                    asientoR.Valordebito = item.Valordebito;
+                    asientosR.Add(asientoR);
+                }
+                this.Close();
+                this.formularioReporte.CargarReporte(asientosR);
+                this.formularioReporte.Show();
+            }
+
+            else
+            {
+                MessageBox.Show("No se encuentra ningun asiento", "MOVIMIENTOS SIN ACTUALIZAR", MessageBoxButtons.OK);
+                txt_compro.Text = string.Empty;
+                txt_docfin.Text = string.Empty;
+                txt_docin.Text = string.Empty;
+            }*/
+
+        }
+
+    }
+}

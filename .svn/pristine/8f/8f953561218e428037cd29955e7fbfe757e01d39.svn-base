@@ -1,0 +1,64 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Entities;
+
+namespace Datos.Factura
+{
+    public class FormatoC
+    {
+        public FormatoC()
+        {
+        }
+
+        public bool Existe(int codigofor, string tipofor)
+        {
+            bool exist = false;
+            using (contableEntities bd = new contableEntities())
+            {
+                try
+                {
+                    var query = bd.formatogeneral
+                                .Where(frm => frm.codigofor == codigofor && frm.tipoformato.tipoformato1 == tipofor).Count();
+                    if (query > 0)
+                    {
+                        exist = true;
+                    }
+                    else
+                    {
+                        exist = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return exist;
+        }
+
+        public List<tipoformato> CargarCampos(string tipoform)
+        {
+            List<tipoformato> tipo = new List<tipoformato>();
+            using (contableEntities bd = new contableEntities())
+            {
+                try
+                {
+                    var query = bd.tipoformato.Where(frm => frm.tipoformato1 == tipoform);
+                    if (query.Count() > 0)
+                    {
+                        tipo = query.ToList();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return tipo;
+        }
+    }
+}

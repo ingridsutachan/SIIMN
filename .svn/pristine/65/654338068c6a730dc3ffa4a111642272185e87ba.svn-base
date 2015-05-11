@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9F2898A6-66CD-44B3-BC90-ED8B6007D741}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Entities</RootNamespace>
+    <AssemblyName>Entities</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="cajero.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="campoformedios.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="centrocostos.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ciudad.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cliente.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="compania.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="comprobante.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="conceptospagos.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="conexuser.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="datosusuario.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="departamento.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="formaspago.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="formato.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="formatomedios.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="formatosbpyg.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="inflacion.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="maebanta.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="maecli.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="maeconcc.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="maeconta.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="maenits.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="maepagos.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="maetrac.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="maetribut.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model_Siimn.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="modulo.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="moduloppal.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="movimi.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pais.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="parametro.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="permiso.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="presupuesto.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="saldoscuentas.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saldospagos.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sucursal.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tipodocumento.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tipoformato.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tiponit.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Types\Tipos.cs">
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Types\TiposContable.cs" />
+    <Compile Include="usuario.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usuariocia.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vendedor.cs">
+      <DependentUpon>Model_Siimn.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Model_Siimn.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model_Siimn.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

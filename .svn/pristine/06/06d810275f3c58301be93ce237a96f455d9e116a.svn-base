@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace App.Forms.Contable
+{
+    public partial class Form_Desactualizar : Form
+    {
+        public int tipodes;
+
+        public Form_Desactualizar(int tipo)
+        {
+            InitializeComponent();
+            this.tipodes = tipo;
+            this.ValidarTipo(tipodes);
+        }
+
+        private void ValidarTipo(int tipo)
+        {
+            if (tipo == 1)
+            {
+                pan_todos.Visible = true;
+            }
+            if (tipo == 2)
+            {
+                pan_actuno.Visible = true;
+            }
+        }
+    }
+}

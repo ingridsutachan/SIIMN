@@ -1,0 +1,98 @@
+﻿// -----------------------------------------------------------------------
+// <copyright file="FormatorcD.cs" company="">
+// TODO: Update copyright text.
+// </copyright>
+// -----------------------------------------------------------------------
+
+namespace Datos.Cartera
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Entities;
+
+    /// <summary>
+    /// TODO: Update summary.
+    /// </summary>
+    public class FormatorcD
+    {
+        public FormatorcD()
+        {
+        }
+        
+        public bool ExisteFormato(int formato)
+        {
+            bool existe = false;
+            using (contableEntities bd = new contableEntities())
+            {
+                var query = bd.formatogeneral.Where(fom => fom.codigofor == formato).Count();
+                existe = query > 0 ? true : false;
+            }
+
+            return existe;
+        }
+
+        public bool GuardoFormato(List<formatogeneral> formarc)
+        {
+            bool result = false;
+            using (contableEntities bd = new contableEntities())
+            {
+                try
+                {
+                    foreach (formatogeneral item in formarc)
+                    {
+                        bd.formatogeneral.Add(item);
+                        bd.SaveChanges();
+                        result = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return result;
+        }
+
+        public List<formatogeneral> DevolverFormato(int format)
+        {
+            List<formatogeneral> formato = new List<formatogeneral>();
+            using (contableEntities bd = new contableEntities())
+            {
+                var query = bd.formatogeneral.Where(fom => fom.codigofor == format).ToList();
+                formato = query;
+            }
+
+            return formato;
+        }
+
+       /* public bool ActualizoFormato(List<formatogeneral> formarc)
+        {
+            bool result = false;
+            using (contableEntities bd = new contableEntities())
+            {
+                try
+                {
+                    foreach (formatogeneral item in formarc)
+                    {
+                        var query = bd.formatogeneral.Where(fom => fom.codigofor == item.codigofor && fom.nombrefor == item.nombrefor).First();
+                        query.fila = item.fila;
+                        query.columna = item.columna;
+                        query.condensa = item.condensa;
+                        query.presentacion = item.presentacion;
+                        query.titulo = item.titulo;
+                        bd.SaveChanges();
+                        result = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return result;
+        }*/
+    }
+}

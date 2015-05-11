@@ -1,0 +1,69 @@
+﻿namespace App.Forms.Contable.reportes
+{
+    partial class Form_reportecuentas
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.crystal_reportecuenta = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.reporteCuentas1 = new App.Forms.Contable.reportes.ReporteCuentas();
+            this.SuspendLayout();
+            // 
+            // crystal_reportecuenta
+            // 
+            this.crystal_reportecuenta.ActiveViewIndex = 0;
+            this.crystal_reportecuenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystal_reportecuenta.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystal_reportecuenta.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crystal_reportecuenta.Location = new System.Drawing.Point(0, 0);
+            this.crystal_reportecuenta.Name = "crystal_reportecuenta";
+            this.crystal_reportecuenta.ReportSource = this.reporteCuentas1;
+            this.crystal_reportecuenta.ShowGroupTreeButton = false;
+            this.crystal_reportecuenta.ShowParameterPanelButton = false;
+            this.crystal_reportecuenta.Size = new System.Drawing.Size(1094, 526);
+            this.crystal_reportecuenta.TabIndex = 0;
+            this.crystal_reportecuenta.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            // 
+            // Form_reportecuentas
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1094, 526);
+            this.Controls.Add(this.crystal_reportecuenta);
+            this.Name = "Form_reportecuentas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "CUENTAS O PUC";
+            this.Load += new System.EventHandler(this.Form_reportecuentas_Load);
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private ReporteCuentas reporteCuentas1;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystal_reportecuenta;
+    }
+}

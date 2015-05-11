@@ -1,0 +1,151 @@
+﻿namespace App.Forms.Contable.Reportes
+{
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.Linq;
+    using System.Text;
+    using System.Windows.Forms;
+    using Entities.Types;
+    using Negocios.General;
+    using App.Forms.Contable.Reportes.Types;
+    using App.Forms.Contable.Reportes;
+    using Negocios.Contable;
+
+    public partial class Form_ReporteBalance : Form
+    {
+        private Form_Balance form_Balance;
+
+        private string tipo;
+
+        private List<SaldosCuentasDataSource> balance;
+
+        private string fecha;
+
+        private bool terceros;
+
+        private bool encabezado;
+
+        private Empresan negocioEmpresa;
+
+        private Cuentan negocioCuenta;
+
+        private asientosn negocioAsiento;
+
+        public Form_ReporteBalance()
+        {
+            this.InitializeComponent();
+        }
+
+        public Form_ReporteBalance(Form_Balance form_Balance, string tipo, List<SaldosCuentasDataSource> balance,List<CuentaDataSource> cuentas, string fecha, bool encabeza, bool terceros)
+        {
+            // TODO: Complete member initialization
+            this.negocioCuenta = new Cuentan();
+            this.negocioEmpresa = new Empresan();
+            this.negocioAsiento = new asientosn();
+            this.form_Balance = form_Balance;
+            this.tipo = tipo;
+            this.balance = balance;
+            this.fecha = fecha;
+            this.encabezado = encabezado;
+            this.terceros = terceros;
+            this.GenerarReporte(tipo);
+        }
+
+          #region EVENTOS FORMULARIO
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+                       if (keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void Form_ReporteAsiento_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if ("mes".Equals(this.tipo))
+            {
+                this.form_Balance.SalirReporte(1);
+            }
+            /*else if ("actual".Equals(this.cualasiento))
+            {
+                this.form_Asientos.SalirReporteActual();
+            }
+            else if ("sinact".Equals(this.cualasiento))
+            {
+                this.formMovsinAct.SalirReporte();
+            }
+            else if ("librodiario".Equals(this.cualasiento))
+            {
+                this.form_LibroDiario.SalirReporte(1);
+            }
+            else if ("libroresumido".Equals(this.cualasiento))
+            {
+                this.form_LibroDiario.SalirReporte(2);
+            }*/
+        }
+
+        #endregion
+
+        private void GenerarReporte(string cualasi)
+        {
+            EmpresaDataSource empresa = new EmpresaDataSource();
+            List<CuentaDataSource> cuenta = new List<CuentaDataSource>();
+            List<SaldosCuentasDataSource> saldos = new List<SaldosCuentasDataSource>();
+            saldos = this.balance;
+            try
+            {
+                empresa = this.negocioEmpresa.DevolverDatosEmpresa(Program.compa);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("SE PRESENTO UN ERROR" + ex.Message, "ERROR", MessageBoxButtons.OK);
+            }
+
+            switch (cualasi)
+            {
+                case "mes":
+
+                    this.Text = "BALANCE DE PRUEBA POR MES";
+
+                    List<BalanceDataSourceReports> balanceRe = new List<BalanceDataSourceReports>();
+                    for (int i = 0; i < saldos.Count(); i++)
+                    {
+                        BalanceDataSourceReports balanceR = new BalanceDataSourceReports();
+                        if (this.encabezado)
+                        {
+                            balanceR.MesyAnio = "MES : " + saldos[i].Mes + "   AÑO : " + saldos[i].Anio;
+                            balanceR.CompaniayNit = empresa.Nombrecia + " - " + empresa.NombreSucursal + " - " + empresa.NitCia + " - " + empresa.DigitoCia;
+                            balanceR.FechaAct = "FECHA DE IMPRESION DD/MM/YYYY: " + DateTime.Now.ToShortDateString();
+                            balanceR.Titulo = "BALANCE DE PRUEBA A ";
+                        }
+                       /* balanceR.Comproban = saldos[i].Codcompr + " - " + comprob;
+                        balanceR.Documento = saldos[i].Documento;
+                        balanceR.Cuenta = saldos[i].Cuenta;
+                        balanceR.FechaAct = "FECHA : " + DateTime.Now.ToShortTimeString();
+                        balanceR.Fecha = saldos[i].Fecha.ToShortDateString();
+                        balanceR.Idcentro = saldos[i].Idcentro ?? default(int);
+                        balanceR.IdNit = saldos[i].IdNit != null ? this.negocioNits.DevolverNit(saldos[i].IdNit) : string.Empty;
+                        balanceR.Cheque = saldos[i].Cheque;
+                        balanceR.Descripcion = saldos[i].Descripcion;
+                        balanceR.Valordebito = saldos[i].Valordebito;
+                        balanceR.Valorcredito = saldos[i].Valorcredito;*/
+                        balanceRe.Add(balanceR);
+                    }
+
+                    ReporteBalance reportbalance = new ReporteBalance();
+                    reportbalance.SetDataSource(balanceRe);
+                    crystal_reportebalance.ReportSource = reportbalance;
+                    this.Size = new Size(1003, 583);
+                    crystal_reportebalance.Size = new Size(987, 519);
+                    break;
+            }
+        }
+    }
+}

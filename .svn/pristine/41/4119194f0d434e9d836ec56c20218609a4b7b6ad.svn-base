@@ -1,0 +1,403 @@
+﻿////*********************************************************
+//
+//    <copyright file="cuentan.cs" company="Marketing Software de Colombia LTDA">
+//    @Autor Ingrid Sutachan
+//    @fecha 01 marzo 2014
+//    </copyright>
+//
+////*********************************************************
+namespace Negocios.Contable
+{
+    using System;
+    using System.Collections.Generic;
+    using Datos.Contable;
+    using Entities;
+    using Entities.Types;
+
+    /// <summary>
+    /// Clase de Cuenta
+    /// </summary>
+    public class Cuentan
+    {
+        /// <summary>
+        /// instancia capa de datosinstancia capa de datos
+        /// </summary>
+        private Cuentac persistencia;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Cuentan"/> class.
+        /// </summary>
+        public Cuentan()
+        {
+            this.persistencia = new Cuentac();
+        }
+
+        /// <summary>
+        /// Cargar  cuenta.
+        /// </summary>
+        /// <returns>Lista de todas las cuentas</returns>
+        public List<CuentaDataSource> CargarCuenta()
+        {
+            List<CuentaDataSource> cuenta = new List<CuentaDataSource>();
+            try
+            {
+                var items = this.persistencia.CargarCuenta();
+                foreach (var item in items)
+                {
+                    CuentaDataSource ds = new CuentaDataSource();
+                    ds.Cuenta = item.cuenta;
+                    ds.Tipocta = item.tipocta;
+                    ds.Nombre = item.nombre;
+                    ds.Pidenit = item.pidenit;
+                    ds.Centro = item.centro;
+                    ds.Ajusteinteg = item.ajustesinteg;
+                    ds.IdNitajustes = item.idnitajustes;
+                    ds.Cueaju = item.cueaju;
+                    ds.Cuencorre = item.cuencorre;
+                    ds.Ajudoc = item.ajudoc;
+                    ds.Porete = item.porete;
+                    ds.Cuentret = item.retencion;
+                    ds.Concepret = item.conceprete;
+                    ds.Cuentacierreimp = item.cuentacierre;
+                    ds.ReteIca = item.reteica;
+                    ds.FormatoMedios = item.formatomedios;
+                    cuenta.Add(ds);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return cuenta;
+        }
+
+        /// <summary>
+        /// Verifica cuenta.
+        /// </summary>
+        /// <param name="cuenta">cuenta que se verificara</param>
+        /// <returns>booleano que rectifica si existe o no la cuenta</returns>
+        public bool ExisteCuenta(string cuenta)
+        {
+            bool result = false;
+            try
+            {
+                result = this.persistencia.ExisteCuenta(cuenta);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Devolvuelve the datos.
+        /// </summary>
+        /// <param name="id">identificador de la cuenta</param>
+        /// <returns>cuenta respectiva al identificador</returns>
+        public CuentaDataSource DevolverDatos(string id)
+        {
+            CuentaDataSource datos = new CuentaDataSource();
+            try
+            {
+                var item = this.persistencia.DevuelveDatos(id);
+                datos.Cuenta = item.cuenta;
+                datos.Tipocta = item.tipocta == "M" ? "MAYOR" : "AUXILIAR";
+                datos.Nombre = item.nombre;
+                datos.Pidenit = item.pidenit;
+                datos.Centro = item.centro;
+                datos.Ajusteinteg = item.ajustesinteg;
+                datos.IdNitajustes = item.idnitajustes;
+                datos.Cueaju = item.cueaju;
+                datos.Cuencorre = item.cuencorre;
+                datos.Porete = item.porete;
+                datos.Concepret = item.conceprete;
+                datos.Cuentret = item.retencion;
+                datos.Cuentacierreimp = item.cuentacierre;
+                datos.ReteIca = item.reteica;
+                datos.FormatoMedios = item.formatomedios;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return datos;
+        }
+
+        /// <summary>
+        /// Guardar cuenta.
+        /// </summary>
+        /// <param name="cuenta">Cuenta a guardar</param>
+        /// <returns>cuenta que fue guardada</returns>
+        public bool GuardarCuenta(CuentaDataSource cuenta)
+        {
+            bool result = false;
+            maeconta campo = new maeconta();
+            try
+            {
+                campo.cuenta = cuenta.Cuenta;
+                campo.tipocta = cuenta.Tipocta;
+                campo.nombre = cuenta.Nombre;
+                campo.pidenit = cuenta.Pidenit;
+                campo.centro = cuenta.Centro;
+                campo.ajustesinteg = cuenta.Ajusteinteg;
+                campo.idnitajustes = cuenta.IdNitajustes;
+                campo.cueaju = cuenta.Cueaju;
+                campo.cuencorre = cuenta.Cuencorre;
+                campo.porete = cuenta.Porete;
+                campo.conceprete = cuenta.Concepret;
+                campo.cuentacierre = cuenta.Cuentacierreimp;
+                campo.reteica = cuenta.ReteIca;
+                campo.formatomedios = cuenta.FormatoMedios;
+                result = this.persistencia.GuardarCuenta(campo);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Actualizar  cuenta.
+        /// </summary>
+        /// <param name="cuenta">cuenta a actualizar</param>
+        /// <returns>cuenta que fue actualizada</returns>
+        public bool ActualizarCuenta(CuentaDataSource cuenta)
+        {
+            bool result = false;
+            maeconta campo = new maeconta();
+            try
+            {
+                campo.cuenta = cuenta.Cuenta;
+                campo.tipocta = cuenta.Tipocta;
+                campo.nombre = cuenta.Nombre;
+                campo.pidenit = cuenta.Pidenit;
+                campo.centro = cuenta.Centro;
+                campo.ajustesinteg = cuenta.Ajusteinteg;
+                campo.idnitajustes = cuenta.IdNitajustes;
+                campo.cueaju = cuenta.Cueaju;
+                campo.cuencorre = cuenta.Cuencorre;
+                campo.porete = cuenta.Porete;
+                campo.conceprete = cuenta.Concepret;
+                campo.cuentacierre = cuenta.Cuentacierreimp;
+                campo.reteica = cuenta.ReteIca;
+                campo.formatomedios = cuenta.FormatoMedios;
+                result = this.persistencia.ActualizarCuenta(campo);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Eliminar cuenta.
+        /// </summary>
+        /// <param name="id">Identificador de cuenta a eliminar</param>
+        /// <returns>booleano que rectifica si la cuenta fue eliminada</returns>
+        public bool EliminarCuenta(string id)
+        {
+            bool result = false;
+            try
+            {
+                result = this.persistencia.EliminarCuenta(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Buscar cuenta.
+        /// </summary>
+        /// <param name="buscar">Texto a buscar dentro de la tabla cuenta</param>
+        /// <returns>lista de cuentas que contengan el respectivo texto</returns>
+        public List<CuentaDataSource> BuscarCuenta(string buscar)
+        {
+            List<CuentaDataSource> cuenta = new List<CuentaDataSource>();
+            try
+            {
+                var items = this.persistencia.BuscarCuentac(buscar);
+
+                foreach (var item in items)
+                {
+                    CuentaDataSource ds = new CuentaDataSource();
+                    ds.Cuenta = item.cuenta;
+                    ds.Tipocta = item.tipocta;
+                    ds.Nombre = item.nombre;
+                    ds.Pidenit = item.pidenit;
+                    ds.Centro = item.centro;
+                    ds.Ajusteinteg = item.ajustesinteg;
+                    ds.IdNitajustes = item.idnitajustes;
+                    ds.Cueaju = item.cueaju;
+                    ds.Cuencorre = item.cuencorre;
+                    ds.Ajudoc = item.ajudoc;
+                    ds.Porete = item.porete;
+                    ds.Cuentret = item.retencion;
+                    ds.Concepret = item.conceprete;
+                    ds.Cuentacierreimp = item.cuentacierre;
+                    ds.ReteIca = item.reteica;
+                    ds.FormatoMedios = item.formatomedios;
+                    cuenta.Add(ds);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return cuenta;
+        }
+
+        public string DevolverNombre(string codigo)
+        {
+            string nombre;
+            try
+            {
+                nombre = this.persistencia.DevolverNombre(codigo);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return nombre;
+        }
+
+        public bool VerificarCuentaVal(string cuenta)
+        {
+            bool result = false;
+            try
+            {
+                result = this.persistencia.ExisteCuentaVal(cuenta);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
+        public string DevolverTipoCuenta(string cuenta)
+        {
+            string tipo;
+            try
+            {
+                tipo = this.persistencia.DevolverTipoCuenta(cuenta);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return tipo;
+        }
+
+        public bool ExisteBuscar(string buscar)
+        {
+            bool existe = false;
+            try
+            {
+                existe = this.persistencia.ExisteBuscar(buscar);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return existe;
+        }
+
+        public List<CuentaDataSource> Busqueda(string tipo, string buscar)
+        {
+            List<CuentaDataSource> cuentadev = new List<CuentaDataSource>();
+            try
+            {
+                var items = persistencia.Busqueda(tipo, buscar);
+
+                foreach (var item in items)
+                {
+                    CuentaDataSource ds = new CuentaDataSource();
+                    ds.Cuenta = item.cuenta;
+                    ds.Tipocta = item.tipocta;
+                    ds.Nombre = item.nombre;
+                    ds.Pidenit = item.pidenit;
+                    ds.Centro = item.centro;
+                    ds.Ajusteinteg = item.ajustesinteg;
+                    ds.IdNitajustes = item.idnitajustes;
+                    ds.Cueaju = item.cueaju;
+                    ds.Cuencorre = item.cuencorre;
+                    ds.Ajudoc = item.ajudoc;
+                    ds.Porete = item.porete;
+                    ds.Cuentret = item.retencion;
+                    ds.Concepret = item.conceprete;
+                    ds.Cuentacierreimp = item.cuentacierre;
+                    ds.ReteIca = item.reteica;
+                    ds.FormatoMedios = item.formatomedios;
+                    cuentadev.Add(ds);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return cuentadev;
+        }
+
+        public bool ValidarCuentaEliminar(string codig)
+        {
+            bool val = false;
+            try
+            {
+                val = this.persistencia.ValidarCuentaEliminar(codig);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return val;
+         
+        }
+
+       /* public List<CuentaDataSource> CargarInforme(string cuentainicial, string cuentafinal)
+        {
+            /*List<CuentaDataSource> informe = new List<CuentaDataSource>();
+            try
+            {
+                var items = this.persistencia.CargarInforme(cuentainicial, cuentafinal);
+                foreach (var item in items)
+                {
+                    CuentaDataSource infor = new CuentaDataSource();
+                    infor.Cuenta = item.cuenta;
+                    infor.Nombre = item.nombre;
+                    infor.Tipocta = item.tipocta;
+                    infor.Pidenit = item.pidenit;
+                    infor.Centro = item.centro;
+                    infor.Cueaju = item.cueaju;
+                    infor.Ajudoc = item.ajudoc;
+                    infor.Porete = item.porete;
+                    informe.Add(infor);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return informe;
+        }*/
+    }
+}

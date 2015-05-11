@@ -1,0 +1,186 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using Negocios.Contable;
+using Entities.Types;
+
+namespace App.Forms.Contable
+{
+    public partial class Form_VisualContable : Form
+    {
+        private Cuentan negocioCuenta;
+
+        private string busqueda;
+
+        private string menub;
+
+        private Form_Cuenta form_cuenta;
+
+        public Form_VisualContable(string buscar, string menu, Form_Cuenta formcuenta)
+        {
+            this.negocioCuenta = new Cuentan();
+            InitializeComponent();
+            this.busqueda = buscar;
+            this.menub = menu;
+            this.form_cuenta = formcuenta;
+            this.Visual();
+        }
+
+        private void Visual()
+        {
+            if (busqueda.Equals("cuenta"))
+            {
+                this.Text = "CUENTAS";
+                ts_buscar1.Text = "Numero Cuenta";
+                ts_buscar2.Text = "Nombre";
+                ts_buscar3.Text = "Tipo Cuenta";
+                ts_buscar4.Visible = false;
+                List<AsientosDataSource> tablacuentas = new List<AsientosDataSource>();
+                try
+                {
+                    tablacuentas = this.negocioCuenta.Busqueda("todos", "todos");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Se presento un error. " + ex.Message);
+                }
+                dgv_busqueda.DataSource = tablacuentas;
+                this.NombresColumna();
+            }
+        }
+
+        private void NombresColumna()
+        {
+            dgv_busqueda.Columns[0].HeaderText = "Cuenta";
+            dgv_busqueda.Columns[1].Visible = false;
+            dgv_busqueda.Columns[2].HeaderText = "Nombre";
+            dgv_busqueda.Columns[3].HeaderText = "Tipo de Cuenta";
+            dgv_busqueda.Columns[4].HeaderText = "Pide NIT";
+            dgv_busqueda.Columns[5].HeaderText = "Centro de Costos";
+            dgv_busqueda.Columns[6].HeaderText = "Ajustes Integrales";
+            dgv_busqueda.Columns[7].HeaderText = "NIT Ajustes";
+            dgv_busqueda.Columns[8].HeaderText = "Cuenta Ajustes";
+            dgv_busqueda.Columns[9].HeaderText = "Cuenta Correción";
+            dgv_busqueda.Columns[10].HeaderText = "D/C";
+            dgv_busqueda.Columns[11].HeaderText = "Cuenta Retención";
+            dgv_busqueda.Columns[12].HeaderText = "% Retención";
+            dgv_busqueda.Columns[13].HeaderText = "Concepto de Retención";
+            dgv_busqueda.Columns[14].HeaderText = "Cuenta Cierre Impuestos";
+            dgv_busqueda.Columns[15].Visible = false;
+            dgv_busqueda.Columns[16].Visible = false;
+            dgv_busqueda.Columns[0].Width = 90;
+            dgv_busqueda.Columns[2].Width = 250;
+            dgv_busqueda.Columns[3].Width = 70;
+            dgv_busqueda.Columns[4].Width = 70;
+            dgv_busqueda.Columns[5].Width = 70;
+            dgv_busqueda.Columns[6].Width = 70;
+            dgv_busqueda.Columns[7].Width = 90;
+            dgv_busqueda.Columns[8].Width = 90;
+            dgv_busqueda.Columns[9].Width = 90;
+            dgv_busqueda.Columns[10].Width = 50;
+            dgv_busqueda.Columns[11].Width = 90;
+            dgv_busqueda.Columns[12].Width = 70;
+            dgv_busqueda.Columns[13].Width = 100;
+            dgv_busqueda.Columns[14].Width = 90;
+        }
+
+        private void btn_salir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            if (this.busqueda.Equals("cuenta"))
+            {
+                this.form_cuenta.BotonesHabit();
+            }
+        }
+
+        private void Form_VisualContable_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.busqueda.Equals("cuenta"))
+            {
+                this.form_cuenta.BotonesHabit();
+            }
+        }
+
+        private void ts_buscar1_Click(object sender, EventArgs e)
+        {
+            lbl_buscar.Text = ts_buscar1.Text;
+        }
+
+        private void ts_buscar2_Click(object sender, EventArgs e)
+        {
+            lbl_buscar.Text = ts_buscar2.Text;
+        }
+
+        private void ts_buscar3_Click(object sender, EventArgs e)
+        {
+            lbl_buscar.Text = ts_buscar3.Text;
+        }
+
+        private void ts_buscar4_Click(object sender, EventArgs e)
+        {
+            lbl_buscar.Text = ts_buscar4.Text;
+        }
+
+        private void dgv_busqueda_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (this.busqueda.Equals("cuenta"))
+            {
+                if (this.menub.Equals("editar"))
+                {
+                    string codig = dgv_busqueda.CurrentRow.Cells[0].Value.ToString();
+                    this.Close();
+                    this.form_cuenta.CargarDatos(codig);
+                    this.form_cuenta.Show();
+                }
+                else if (this.menub.Equals("eliminar"))
+                {
+                    string codig = dgv_busqueda.CurrentRow.Cells[0].Value.ToString();
+                    DialogResult result = MessageBox.Show("Esta seguro que desea eliminar?", "ELIMINAR", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        bool val = this.negocioCuenta.EliminarCuenta(codig);
+                        if (val)
+                        {
+                            MessageBox.Show("ESTE REGISTRO FUE ELIMINADO", "ELIMINAR", MessageBoxButtons.OK);
+                            this.Close();
+                            this.form_cuenta.BotonesHabit();
+                        }
+                    }
+                }
+                else if (this.menub.Equals("buscar"))
+                {
+                    string codig = dgv_busqueda.CurrentRow.Cells[0].Value.ToString();
+                    this.Close();
+                    this.form_cuenta.DevolverCuenta(codig);
+                }
+            }
+        }
+
+        private void txt_busqueda_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                if (this.busqueda.Equals("cuenta"))
+                {
+                    List<AsientosDataSource> busqueda = new List<AsientosDataSource>();
+                    try
+                    {
+                        busqueda = this.negocioCuenta.Busqueda(lbl_buscar.Text.ToLower(), txt_busqueda.Text);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Se presento un error. " + ex.Message);
+                    }
+                    dgv_busqueda.DataSource = busqueda;
+                }
+            }
+        }
+
+    }
+}

@@ -1,0 +1,1496 @@
+﻿
+namespace App.Forms.Contable
+{
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.Linq;
+    using System.Text;
+    using System.Windows.Forms;
+    using Negocios.Contable;
+    using Negocios.General;
+    using Entities.Types;
+    using System.Globalization;
+    using App.Forms.Contable.Reportes;
+
+    public partial class Form_Asientos : Form
+    {
+
+        private Comprobantesn negocio_Comprobante;
+
+        private Cuentan negocioCuenta;
+
+        private Centron negocioCentro;
+
+        private Nitsn negocioNit;
+
+        private asientosn negocioAsiento;
+
+        private Funciones funtions;
+
+        private int idasiento;
+
+        private int Rowclick;
+
+        private int cant;
+
+        private bool usrClose;
+
+        private Form_VisualContable frmguar;
+
+        private Form_ReporteAsiento frmreporguar;
+
+        private bool validasalida;
+
+        private bool estado;
+
+        private Parametrosn negocioParametro;
+
+        private bool BusquedaF12;
+
+        private bool Clictabla;
+
+        public Form_Asientos()
+        {
+            this.frmguar = new Form_VisualContable();
+            this.frmreporguar = new Form_ReporteAsiento();
+            this.negocio_Comprobante = new Comprobantesn();
+            this.negocioCuenta = new Cuentan();
+            this.negocioCentro = new Centron();
+            this.negocioParametro = new Parametrosn();
+            this.negocioNit = new Nitsn();
+            this.negocioAsiento = new asientosn();
+            this.funtions = new Funciones();
+            this.InitializeComponent();
+            this.validasalida = false;
+            this.estado = false;
+            this.BusquedaF12 = false;
+            this.Clictabla = false;
+        }
+
+        private void Form_Asientos_Load(object sender, EventArgs e)
+        {
+            this.CargarCombos();
+            this.AutoCompletar();
+        }
+
+        #region METODOS PUBLICOS
+
+        /// <summary>
+        /// Habilita los botones 
+        /// </summary>
+        public void BotonesHabit()
+        {
+            btn_buscar.Enabled = true;
+            btn_editar.Enabled = true;
+            btn_eliminar.Enabled = true;
+            btn_nuevo.Enabled = true;
+            btn_imprimir.Enabled = true;
+        }
+
+        public void CargarDatos(int idcompro)
+        {
+            /* ComprobantesDataSource compedit = new ComprobantesDataSource();
+             try
+             {
+                 compedit = this.negociocompro.DevolverDatos(idcompro);
+             }
+             catch (Exception ex)
+             {
+                 MessageBox.Show("Se presento un error. " + ex.Message);
+             }
+
+             txt_codigo.Text = Convert.ToString(compedit.Codigo);
+             txt_nombre.Text = compedit.Descricompro;
+             check_consecutivo.Checked = compedit.Consecutivo;
+             txt_numeroini.Text = Convert.ToString(compedit.Numerosigui);
+             txt_conversi.Text = compedit.Codigootra;
+             btn_guardar.Enabled = true;
+             this.CamposActivos();
+             txt_nombre.Focus();
+             txt_codigo.ReadOnly = true;
+             this.BotonesInhab();
+             this.btn_cancelar.Enabled = true;*/
+        }
+
+        public void CargarCuenta(string cuenta)
+        {
+            this.SalidaForm();
+            txt_cuenta.Text = cuenta;
+            txt_cuenta.Focus();
+        }
+
+        public void SalirCuenta()
+        {
+            this.SalidaForm();
+            txt_cuenta.Focus();
+        }
+
+        public void SalirCentro()
+        {
+            this.SalidaForm();
+            txt_centro.Focus();
+        }
+
+        public void CargarCentro(string centro)
+        {
+            this.SalidaForm();
+            txt_centro.Text = centro;
+            txt_centro.Focus();
+        }
+
+        public void CargarNit(string nit)
+        {
+            this.SalidaForm();
+            txt_nit.Text = nit;
+            txt_nit.Focus();
+        }
+
+        public void SalirNit()
+        {
+            this.SalidaForm();
+            txt_nit.Focus();
+        }
+
+        #endregion
+
+        #region TECLAS DE ACCESO
+
+        /// <summary>
+        /// Teclas de Acceso a los botones
+        /// </summary>
+        /// <param name="msg">A <see cref="T:System.Windows.Forms.Message" />mensaje del proceso</param>
+        /// <param name="keyData">un <see cref="T:System.Windows.Forms.Keys" /> valor tecla que recibe.</param>
+        /// <returns>
+        /// true si las teclas correspondiente son ingresadas
+        /// </returns>
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            EventArgs eve = new EventArgs();
+            object sender = new object();
+            switch (keyData)
+            {
+                case Keys.Control | Keys.N:
+
+                    if (btn_nuevo.Enabled == true)
+                    {
+                        this.Btn_nuevo_Click(sender, eve);
+                        return true;
+                    }
+
+                    break;
+
+                case Keys.Control | Keys.E:
+
+                    if (btn_editar.Enabled == true)
+                    {
+                        this.btn_editar.ShowDropDown();
+                        return true;
+                    }
+
+                    break;
+                case Keys.Control | Keys.B:
+
+                    if (btn_buscar.Enabled == true)
+                    {
+                        this.Btn_buscar_Click(sender, eve);
+                        return true;
+                    }
+
+                    break;
+                case Keys.Control | Keys.D:
+
+                    if (btn_eliminar.Enabled == true)
+                    {
+                        this.Btn_eliminar_Click(sender, eve);
+                        return true;
+                    }
+
+                    break;
+                case Keys.Control | Keys.P:
+
+                    if (btn_imprimir.Enabled == true)
+                    {
+                        this.btn_imprimir.ShowDropDown();
+                        return true;
+                    }
+
+                    break;
+                case Keys.Control | Keys.G:
+                    if (btn_guardar.Enabled == true)
+                    {
+                        this.Btn_guardar_Click(sender, eve);
+                        return true;
+                    }
+
+                    break;
+                case Keys.Control | Keys.Z:
+                    if (btn_cancelar.Enabled == true)
+                    {
+                        this.Btn_cancelar_Click(sender, eve);
+                        return true;
+                    }
+
+                    break;
+
+                case Keys.Escape:
+
+                    if (btn_salir.Enabled == true)
+                    {
+                        this.Btn_salir_Click(sender, eve);
+                        return true;
+                    }
+
+                    break;
+
+                case Keys.Control | Keys.T:
+                    if (dgv_asientos.RowCount > 0)
+                    {
+                        this.Clictabla = true;
+                        dgv_asientos.Focus();
+                    }
+
+                    break;
+
+                case Keys.F12:
+
+                    this.BusquedaF12 = true;
+
+                    if (txt_cuenta.Focus())
+                    {
+                        this.validasalida = true;
+                        this.Buscar("cuenta");
+                        return true;
+
+                    }
+                    else if (txt_centro.Focus())
+                    {
+                        this.validasalida = true;
+                        this.Buscar("centro");
+                        return true;
+                    }
+                    else if (txt_nit.Focus())
+                    {
+                        this.validasalida = true;
+                        this.Buscar("nit");
+                        return true;
+                    }
+
+                    break;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        #endregion
+
+        #region VISUALIZACION
+
+        /// <summary>
+        /// Campos activos.
+        /// </summary>
+        private void CamposActivos()
+        {
+            txt_anio.Enabled = true;
+            cbx_mes.Enabled = true;
+            dtime_fecha.Enabled = true;
+            cbx_comprobante.Enabled = true;
+            txt_numeroasiento.Enabled = true;
+            dgv_asientos.Enabled = true;
+            txt_anio.Text = DateTime.Now.Year.ToString();
+        }
+
+        private void SalidaForm()
+        {
+            this.Enabled = true;
+            this.validasalida = false;
+            this.BusquedaF12 = false;
+            btn_cancelar.Enabled = true;
+            btn_guardar.Enabled = true;
+        }
+
+        /// <summary>
+        /// Campos activos.
+        /// </summary>
+        private void CamposActivosAsiento()
+        {
+            txt_detalle.Enabled = true;
+            txt_cuenta.Enabled = true;
+            txt_referencia.Enabled = true;
+            txt_debito.Enabled = true;
+            txt_credito.Enabled = true;
+        }
+
+        /// <summary>
+        /// Campos inactivos.
+        /// </summary>
+        private void CamposInactivos()
+        {
+            txt_anio.Enabled = false;
+            cbx_mes.Enabled = false;
+            dtime_fecha.Enabled = false;
+            cbx_comprobante.Enabled = false;
+            txt_numeroasiento.Enabled = false;
+            btn_guardar.Enabled = false;
+            menu_botones.Focus();
+            txt_detalle.Enabled = false;
+            txt_centro.Enabled = false;
+            txt_nit.Enabled = false;
+            txt_referencia.Enabled = false;
+            txt_credito.Enabled = false;
+            txt_debito.Enabled = false;
+            txt_cuenta.Enabled = false;
+            checked_asientofijo.Enabled = false;
+            dgv_asientos.Enabled = false;
+        }
+
+        private void CamposInactivosGeneral()
+        {
+            txt_anio.Enabled = false;
+            cbx_mes.Enabled = false;
+            dtime_fecha.Enabled = false;
+            cbx_comprobante.Enabled = false;
+            txt_numeroasiento.Enabled = false;
+            checked_asientofijo.Enabled = false;
+        }
+
+        /// <summary>
+        /// Campos vacios
+        /// </summary>
+        private void CamposVacios()
+        {
+            txt_anio.Clear();
+            cbx_mes.SelectedIndex = 0;
+            dtime_fecha.Value = DateTime.Today;
+            cbx_comprobante.SelectedIndex = 0;
+            txt_numeroasiento.Clear();
+            txt_cuenta.Clear();
+            txt_centro.Text = "0";
+            txt_nit.Clear();
+            txt_referencia.Clear();
+            txt_detalle.Clear();
+            txt_debito.Text = "00.00";
+            txt_credito.Text = "00.00";
+            txt_numeroasiento.Clear();
+            checked_asientofijo.Checked = false;
+            dgv_asientos.Rows.Clear();
+            txt_detallefull.Clear();
+            txt_totaldebito.Text = "00.00";
+            txt_totalcredito.Text = "00.00";
+            txt_descuadre.Text = "00.00";
+        }
+
+        private void CamposVaciosAgregar()
+        {
+            txt_detallefull.Clear();
+            txt_cuenta.Clear();
+            txt_centro.Clear();
+            txt_referencia.Clear();
+            txt_credito.Text = "00.00";
+            txt_debito.Text = "00.00";
+        }
+
+        private void BotonesInhabilitados()
+        {
+            this.btn_editar.Enabled = false;
+            this.btn_eliminar.Enabled = false;
+            this.btn_imprimir.Enabled = false;
+            this.btn_buscar.Enabled = false;
+            this.btn_cancelar.Enabled = true;
+            this.btn_nuevo.Enabled = false;
+        }
+
+        private void BotonesInhab()
+        {
+            btn_buscar.Enabled = false;
+            btn_editar.Enabled = false;
+            btn_eliminar.Enabled = false;
+            btn_nuevo.Enabled = false;
+            btn_cancelar.Enabled = false;
+            btn_imprimir.Enabled = false;
+        }
+
+        private void CargarCombos()
+        {
+            List<ComprobantesDataSource> comprob = new List<ComprobantesDataSource>();
+            List<MesesDataSource> meses = new List<MesesDataSource>();
+            string[] mes1 = CultureInfo.CurrentCulture.DateTimeFormat.MonthNames;
+            for (int i = 0; i <= 11; i++)
+            {
+                MesesDataSource mes = new MesesDataSource();
+                mes.NumeroMes = Convert.ToString(i + 1);
+                mes.NombreMes = mes1[i].ToUpper();
+                meses.Add(mes);
+            }
+            try
+            {
+                comprob = this.negocio_Comprobante.CargarDatos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("SE PRESENTO UN ERROR." + ex.Message, "ERROR");
+            }
+            foreach (ComprobantesDataSource item in comprob)
+            {
+                item.Descricompro = Convert.ToString(item.Codigo) + "-" + item.Descricompro;
+            }
+
+            cbx_comprobante.DataSource = comprob;
+            cbx_comprobante.ValueMember = "Codigo";
+            cbx_comprobante.DisplayMember = "Descricompro";
+            cbx_mes.DataSource = meses;
+            cbx_mes.ValueMember = "NumeroMes";
+            cbx_mes.DisplayMember = "NombreMes";
+            cbx_mes.SelectedIndex = DateTime.Now.Month - 1;
+        }
+
+        private void AutoCompletar()
+        {
+            List<CuentaDataSource> cuenta = new List<CuentaDataSource>();
+            List<CentroDataSource> centro = new List<CentroDataSource>();
+            List<NitsDataSource> nit = new List<NitsDataSource>();
+            try
+            {
+                cuenta = this.negocioCuenta.CargarCuenta();
+                centro = this.negocioCentro.CargarCentro();
+                nit = this.negocioNit.CargarNits();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("SE PRESENTO UN ERROR." + ex.Message, "ERROR");
+            }
+
+            AutoCompleteStringCollection nits = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection cuentas = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection centros = new AutoCompleteStringCollection();
+            foreach (CuentaDataSource item in cuenta)
+            {
+                cuentas.Add(item.Cuenta);
+            }
+
+            txt_cuenta.AutoCompleteCustomSource = cuentas;
+
+            foreach (CentroDataSource item in centro)
+            {
+                centros.Add(Convert.ToString(item.Codcentro));
+            }
+
+            txt_centro.AutoCompleteCustomSource = centros;
+
+            foreach (NitsDataSource item in nit)
+            {
+                nits.Add(item.Nit);
+            }
+
+            txt_nit.AutoCompleteCustomSource = nits;
+        }
+
+        #endregion
+
+        #region BOTONES CLICK
+
+        private void Btn_nuevo_Click(object sender, EventArgs e)
+        {
+            this.validasalida = false;
+            this.CamposActivos();
+            this.BotonesInhabilitados();
+            this.txt_anio.Focus();
+            txt_anio.ReadOnly = false;
+        }
+
+        private void Btn_editarfenumcomp_Click(object sender, EventArgs e)
+        {
+            Form_VisualContable frm = new Form_VisualContable("asiento", "editar", this);
+            this.frmguar = frm;
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
+            this.BotonesInhab();
+        }
+
+        private void Btn_editareten_Click(object sender, EventArgs e)
+        {
+            Form_VisualContable frm = new Form_VisualContable("asiento", "editar", this);
+            this.frmguar = frm;
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
+            this.BotonesInhab();
+        }
+
+        private void Btn_eliminar_Click(object sender, EventArgs e)
+        {
+            Form_VisualContable frm = new Form_VisualContable("asiento", "eliminar", this);
+            this.frmguar = frm;
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
+            this.BotonesInhab();
+        }
+
+        private void Btn_buscar_Click(object sender, EventArgs e)
+        {
+            if (!txt_numeroasiento.Text.Equals(string.Empty))
+            {
+                List<AsientoDataSourceDevuelve> asientos = new List<AsientoDataSourceDevuelve>();
+                asientos = this.negocioAsiento.DevolverAsiento(txt_numeroasiento.Text, int.Parse(cbx_comprobante.SelectedValue.ToString()));
+                this.cant = asientos.Count;
+                cbx_comprobante.SelectedValue = asientos[0].Codcompr;
+                txt_numeroasiento.Text = Convert.ToString(asientos[0].Documento);
+                dtime_fecha.Value = asientos[0].Fecha;
+                /* for (int i = 0; i < asientos.Count; i++)
+                 {
+                     dgv_asientos.Rows.Add(asientos[i].Cuenta, asientos[i].Descripcion, asientos[i].Idcentro,
+                       asientos[i].nit, asientos[i].Cheque, asientos[i].Valordebito.ToString("0,0.00", CultureInfo.InvariantCulture), "-" + asientos[i].Valorcredito.ToString("0,0.00", CultureInfo.InvariantCulture));
+                 }*/
+                dtime_fecha.Enabled = true;
+                this.Totales();
+                dtime_fecha.Focus();
+                btn_buscar.Enabled = false;
+
+                // this.idasiento = asientos[0].IdAsiento;
+            }
+            else
+            {
+                MessageBox.Show("DEBE INGRESAR NUMERO DE ASIENTO", "EDITAR ASIENTO", MessageBoxButtons.OK);
+            }
+        }
+
+        private void Btn_imprasiact_Click(object sender, EventArgs e)
+        {
+            Form_ReporteAsiento frm = new Form_ReporteAsiento(this, "actual");
+            this.frmreporguar = frm;
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
+            this.BotonesInhab();
+        }
+
+        private void Btn_imprimirasiento_Click(object sender, EventArgs e)
+        {
+            Form_ReporteAsiento frm = new Form_ReporteAsiento(this, "asiento");
+            this.frmreporguar = frm;
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
+            this.BotonesInhab();
+        }
+
+        private void Btn_imprasiborrados_Click(object sender, EventArgs e)
+        {
+            Form_ReporteAsiento frm = new Form_ReporteAsiento(this, "borrados");
+            this.frmreporguar = frm;
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
+            this.BotonesInhab();
+        }
+
+        private void Btn_imprasiefijos_Click(object sender, EventArgs e)
+        {
+            Form_ReporteAsiento frm = new Form_ReporteAsiento(this, "fijos");
+            this.frmreporguar = frm;
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
+            this.BotonesInhab();
+        }
+
+        private void Btn_guardar_Click(object sender, EventArgs e)
+        {
+            bool valida = this.ValidarGuardar();
+            if (!valida)
+            {
+                List<AsientoDataSource> asientos = new List<AsientoDataSource>();
+                asientos = this.guardarAsiento();
+                AsientoDevolverVal asientoguard = new AsientoDevolverVal();
+                try
+                {
+                    asientoguard = this.negocioAsiento.GuardarAsiento(asientos, this.estado);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("SE PRESENTO UN ERROR." + ex.Message, "ERROR");
+                }
+                if (asientoguard.Guardo)
+                {
+                    MessageBox.Show("EL ASIENTO HA SIDO GUARDADO CON EL NUMERO : " + asientoguard.asientoguard, "GRABAR ASIENTO", MessageBoxButtons.OK);
+                    CamposVacios();
+                    CamposInactivos();
+                    this.BotonesHabit();
+                    btn_cancelar.Enabled = false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("EL NUMERO DE DOCUMENTO YA EXISTE", "ERROR", MessageBoxButtons.OK);
+                txt_numeroasiento.Enabled = true;
+                txt_numeroasiento.Focus();
+            }
+        }
+
+        private bool ValidarGuardar()
+        {
+            bool result = false;
+            try
+            {
+                bool consec = this.negocio_Comprobante.EsConsecutivo(int.Parse(cbx_comprobante.SelectedValue.ToString()));
+                if (!consec)
+                {
+                    result = this.negocioAsiento.ExisteAsiento(txt_numeroasiento.Text, int.Parse(cbx_comprobante.SelectedValue.ToString()));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("SE PRESENTO UN ERROR." + ex.Message, "ERROR");
+            }
+
+            return result;
+        }
+
+        private void Btn_cancelar_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("ESTA SEGURO QUE DESEA CANCELAR?", "CANCELAR", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                this.CamposVacios();
+                this.CamposInactivos();
+                this.BotonesHabit();
+                this.validasalida = true;
+                this.Clictabla = false;
+                this.btn_cancelar.Enabled = false;
+                this.menu_botones.Focus();
+            }
+        }
+
+        private void Btn_salir_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("ESTA SEGURO QUE DESEA SALIR?", "SALIR", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                this.usrClose = true;
+                this.Close();
+                this.frmguar.Close();
+                this.frmreporguar.Close();
+                this.validasalida = true;
+            }
+        }
+
+        private void Btn_agregar_Click(object sender, EventArgs e)
+        {
+
+            bool result = this.ValidarAgregar();
+            if (result)
+            {
+                string credito = "00,00".Equals(txt_credito.Text) ? txt_credito.Text : "-" + txt_credito.Text;
+                if (!this.Clictabla)
+                {
+
+                    dgv_asientos.Rows.Add(txt_cuenta.Text, txt_centro.Text,
+                   txt_nit.Text, txt_referencia.Text, txt_debito.Text, credito, txt_detalle.Text);
+                }
+                else
+                {
+                    dgv_asientos.Rows[this.Rowclick].Cells[0].Value = txt_cuenta.Text;
+                    dgv_asientos.Rows[this.Rowclick].Cells[1].Value = txt_centro.Text;
+                    dgv_asientos.Rows[this.Rowclick].Cells[2].Value = txt_nit.Text;
+                    dgv_asientos.Rows[this.Rowclick].Cells[3].Value = txt_referencia.Text;
+                    dgv_asientos.Rows[this.Rowclick].Cells[4].Value = txt_debito.Text;
+                    dgv_asientos.Rows[this.Rowclick].Cells[5].Value = credito;
+                    dgv_asientos.Rows[this.Rowclick].Cells[6].Value = txt_detalle.Text;
+                    this.Clictabla = false;
+                }
+
+                this.Totales();
+                this.CamposVaciosAgregar();
+                txt_cuenta.Focus();
+            }
+            else
+            {
+                MessageBox.Show("DEBE INGRESAR TODOS LOS CAMPOS", "ERROR", MessageBoxButtons.OK);
+            }
+        }
+
+        private void Btn_traerasiento_Click(object sender, EventArgs e)
+        {
+            Frm_visualAsiFijo frm = new Frm_visualAsiFijo(this);
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
+        }
+
+        #endregion
+
+        #region GUARDAR DATOS
+
+        private List<AsientoDataSource> guardarAsiento()
+        {
+            List<AsientoDataSource> asientos = new List<AsientoDataSource>();
+            for (int i = 0; i < dgv_asientos.RowCount; i++)
+            {
+                AsientoDataSource asi = new AsientoDataSource();
+                asi.Anio = txt_anio.Text;
+                asi.Idmes = int.Parse(cbx_mes.SelectedValue.ToString());
+                asi.Idcompania = Program.compa;
+                asi.Fecha = dtime_fecha.Value;
+                asi.Documento = txt_numeroasiento.Text;
+                asi.IdModuloImprime = 7;
+                asi.IdTipoDcto = null;
+                asi.Codcompr = int.Parse(cbx_comprobante.SelectedValue.ToString());
+                asi.Cuenta = dgv_asientos.Rows[i].Cells[0].Value.ToString();
+                asi.Descripcion = dgv_asientos.Rows[i].Cells[6].Value.ToString();
+                if (!string.Empty.Equals(dgv_asientos.Rows[i].Cells[1].Value.ToString()))
+                {
+                    asi.Idcentro = int.Parse(dgv_asientos.Rows[i].Cells[1].Value.ToString());
+                }
+                else
+                {
+                    asi.Idcentro = null;
+                }
+
+                if (!string.Empty.Equals(dgv_asientos.Rows[i].Cells[2].Value.ToString()))
+                {
+                    asi.IdNit = this.negocioNit.DevolverId(dgv_asientos.Rows[i].Cells[2].Value.ToString());
+                }
+                else
+                {
+                    asi.IdNit = null;
+                }
+
+                asi.Cheque = dgv_asientos.Rows[i].Cells[3].Value.ToString();
+                asi.Valordebito = decimal.Parse(dgv_asientos.Rows[i].Cells[4].Value.ToString());
+                asi.Valorcredito = decimal.Parse(dgv_asientos.Rows[i].Cells[5].Value.ToString());
+                asi.Entrada = null;
+                if (this.negocioCuenta.TieneRetencion(dgv_asientos.Rows[i].Cells[0].Value.ToString()))
+                {
+                    asi.BaseImpuesto = asi.Valorcredito + asi.Valordebito * -1;
+                }
+                else
+                {
+                    asi.BaseImpuesto = 0;
+                }
+
+                if (this.negocioCuenta.TieneReteIca(dgv_asientos.Rows[i].Cells[0].Value.ToString()))
+                {
+                    asi.ValorIca = asi.Valorcredito + asi.Valordebito;
+                }
+                else
+                {
+                    asi.ValorIca = 0;
+                }
+
+                asi.AsiFijo = checked_asientofijo.Checked;
+                asi.Usuario = Program.iduser;
+                asi.Fechagraba = DateTime.Now;
+                string Enlinea = this.negocioParametro.ActualizarEnLinea();
+                if ("1".Equals(Enlinea) && asi.AsiFijo == false)
+                {
+                    asi.Usuarioact = Program.iduser;
+                    asi.Fechaactua = DateTime.Now;
+                    asi.Actualizado = true;
+                }
+                else if ("0".Equals(Enlinea) || asi.AsiFijo == true || ("1".Equals(Enlinea) && asi.AsiFijo == true))
+                {
+                    asi.Usuarioact = null;
+                    asi.Fechaactua = null;
+                    asi.Actualizado = false;
+                }
+                asientos.Add(asi);
+            }
+
+            return asientos;
+        }
+
+        #endregion
+
+        #region VALIDACIONES GENERAL ASIENTO
+
+        private void Txt_anio_Leave(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (txt_anio.Text.Length != 4 || int.Parse(txt_anio.Text) < 1900 || int.Parse(txt_anio.Text) > 2100)
+            {
+                tb.Focus();
+            }
+            else
+            {
+                dtime_fecha.Value = Convert.ToDateTime("03/03/" + txt_anio.Text);
+            }
+        }
+
+        private void Dtime_fecha_Leave(object sender, EventArgs e)
+        {
+            if (dtime_fecha.Value.Year != int.Parse(txt_anio.Text))
+            {
+                MessageBox.Show("EL AÑO DE LA FECHA ES DIFERENTE AL AÑO INGRESADO", "ERROR", MessageBoxButtons.OK);
+                dtime_fecha.Focus();
+            }
+            if (dtime_fecha.Value.Month != int.Parse(cbx_mes.SelectedValue.ToString()))
+            {
+                MessageBox.Show("EL MES DE LA FECHA ES DIFERENTE AL MES INGRESADO", "ERROR", MessageBoxButtons.OK);
+                dtime_fecha.Focus();
+            }
+        }
+
+        private void Cbx_comprobante_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            bool consecutivo = false;
+            try
+            {
+                consecutivo = this.negocio_Comprobante.EsConsecutivo(int.Parse(cbx_comprobante.SelectedValue.ToString()));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("SE PRESENTO UN ERROR." + ex.Message, "ERROR");
+            }
+            if (consecutivo)
+            {
+                txt_numeroasiento.Text = this.negocioAsiento.DevolverConsecutivo(int.Parse(cbx_comprobante.SelectedValue.ToString()));
+            }
+            else
+            {
+                txt_numeroasiento.Text = string.Empty;
+            }
+
+        }
+
+        private void Cbx_comprobante_Leave(object sender, EventArgs e)
+        {
+            this.Cbx_comprobante_SelectionChangeCommitted(sender, e);
+        }
+
+        private void Txt_numeroasiento_Leave(object sender, EventArgs e)
+        {
+            if (!string.Empty.Equals(txt_numeroasiento.Text))
+            {
+                bool existe = false;
+                try
+                {
+                    existe = this.negocioAsiento.ExisteAsiento(txt_numeroasiento.Text, int.Parse(cbx_comprobante.SelectedValue.ToString()));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("SE PRESENTO UN ERROR." + ex.Message, "ERROR");
+                }
+                if (existe)
+                {
+                    List<AsientoDataSourceDevuelve> asiento = new List<AsientoDataSourceDevuelve>();
+                    try
+                    {
+                        asiento = this.negocioAsiento.DevolverAsiento(txt_numeroasiento.Text, int.Parse(cbx_comprobante.SelectedValue.ToString()));
+                        if (asiento[0].Actualizado)
+                        {
+                            string EnLinea = this.negocioParametro.ActualizarEnLinea();
+                            if ("1".Equals(EnLinea))
+                            {
+                                if (dgv_asientos.RowCount == 0)
+                                {
+                                    this.estado = true;
+                                    this.CargarAsiento(asiento);
+                                    this.CamposActivosAsiento();
+                                    txt_cuenta.Focus();
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("EL ASIENTO YA SE ENCUENTRA ACTUALIZADO", "ERROR", MessageBoxButtons.OK);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("SE PRESENTO UN ERROR." + ex.Message, "ERROR");
+                    }
+                    checked_asientofijo.Enabled = false;
+                    this.CamposInactivosGeneral();
+                    txt_detalle.Enabled = true;
+                }
+                else
+                {
+                    this.estado = false;
+                    checked_asientofijo.Enabled = true;
+                    this.CamposActivosAsiento();
+                    checked_asientofijo.Focus();
+                }
+
+                cbx_comprobante.Enabled = false;
+                txt_numeroasiento.Enabled = false;
+            }
+            else
+            {
+                txt_numeroasiento.Focus();
+            }
+        }
+
+        private void Cbx_comprobante_Enter(object sender, EventArgs e)
+        {
+            txt_anio.Enabled = false;
+            cbx_mes.Enabled = false;
+            dtime_fecha.Enabled = false;
+            dtime_fecha.Value = Convert.ToDateTime("01/" + cbx_mes.SelectedValue.ToString() + "/" + txt_anio.Text);
+
+        }
+
+        private void Txt_numeroasiento_Enter(object sender, EventArgs e)
+        {
+            txt_anio.Enabled = false;
+            cbx_mes.Enabled = false;
+            dtime_fecha.Enabled = false;
+            checked_asientofijo.Enabled = false;
+            dtime_fecha.Value = Convert.ToDateTime("01/" + cbx_mes.SelectedValue.ToString() + "/" + txt_anio.Text);
+        }
+
+        private void Cbx_mes_Leave(object sender, EventArgs e)
+        {
+            dtime_fecha.Value = Convert.ToDateTime("01/" + cbx_mes.SelectedValue.ToString() + "/" + txt_anio.Text);
+        }
+
+        private void Txt_cuenta_KeyUp(object sender, KeyEventArgs e)
+        {
+            int tamanio = txt_cuenta.Text.Length;
+            if (!txt_cuenta.Text.Equals(string.Empty) && (tamanio != 3 && tamanio != 5 && tamanio != 7 && tamanio != 11))
+            {
+                try
+                {
+                    txt_detallefull.Text = "CTA:  " + this.negocioCuenta.DevolverNombre(txt_cuenta.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("SE PRESENTO UN ERROR." + ex.Message, "ERROR");
+                }
+            }
+            else
+            {
+                txt_detallefull.Text = string.Empty;
+            }
+        }
+
+        #endregion
+
+        #region VALIDACIONES CAMPOS TAB
+
+        private void ValidaNumerico_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
+            else
+            {
+                e.Handled = this.funtions.ValidacionNumerico(e).Handled;
+            }
+        }
+
+        private void EnterTab_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
+        }
+
+        private void Decimal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Tab)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
+            else
+            {
+                if (tb.Text.Contains(".") || tb.Text.Contains(","))
+                {
+                    if (e.KeyChar == 44 || e.KeyChar == 46)
+                    {
+                        e.Handled = true;
+                    }
+                    else
+                    {
+                        e.Handled = this.funtions.ValidacionDecimal(e).Handled;
+                    }
+                }
+                else
+                {
+                    e.Handled = this.funtions.ValidacionDecimal(e).Handled;
+                }
+            }
+        }
+
+        private void TxtAutocomplet_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && validasalida == false)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
+        }
+
+        private decimal QuitarPuntos(string valor)
+        {
+            if (valor.Contains("."))
+            {
+                valor = valor.Replace(".", ",");
+            }
+            decimal numero = default(decimal);
+            bool bln = decimal.TryParse(valor, out numero);
+            return numero;
+        }
+
+        #endregion
+
+        #region VALIDACIONES ASIENTO DETALLE
+
+        private void Txt_detalle_Enter(object sender, EventArgs e)
+        {
+            if (string.Empty.Equals(txt_cuenta.Text))
+            {
+                txt_cuenta.Focus();
+            }
+        }
+
+        private void Txt_cuenta_Leave(object sender, EventArgs e)
+        {
+            if (!string.Empty.Equals(txt_cuenta.Text) && validasalida == false)
+            {
+                string mensaje = this.funtions.ValidarOtraCuenta(txt_cuenta.Text);
+
+                if (!string.Empty.Equals(mensaje))
+                {
+                    if ("CUENTA NO EXISTENTE".Equals(mensaje))
+                    {
+                        DialogResult agregar = MessageBox.Show("CUENTA NO EXISTENTE, DESEA CREARLA?", "ERROR", MessageBoxButtons.YesNo);
+                        if (agregar == DialogResult.Yes)
+                        {
+                            this.validasalida = true;
+                            this.BotonesInhab();
+                            btn_guardar.Enabled = false;
+                            Form_Cuenta frm = new Form_Cuenta("asiento", txt_cuenta.Text, this);
+                            this.Enabled = false;
+                            frm.MdiParent = this.MdiParent;
+                            frm.Show();
+                        }
+                        else
+                        {
+                            txt_cuenta.Focus();
+                            this.validasalida = false;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(mensaje, "ERROR", MessageBoxButtons.OK);
+                        txt_cuenta.Focus();
+                    }
+                }
+                else
+                {
+                    this.DetalleCuenta();
+                }
+            }
+            else
+            {
+                if (this.Clictabla == false)
+                {
+                    txt_cuenta.Focus();
+                }
+            }
+        }
+
+        private void Txt_cuenta_Enter(object sender, EventArgs e)
+        {
+            txt_centro.Enabled = false;
+            txt_nit.Enabled = false;
+            checked_asientofijo.Enabled = false;
+        }
+
+        private void Txt_centro_Leave(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (!string.Empty.Equals(tb.Text) && validasalida == false)
+            {
+                bool result = false;
+                try
+                {
+                    result = this.negocioCentro.ExisteCentro(int.Parse(txt_centro.Text));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("SE PRESENTO UN ERROR." + ex.Message, "ERROR");
+                }
+
+                if (!result && this.BusquedaF12 == false)
+                {
+                    this.validasalida = true;
+                    DialogResult agregar = MessageBox.Show("EL CENTRO NO EXISTE, DESEA CREARLO?", "NO EXISTE", MessageBoxButtons.YesNo);
+                    if (agregar == DialogResult.Yes)
+                    {
+                        this.BotonesInhab();
+                        btn_guardar.Enabled = false;
+                        this.Enabled = false;
+                        Frmcentro frmcen = new Frmcentro("asiento", txt_centro.Text, this);
+                        frmcen.MdiParent = this.MdiParent;
+                        frmcen.Show();
+                    }
+                    else
+                    {
+                        txt_centro.Focus();
+                        this.validasalida = false;
+                    }
+                }
+                if (this.BusquedaF12)
+                {
+                    txt_centro.Focus();
+                }
+            }
+            else
+            {
+                tb.Focus();
+            }
+        }
+
+        private void Txt_centro_KeyUp(object sender, KeyEventArgs e)
+        {
+            string[] str = txt_detallefull.Text.Split('\n');
+            txt_detallefull.Text = string.Empty;
+            if (!string.Empty.Equals(txt_centro.Text))
+            {
+                try
+                {
+                    txt_detallefull.Text = str[0] + Environment.NewLine + "CENTRO:" + this.negocioCentro.DevolverNombre(int.Parse(txt_centro.Text));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("SE PRESENTO UN ERROR." + ex.Message, "ERROR");
+                }
+            }
+            else
+            {
+                txt_detallefull.Text = str[0] + Environment.NewLine + string.Empty;
+            }
+        }
+
+        private void Txt_nit_Leave(object sender, EventArgs e)
+        {
+            string[] str = txt_detallefull.Text.Split('\n');
+            int cantidad = str.Count();
+            txt_detallefull.Text = string.Empty;
+            if (!string.Empty.Equals(txt_nit.Text) && validasalida == false)
+            {
+                bool result = false;
+                try
+                {
+                    result = this.negocioNit.ExisteNit(txt_nit.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("SE PRESENTO UN ERROR." + ex.Message, "ERROR");
+                }
+                if (result)
+                {
+                    try
+                    {
+                        if (cantidad == 2)
+                        {
+                            txt_detallefull.Text = str[0] + Environment.NewLine + str[1] + Environment.NewLine + "NIT : " + this.negocioNit.DevolverNombre(txt_nit.Text);
+                        }
+                        else
+                        {
+                            txt_detallefull.Text = str[0] + Environment.NewLine + "NIT : " + this.negocioNit.DevolverNombre(txt_nit.Text);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("SE PRESENTO UN ERROR." + ex.Message, "ERROR");
+                    }
+                }
+                else if (result && this.BusquedaF12 == false)
+                {
+                    this.validasalida = true;
+                    txt_detallefull.Text = str[0] + Environment.NewLine + str[1] + Environment.NewLine + string.Empty;
+                    DialogResult agregar = MessageBox.Show("EL NIT NO EXISTE, DESEA CREARLO?", "NO EXISTE", MessageBoxButtons.YesNo);
+                    if (agregar == DialogResult.Yes)
+                    {
+                        this.BotonesInhab();
+                        btn_guardar.Enabled = false;
+                        this.Enabled = false;
+                        Frmnits frmnit = new Frmnits("asiento", txt_nit.Text, this);
+                        frmnit.MdiParent = this.MdiParent;
+                        frmnit.Show();
+                    }
+                    else
+                    {
+                        txt_nit.Focus();
+                        this.validasalida = false;
+                    }
+                }
+                if (this.BusquedaF12)
+                {
+                    txt_nit.Focus();
+                }
+            }
+            else
+            {
+                txt_nit.Focus();
+                txt_detallefull.Text = str[0] + Environment.NewLine + str[1] + Environment.NewLine + string.Empty;
+            }
+        }
+
+        private void txt_debito_Leave(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            this.LeaveDecimales(tb);
+            if (!txt_debito.Text.Equals("00,00") && !txt_debito.Text.Equals(string.Empty))
+            {
+                decimal numero = default(decimal);
+                numero = 0;
+                txt_credito.Text = string.Format("{0:00.00}", numero);
+            }
+        }
+
+        private void txt_credito_Leave(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            this.LeaveDecimales(tb);
+            if (!txt_credito.Text.Equals("00,00") && !txt_credito.Text.Equals(string.Empty))
+            {
+                decimal numero = default(decimal);
+                numero = 0;
+                txt_debito.Text = string.Format("{0:00.00}", numero);
+            }
+            btn_agregar.Enabled = true;
+            btn_agregar.Focus();
+        }
+
+        private void Txt_detalle_Leave(object sender, EventArgs e)
+        {
+            if (string.Empty.Equals(txt_detalle.Text) && validasalida == false)
+            {
+                txt_detalle.Focus();
+            }
+        }
+
+        private void Txt_descuadre_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_descuadre.Text.Equals("00,00"))
+            {
+                btn_guardar.Enabled = true;
+            }
+            else
+            {
+                btn_guardar.Enabled = false;
+            }
+        }
+
+        # endregion
+
+        #region VALIDACIONES DATAGRIDVIEW
+
+        private void Dgv_asientos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgv_asientos.RowCount > 0)
+            {
+                this.EditarFila();
+            }
+        }
+
+        private void Dgv_asientos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == (char)Keys.Enter)
+            {
+                if (dgv_asientos.RowCount > 0)
+                {
+                    this.EditarFila();
+                }
+            }
+        }
+
+        private void Dgv_asientos_Enter(object sender, EventArgs e)
+        {
+            this.Clictabla = false;
+        }
+
+        #endregion
+
+        #region DATOS
+
+        private void CargarAsiento(List<AsientoDataSourceDevuelve> asiento)
+        {
+            txt_anio.Text = Convert.ToString(asiento[0].Anio);
+            cbx_mes.SelectedIndex = asiento[0].Mes;
+            dtime_fecha.Value = asiento[0].Fecha;
+            txt_detalle.Text = asiento[0].Descripcion;
+            for (int i = 0; i < asiento.Count(); i++)
+            {
+                dgv_asientos.Rows.Add(asiento[i].Cuenta, asiento[i].Idcentro,
+                   asiento[i].Nit, asiento[i].Cheque, asiento[i].Valordebito.ToString("0,0.00", CultureInfo.InvariantCulture), asiento[i].Valorcredito.ToString("0,0.00", CultureInfo.InvariantCulture),
+                   asiento[i].Descripcion);
+            }
+            this.Totales();
+        }
+
+        private bool ValidarAgregar()
+        {
+            if (!string.Empty.Equals(txt_cuenta.Text) && !string.Empty.Equals(txt_detalle.Text) && !string.Empty.Equals(txt_debito.Text)
+                && !string.Empty.Equals(txt_credito.Text))
+            {
+                if (txt_centro.Enabled == true && txt_centro.Text.Equals(string.Empty))
+                {
+                    return false;
+                }
+                else if (txt_nit.Enabled == true && txt_nit.Text.Equals(string.Empty))
+                {
+                    return false;
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void DetalleCuenta()
+        {
+            CuentaDataSource cuentadev = new CuentaDataSource();
+            try
+            {
+                cuentadev = this.negocioCuenta.DevolverDatos(txt_cuenta.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("SE PRESENTO UN ERROR." + ex.Message, "ERROR");
+            }
+            txt_centro.Enabled = cuentadev.Centro;
+            txt_nit.Enabled = cuentadev.Pidenit;
+            txt_nit.Text = cuentadev.Pidenit == false ? string.Empty : txt_nit.Text;
+        }
+
+        private void LeaveDecimales(TextBox tb)
+        {
+            string texto;
+            if (tb.Text.Contains("."))
+            {
+                texto = tb.Text.Replace(".", ",");
+            }
+            else
+            {
+                texto = tb.Text;
+            }
+            decimal numero = default(decimal);
+            bool bln = decimal.TryParse(texto, out numero);
+            tb.Tag = numero;
+            tb.Text = string.Format("{0:00.00}", numero);
+        }
+
+        private void Totales()
+        {
+            decimal debito = 0;
+            for (int i = 0; i < dgv_asientos.RowCount; i++)
+            {
+                debito = debito + this.QuitarPuntos(dgv_asientos.Rows[i].Cells[4].Value.ToString());
+            }
+            decimal credito = 0;
+            for (int i = 0; i < dgv_asientos.RowCount; i++)
+            {
+                credito = credito + this.QuitarPuntos(dgv_asientos.Rows[i].Cells[5].Value.ToString());
+            }
+
+            txt_totaldebito.Text = string.Format("{0:00.00}", debito);
+            txt_totalcredito.Text = string.Format("{0:00.00}", credito);
+            decimal descuadre = debito + credito;
+            txt_descuadre.Text = string.Format("{0:00.00}", descuadre);
+        }
+
+
+        private void EditarFila()
+        {
+            this.Rowclick = dgv_asientos.CurrentCell.RowIndex;
+            txt_cuenta.Text = dgv_asientos.Rows[this.Rowclick].Cells[0].Value.ToString();
+            txt_centro.Text = dgv_asientos.Rows[this.Rowclick].Cells[1].Value != null ? dgv_asientos.Rows[this.Rowclick].Cells[1].Value.ToString() : string.Empty;
+            txt_nit.Text = dgv_asientos.Rows[this.Rowclick].Cells[2].Value != null ? dgv_asientos.Rows[this.Rowclick].Cells[2].Value.ToString() : string.Empty;
+            txt_referencia.Text = dgv_asientos.Rows[this.Rowclick].Cells[3].Value != null ? dgv_asientos.Rows[this.Rowclick].Cells[3].Value.ToString() : string.Empty;
+            txt_debito.Text = dgv_asientos.Rows[this.Rowclick].Cells[4].Value.ToString();
+            txt_credito.Text = dgv_asientos.Rows[this.Rowclick].Cells[5].Value.ToString();
+            txt_detalle.Text = dgv_asientos.Rows[this.Rowclick].Cells[6].Value.ToString();
+            txt_cuenta.Focus();
+            this.Clictabla = true;
+        }
+
+        #endregion
+
+        # region BUSQUEDAS
+
+        private void Buscar(string busqueda)
+        {
+            if ("cuenta".Equals(busqueda))
+            {
+                Form_VisualContable frm = new Form_VisualContable("cuentaasiento", "buscar", this);
+                this.frmguar = frm;
+                frm.MdiParent = this.MdiParent;
+                frm.Show();
+                this.BotonesInhab();
+                this.Enabled = false;
+                this.validasalida = true;
+            }
+            if ("centro".Equals(busqueda))
+            {
+                Form_VisualContable frm = new Form_VisualContable("centroasiento", "buscar", this);
+                this.frmguar = frm;
+                frm.MdiParent = this.MdiParent;
+                frm.Show();
+                this.BotonesInhab();
+                this.Enabled = false;
+                this.validasalida = true;
+            }
+
+            if ("nit".Equals(busqueda))
+            {
+                Form_VisualContable frm = new Form_VisualContable("nitasiento", "buscar", this);
+                this.frmguar = frm;
+                frm.MdiParent = this.MdiParent;
+                frm.Show();
+                this.BotonesInhab();
+                this.Enabled = false;
+                this.validasalida = true;
+            }
+        }
+
+        #endregion
+
+        #region METODOS FORMULARIO
+
+        private void Form_Asientos_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!this.usrClose)
+            {
+                DialogResult result = MessageBox.Show("ESTA SEGURO QUE DESEA SALIR?", "SALIR", MessageBoxButtons.YesNo);
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true;
+                    this.validasalida = true;
+                }
+                else
+                {
+                    this.frmguar.Close();
+                    this.frmreporguar.Close();
+                }
+            }
+        }
+
+        public void CargarDatosAsientoFijo(string documento)
+        {
+            List<AsientoDataSource> AsientoFijo = new List<AsientoDataSource>();
+            AsientoFijo = this.negocioAsiento.CargarAsientoFijo(documento);
+            this.CamposActivos();
+            this.AutoCompletar();
+            txt_numeroasiento.Text = Convert.ToString(AsientoFijo[0].Documento);
+            cbx_comprobante.SelectedValue = AsientoFijo[0].Codcompr;
+
+            cbx_comprobante.Focus();
+            this.Totales();
+            checked_asientofijo.Enabled = false;
+
+        }
+
+        #endregion
+       
+    }
+}
+
+

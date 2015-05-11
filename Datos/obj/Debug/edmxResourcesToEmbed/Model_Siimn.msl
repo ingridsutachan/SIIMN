@@ -204,6 +204,7 @@
         <MappingFragment StoreEntitySet="inflacion">
           <ScalarProperty Name="idinflacion" ColumnName="idinflacion" />
           <ScalarProperty Name="idsucursal" ColumnName="idsucursal" />
+          <ScalarProperty Name="anio" ColumnName="anio" />
           <ScalarProperty Name="mes" ColumnName="mes" />
           <ScalarProperty Name="inflamensual" ColumnName="inflamensual" />
         </MappingFragment>

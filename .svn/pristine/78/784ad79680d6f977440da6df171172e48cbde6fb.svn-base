@@ -1,0 +1,2917 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="contableModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="contableModelStoreContainer">
+          <EntitySet Name="cajero" EntityType="contableModel.Store.cajero" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="centro" EntityType="contableModel.Store.centro" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="ciudad" EntityType="contableModel.Store.ciudad" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="compania" EntityType="contableModel.Store.compania" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="comprobante" EntityType="contableModel.Store.comprobante" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="conceptospago" EntityType="contableModel.Store.conceptospago" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="coneusuar" EntityType="contableModel.Store.coneusuar" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="datosusuario" EntityType="contableModel.Store.datosusuario" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="departamento" EntityType="contableModel.Store.departamento" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="formaspago" EntityType="contableModel.Store.formaspago" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="formato" EntityType="contableModel.Store.formato" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="formatorc" EntityType="contableModel.Store.formatorc" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="inflacion" EntityType="contableModel.Store.inflacion" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="maebanta" EntityType="contableModel.Store.maebanta" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="maecli" EntityType="contableModel.Store.maecli" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="maeconcc" EntityType="contableModel.Store.maeconcc" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="maeconta" EntityType="contableModel.Store.maeconta" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="maenits" EntityType="contableModel.Store.maenits" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="maepagos" EntityType="contableModel.Store.maepagos" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="maetrac" EntityType="contableModel.Store.maetrac" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="maetribub" EntityType="contableModel.Store.maetribub" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="mes" EntityType="contableModel.Store.mes" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="modulo" EntityType="contableModel.Store.modulo" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="movimi" EntityType="contableModel.Store.movimi" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="pais" EntityType="contableModel.Store.pais" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="parametros" EntityType="contableModel.Store.parametros" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="permiso" EntityType="contableModel.Store.permiso" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="presupuesto" EntityType="contableModel.Store.presupuesto" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="saldoscuentas" EntityType="contableModel.Store.saldoscuentas" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="tiponit" EntityType="contableModel.Store.tiponit" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="usuario" EntityType="contableModel.Store.usuario" store:Type="Tables" Schema="contable" />
+          <EntitySet Name="vendedor" EntityType="contableModel.Store.vendedor" store:Type="Tables" Schema="contable" />
+          <AssociationSet Name="fk_centrocospro" Association="contableModel.Store.fk_centrocospro">
+            <End Role="centro" EntitySet="centro" />
+            <End Role="presupuesto" EntitySet="presupuesto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_centromov" Association="contableModel.Store.fk_centromov">
+            <End Role="centro" EntitySet="centro" />
+            <End Role="movimi" EntitySet="movimi" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cianits" Association="contableModel.Store.fk_cianits">
+            <End Role="compania" EntitySet="compania" />
+            <End Role="maenits" EntitySet="maenits" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ciud" Association="contableModel.Store.fk_ciud">
+            <End Role="ciudad" EntitySet="ciudad" />
+            <End Role="maenits" EntitySet="maenits" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ciudadcli" Association="contableModel.Store.fk_ciudadcli">
+            <End Role="ciudad" EntitySet="ciudad" />
+            <End Role="maecli" EntitySet="maecli" />
+          </AssociationSet>
+          <AssociationSet Name="fk_comapaniatrib" Association="contableModel.Store.fk_comapaniatrib">
+            <End Role="compania" EntitySet="compania" />
+            <End Role="maetribub" EntitySet="maetribub" />
+          </AssociationSet>
+          <AssociationSet Name="fk_compania" Association="contableModel.Store.fk_compania">
+            <End Role="compania" EntitySet="compania" />
+            <End Role="maeconta" EntitySet="maeconta" />
+          </AssociationSet>
+          <AssociationSet Name="fk_compania_centro" Association="contableModel.Store.fk_compania_centro">
+            <End Role="compania" EntitySet="compania" />
+            <End Role="centro" EntitySet="centro" />
+          </AssociationSet>
+          <AssociationSet Name="fk_companiamov" Association="contableModel.Store.fk_companiamov">
+            <End Role="compania" EntitySet="compania" />
+            <End Role="movimi" EntitySet="movimi" />
+          </AssociationSet>
+          <AssociationSet Name="fk_companiapagos" Association="contableModel.Store.fk_companiapagos">
+            <End Role="compania" EntitySet="compania" />
+            <End Role="maepagos" EntitySet="maepagos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_comprobante" Association="contableModel.Store.fk_comprobante">
+            <End Role="comprobante" EntitySet="comprobante" />
+            <End Role="movimi" EntitySet="movimi" />
+          </AssociationSet>
+          <AssociationSet Name="fk_comprobantetra" Association="contableModel.Store.fk_comprobantetra">
+            <End Role="comprobante" EntitySet="comprobante" />
+            <End Role="maetrac" EntitySet="maetrac" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cuenta" Association="contableModel.Store.fk_cuenta">
+            <End Role="maeconta" EntitySet="maeconta" />
+            <End Role="presupuesto" EntitySet="presupuesto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cuentaclie" Association="contableModel.Store.fk_cuentaclie">
+            <End Role="maeconta" EntitySet="maeconta" />
+            <End Role="maecli" EntitySet="maecli" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cuentaconc" Association="contableModel.Store.fk_cuentaconc">
+            <End Role="maeconta" EntitySet="maeconta" />
+            <End Role="conceptospago" EntitySet="conceptospago" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cuentafinafo" Association="contableModel.Store.fk_cuentafinafo">
+            <End Role="maeconta" EntitySet="maeconta" />
+            <End Role="formato" EntitySet="formato" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cuentainifo" Association="contableModel.Store.fk_cuentainifo">
+            <End Role="maeconta" EntitySet="maeconta" />
+            <End Role="formato" EntitySet="formato" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cuentamov" Association="contableModel.Store.fk_cuentamov">
+            <End Role="maeconta" EntitySet="maeconta" />
+            <End Role="movimi" EntitySet="movimi" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cuentapagos" Association="contableModel.Store.fk_cuentapagos">
+            <End Role="maeconta" EntitySet="maeconta" />
+            <End Role="maepagos" EntitySet="maepagos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cuentasal" Association="contableModel.Store.fk_cuentasal">
+            <End Role="maeconta" EntitySet="maeconta" />
+            <End Role="saldoscuentas" EntitySet="saldoscuentas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_depto" Association="contableModel.Store.fk_depto">
+            <End Role="departamento" EntitySet="departamento" />
+            <End Role="maenits" EntitySet="maenits" />
+          </AssociationSet>
+          <AssociationSet Name="fk_dpto" Association="contableModel.Store.fk_dpto">
+            <End Role="departamento" EntitySet="departamento" />
+            <End Role="ciudad" EntitySet="ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="fk_dptocli" Association="contableModel.Store.fk_dptocli">
+            <End Role="departamento" EntitySet="departamento" />
+            <End Role="maecli" EntitySet="maecli" />
+          </AssociationSet>
+          <AssociationSet Name="fk_formapago" Association="contableModel.Store.fk_formapago">
+            <End Role="formaspago" EntitySet="formaspago" />
+            <End Role="conceptospago" EntitySet="conceptospago" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ippais" Association="contableModel.Store.fk_ippais">
+            <End Role="pais" EntitySet="pais" />
+            <End Role="maenits" EntitySet="maenits" />
+          </AssociationSet>
+          <AssociationSet Name="fk_mes" Association="contableModel.Store.fk_mes">
+            <End Role="mes" EntitySet="mes" />
+            <End Role="presupuesto" EntitySet="presupuesto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_mesinfla" Association="contableModel.Store.fk_mesinfla">
+            <End Role="mes" EntitySet="mes" />
+            <End Role="inflacion" EntitySet="inflacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_mesmovim" Association="contableModel.Store.fk_mesmovim">
+            <End Role="mes" EntitySet="mes" />
+            <End Role="movimi" EntitySet="movimi" />
+          </AssociationSet>
+          <AssociationSet Name="fk_messal" Association="contableModel.Store.fk_messal">
+            <End Role="mes" EntitySet="mes" />
+            <End Role="saldoscuentas" EntitySet="saldoscuentas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_modulo" Association="contableModel.Store.fk_modulo">
+            <End Role="modulo" EntitySet="modulo" />
+            <End Role="permiso" EntitySet="permiso" />
+          </AssociationSet>
+          <AssociationSet Name="fk_nitpagos" Association="contableModel.Store.fk_nitpagos">
+            <End Role="maenits" EntitySet="maenits" />
+            <End Role="maepagos" EntitySet="maepagos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_nitsmovi" Association="contableModel.Store.fk_nitsmovi">
+            <End Role="maenits" EntitySet="maenits" />
+            <End Role="movimi" EntitySet="movimi" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pais" Association="contableModel.Store.fk_pais">
+            <End Role="pais" EntitySet="pais" />
+            <End Role="departamento" EntitySet="departamento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_paiscli" Association="contableModel.Store.fk_paiscli">
+            <End Role="pais" EntitySet="pais" />
+            <End Role="maecli" EntitySet="maecli" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tipo" Association="contableModel.Store.fk_tipo">
+            <End Role="tiponit" EntitySet="tiponit" />
+            <End Role="maenits" EntitySet="maenits" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tributariopagos" Association="contableModel.Store.fk_tributariopagos">
+            <End Role="maetribub" EntitySet="maetribub" />
+            <End Role="maepagos" EntitySet="maepagos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_usuariod" Association="contableModel.Store.fk_usuariod">
+            <End Role="datosusuario" EntitySet="datosusuario" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="fk_usuariogu" Association="contableModel.Store.fk_usuariogu">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="movimi" EntitySet="movimi" />
+          </AssociationSet>
+          <AssociationSet Name="fk_usuarioid" Association="contableModel.Store.fk_usuarioid">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="permiso" EntitySet="permiso" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="cajero">
+          <Key>
+            <PropertyRef Name="codigocaje" />
+          </Key>
+          <Property Name="codigocaje" Type="int" Nullable="false" />
+          <Property Name="tipocaje" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="usuariocaje" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="nombrecaje" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="claverecibos" Type="char" Nullable="false" MaxLength="112" />
+          <Property Name="cedulacaje" Type="varchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="centro">
+          <Key>
+            <PropertyRef Name="idcentro" />
+          </Key>
+          <Property Name="idcentro" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="idcompania" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ciudad">
+          <Key>
+            <PropertyRef Name="idciudad" />
+          </Key>
+          <Property Name="idciudad" Type="int" Nullable="false" />
+          <Property Name="nombciudad" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="iddpto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="compania">
+          <Key>
+            <PropertyRef Name="idcompania" />
+          </Key>
+          <Property Name="idcompania" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombrecia" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="nit" Type="varchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="comprobante">
+          <Key>
+            <PropertyRef Name="codicomp" />
+          </Key>
+          <Property Name="codicomp" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="descomp" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="consecu" Type="bit" Nullable="false" />
+          <Property Name="numsigui" Type="int" />
+          <Property Name="codotra" Type="varchar" Nullable="false" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="conceptospago">
+          <Key>
+            <PropertyRef Name="codigoconpa" />
+          </Key>
+          <Property Name="codigoconpa" Type="varchar" Nullable="false" MaxLength="2" />
+          <Property Name="nombreconcepto" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="cuenta" Type="varchar" Nullable="false" MaxLength="12" />
+          <Property Name="codigoforpago" Type="varchar" Nullable="false" MaxLength="1" />
+          <Property Name="porcentaje" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+        </EntityType>
+        <EntityType Name="coneusuar">
+          <Key>
+            <PropertyRef Name="iduser" />
+            <PropertyRef Name="fechacon" />
+          </Key>
+          <Property Name="iduser" Type="int" Nullable="false" />
+          <Property Name="fechacon" Type="datetime" Nullable="false" />
+          <Property Name="compania" Type="int" Nullable="false" />
+          <Property Name="conectado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="datosusuario">
+          <Key>
+            <PropertyRef Name="idusuario" />
+          </Key>
+          <Property Name="idusuario" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombresusuario" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="apellidosusuario" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="telefonousuario" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="direccionusuario" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="correousuario" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="departamento">
+          <Key>
+            <PropertyRef Name="iddept" />
+          </Key>
+          <Property Name="iddept" Type="int" Nullable="false" />
+          <Property Name="nombredep" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="idpais" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="formaspago">
+          <Key>
+            <PropertyRef Name="codigoforpago" />
+          </Key>
+          <Property Name="codigoforpago" Type="varchar" Nullable="false" MaxLength="1" />
+          <Property Name="nombreforma" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="sivence" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="formato">
+          <Key>
+            <PropertyRef Name="idbalance" />
+          </Key>
+          <Property Name="idbalance" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="tipoformato" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="clasemayor" Type="varchar" MaxLength="1" />
+          <Property Name="linea" Type="varchar" MaxLength="2" />
+          <Property Name="nombref" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="cuentainicial" Type="varchar" MaxLength="12" />
+          <Property Name="cuentafinal" Type="varchar" MaxLength="12" />
+        </EntityType>
+        <EntityType Name="formatorc">
+          <Key>
+            <PropertyRef Name="idformato" />
+          </Key>
+          <Property Name="idformato" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="codigofor" Type="int" Nullable="false" />
+          <Property Name="nombrefor" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="fila" Type="varchar" MaxLength="4" />
+          <Property Name="columna" Type="varchar" MaxLength="4" />
+          <Property Name="condensa" Type="bit" Nullable="false" />
+          <Property Name="presentacion" Type="varchar" MaxLength="45" />
+          <Property Name="titulo" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="inflacion">
+          <Key>
+            <PropertyRef Name="idinflacion" />
+          </Key>
+          <Property Name="idinflacion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idmes" Type="int" Nullable="false" />
+          <Property Name="inflamensual" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="mescerrado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="maebanta">
+          <Key>
+            <PropertyRef Name="codigobanta" />
+          </Key>
+          <Property Name="codigobanta" Type="varchar" Nullable="false" MaxLength="2" />
+          <Property Name="nombrebantal" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="tipobanta" Type="varchar" Nullable="false" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="maecli">
+          <Key>
+            <PropertyRef Name="codigocli" />
+          </Key>
+          <Property Name="codigocli" Type="int" Nullable="false" />
+          <Property Name="nit" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="digito" Type="varchar" Nullable="false" MaxLength="1" />
+          <Property Name="nombrecli" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="factnombr" Type="varchar" Nullable="false" MaxLength="70" />
+          <Property Name="estado" Type="bit" Nullable="false" />
+          <Property Name="idpais" Type="int" Nullable="false" />
+          <Property Name="iddpto" Type="int" Nullable="false" />
+          <Property Name="idciudad" Type="int" Nullable="false" />
+          <Property Name="direccion" Type="varchar" Nullable="false" MaxLength="70" />
+          <Property Name="direnvio" Type="varchar" Nullable="false" MaxLength="70" />
+          <Property Name="telefono" Type="varchar" MaxLength="10" />
+          <Property Name="celular" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="fax" Type="varchar" MaxLength="10" />
+          <Property Name="email" Type="varchar" MaxLength="45" />
+          <Property Name="plazo" Type="int" Nullable="false" />
+          <Property Name="cupomes" Type="int" Nullable="false" />
+          <Property Name="descuento" Type="decimal" Nullable="false" Precision="9" />
+          <Property Name="regimen" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="idvendedor" Type="int" Nullable="false" />
+          <Property Name="grancontrib" Type="bit" Nullable="false" />
+          <Property Name="causareteica" Type="bit" Nullable="false" />
+          <Property Name="aplicareteica" Type="bit" Nullable="false" />
+          <Property Name="causreteiva" Type="bit" Nullable="false" />
+          <Property Name="desconreteiva" Type="bit" Nullable="false" />
+          <Property Name="retexcomprar" Type="bit" Nullable="false" />
+          <Property Name="desconretevender" Type="bit" Nullable="false" />
+          <Property Name="porretencion" Type="decimal" Nullable="false" Precision="9" />
+          <Property Name="jefecompr" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="comprador" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="cuenta" Type="varchar" Nullable="false" MaxLength="12" />
+        </EntityType>
+        <EntityType Name="maeconcc">
+          <Key>
+            <PropertyRef Name="codigocon" />
+          </Key>
+          <Property Name="codigocon" Type="int" Nullable="false" />
+          <Property Name="nombrecon" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="maeconta">
+          <Key>
+            <PropertyRef Name="cuenta" />
+          </Key>
+          <Property Name="cuenta" Type="varchar" Nullable="false" MaxLength="12" />
+          <Property Name="idcompania" Type="int" Nullable="false" />
+          <Property Name="tipocta" Type="varchar" Nullable="false" MaxLength="1" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="65" />
+          <Property Name="pidenit" Type="bit" Nullable="false" />
+          <Property Name="centro" Type="bit" Nullable="false" />
+          <Property Name="ajustesinteg" Type="bit" Nullable="false" />
+          <Property Name="nitajustes" Type="varchar" MaxLength="20" />
+          <Property Name="cueaju" Type="varchar" MaxLength="10" />
+          <Property Name="cuencorre" Type="varchar" MaxLength="10" />
+          <Property Name="ajudoc" Type="varchar" MaxLength="1" />
+          <Property Name="cuentret" Type="bit" Nullable="false" />
+          <Property Name="porete" Type="int" />
+          <Property Name="concepret" Type="varchar" MaxLength="45" />
+          <Property Name="cuentacierreimp" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="maenits">
+          <Key>
+            <PropertyRef Name="idnit" />
+          </Key>
+          <Property Name="idnit" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nit" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="digito" Type="varchar" Nullable="false" MaxLength="1" />
+          <Property Name="idcompania" Type="int" Nullable="false" />
+          <Property Name="idtiponit" Type="int" Nullable="false" />
+          <Property Name="idpais" Type="int" Nullable="false" />
+          <Property Name="iddept" Type="int" Nullable="false" />
+          <Property Name="idciudad" Type="int" Nullable="false" />
+          <Property Name="nomnit" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="acteconomica" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="direccion" Type="varchar" MaxLength="60" />
+          <Property Name="telefono" Type="varchar" MaxLength="10" />
+          <Property Name="celular" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="email" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="maepagos">
+          <Key>
+            <PropertyRef Name="idpagos" />
+          </Key>
+          <Property Name="idpagos" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idcompania" Type="int" Nullable="false" />
+          <Property Name="cuenta" Type="varchar" Nullable="false" MaxLength="12" />
+          <Property Name="idnit" Type="int" Nullable="false" />
+          <Property Name="codigotrib" Type="varchar" Nullable="false" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="maetrac">
+          <Key>
+            <PropertyRef Name="codigotrac" />
+          </Key>
+          <Property Name="codigotrac" Type="varchar" Nullable="false" MaxLength="3" />
+          <Property Name="nombretrac" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="afectasaldo" Type="varchar" Nullable="false" MaxLength="1" />
+          <Property Name="afectaotros" Type="bit" Nullable="false" />
+          <Property Name="generaasiento" Type="bit" Nullable="false" />
+          <Property Name="consecutivo" Type="bit" Nullable="false" />
+          <Property Name="numeroactual" Type="int" />
+          <Property Name="codicomp" Type="int" />
+        </EntityType>
+        <EntityType Name="maetribub">
+          <Key>
+            <PropertyRef Name="codigotrib" />
+          </Key>
+          <Property Name="codigotrib" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="tope" Type="decimal" Precision="9" />
+          <Property Name="nittope" Type="varchar" MaxLength="10" />
+          <Property Name="nomnit" Type="varchar" MaxLength="50" />
+          <Property Name="idcompania" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mes">
+          <Key>
+            <PropertyRef Name="idmes" />
+          </Key>
+          <Property Name="idmes" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombremes" Type="varchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="modulo">
+          <Key>
+            <PropertyRef Name="idmodulo" />
+          </Key>
+          <Property Name="idmodulo" Type="int" Nullable="false" />
+          <Property Name="nombmodulo" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="movimi">
+          <Key>
+            <PropertyRef Name="idmovimi" />
+          </Key>
+          <Property Name="idmovimi" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="documento" Type="int" Nullable="false" />
+          <Property Name="idcentro" Type="int" />
+          <Property Name="idcompania" Type="int" Nullable="false" />
+          <Property Name="idasiento" Type="int" Nullable="false" />
+          <Property Name="idmes" Type="int" Nullable="false" />
+          <Property Name="anio" Type="varchar" Nullable="false" MaxLength="4" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="codicomp" Type="int" Nullable="false" />
+          <Property Name="cuenta" Type="varchar" Nullable="false" MaxLength="12" />
+          <Property Name="idnit" Type="int" />
+          <Property Name="cheque" Type="varchar" MaxLength="8" />
+          <Property Name="descrip" Type="varchar" Nullable="false" MaxLength="55" />
+          <Property Name="valorcredito" Type="decimal" Nullable="false" Precision="20" Scale="2" />
+          <Property Name="valordebito" Type="decimal" Nullable="false" Precision="20" Scale="2" />
+          <Property Name="imprime" Type="bit" Nullable="false" />
+          <Property Name="usuario" Type="int" Nullable="false" />
+          <Property Name="fechagraba" Type="datetime" Nullable="false" />
+          <Property Name="actualizado" Type="bit" Nullable="false" />
+          <Property Name="usuarioactu" Type="int" />
+          <Property Name="fechaactualiz" Type="datetime" />
+          <Property Name="asientofijo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pais">
+          <Key>
+            <PropertyRef Name="idpais" />
+          </Key>
+          <Property Name="idpais" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombpais" Type="varchar" Nullable="false" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="parametros">
+          <Key>
+            <PropertyRef Name="idparametro" />
+          </Key>
+          <Property Name="idparametro" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombreparam" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="descripparam" Type="varchar" Nullable="false" MaxLength="70" />
+          <Property Name="valorparam" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="permiso">
+          <Key>
+            <PropertyRef Name="iduser" />
+            <PropertyRef Name="modulo" />
+          </Key>
+          <Property Name="iduser" Type="int" Nullable="false" />
+          <Property Name="modulo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="presupuesto">
+          <Key>
+            <PropertyRef Name="idpresupuesto" />
+          </Key>
+          <Property Name="idpresupuesto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="anio" Type="varchar" Nullable="false" MaxLength="4" />
+          <Property Name="idmes" Type="int" Nullable="false" />
+          <Property Name="cuenta" Type="varchar" Nullable="false" MaxLength="12" />
+          <Property Name="codcentro" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="saldoscuentas">
+          <Key>
+            <PropertyRef Name="idsaldoscuentas" />
+          </Key>
+          <Property Name="idsaldoscuentas" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="cuenta" Type="varchar" Nullable="false" MaxLength="12" />
+          <Property Name="anio" Type="varchar" Nullable="false" MaxLength="4" />
+          <Property Name="idmes" Type="int" Nullable="false" />
+          <Property Name="saldo" Type="decimal" Nullable="false" Scale="2" />
+        </EntityType>
+        <EntityType Name="tiponit">
+          <Key>
+            <PropertyRef Name="idtiponit" />
+          </Key>
+          <Property Name="idtiponit" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombretipo" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="idusuario" />
+          </Key>
+          <Property Name="idusuario" Type="int" Nullable="false" />
+          <Property Name="user" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="contrasena" Type="char" Nullable="false" MaxLength="32" />
+          <Property Name="fechaultconex" Type="datetime" />
+          <Property Name="ultimobloqueo" Type="datetime" />
+          <Property Name="intentosfallidos" Type="int" Nullable="false" />
+          <Property Name="bloqueado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vendedor">
+          <Key>
+            <PropertyRef Name="idvendedor" />
+          </Key>
+          <Property Name="idvendedor" Type="int" Nullable="false" />
+          <Property Name="codigovend" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="nombrevend" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="tipo" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="cedula" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Telefono" Type="varchar" Nullable="false" MaxLength="12" />
+          <Property Name="direcvend" Type="varchar" Nullable="false" MaxLength="70" />
+          <Property Name="emailvend" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="activo" Type="bit" Nullable="false" />
+          <Property Name="comisionrango" Type="bit" Nullable="false" />
+          <Property Name="comision" Type="decimal" Nullable="false" />
+          <Property Name="compania" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_centrocospro">
+          <End Role="centro" Type="contableModel.Store.centro" Multiplicity="1" />
+          <End Role="presupuesto" Type="contableModel.Store.presupuesto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="centro">
+              <PropertyRef Name="idcentro" />
+            </Principal>
+            <Dependent Role="presupuesto">
+              <PropertyRef Name="codcentro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_centromov">
+          <End Role="centro" Type="contableModel.Store.centro" Multiplicity="0..1" />
+          <End Role="movimi" Type="contableModel.Store.movimi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="centro">
+              <PropertyRef Name="idcentro" />
+            </Principal>
+            <Dependent Role="movimi">
+              <PropertyRef Name="idcentro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cianits">
+          <End Role="compania" Type="contableModel.Store.compania" Multiplicity="1" />
+          <End Role="maenits" Type="contableModel.Store.maenits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compania">
+              <PropertyRef Name="idcompania" />
+            </Principal>
+            <Dependent Role="maenits">
+              <PropertyRef Name="idcompania" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ciud">
+          <End Role="ciudad" Type="contableModel.Store.ciudad" Multiplicity="1" />
+          <End Role="maenits" Type="contableModel.Store.maenits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudad">
+              <PropertyRef Name="idciudad" />
+            </Principal>
+            <Dependent Role="maenits">
+              <PropertyRef Name="idciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ciudadcli">
+          <End Role="ciudad" Type="contableModel.Store.ciudad" Multiplicity="1" />
+          <End Role="maecli" Type="contableModel.Store.maecli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudad">
+              <PropertyRef Name="idciudad" />
+            </Principal>
+            <Dependent Role="maecli">
+              <PropertyRef Name="idciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_comapaniatrib">
+          <End Role="compania" Type="contableModel.Store.compania" Multiplicity="1" />
+          <End Role="maetribub" Type="contableModel.Store.maetribub" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compania">
+              <PropertyRef Name="idcompania" />
+            </Principal>
+            <Dependent Role="maetribub">
+              <PropertyRef Name="idcompania" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_compania">
+          <End Role="compania" Type="contableModel.Store.compania" Multiplicity="1" />
+          <End Role="maeconta" Type="contableModel.Store.maeconta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compania">
+              <PropertyRef Name="idcompania" />
+            </Principal>
+            <Dependent Role="maeconta">
+              <PropertyRef Name="idcompania" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_compania_centro">
+          <End Role="compania" Type="contableModel.Store.compania" Multiplicity="1" />
+          <End Role="centro" Type="contableModel.Store.centro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compania">
+              <PropertyRef Name="idcompania" />
+            </Principal>
+            <Dependent Role="centro">
+              <PropertyRef Name="idcompania" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_companiamov">
+          <End Role="compania" Type="contableModel.Store.compania" Multiplicity="1" />
+          <End Role="movimi" Type="contableModel.Store.movimi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compania">
+              <PropertyRef Name="idcompania" />
+            </Principal>
+            <Dependent Role="movimi">
+              <PropertyRef Name="idcompania" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_companiapagos">
+          <End Role="compania" Type="contableModel.Store.compania" Multiplicity="1" />
+          <End Role="maepagos" Type="contableModel.Store.maepagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compania">
+              <PropertyRef Name="idcompania" />
+            </Principal>
+            <Dependent Role="maepagos">
+              <PropertyRef Name="idcompania" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_comprobante">
+          <End Role="comprobante" Type="contableModel.Store.comprobante" Multiplicity="1" />
+          <End Role="movimi" Type="contableModel.Store.movimi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comprobante">
+              <PropertyRef Name="codicomp" />
+            </Principal>
+            <Dependent Role="movimi">
+              <PropertyRef Name="codicomp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_comprobantetra">
+          <End Role="comprobante" Type="contableModel.Store.comprobante" Multiplicity="0..1" />
+          <End Role="maetrac" Type="contableModel.Store.maetrac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comprobante">
+              <PropertyRef Name="codicomp" />
+            </Principal>
+            <Dependent Role="maetrac">
+              <PropertyRef Name="codicomp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cuenta">
+          <End Role="maeconta" Type="contableModel.Store.maeconta" Multiplicity="1" />
+          <End Role="presupuesto" Type="contableModel.Store.presupuesto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maeconta">
+              <PropertyRef Name="cuenta" />
+            </Principal>
+            <Dependent Role="presupuesto">
+              <PropertyRef Name="cuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cuentaclie">
+          <End Role="maeconta" Type="contableModel.Store.maeconta" Multiplicity="1" />
+          <End Role="maecli" Type="contableModel.Store.maecli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maeconta">
+              <PropertyRef Name="cuenta" />
+            </Principal>
+            <Dependent Role="maecli">
+              <PropertyRef Name="cuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cuentaconc">
+          <End Role="maeconta" Type="contableModel.Store.maeconta" Multiplicity="1" />
+          <End Role="conceptospago" Type="contableModel.Store.conceptospago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maeconta">
+              <PropertyRef Name="cuenta" />
+            </Principal>
+            <Dependent Role="conceptospago">
+              <PropertyRef Name="cuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cuentafinafo">
+          <End Role="maeconta" Type="contableModel.Store.maeconta" Multiplicity="0..1" />
+          <End Role="formato" Type="contableModel.Store.formato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maeconta">
+              <PropertyRef Name="cuenta" />
+            </Principal>
+            <Dependent Role="formato">
+              <PropertyRef Name="cuentafinal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cuentainifo">
+          <End Role="maeconta" Type="contableModel.Store.maeconta" Multiplicity="0..1" />
+          <End Role="formato" Type="contableModel.Store.formato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maeconta">
+              <PropertyRef Name="cuenta" />
+            </Principal>
+            <Dependent Role="formato">
+              <PropertyRef Name="cuentainicial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cuentamov">
+          <End Role="maeconta" Type="contableModel.Store.maeconta" Multiplicity="1" />
+          <End Role="movimi" Type="contableModel.Store.movimi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maeconta">
+              <PropertyRef Name="cuenta" />
+            </Principal>
+            <Dependent Role="movimi">
+              <PropertyRef Name="cuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cuentapagos">
+          <End Role="maeconta" Type="contableModel.Store.maeconta" Multiplicity="1" />
+          <End Role="maepagos" Type="contableModel.Store.maepagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maeconta">
+              <PropertyRef Name="cuenta" />
+            </Principal>
+            <Dependent Role="maepagos">
+              <PropertyRef Name="cuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cuentasal">
+          <End Role="maeconta" Type="contableModel.Store.maeconta" Multiplicity="1" />
+          <End Role="saldoscuentas" Type="contableModel.Store.saldoscuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maeconta">
+              <PropertyRef Name="cuenta" />
+            </Principal>
+            <Dependent Role="saldoscuentas">
+              <PropertyRef Name="cuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_depto">
+          <End Role="departamento" Type="contableModel.Store.departamento" Multiplicity="1" />
+          <End Role="maenits" Type="contableModel.Store.maenits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departamento">
+              <PropertyRef Name="iddept" />
+            </Principal>
+            <Dependent Role="maenits">
+              <PropertyRef Name="iddept" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_dpto">
+          <End Role="departamento" Type="contableModel.Store.departamento" Multiplicity="1" />
+          <End Role="ciudad" Type="contableModel.Store.ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departamento">
+              <PropertyRef Name="iddept" />
+            </Principal>
+            <Dependent Role="ciudad">
+              <PropertyRef Name="iddpto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_dptocli">
+          <End Role="departamento" Type="contableModel.Store.departamento" Multiplicity="1" />
+          <End Role="maecli" Type="contableModel.Store.maecli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departamento">
+              <PropertyRef Name="iddept" />
+            </Principal>
+            <Dependent Role="maecli">
+              <PropertyRef Name="iddpto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_formapago">
+          <End Role="formaspago" Type="contableModel.Store.formaspago" Multiplicity="1" />
+          <End Role="conceptospago" Type="contableModel.Store.conceptospago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="formaspago">
+              <PropertyRef Name="codigoforpago" />
+            </Principal>
+            <Dependent Role="conceptospago">
+              <PropertyRef Name="codigoforpago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ippais">
+          <End Role="pais" Type="contableModel.Store.pais" Multiplicity="1" />
+          <End Role="maenits" Type="contableModel.Store.maenits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pais">
+              <PropertyRef Name="idpais" />
+            </Principal>
+            <Dependent Role="maenits">
+              <PropertyRef Name="idpais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_mes">
+          <End Role="mes" Type="contableModel.Store.mes" Multiplicity="1" />
+          <End Role="presupuesto" Type="contableModel.Store.presupuesto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mes">
+              <PropertyRef Name="idmes" />
+            </Principal>
+            <Dependent Role="presupuesto">
+              <PropertyRef Name="idmes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_mesinfla">
+          <End Role="mes" Type="contableModel.Store.mes" Multiplicity="1" />
+          <End Role="inflacion" Type="contableModel.Store.inflacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mes">
+              <PropertyRef Name="idmes" />
+            </Principal>
+            <Dependent Role="inflacion">
+              <PropertyRef Name="idmes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_mesmovim">
+          <End Role="mes" Type="contableModel.Store.mes" Multiplicity="1" />
+          <End Role="movimi" Type="contableModel.Store.movimi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mes">
+              <PropertyRef Name="idmes" />
+            </Principal>
+            <Dependent Role="movimi">
+              <PropertyRef Name="idmes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_messal">
+          <End Role="mes" Type="contableModel.Store.mes" Multiplicity="1" />
+          <End Role="saldoscuentas" Type="contableModel.Store.saldoscuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mes">
+              <PropertyRef Name="idmes" />
+            </Principal>
+            <Dependent Role="saldoscuentas">
+              <PropertyRef Name="idmes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_modulo">
+          <End Role="modulo" Type="contableModel.Store.modulo" Multiplicity="1" />
+          <End Role="permiso" Type="contableModel.Store.permiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="modulo">
+              <PropertyRef Name="idmodulo" />
+            </Principal>
+            <Dependent Role="permiso">
+              <PropertyRef Name="modulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_nitpagos">
+          <End Role="maenits" Type="contableModel.Store.maenits" Multiplicity="1" />
+          <End Role="maepagos" Type="contableModel.Store.maepagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maenits">
+              <PropertyRef Name="idnit" />
+            </Principal>
+            <Dependent Role="maepagos">
+              <PropertyRef Name="idnit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_nitsmovi">
+          <End Role="maenits" Type="contableModel.Store.maenits" Multiplicity="0..1" />
+          <End Role="movimi" Type="contableModel.Store.movimi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maenits">
+              <PropertyRef Name="idnit" />
+            </Principal>
+            <Dependent Role="movimi">
+              <PropertyRef Name="idnit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pais">
+          <End Role="pais" Type="contableModel.Store.pais" Multiplicity="1" />
+          <End Role="departamento" Type="contableModel.Store.departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pais">
+              <PropertyRef Name="idpais" />
+            </Principal>
+            <Dependent Role="departamento">
+              <PropertyRef Name="idpais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_paiscli">
+          <End Role="pais" Type="contableModel.Store.pais" Multiplicity="1" />
+          <End Role="maecli" Type="contableModel.Store.maecli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pais">
+              <PropertyRef Name="idpais" />
+            </Principal>
+            <Dependent Role="maecli">
+              <PropertyRef Name="idpais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tipo">
+          <End Role="tiponit" Type="contableModel.Store.tiponit" Multiplicity="1" />
+          <End Role="maenits" Type="contableModel.Store.maenits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tiponit">
+              <PropertyRef Name="idtiponit" />
+            </Principal>
+            <Dependent Role="maenits">
+              <PropertyRef Name="idtiponit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tributariopagos">
+          <End Role="maetribub" Type="contableModel.Store.maetribub" Multiplicity="1" />
+          <End Role="maepagos" Type="contableModel.Store.maepagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maetribub">
+              <PropertyRef Name="codigotrib" />
+            </Principal>
+            <Dependent Role="maepagos">
+              <PropertyRef Name="codigotrib" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_usuariod">
+          <End Role="datosusuario" Type="contableModel.Store.datosusuario" Multiplicity="1" />
+          <End Role="usuario" Type="contableModel.Store.usuario" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="datosusuario">
+              <PropertyRef Name="idusuario" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="idusuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_usuariogu">
+          <End Role="usuario" Type="contableModel.Store.usuario" Multiplicity="1" />
+          <End Role="movimi" Type="contableModel.Store.movimi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="idusuario" />
+            </Principal>
+            <Dependent Role="movimi">
+              <PropertyRef Name="usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_usuarioid">
+          <End Role="usuario" Type="contableModel.Store.usuario" Multiplicity="1" />
+          <End Role="permiso" Type="contableModel.Store.permiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="idusuario" />
+            </Principal>
+            <Dependent Role="permiso">
+              <PropertyRef Name="iduser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="contableModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="contableEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cajero" EntityType="contableModel.cajero" />
+          <EntitySet Name="centro" EntityType="contableModel.centro" />
+          <EntitySet Name="ciudad" EntityType="contableModel.ciudad" />
+          <EntitySet Name="compania" EntityType="contableModel.compania" />
+          <EntitySet Name="comprobante" EntityType="contableModel.comprobante" />
+          <EntitySet Name="conceptospago" EntityType="contableModel.conceptospago" />
+          <EntitySet Name="coneusuar" EntityType="contableModel.coneusuar" />
+          <EntitySet Name="datosusuario" EntityType="contableModel.datosusuario" />
+          <EntitySet Name="departamento" EntityType="contableModel.departamento" />
+          <EntitySet Name="formaspago" EntityType="contableModel.formaspago" />
+          <EntitySet Name="formato" EntityType="contableModel.formato" />
+          <EntitySet Name="formatorc" EntityType="contableModel.formatorc" />
+          <EntitySet Name="inflacion" EntityType="contableModel.inflacion" />
+          <EntitySet Name="maebanta" EntityType="contableModel.maebanta" />
+          <EntitySet Name="maecli" EntityType="contableModel.maecli" />
+          <EntitySet Name="maeconcc" EntityType="contableModel.maeconcc" />
+          <EntitySet Name="maeconta" EntityType="contableModel.maeconta" />
+          <EntitySet Name="maenits" EntityType="contableModel.maenits" />
+          <EntitySet Name="maepagos" EntityType="contableModel.maepagos" />
+          <EntitySet Name="maetrac" EntityType="contableModel.maetrac" />
+          <EntitySet Name="maetribub" EntityType="contableModel.maetribub" />
+          <EntitySet Name="mes" EntityType="contableModel.mes" />
+          <EntitySet Name="modulo" EntityType="contableModel.modulo" />
+          <EntitySet Name="movimi" EntityType="contableModel.movimi" />
+          <EntitySet Name="pais" EntityType="contableModel.pais" />
+          <EntitySet Name="parametros" EntityType="contableModel.parametros" />
+          <EntitySet Name="presupuesto" EntityType="contableModel.presupuesto" />
+          <EntitySet Name="saldoscuentas" EntityType="contableModel.saldoscuentas" />
+          <EntitySet Name="tiponit" EntityType="contableModel.tiponit" />
+          <EntitySet Name="usuario" EntityType="contableModel.usuario" />
+          <EntitySet Name="vendedor" EntityType="contableModel.vendedor" />
+          <AssociationSet Name="fk_centrocospro" Association="contableModel.fk_centrocospro">
+            <End Role="centro" EntitySet="centro" />
+            <End Role="presupuesto" EntitySet="presupuesto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_centromov" Association="contableModel.fk_centromov">
+            <End Role="centro" EntitySet="centro" />
+            <End Role="movimi" EntitySet="movimi" />
+          </AssociationSet>
+          <AssociationSet Name="fk_compania_centro" Association="contableModel.fk_compania_centro">
+            <End Role="compania" EntitySet="compania" />
+            <End Role="centro" EntitySet="centro" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ciud" Association="contableModel.fk_ciud">
+            <End Role="ciudad" EntitySet="ciudad" />
+            <End Role="maenits" EntitySet="maenits" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ciudadcli" Association="contableModel.fk_ciudadcli">
+            <End Role="ciudad" EntitySet="ciudad" />
+            <End Role="maecli" EntitySet="maecli" />
+          </AssociationSet>
+          <AssociationSet Name="fk_dpto" Association="contableModel.fk_dpto">
+            <End Role="departamento" EntitySet="departamento" />
+            <End Role="ciudad" EntitySet="ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cianits" Association="contableModel.fk_cianits">
+            <End Role="compania" EntitySet="compania" />
+            <End Role="maenits" EntitySet="maenits" />
+          </AssociationSet>
+          <AssociationSet Name="fk_comapaniatrib" Association="contableModel.fk_comapaniatrib">
+            <End Role="compania" EntitySet="compania" />
+            <End Role="maetribub" EntitySet="maetribub" />
+          </AssociationSet>
+          <AssociationSet Name="fk_compania" Association="contableModel.fk_compania">
+            <End Role="compania" EntitySet="compania" />
+            <End Role="maeconta" EntitySet="maeconta" />
+          </AssociationSet>
+          <AssociationSet Name="fk_companiamov" Association="contableModel.fk_companiamov">
+            <End Role="compania" EntitySet="compania" />
+            <End Role="movimi" EntitySet="movimi" />
+          </AssociationSet>
+          <AssociationSet Name="fk_companiapagos" Association="contableModel.fk_companiapagos">
+            <End Role="compania" EntitySet="compania" />
+            <End Role="maepagos" EntitySet="maepagos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_comprobante" Association="contableModel.fk_comprobante">
+            <End Role="comprobante" EntitySet="comprobante" />
+            <End Role="movimi" EntitySet="movimi" />
+          </AssociationSet>
+          <AssociationSet Name="fk_comprobantetra" Association="contableModel.fk_comprobantetra">
+            <End Role="comprobante" EntitySet="comprobante" />
+            <End Role="maetrac" EntitySet="maetrac" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cuentaconc" Association="contableModel.fk_cuentaconc">
+            <End Role="maeconta" EntitySet="maeconta" />
+            <End Role="conceptospago" EntitySet="conceptospago" />
+          </AssociationSet>
+          <AssociationSet Name="fk_formapago" Association="contableModel.fk_formapago">
+            <End Role="formaspago" EntitySet="formaspago" />
+            <End Role="conceptospago" EntitySet="conceptospago" />
+          </AssociationSet>
+          <AssociationSet Name="fk_usuariod" Association="contableModel.fk_usuariod">
+            <End Role="datosusuario" EntitySet="datosusuario" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="fk_depto" Association="contableModel.fk_depto">
+            <End Role="departamento" EntitySet="departamento" />
+            <End Role="maenits" EntitySet="maenits" />
+          </AssociationSet>
+          <AssociationSet Name="fk_dptocli" Association="contableModel.fk_dptocli">
+            <End Role="departamento" EntitySet="departamento" />
+            <End Role="maecli" EntitySet="maecli" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pais" Association="contableModel.fk_pais">
+            <End Role="pais" EntitySet="pais" />
+            <End Role="departamento" EntitySet="departamento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cuentafinafo" Association="contableModel.fk_cuentafinafo">
+            <End Role="maeconta" EntitySet="maeconta" />
+            <End Role="formato" EntitySet="formato" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cuentainifo" Association="contableModel.fk_cuentainifo">
+            <End Role="maeconta" EntitySet="maeconta" />
+            <End Role="formato" EntitySet="formato" />
+          </AssociationSet>
+          <AssociationSet Name="fk_mesinfla" Association="contableModel.fk_mesinfla">
+            <End Role="mes" EntitySet="mes" />
+            <End Role="inflacion" EntitySet="inflacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cuentaclie" Association="contableModel.fk_cuentaclie">
+            <End Role="maeconta" EntitySet="maeconta" />
+            <End Role="maecli" EntitySet="maecli" />
+          </AssociationSet>
+          <AssociationSet Name="fk_paiscli" Association="contableModel.fk_paiscli">
+            <End Role="pais" EntitySet="pais" />
+            <End Role="maecli" EntitySet="maecli" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cuenta" Association="contableModel.fk_cuenta">
+            <End Role="maeconta" EntitySet="maeconta" />
+            <End Role="presupuesto" EntitySet="presupuesto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cuentamov" Association="contableModel.fk_cuentamov">
+            <End Role="maeconta" EntitySet="maeconta" />
+            <End Role="movimi" EntitySet="movimi" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cuentapagos" Association="contableModel.fk_cuentapagos">
+            <End Role="maeconta" EntitySet="maeconta" />
+            <End Role="maepagos" EntitySet="maepagos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cuentasal" Association="contableModel.fk_cuentasal">
+            <End Role="maeconta" EntitySet="maeconta" />
+            <End Role="saldoscuentas" EntitySet="saldoscuentas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ippais" Association="contableModel.fk_ippais">
+            <End Role="pais" EntitySet="pais" />
+            <End Role="maenits" EntitySet="maenits" />
+          </AssociationSet>
+          <AssociationSet Name="fk_nitpagos" Association="contableModel.fk_nitpagos">
+            <End Role="maenits" EntitySet="maenits" />
+            <End Role="maepagos" EntitySet="maepagos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_nitsmovi" Association="contableModel.fk_nitsmovi">
+            <End Role="maenits" EntitySet="maenits" />
+            <End Role="movimi" EntitySet="movimi" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tipo" Association="contableModel.fk_tipo">
+            <End Role="tiponit" EntitySet="tiponit" />
+            <End Role="maenits" EntitySet="maenits" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tributariopagos" Association="contableModel.fk_tributariopagos">
+            <End Role="maetribub" EntitySet="maetribub" />
+            <End Role="maepagos" EntitySet="maepagos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_mes" Association="contableModel.fk_mes">
+            <End Role="mes" EntitySet="mes" />
+            <End Role="presupuesto" EntitySet="presupuesto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_mesmovim" Association="contableModel.fk_mesmovim">
+            <End Role="mes" EntitySet="mes" />
+            <End Role="movimi" EntitySet="movimi" />
+          </AssociationSet>
+          <AssociationSet Name="fk_messal" Association="contableModel.fk_messal">
+            <End Role="mes" EntitySet="mes" />
+            <End Role="saldoscuentas" EntitySet="saldoscuentas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_usuariogu" Association="contableModel.fk_usuariogu">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="movimi" EntitySet="movimi" />
+          </AssociationSet>
+          <AssociationSet Name="permiso" Association="contableModel.permiso">
+            <End Role="modulo" EntitySet="modulo" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="cajero">
+          <Key>
+            <PropertyRef Name="codigocaje" />
+          </Key>
+          <Property Name="codigocaje" Type="Int32" Nullable="false" />
+          <Property Name="tipocaje" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="usuariocaje" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="nombrecaje" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="claverecibos" Type="String" Nullable="false" MaxLength="112" Unicode="false" FixedLength="false" />
+          <Property Name="cedulacaje" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="centro">
+          <Key>
+            <PropertyRef Name="idcentro" />
+          </Key>
+          <Property Name="idcentro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="idcompania" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="presupuesto" Relationship="contableModel.fk_centrocospro" FromRole="centro" ToRole="presupuesto" />
+          <NavigationProperty Name="movimi" Relationship="contableModel.fk_centromov" FromRole="centro" ToRole="movimi" />
+          <NavigationProperty Name="compania" Relationship="contableModel.fk_compania_centro" FromRole="centro" ToRole="compania" />
+        </EntityType>
+        <EntityType Name="ciudad">
+          <Key>
+            <PropertyRef Name="idciudad" />
+          </Key>
+          <Property Name="idciudad" Type="Int32" Nullable="false" />
+          <Property Name="nombciudad" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="iddpto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="maenits" Relationship="contableModel.fk_ciud" FromRole="ciudad" ToRole="maenits" />
+          <NavigationProperty Name="maecli" Relationship="contableModel.fk_ciudadcli" FromRole="ciudad" ToRole="maecli" />
+          <NavigationProperty Name="departamento" Relationship="contableModel.fk_dpto" FromRole="ciudad" ToRole="departamento" />
+        </EntityType>
+        <EntityType Name="compania">
+          <Key>
+            <PropertyRef Name="idcompania" />
+          </Key>
+          <Property Name="idcompania" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombrecia" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="nit" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="centro" Relationship="contableModel.fk_compania_centro" FromRole="compania" ToRole="centro" />
+          <NavigationProperty Name="maenits" Relationship="contableModel.fk_cianits" FromRole="compania" ToRole="maenits" />
+          <NavigationProperty Name="maetribub" Relationship="contableModel.fk_comapaniatrib" FromRole="compania" ToRole="maetribub" />
+          <NavigationProperty Name="maeconta" Relationship="contableModel.fk_compania" FromRole="compania" ToRole="maeconta" />
+          <NavigationProperty Name="movimi" Relationship="contableModel.fk_companiamov" FromRole="compania" ToRole="movimi" />
+          <NavigationProperty Name="maepagos" Relationship="contableModel.fk_companiapagos" FromRole="compania" ToRole="maepagos" />
+        </EntityType>
+        <EntityType Name="comprobante">
+          <Key>
+            <PropertyRef Name="codicomp" />
+          </Key>
+          <Property Name="codicomp" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descomp" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="consecu" Type="Boolean" Nullable="false" />
+          <Property Name="numsigui" Type="Int32" />
+          <Property Name="codotra" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="movimi" Relationship="contableModel.fk_comprobante" FromRole="comprobante" ToRole="movimi" />
+          <NavigationProperty Name="maetrac" Relationship="contableModel.fk_comprobantetra" FromRole="comprobante" ToRole="maetrac" />
+        </EntityType>
+        <EntityType Name="conceptospago">
+          <Key>
+            <PropertyRef Name="codigoconpa" />
+          </Key>
+          <Property Name="codigoconpa" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="nombreconcepto" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="cuenta" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="codigoforpago" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="porcentaje" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="maeconta" Relationship="contableModel.fk_cuentaconc" FromRole="conceptospago" ToRole="maeconta" />
+          <NavigationProperty Name="formaspago" Relationship="contableModel.fk_formapago" FromRole="conceptospago" ToRole="formaspago" />
+        </EntityType>
+        <EntityType Name="coneusuar">
+          <Key>
+            <PropertyRef Name="iduser" />
+            <PropertyRef Name="fechacon" />
+          </Key>
+          <Property Name="iduser" Type="Int32" Nullable="false" />
+          <Property Name="fechacon" Type="DateTime" Nullable="false" />
+          <Property Name="compania" Type="Int32" Nullable="false" />
+          <Property Name="conectado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="datosusuario">
+          <Key>
+            <PropertyRef Name="idusuario" />
+          </Key>
+          <Property Name="idusuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombresusuario" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="apellidosusuario" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="telefonousuario" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="direccionusuario" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="correousuario" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="usuario" Relationship="contableModel.fk_usuariod" FromRole="datosusuario" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="departamento">
+          <Key>
+            <PropertyRef Name="iddept" />
+          </Key>
+          <Property Name="iddept" Type="Int32" Nullable="false" />
+          <Property Name="nombredep" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="idpais" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ciudad" Relationship="contableModel.fk_dpto" FromRole="departamento" ToRole="ciudad" />
+          <NavigationProperty Name="maenits" Relationship="contableModel.fk_depto" FromRole="departamento" ToRole="maenits" />
+          <NavigationProperty Name="maecli" Relationship="contableModel.fk_dptocli" FromRole="departamento" ToRole="maecli" />
+          <NavigationProperty Name="pais" Relationship="contableModel.fk_pais" FromRole="departamento" ToRole="pais" />
+        </EntityType>
+        <EntityType Name="formaspago">
+          <Key>
+            <PropertyRef Name="codigoforpago" />
+          </Key>
+          <Property Name="codigoforpago" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="nombreforma" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="sivence" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="conceptospago" Relationship="contableModel.fk_formapago" FromRole="formaspago" ToRole="conceptospago" />
+        </EntityType>
+        <EntityType Name="formato">
+          <Key>
+            <PropertyRef Name="idbalance" />
+          </Key>
+          <Property Name="idbalance" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipoformato" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="clasemayor" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="linea" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="nombref" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="cuentainicial" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="cuentafinal" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="maeconta" Relationship="contableModel.fk_cuentafinafo" FromRole="formato" ToRole="maeconta" />
+          <NavigationProperty Name="maeconta1" Relationship="contableModel.fk_cuentainifo" FromRole="formato" ToRole="maeconta" />
+        </EntityType>
+        <EntityType Name="formatorc">
+          <Key>
+            <PropertyRef Name="idformato" />
+          </Key>
+          <Property Name="idformato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigofor" Type="Int32" Nullable="false" />
+          <Property Name="nombrefor" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="fila" Type="String" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="columna" Type="String" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="condensa" Type="Boolean" Nullable="false" />
+          <Property Name="presentacion" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="titulo" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="inflacion">
+          <Key>
+            <PropertyRef Name="idinflacion" />
+          </Key>
+          <Property Name="idinflacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idmes" Type="Int32" Nullable="false" />
+          <Property Name="inflamensual" Type="Decimal" Nullable="false" />
+          <Property Name="mescerrado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="mes" Relationship="contableModel.fk_mesinfla" FromRole="inflacion" ToRole="mes" />
+        </EntityType>
+        <EntityType Name="maebanta">
+          <Key>
+            <PropertyRef Name="codigobanta" />
+          </Key>
+          <Property Name="codigobanta" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="nombrebantal" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="tipobanta" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="maecli">
+          <Key>
+            <PropertyRef Name="codigocli" />
+          </Key>
+          <Property Name="codigocli" Type="Int32" Nullable="false" />
+          <Property Name="nit" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="digito" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="nombrecli" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="factnombr" Type="String" Nullable="false" MaxLength="70" Unicode="false" FixedLength="false" />
+          <Property Name="estado" Type="Boolean" Nullable="false" />
+          <Property Name="idpais" Type="Int32" Nullable="false" />
+          <Property Name="iddpto" Type="Int32" Nullable="false" />
+          <Property Name="idciudad" Type="Int32" Nullable="false" />
+          <Property Name="direccion" Type="String" Nullable="false" MaxLength="70" Unicode="false" FixedLength="false" />
+          <Property Name="direnvio" Type="String" Nullable="false" MaxLength="70" Unicode="false" FixedLength="false" />
+          <Property Name="telefono" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="celular" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="fax" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="plazo" Type="Int32" Nullable="false" />
+          <Property Name="cupomes" Type="Int32" Nullable="false" />
+          <Property Name="descuento" Type="Decimal" Nullable="false" />
+          <Property Name="regimen" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="idvendedor" Type="Int32" Nullable="false" />
+          <Property Name="grancontrib" Type="Boolean" Nullable="false" />
+          <Property Name="causareteica" Type="Boolean" Nullable="false" />
+          <Property Name="aplicareteica" Type="Boolean" Nullable="false" />
+          <Property Name="causreteiva" Type="Boolean" Nullable="false" />
+          <Property Name="desconreteiva" Type="Boolean" Nullable="false" />
+          <Property Name="retexcomprar" Type="Boolean" Nullable="false" />
+          <Property Name="desconretevender" Type="Boolean" Nullable="false" />
+          <Property Name="porretencion" Type="Decimal" Nullable="false" />
+          <Property Name="jefecompr" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="comprador" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="cuenta" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ciudad" Relationship="contableModel.fk_ciudadcli" FromRole="maecli" ToRole="ciudad" />
+          <NavigationProperty Name="departamento" Relationship="contableModel.fk_dptocli" FromRole="maecli" ToRole="departamento" />
+          <NavigationProperty Name="maeconta" Relationship="contableModel.fk_cuentaclie" FromRole="maecli" ToRole="maeconta" />
+          <NavigationProperty Name="pais" Relationship="contableModel.fk_paiscli" FromRole="maecli" ToRole="pais" />
+        </EntityType>
+        <EntityType Name="maeconcc">
+          <Key>
+            <PropertyRef Name="codigocon" />
+          </Key>
+          <Property Name="codigocon" Type="Int32" Nullable="false" />
+          <Property Name="nombrecon" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="maeconta">
+          <Key>
+            <PropertyRef Name="cuenta" />
+          </Key>
+          <Property Name="cuenta" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="idcompania" Type="Int32" Nullable="false" />
+          <Property Name="tipocta" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="65" Unicode="false" FixedLength="false" />
+          <Property Name="pidenit" Type="Boolean" Nullable="false" />
+          <Property Name="centro" Type="Boolean" Nullable="false" />
+          <Property Name="ajustesinteg" Type="Boolean" Nullable="false" />
+          <Property Name="nitajustes" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="cueaju" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="cuencorre" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="ajudoc" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="cuentret" Type="Boolean" Nullable="false" />
+          <Property Name="porete" Type="Int32" />
+          <Property Name="concepret" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="cuentacierreimp" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="compania" Relationship="contableModel.fk_compania" FromRole="maeconta" ToRole="compania" />
+          <NavigationProperty Name="conceptospago" Relationship="contableModel.fk_cuentaconc" FromRole="maeconta" ToRole="conceptospago" />
+          <NavigationProperty Name="formato" Relationship="contableModel.fk_cuentafinafo" FromRole="maeconta" ToRole="formato" />
+          <NavigationProperty Name="formato1" Relationship="contableModel.fk_cuentainifo" FromRole="maeconta" ToRole="formato" />
+          <NavigationProperty Name="maecli" Relationship="contableModel.fk_cuentaclie" FromRole="maeconta" ToRole="maecli" />
+          <NavigationProperty Name="presupuesto" Relationship="contableModel.fk_cuenta" FromRole="maeconta" ToRole="presupuesto" />
+          <NavigationProperty Name="movimi" Relationship="contableModel.fk_cuentamov" FromRole="maeconta" ToRole="movimi" />
+          <NavigationProperty Name="maepagos" Relationship="contableModel.fk_cuentapagos" FromRole="maeconta" ToRole="maepagos" />
+          <NavigationProperty Name="saldoscuentas" Relationship="contableModel.fk_cuentasal" FromRole="maeconta" ToRole="saldoscuentas" />
+        </EntityType>
+        <EntityType Name="maenits">
+          <Key>
+            <PropertyRef Name="idnit" />
+          </Key>
+          <Property Name="idnit" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nit" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="digito" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="idcompania" Type="Int32" Nullable="false" />
+          <Property Name="idtiponit" Type="Int32" Nullable="false" />
+          <Property Name="idpais" Type="Int32" Nullable="false" />
+          <Property Name="iddept" Type="Int32" Nullable="false" />
+          <Property Name="idciudad" Type="Int32" Nullable="false" />
+          <Property Name="nomnit" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="acteconomica" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="direccion" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="telefono" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="celular" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ciudad" Relationship="contableModel.fk_ciud" FromRole="maenits" ToRole="ciudad" />
+          <NavigationProperty Name="compania" Relationship="contableModel.fk_cianits" FromRole="maenits" ToRole="compania" />
+          <NavigationProperty Name="departamento" Relationship="contableModel.fk_depto" FromRole="maenits" ToRole="departamento" />
+          <NavigationProperty Name="pais" Relationship="contableModel.fk_ippais" FromRole="maenits" ToRole="pais" />
+          <NavigationProperty Name="maepagos" Relationship="contableModel.fk_nitpagos" FromRole="maenits" ToRole="maepagos" />
+          <NavigationProperty Name="movimi" Relationship="contableModel.fk_nitsmovi" FromRole="maenits" ToRole="movimi" />
+          <NavigationProperty Name="tiponit" Relationship="contableModel.fk_tipo" FromRole="maenits" ToRole="tiponit" />
+        </EntityType>
+        <EntityType Name="maepagos">
+          <Key>
+            <PropertyRef Name="idpagos" />
+          </Key>
+          <Property Name="idpagos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idcompania" Type="Int32" Nullable="false" />
+          <Property Name="cuenta" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="idnit" Type="Int32" Nullable="false" />
+          <Property Name="codigotrib" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="compania" Relationship="contableModel.fk_companiapagos" FromRole="maepagos" ToRole="compania" />
+          <NavigationProperty Name="maeconta" Relationship="contableModel.fk_cuentapagos" FromRole="maepagos" ToRole="maeconta" />
+          <NavigationProperty Name="maenits" Relationship="contableModel.fk_nitpagos" FromRole="maepagos" ToRole="maenits" />
+          <NavigationProperty Name="maetribub" Relationship="contableModel.fk_tributariopagos" FromRole="maepagos" ToRole="maetribub" />
+        </EntityType>
+        <EntityType Name="maetrac">
+          <Key>
+            <PropertyRef Name="codigotrac" />
+          </Key>
+          <Property Name="codigotrac" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+          <Property Name="nombretrac" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="afectasaldo" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="afectaotros" Type="Boolean" Nullable="false" />
+          <Property Name="generaasiento" Type="Boolean" Nullable="false" />
+          <Property Name="consecutivo" Type="Boolean" Nullable="false" />
+          <Property Name="numeroactual" Type="Int32" />
+          <Property Name="codicomp" Type="Int32" />
+          <NavigationProperty Name="comprobante" Relationship="contableModel.fk_comprobantetra" FromRole="maetrac" ToRole="comprobante" />
+        </EntityType>
+        <EntityType Name="maetribub">
+          <Key>
+            <PropertyRef Name="codigotrib" />
+          </Key>
+          <Property Name="codigotrib" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="tope" Type="Decimal" />
+          <Property Name="nittope" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="nomnit" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="idcompania" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="compania" Relationship="contableModel.fk_comapaniatrib" FromRole="maetribub" ToRole="compania" />
+          <NavigationProperty Name="maepagos" Relationship="contableModel.fk_tributariopagos" FromRole="maetribub" ToRole="maepagos" />
+        </EntityType>
+        <EntityType Name="mes">
+          <Key>
+            <PropertyRef Name="idmes" />
+          </Key>
+          <Property Name="idmes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombremes" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="inflacion" Relationship="contableModel.fk_mesinfla" FromRole="mes" ToRole="inflacion" />
+          <NavigationProperty Name="presupuesto" Relationship="contableModel.fk_mes" FromRole="mes" ToRole="presupuesto" />
+          <NavigationProperty Name="movimi" Relationship="contableModel.fk_mesmovim" FromRole="mes" ToRole="movimi" />
+          <NavigationProperty Name="saldoscuentas" Relationship="contableModel.fk_messal" FromRole="mes" ToRole="saldoscuentas" />
+        </EntityType>
+        <EntityType Name="modulo">
+          <Key>
+            <PropertyRef Name="idmodulo" />
+          </Key>
+          <Property Name="idmodulo" Type="Int32" Nullable="false" />
+          <Property Name="nombmodulo" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="usuario" Relationship="contableModel.permiso" FromRole="modulo" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="movimi">
+          <Key>
+            <PropertyRef Name="idmovimi" />
+          </Key>
+          <Property Name="idmovimi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="documento" Type="Int32" Nullable="false" />
+          <Property Name="idcentro" Type="Int32" />
+          <Property Name="idcompania" Type="Int32" Nullable="false" />
+          <Property Name="idasiento" Type="Int32" Nullable="false" />
+          <Property Name="idmes" Type="Int32" Nullable="false" />
+          <Property Name="anio" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="codicomp" Type="Int32" Nullable="false" />
+          <Property Name="cuenta" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="idnit" Type="Int32" />
+          <Property Name="cheque" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="descrip" Type="String" Nullable="false" MaxLength="55" Unicode="false" FixedLength="false" />
+          <Property Name="valorcredito" Type="Decimal" Nullable="false" />
+          <Property Name="valordebito" Type="Decimal" Nullable="false" />
+          <Property Name="imprime" Type="Boolean" Nullable="false" />
+          <Property Name="usuario" Type="Int32" Nullable="false" />
+          <Property Name="fechagraba" Type="DateTime" Nullable="false" />
+          <Property Name="actualizado" Type="Boolean" Nullable="false" />
+          <Property Name="usuarioactu" Type="Int32" />
+          <Property Name="fechaactualiz" Type="DateTime" />
+          <Property Name="asientofijo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="centro" Relationship="contableModel.fk_centromov" FromRole="movimi" ToRole="centro" />
+          <NavigationProperty Name="compania" Relationship="contableModel.fk_companiamov" FromRole="movimi" ToRole="compania" />
+          <NavigationProperty Name="comprobante" Relationship="contableModel.fk_comprobante" FromRole="movimi" ToRole="comprobante" />
+          <NavigationProperty Name="maeconta" Relationship="contableModel.fk_cuentamov" FromRole="movimi" ToRole="maeconta" />
+          <NavigationProperty Name="maenits" Relationship="contableModel.fk_nitsmovi" FromRole="movimi" ToRole="maenits" />
+          <NavigationProperty Name="mes" Relationship="contableModel.fk_mesmovim" FromRole="movimi" ToRole="mes" />
+          <NavigationProperty Name="usuario1" Relationship="contableModel.fk_usuariogu" FromRole="movimi" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="pais">
+          <Key>
+            <PropertyRef Name="idpais" />
+          </Key>
+          <Property Name="idpais" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombpais" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="departamento" Relationship="contableModel.fk_pais" FromRole="pais" ToRole="departamento" />
+          <NavigationProperty Name="maecli" Relationship="contableModel.fk_paiscli" FromRole="pais" ToRole="maecli" />
+          <NavigationProperty Name="maenits" Relationship="contableModel.fk_ippais" FromRole="pais" ToRole="maenits" />
+        </EntityType>
+        <EntityType Name="parametros">
+          <Key>
+            <PropertyRef Name="idparametro" />
+          </Key>
+          <Property Name="idparametro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreparam" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="descripparam" Type="String" Nullable="false" MaxLength="70" Unicode="false" FixedLength="false" />
+          <Property Name="valorparam" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="presupuesto">
+          <Key>
+            <PropertyRef Name="idpresupuesto" />
+          </Key>
+          <Property Name="idpresupuesto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="anio" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="idmes" Type="Int32" Nullable="false" />
+          <Property Name="cuenta" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="codcentro" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="centro" Relationship="contableModel.fk_centrocospro" FromRole="presupuesto" ToRole="centro" />
+          <NavigationProperty Name="maeconta" Relationship="contableModel.fk_cuenta" FromRole="presupuesto" ToRole="maeconta" />
+          <NavigationProperty Name="mes" Relationship="contableModel.fk_mes" FromRole="presupuesto" ToRole="mes" />
+        </EntityType>
+        <EntityType Name="saldoscuentas">
+          <Key>
+            <PropertyRef Name="idsaldoscuentas" />
+          </Key>
+          <Property Name="idsaldoscuentas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cuenta" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="anio" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="idmes" Type="Int32" Nullable="false" />
+          <Property Name="saldo" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="maeconta" Relationship="contableModel.fk_cuentasal" FromRole="saldoscuentas" ToRole="maeconta" />
+          <NavigationProperty Name="mes" Relationship="contableModel.fk_messal" FromRole="saldoscuentas" ToRole="mes" />
+        </EntityType>
+        <EntityType Name="tiponit">
+          <Key>
+            <PropertyRef Name="idtiponit" />
+          </Key>
+          <Property Name="idtiponit" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombretipo" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="maenits" Relationship="contableModel.fk_tipo" FromRole="tiponit" ToRole="maenits" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="idusuario" />
+          </Key>
+          <Property Name="idusuario" Type="Int32" Nullable="false" />
+          <Property Name="user" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="contrasena" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+          <Property Name="fechaultconex" Type="DateTime" />
+          <Property Name="ultimobloqueo" Type="DateTime" />
+          <Property Name="intentosfallidos" Type="Int32" Nullable="false" />
+          <Property Name="bloqueado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="datosusuario" Relationship="contableModel.fk_usuariod" FromRole="usuario" ToRole="datosusuario" />
+          <NavigationProperty Name="movimi" Relationship="contableModel.fk_usuariogu" FromRole="usuario" ToRole="movimi" />
+          <NavigationProperty Name="modulo" Relationship="contableModel.permiso" FromRole="usuario" ToRole="modulo" />
+        </EntityType>
+        <EntityType Name="vendedor">
+          <Key>
+            <PropertyRef Name="idvendedor" />
+          </Key>
+          <Property Name="idvendedor" Type="Int32" Nullable="false" />
+          <Property Name="codigovend" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="nombrevend" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="tipo" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="cedula" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="direcvend" Type="String" Nullable="false" MaxLength="70" Unicode="false" FixedLength="false" />
+          <Property Name="emailvend" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="activo" Type="Boolean" Nullable="false" />
+          <Property Name="comisionrango" Type="Boolean" Nullable="false" />
+          <Property Name="comision" Type="Decimal" Nullable="false" />
+          <Property Name="compania" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_centrocospro">
+          <End Role="centro" Type="contableModel.centro" Multiplicity="1" />
+          <End Role="presupuesto" Type="contableModel.presupuesto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="centro">
+              <PropertyRef Name="idcentro" />
+            </Principal>
+            <Dependent Role="presupuesto">
+              <PropertyRef Name="codcentro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_centromov">
+          <End Role="centro" Type="contableModel.centro" Multiplicity="0..1" />
+          <End Role="movimi" Type="contableModel.movimi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="centro">
+              <PropertyRef Name="idcentro" />
+            </Principal>
+            <Dependent Role="movimi">
+              <PropertyRef Name="idcentro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_compania_centro">
+          <End Role="compania" Type="contableModel.compania" Multiplicity="1" />
+          <End Role="centro" Type="contableModel.centro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compania">
+              <PropertyRef Name="idcompania" />
+            </Principal>
+            <Dependent Role="centro">
+              <PropertyRef Name="idcompania" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ciud">
+          <End Role="ciudad" Type="contableModel.ciudad" Multiplicity="1" />
+          <End Role="maenits" Type="contableModel.maenits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudad">
+              <PropertyRef Name="idciudad" />
+            </Principal>
+            <Dependent Role="maenits">
+              <PropertyRef Name="idciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ciudadcli">
+          <End Role="ciudad" Type="contableModel.ciudad" Multiplicity="1" />
+          <End Role="maecli" Type="contableModel.maecli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudad">
+              <PropertyRef Name="idciudad" />
+            </Principal>
+            <Dependent Role="maecli">
+              <PropertyRef Name="idciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_dpto">
+          <End Role="departamento" Type="contableModel.departamento" Multiplicity="1" />
+          <End Role="ciudad" Type="contableModel.ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departamento">
+              <PropertyRef Name="iddept" />
+            </Principal>
+            <Dependent Role="ciudad">
+              <PropertyRef Name="iddpto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cianits">
+          <End Role="compania" Type="contableModel.compania" Multiplicity="1" />
+          <End Role="maenits" Type="contableModel.maenits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compania">
+              <PropertyRef Name="idcompania" />
+            </Principal>
+            <Dependent Role="maenits">
+              <PropertyRef Name="idcompania" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_comapaniatrib">
+          <End Role="compania" Type="contableModel.compania" Multiplicity="1" />
+          <End Role="maetribub" Type="contableModel.maetribub" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compania">
+              <PropertyRef Name="idcompania" />
+            </Principal>
+            <Dependent Role="maetribub">
+              <PropertyRef Name="idcompania" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_compania">
+          <End Role="compania" Type="contableModel.compania" Multiplicity="1" />
+          <End Role="maeconta" Type="contableModel.maeconta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compania">
+              <PropertyRef Name="idcompania" />
+            </Principal>
+            <Dependent Role="maeconta">
+              <PropertyRef Name="idcompania" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_companiamov">
+          <End Role="compania" Type="contableModel.compania" Multiplicity="1" />
+          <End Role="movimi" Type="contableModel.movimi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compania">
+              <PropertyRef Name="idcompania" />
+            </Principal>
+            <Dependent Role="movimi">
+              <PropertyRef Name="idcompania" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_companiapagos">
+          <End Role="compania" Type="contableModel.compania" Multiplicity="1" />
+          <End Role="maepagos" Type="contableModel.maepagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compania">
+              <PropertyRef Name="idcompania" />
+            </Principal>
+            <Dependent Role="maepagos">
+              <PropertyRef Name="idcompania" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_comprobante">
+          <End Role="comprobante" Type="contableModel.comprobante" Multiplicity="1" />
+          <End Role="movimi" Type="contableModel.movimi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comprobante">
+              <PropertyRef Name="codicomp" />
+            </Principal>
+            <Dependent Role="movimi">
+              <PropertyRef Name="codicomp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_comprobantetra">
+          <End Role="comprobante" Type="contableModel.comprobante" Multiplicity="0..1" />
+          <End Role="maetrac" Type="contableModel.maetrac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comprobante">
+              <PropertyRef Name="codicomp" />
+            </Principal>
+            <Dependent Role="maetrac">
+              <PropertyRef Name="codicomp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cuentaconc">
+          <End Role="maeconta" Type="contableModel.maeconta" Multiplicity="1" />
+          <End Role="conceptospago" Type="contableModel.conceptospago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maeconta">
+              <PropertyRef Name="cuenta" />
+            </Principal>
+            <Dependent Role="conceptospago">
+              <PropertyRef Name="cuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_formapago">
+          <End Role="formaspago" Type="contableModel.formaspago" Multiplicity="1" />
+          <End Role="conceptospago" Type="contableModel.conceptospago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="formaspago">
+              <PropertyRef Name="codigoforpago" />
+            </Principal>
+            <Dependent Role="conceptospago">
+              <PropertyRef Name="codigoforpago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_usuariod">
+          <End Role="datosusuario" Type="contableModel.datosusuario" Multiplicity="1" />
+          <End Role="usuario" Type="contableModel.usuario" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="datosusuario">
+              <PropertyRef Name="idusuario" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="idusuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_depto">
+          <End Role="departamento" Type="contableModel.departamento" Multiplicity="1" />
+          <End Role="maenits" Type="contableModel.maenits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departamento">
+              <PropertyRef Name="iddept" />
+            </Principal>
+            <Dependent Role="maenits">
+              <PropertyRef Name="iddept" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_dptocli">
+          <End Role="departamento" Type="contableModel.departamento" Multiplicity="1" />
+          <End Role="maecli" Type="contableModel.maecli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departamento">
+              <PropertyRef Name="iddept" />
+            </Principal>
+            <Dependent Role="maecli">
+              <PropertyRef Name="iddpto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pais">
+          <End Role="pais" Type="contableModel.pais" Multiplicity="1" />
+          <End Role="departamento" Type="contableModel.departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pais">
+              <PropertyRef Name="idpais" />
+            </Principal>
+            <Dependent Role="departamento">
+              <PropertyRef Name="idpais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cuentafinafo">
+          <End Role="maeconta" Type="contableModel.maeconta" Multiplicity="0..1" />
+          <End Role="formato" Type="contableModel.formato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maeconta">
+              <PropertyRef Name="cuenta" />
+            </Principal>
+            <Dependent Role="formato">
+              <PropertyRef Name="cuentafinal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cuentainifo">
+          <End Role="maeconta" Type="contableModel.maeconta" Multiplicity="0..1" />
+          <End Role="formato" Type="contableModel.formato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maeconta">
+              <PropertyRef Name="cuenta" />
+            </Principal>
+            <Dependent Role="formato">
+              <PropertyRef Name="cuentainicial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_mesinfla">
+          <End Role="mes" Type="contableModel.mes" Multiplicity="1" />
+          <End Role="inflacion" Type="contableModel.inflacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mes">
+              <PropertyRef Name="idmes" />
+            </Principal>
+            <Dependent Role="inflacion">
+              <PropertyRef Name="idmes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cuentaclie">
+          <End Role="maeconta" Type="contableModel.maeconta" Multiplicity="1" />
+          <End Role="maecli" Type="contableModel.maecli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maeconta">
+              <PropertyRef Name="cuenta" />
+            </Principal>
+            <Dependent Role="maecli">
+              <PropertyRef Name="cuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_paiscli">
+          <End Role="pais" Type="contableModel.pais" Multiplicity="1" />
+          <End Role="maecli" Type="contableModel.maecli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pais">
+              <PropertyRef Name="idpais" />
+            </Principal>
+            <Dependent Role="maecli">
+              <PropertyRef Name="idpais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cuenta">
+          <End Role="maeconta" Type="contableModel.maeconta" Multiplicity="1" />
+          <End Role="presupuesto" Type="contableModel.presupuesto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maeconta">
+              <PropertyRef Name="cuenta" />
+            </Principal>
+            <Dependent Role="presupuesto">
+              <PropertyRef Name="cuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cuentamov">
+          <End Role="maeconta" Type="contableModel.maeconta" Multiplicity="1" />
+          <End Role="movimi" Type="contableModel.movimi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maeconta">
+              <PropertyRef Name="cuenta" />
+            </Principal>
+            <Dependent Role="movimi">
+              <PropertyRef Name="cuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cuentapagos">
+          <End Role="maeconta" Type="contableModel.maeconta" Multiplicity="1" />
+          <End Role="maepagos" Type="contableModel.maepagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maeconta">
+              <PropertyRef Name="cuenta" />
+            </Principal>
+            <Dependent Role="maepagos">
+              <PropertyRef Name="cuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cuentasal">
+          <End Role="maeconta" Type="contableModel.maeconta" Multiplicity="1" />
+          <End Role="saldoscuentas" Type="contableModel.saldoscuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maeconta">
+              <PropertyRef Name="cuenta" />
+            </Principal>
+            <Dependent Role="saldoscuentas">
+              <PropertyRef Name="cuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ippais">
+          <End Role="pais" Type="contableModel.pais" Multiplicity="1" />
+          <End Role="maenits" Type="contableModel.maenits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pais">
+              <PropertyRef Name="idpais" />
+            </Principal>
+            <Dependent Role="maenits">
+              <PropertyRef Name="idpais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_nitpagos">
+          <End Role="maenits" Type="contableModel.maenits" Multiplicity="1" />
+          <End Role="maepagos" Type="contableModel.maepagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maenits">
+              <PropertyRef Name="idnit" />
+            </Principal>
+            <Dependent Role="maepagos">
+              <PropertyRef Name="idnit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_nitsmovi">
+          <End Role="maenits" Type="contableModel.maenits" Multiplicity="0..1" />
+          <End Role="movimi" Type="contableModel.movimi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maenits">
+              <PropertyRef Name="idnit" />
+            </Principal>
+            <Dependent Role="movimi">
+              <PropertyRef Name="idnit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tipo">
+          <End Role="tiponit" Type="contableModel.tiponit" Multiplicity="1" />
+          <End Role="maenits" Type="contableModel.maenits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tiponit">
+              <PropertyRef Name="idtiponit" />
+            </Principal>
+            <Dependent Role="maenits">
+              <PropertyRef Name="idtiponit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tributariopagos">
+          <End Role="maetribub" Type="contableModel.maetribub" Multiplicity="1" />
+          <End Role="maepagos" Type="contableModel.maepagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maetribub">
+              <PropertyRef Name="codigotrib" />
+            </Principal>
+            <Dependent Role="maepagos">
+              <PropertyRef Name="codigotrib" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_mes">
+          <End Role="mes" Type="contableModel.mes" Multiplicity="1" />
+          <End Role="presupuesto" Type="contableModel.presupuesto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mes">
+              <PropertyRef Name="idmes" />
+            </Principal>
+            <Dependent Role="presupuesto">
+              <PropertyRef Name="idmes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_mesmovim">
+          <End Role="mes" Type="contableModel.mes" Multiplicity="1" />
+          <End Role="movimi" Type="contableModel.movimi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mes">
+              <PropertyRef Name="idmes" />
+            </Principal>
+            <Dependent Role="movimi">
+              <PropertyRef Name="idmes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_messal">
+          <End Role="mes" Type="contableModel.mes" Multiplicity="1" />
+          <End Role="saldoscuentas" Type="contableModel.saldoscuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mes">
+              <PropertyRef Name="idmes" />
+            </Principal>
+            <Dependent Role="saldoscuentas">
+              <PropertyRef Name="idmes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_usuariogu">
+          <End Role="usuario" Type="contableModel.usuario" Multiplicity="1" />
+          <End Role="movimi" Type="contableModel.movimi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="idusuario" />
+            </Principal>
+            <Dependent Role="movimi">
+              <PropertyRef Name="usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="permiso">
+          <End Role="modulo" Type="contableModel.modulo" Multiplicity="*" />
+          <End Role="usuario" Type="contableModel.usuario" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="contableModelStoreContainer" CdmEntityContainer="contableEntities">
+          <EntitySetMapping Name="cajero">
+            <EntityTypeMapping TypeName="contableModel.cajero">
+              <MappingFragment StoreEntitySet="cajero">
+                <ScalarProperty Name="codigocaje" ColumnName="codigocaje" />
+                <ScalarProperty Name="tipocaje" ColumnName="tipocaje" />
+                <ScalarProperty Name="usuariocaje" ColumnName="usuariocaje" />
+                <ScalarProperty Name="nombrecaje" ColumnName="nombrecaje" />
+                <ScalarProperty Name="claverecibos" ColumnName="claverecibos" />
+                <ScalarProperty Name="cedulacaje" ColumnName="cedulacaje" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="centro">
+            <EntityTypeMapping TypeName="contableModel.centro">
+              <MappingFragment StoreEntitySet="centro">
+                <ScalarProperty Name="idcentro" ColumnName="idcentro" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ciudad">
+            <EntityTypeMapping TypeName="contableModel.ciudad">
+              <MappingFragment StoreEntitySet="ciudad">
+                <ScalarProperty Name="idciudad" ColumnName="idciudad" />
+                <ScalarProperty Name="nombciudad" ColumnName="nombciudad" />
+                <ScalarProperty Name="iddpto" ColumnName="iddpto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="compania">
+            <EntityTypeMapping TypeName="contableModel.compania">
+              <MappingFragment StoreEntitySet="compania">
+                <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+                <ScalarProperty Name="nombrecia" ColumnName="nombrecia" />
+                <ScalarProperty Name="nit" ColumnName="nit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comprobante">
+            <EntityTypeMapping TypeName="contableModel.comprobante">
+              <MappingFragment StoreEntitySet="comprobante">
+                <ScalarProperty Name="codicomp" ColumnName="codicomp" />
+                <ScalarProperty Name="descomp" ColumnName="descomp" />
+                <ScalarProperty Name="consecu" ColumnName="consecu" />
+                <ScalarProperty Name="numsigui" ColumnName="numsigui" />
+                <ScalarProperty Name="codotra" ColumnName="codotra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="conceptospago">
+            <EntityTypeMapping TypeName="contableModel.conceptospago">
+              <MappingFragment StoreEntitySet="conceptospago">
+                <ScalarProperty Name="codigoconpa" ColumnName="codigoconpa" />
+                <ScalarProperty Name="nombreconcepto" ColumnName="nombreconcepto" />
+                <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+                <ScalarProperty Name="codigoforpago" ColumnName="codigoforpago" />
+                <ScalarProperty Name="porcentaje" ColumnName="porcentaje" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="coneusuar">
+            <EntityTypeMapping TypeName="contableModel.coneusuar">
+              <MappingFragment StoreEntitySet="coneusuar">
+                <ScalarProperty Name="iduser" ColumnName="iduser" />
+                <ScalarProperty Name="fechacon" ColumnName="fechacon" />
+                <ScalarProperty Name="compania" ColumnName="compania" />
+                <ScalarProperty Name="conectado" ColumnName="conectado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="datosusuario">
+            <EntityTypeMapping TypeName="contableModel.datosusuario">
+              <MappingFragment StoreEntitySet="datosusuario">
+                <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+                <ScalarProperty Name="nombresusuario" ColumnName="nombresusuario" />
+                <ScalarProperty Name="apellidosusuario" ColumnName="apellidosusuario" />
+                <ScalarProperty Name="telefonousuario" ColumnName="telefonousuario" />
+                <ScalarProperty Name="direccionusuario" ColumnName="direccionusuario" />
+                <ScalarProperty Name="correousuario" ColumnName="correousuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="departamento">
+            <EntityTypeMapping TypeName="contableModel.departamento">
+              <MappingFragment StoreEntitySet="departamento">
+                <ScalarProperty Name="iddept" ColumnName="iddept" />
+                <ScalarProperty Name="nombredep" ColumnName="nombredep" />
+                <ScalarProperty Name="idpais" ColumnName="idpais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="formaspago">
+            <EntityTypeMapping TypeName="contableModel.formaspago">
+              <MappingFragment StoreEntitySet="formaspago">
+                <ScalarProperty Name="codigoforpago" ColumnName="codigoforpago" />
+                <ScalarProperty Name="nombreforma" ColumnName="nombreforma" />
+                <ScalarProperty Name="sivence" ColumnName="sivence" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="formato">
+            <EntityTypeMapping TypeName="contableModel.formato">
+              <MappingFragment StoreEntitySet="formato">
+                <ScalarProperty Name="idbalance" ColumnName="idbalance" />
+                <ScalarProperty Name="tipoformato" ColumnName="tipoformato" />
+                <ScalarProperty Name="clasemayor" ColumnName="clasemayor" />
+                <ScalarProperty Name="linea" ColumnName="linea" />
+                <ScalarProperty Name="nombref" ColumnName="nombref" />
+                <ScalarProperty Name="cuentainicial" ColumnName="cuentainicial" />
+                <ScalarProperty Name="cuentafinal" ColumnName="cuentafinal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="formatorc">
+            <EntityTypeMapping TypeName="contableModel.formatorc">
+              <MappingFragment StoreEntitySet="formatorc">
+                <ScalarProperty Name="idformato" ColumnName="idformato" />
+                <ScalarProperty Name="codigofor" ColumnName="codigofor" />
+                <ScalarProperty Name="nombrefor" ColumnName="nombrefor" />
+                <ScalarProperty Name="fila" ColumnName="fila" />
+                <ScalarProperty Name="columna" ColumnName="columna" />
+                <ScalarProperty Name="condensa" ColumnName="condensa" />
+                <ScalarProperty Name="presentacion" ColumnName="presentacion" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inflacion">
+            <EntityTypeMapping TypeName="contableModel.inflacion">
+              <MappingFragment StoreEntitySet="inflacion">
+                <ScalarProperty Name="idinflacion" ColumnName="idinflacion" />
+                <ScalarProperty Name="idmes" ColumnName="idmes" />
+                <ScalarProperty Name="inflamensual" ColumnName="inflamensual" />
+                <ScalarProperty Name="mescerrado" ColumnName="mescerrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="maebanta">
+            <EntityTypeMapping TypeName="contableModel.maebanta">
+              <MappingFragment StoreEntitySet="maebanta">
+                <ScalarProperty Name="codigobanta" ColumnName="codigobanta" />
+                <ScalarProperty Name="nombrebantal" ColumnName="nombrebantal" />
+                <ScalarProperty Name="tipobanta" ColumnName="tipobanta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="maecli">
+            <EntityTypeMapping TypeName="contableModel.maecli">
+              <MappingFragment StoreEntitySet="maecli">
+                <ScalarProperty Name="codigocli" ColumnName="codigocli" />
+                <ScalarProperty Name="nit" ColumnName="nit" />
+                <ScalarProperty Name="digito" ColumnName="digito" />
+                <ScalarProperty Name="nombrecli" ColumnName="nombrecli" />
+                <ScalarProperty Name="factnombr" ColumnName="factnombr" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="idpais" ColumnName="idpais" />
+                <ScalarProperty Name="iddpto" ColumnName="iddpto" />
+                <ScalarProperty Name="idciudad" ColumnName="idciudad" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="direnvio" ColumnName="direnvio" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="plazo" ColumnName="plazo" />
+                <ScalarProperty Name="cupomes" ColumnName="cupomes" />
+                <ScalarProperty Name="descuento" ColumnName="descuento" />
+                <ScalarProperty Name="regimen" ColumnName="regimen" />
+                <ScalarProperty Name="idvendedor" ColumnName="idvendedor" />
+                <ScalarProperty Name="grancontrib" ColumnName="grancontrib" />
+                <ScalarProperty Name="causareteica" ColumnName="causareteica" />
+                <ScalarProperty Name="aplicareteica" ColumnName="aplicareteica" />
+                <ScalarProperty Name="causreteiva" ColumnName="causreteiva" />
+                <ScalarProperty Name="desconreteiva" ColumnName="desconreteiva" />
+                <ScalarProperty Name="retexcomprar" ColumnName="retexcomprar" />
+                <ScalarProperty Name="desconretevender" ColumnName="desconretevender" />
+                <ScalarProperty Name="porretencion" ColumnName="porretencion" />
+                <ScalarProperty Name="jefecompr" ColumnName="jefecompr" />
+                <ScalarProperty Name="comprador" ColumnName="comprador" />
+                <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="maeconcc">
+            <EntityTypeMapping TypeName="contableModel.maeconcc">
+              <MappingFragment StoreEntitySet="maeconcc">
+                <ScalarProperty Name="codigocon" ColumnName="codigocon" />
+                <ScalarProperty Name="nombrecon" ColumnName="nombrecon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="maeconta">
+            <EntityTypeMapping TypeName="contableModel.maeconta">
+              <MappingFragment StoreEntitySet="maeconta">
+                <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+                <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+                <ScalarProperty Name="tipocta" ColumnName="tipocta" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="pidenit" ColumnName="pidenit" />
+                <ScalarProperty Name="centro" ColumnName="centro" />
+                <ScalarProperty Name="ajustesinteg" ColumnName="ajustesinteg" />
+                <ScalarProperty Name="nitajustes" ColumnName="nitajustes" />
+                <ScalarProperty Name="cueaju" ColumnName="cueaju" />
+                <ScalarProperty Name="cuencorre" ColumnName="cuencorre" />
+                <ScalarProperty Name="ajudoc" ColumnName="ajudoc" />
+                <ScalarProperty Name="cuentret" ColumnName="cuentret" />
+                <ScalarProperty Name="porete" ColumnName="porete" />
+                <ScalarProperty Name="concepret" ColumnName="concepret" />
+                <ScalarProperty Name="cuentacierreimp" ColumnName="cuentacierreimp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="maenits">
+            <EntityTypeMapping TypeName="contableModel.maenits">
+              <MappingFragment StoreEntitySet="maenits">
+                <ScalarProperty Name="idnit" ColumnName="idnit" />
+                <ScalarProperty Name="nit" ColumnName="nit" />
+                <ScalarProperty Name="digito" ColumnName="digito" />
+                <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+                <ScalarProperty Name="idtiponit" ColumnName="idtiponit" />
+                <ScalarProperty Name="idpais" ColumnName="idpais" />
+                <ScalarProperty Name="iddept" ColumnName="iddept" />
+                <ScalarProperty Name="idciudad" ColumnName="idciudad" />
+                <ScalarProperty Name="nomnit" ColumnName="nomnit" />
+                <ScalarProperty Name="acteconomica" ColumnName="acteconomica" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="maepagos">
+            <EntityTypeMapping TypeName="contableModel.maepagos">
+              <MappingFragment StoreEntitySet="maepagos">
+                <ScalarProperty Name="idpagos" ColumnName="idpagos" />
+                <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+                <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+                <ScalarProperty Name="idnit" ColumnName="idnit" />
+                <ScalarProperty Name="codigotrib" ColumnName="codigotrib" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="maetrac">
+            <EntityTypeMapping TypeName="contableModel.maetrac">
+              <MappingFragment StoreEntitySet="maetrac">
+                <ScalarProperty Name="codigotrac" ColumnName="codigotrac" />
+                <ScalarProperty Name="nombretrac" ColumnName="nombretrac" />
+                <ScalarProperty Name="afectasaldo" ColumnName="afectasaldo" />
+                <ScalarProperty Name="afectaotros" ColumnName="afectaotros" />
+                <ScalarProperty Name="generaasiento" ColumnName="generaasiento" />
+                <ScalarProperty Name="consecutivo" ColumnName="consecutivo" />
+                <ScalarProperty Name="numeroactual" ColumnName="numeroactual" />
+                <ScalarProperty Name="codicomp" ColumnName="codicomp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="maetribub">
+            <EntityTypeMapping TypeName="contableModel.maetribub">
+              <MappingFragment StoreEntitySet="maetribub">
+                <ScalarProperty Name="codigotrib" ColumnName="codigotrib" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="tope" ColumnName="tope" />
+                <ScalarProperty Name="nittope" ColumnName="nittope" />
+                <ScalarProperty Name="nomnit" ColumnName="nomnit" />
+                <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mes">
+            <EntityTypeMapping TypeName="contableModel.mes">
+              <MappingFragment StoreEntitySet="mes">
+                <ScalarProperty Name="idmes" ColumnName="idmes" />
+                <ScalarProperty Name="nombremes" ColumnName="nombremes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="modulo">
+            <EntityTypeMapping TypeName="contableModel.modulo">
+              <MappingFragment StoreEntitySet="modulo">
+                <ScalarProperty Name="idmodulo" ColumnName="idmodulo" />
+                <ScalarProperty Name="nombmodulo" ColumnName="nombmodulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="movimi">
+            <EntityTypeMapping TypeName="contableModel.movimi">
+              <MappingFragment StoreEntitySet="movimi">
+                <ScalarProperty Name="idmovimi" ColumnName="idmovimi" />
+                <ScalarProperty Name="documento" ColumnName="documento" />
+                <ScalarProperty Name="idcentro" ColumnName="idcentro" />
+                <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+                <ScalarProperty Name="idasiento" ColumnName="idasiento" />
+                <ScalarProperty Name="idmes" ColumnName="idmes" />
+                <ScalarProperty Name="anio" ColumnName="anio" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="codicomp" ColumnName="codicomp" />
+                <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+                <ScalarProperty Name="idnit" ColumnName="idnit" />
+                <ScalarProperty Name="cheque" ColumnName="cheque" />
+                <ScalarProperty Name="descrip" ColumnName="descrip" />
+                <ScalarProperty Name="valorcredito" ColumnName="valorcredito" />
+                <ScalarProperty Name="valordebito" ColumnName="valordebito" />
+                <ScalarProperty Name="imprime" ColumnName="imprime" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="fechagraba" ColumnName="fechagraba" />
+                <ScalarProperty Name="actualizado" ColumnName="actualizado" />
+                <ScalarProperty Name="usuarioactu" ColumnName="usuarioactu" />
+                <ScalarProperty Name="fechaactualiz" ColumnName="fechaactualiz" />
+                <ScalarProperty Name="asientofijo" ColumnName="asientofijo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pais">
+            <EntityTypeMapping TypeName="contableModel.pais">
+              <MappingFragment StoreEntitySet="pais">
+                <ScalarProperty Name="idpais" ColumnName="idpais" />
+                <ScalarProperty Name="nombpais" ColumnName="nombpais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="parametros">
+            <EntityTypeMapping TypeName="contableModel.parametros">
+              <MappingFragment StoreEntitySet="parametros">
+                <ScalarProperty Name="idparametro" ColumnName="idparametro" />
+                <ScalarProperty Name="nombreparam" ColumnName="nombreparam" />
+                <ScalarProperty Name="descripparam" ColumnName="descripparam" />
+                <ScalarProperty Name="valorparam" ColumnName="valorparam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="presupuesto">
+            <EntityTypeMapping TypeName="contableModel.presupuesto">
+              <MappingFragment StoreEntitySet="presupuesto">
+                <ScalarProperty Name="idpresupuesto" ColumnName="idpresupuesto" />
+                <ScalarProperty Name="anio" ColumnName="anio" />
+                <ScalarProperty Name="idmes" ColumnName="idmes" />
+                <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+                <ScalarProperty Name="codcentro" ColumnName="codcentro" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="saldoscuentas">
+            <EntityTypeMapping TypeName="contableModel.saldoscuentas">
+              <MappingFragment StoreEntitySet="saldoscuentas">
+                <ScalarProperty Name="idsaldoscuentas" ColumnName="idsaldoscuentas" />
+                <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+                <ScalarProperty Name="anio" ColumnName="anio" />
+                <ScalarProperty Name="idmes" ColumnName="idmes" />
+                <ScalarProperty Name="saldo" ColumnName="saldo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tiponit">
+            <EntityTypeMapping TypeName="contableModel.tiponit">
+              <MappingFragment StoreEntitySet="tiponit">
+                <ScalarProperty Name="idtiponit" ColumnName="idtiponit" />
+                <ScalarProperty Name="nombretipo" ColumnName="nombretipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="contableModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+                <ScalarProperty Name="user" ColumnName="user" />
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+                <ScalarProperty Name="fechaultconex" ColumnName="fechaultconex" />
+                <ScalarProperty Name="ultimobloqueo" ColumnName="ultimobloqueo" />
+                <ScalarProperty Name="intentosfallidos" ColumnName="intentosfallidos" />
+                <ScalarProperty Name="bloqueado" ColumnName="bloqueado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vendedor">
+            <EntityTypeMapping TypeName="contableModel.vendedor">
+              <MappingFragment StoreEntitySet="vendedor">
+                <ScalarProperty Name="idvendedor" ColumnName="idvendedor" />
+                <ScalarProperty Name="codigovend" ColumnName="codigovend" />
+                <ScalarProperty Name="nombrevend" ColumnName="nombrevend" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="direcvend" ColumnName="direcvend" />
+                <ScalarProperty Name="emailvend" ColumnName="emailvend" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="comisionrango" ColumnName="comisionrango" />
+                <ScalarProperty Name="comision" ColumnName="comision" />
+                <ScalarProperty Name="compania" ColumnName="compania" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="permiso" TypeName="contableModel.permiso" StoreEntitySet="permiso">
+            <EndProperty Name="modulo">
+              <ScalarProperty Name="idmodulo" ColumnName="modulo" />
+            </EndProperty>
+            <EndProperty Name="usuario">
+              <ScalarProperty Name="idusuario" ColumnName="iduser" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model_Contable">
+        <EntityTypeShape EntityType="contableModel.cajero" Width="1.5" PointX="5.75" PointY="0.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.centro" Width="1.5" PointX="3" PointY="15.5" Height="2.1725878906250014" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.ciudad" Width="1.5" PointX="5.75" PointY="27.125" Height="2.172587890624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.compania" Width="1.5" PointX="0.75" PointY="20" Height="2.749492187499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.comprobante" Width="1.5" PointX="3" PointY="10.625" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.conceptospago" Width="1.5" PointX="8.25" PointY="22" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.coneusuar" Width="1.5" PointX="7.75" PointY="0.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.datosusuario" Width="1.5" PointX="0.75" PointY="6.125" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.departamento" Width="1.5" PointX="3.5" PointY="27" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.formaspago" Width="1.5" PointX="6" PointY="12.375" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.formato" Width="1.5" PointX="5.25" PointY="23" Height="2.7494921875000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.formatorc" Width="1.5" PointX="7.75" PointY="3.75" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.inflacion" Width="1.5" PointX="5.25" PointY="4.875" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.maebanta" Width="1.5" PointX="7.75" PointY="7.75" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.maecli" Width="1.5" PointX="11.25" PointY="17.375" Height="7.7493294270833317" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.maeconcc" Width="1.5" PointX="9.75" PointY="0.75" Height="1.4033821614583388" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.maeconta" Width="1.5" PointX="3" PointY="18.375" Height="5.6340136718750031" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.maenits" Width="1.5" PointX="8" PointY="25.875" Height="5.0571093750000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.maepagos" Width="1.5" PointX="10.25" PointY="26.375" Height="2.7494921875000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.maetrac" Width="1.5" PointX="5.25" PointY="8.5" Height="2.7494921875000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.maetribub" Width="1.5" PointX="3" PointY="30.625" Height="2.5571907552083388" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.mes" Width="1.5" PointX="3" PointY="6.75" Height="2.172587890624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.modulo" Width="1.5" PointX="0.75" PointY="9.25" Height="1.595683593749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.movimi" Width="1.5" PointX="5.25" PointY="15.5" Height="6.5955208333333246" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.pais" Width="1.5" PointX="1.25" PointY="27.25" Height="1.9802864583333246" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.parametros" Width="1.5" PointX="9.75" PointY="3.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.presupuesto" Width="1.5" PointX="8.25" PointY="18.375" Height="2.7494921875000102" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.saldoscuentas" Width="1.5" PointX="8.25" PointY="15" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.tiponit" Width="1.5" PointX="5.75" PointY="30.125" Height="1.595683593749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.usuario" Width="1.5" PointX="3" PointY="1.625" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="contableModel.vendedor" Width="1.5" PointX="9.75" PointY="6.75" Height="3.3263964843750102" IsExpanded="true" />
+        <AssociationConnector Association="contableModel.fk_centrocospro" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="16.5862939453125" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="16.5862939453125" />
+          <ConnectorPoint PointX="4.989583333333333" PointY="16.5862939453125" />
+          <ConnectorPoint PointX="5" PointY="16.5862939453125" />
+          <ConnectorPoint PointX="5" PointY="15.25" />
+          <ConnectorPoint PointX="5.041666666666667" PointY="15.25" />
+          <ConnectorPoint PointX="5.208333333333333" PointY="15.25" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="15.25" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="15.25" />
+          <ConnectorPoint PointX="7.666666666666667" PointY="15.249999999999998" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="15.25" />
+          <ConnectorPoint PointX="8" PointY="15.25" />
+          <ConnectorPoint PointX="8" PointY="17.614889322916667" />
+          <ConnectorPoint PointX="8.5416671666666648" PointY="17.614889322916667" />
+          <ConnectorPoint PointX="8.7083338333333327" PointY="17.614889322916667" />
+          <ConnectorPoint PointX="9" PointY="17.614889322916667" />
+          <ConnectorPoint PointX="9" PointY="18.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_centromov" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="15.980646972656251" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="15.980646972656249" />
+          <ConnectorPoint PointX="5.208333333333333" PointY="15.980646972656251" />
+          <ConnectorPoint PointX="5.25" PointY="15.980646972656251" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_compania_centro" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="20" />
+          <ConnectorPoint PointX="1.5" PointY="16.5862939453125" />
+          <ConnectorPoint PointX="3" PointY="16.5862939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_ciud" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.25" PointY="28.211293945312498" />
+          <ConnectorPoint PointX="8" PointY="28.211293945312498" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_ciudadcli" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.25" PointY="27.126152846153843" />
+          <ConnectorPoint PointX="7.625" PointY="26.751152846153843" />
+          <ConnectorPoint PointX="7.625" PointY="25.499329427083332" />
+          <ConnectorPoint PointX="7.666666666666667" PointY="25.499329427083332" />
+          <ConnectorPoint PointX="7.833333333333333" PointY="25.499329427083332" />
+          <ConnectorPoint PointX="7.979166666666667" PointY="25.499329427083332" />
+          <ConnectorPoint PointX="8.1458333333333339" PointY="25.499329427083332" />
+          <ConnectorPoint PointX="10.369788666666667" PointY="25.499329427083332" />
+          <ConnectorPoint PointX="10.536455333333334" PointY="25.499329427083332" />
+          <ConnectorPoint PointX="10.635414666666666" PointY="25.499329427083332" />
+          <ConnectorPoint PointX="10.802081333333334" PointY="25.499329427083332" />
+          <ConnectorPoint PointX="10.875" PointY="25.499329427083332" />
+          <ConnectorPoint PointX="11.25" PointY="25.124329427083332" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_dpto" ManuallyRouted="false">
+          <ConnectorPoint PointX="5" PointY="28.211293945312498" />
+          <ConnectorPoint PointX="5.416666666666667" PointY="28.211293945312498" />
+          <ConnectorPoint PointX="5.583333333333333" PointY="28.211293945312498" />
+          <ConnectorPoint PointX="5.75" PointY="28.211293945312498" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_cianits" ManuallyRouted="false">
+          <ConnectorPoint PointX="0.96875" PointY="22.749492187499996" />
+          <ConnectorPoint PointX="0.96875" PointY="26.40625" />
+          <ConnectorPoint PointX="1.0260441666666667" PointY="26.40625" />
+          <ConnectorPoint PointX="1.1927108333333332" PointY="26.40625" />
+          <ConnectorPoint PointX="7.416666666666667" PointY="26.40625" />
+          <ConnectorPoint PointX="7.708333333333333" PointY="26.40625" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="26.40625" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="26.40625" />
+          <ConnectorPoint PointX="8" PointY="26.40625" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_comapaniatrib" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.1093775" PointY="22.749492187499996" />
+          <ConnectorPoint PointX="1.1093775" PointY="31.903595377604169" />
+          <ConnectorPoint PointX="3" PointY="31.903595377604169" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_compania" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="21.374746093749998" />
+          <ConnectorPoint PointX="3" PointY="21.374746093749998" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_companiamov" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.9062525" PointY="20" />
+          <ConnectorPoint PointX="1.9062525" PointY="18.0237939453125" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="18.0237939453125" />
+          <ConnectorPoint PointX="4.989583333333333" PointY="18.0237939453125" />
+          <ConnectorPoint PointX="5.041666666666667" PointY="18.0237939453125" />
+          <ConnectorPoint PointX="5.208333333333333" PointY="18.0237939453125" />
+          <ConnectorPoint PointX="5.25" PointY="18.0237939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_companiapagos" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="22.093371140624996" />
+          <ConnectorPoint PointX="2.75" PointY="22.093371140624996" />
+          <ConnectorPoint PointX="2.75" PointY="25.999492187500003" />
+          <ConnectorPoint PointX="7.416666666666667" PointY="25.999492187500003" />
+          <ConnectorPoint PointX="7.708333333333333" PointY="25.999492187500003" />
+          <ConnectorPoint PointX="7.75" PointY="25.999492187500003" />
+          <ConnectorPoint PointX="7.75" PointY="24.614889322916667" />
+          <ConnectorPoint PointX="7.979166666666667" PointY="24.614889322916667" />
+          <ConnectorPoint PointX="8.1458333333333339" PointY="24.614889322916667" />
+          <ConnectorPoint PointX="10.369788666666667" PointY="24.614889322916667" />
+          <ConnectorPoint PointX="10.536455333333334" PointY="24.614889322916667" />
+          <ConnectorPoint PointX="10.718748" PointY="24.614889322916667" />
+          <ConnectorPoint PointX="10.718748" PointY="26.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_comprobante" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="12.989889322916667" />
+          <ConnectorPoint PointX="4.875" PointY="13.364889322916667" />
+          <ConnectorPoint PointX="4.875" PointY="20.090909389322906" />
+          <ConnectorPoint PointX="5.041666666666667" PointY="20.090909389322906" />
+          <ConnectorPoint PointX="5.208333333333333" PointY="20.090909389322906" />
+          <ConnectorPoint PointX="5.25" PointY="20.090909389322906" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_comprobantetra" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="10.937246093750002" />
+          <ConnectorPoint PointX="4.822916666666667" PointY="10.937246093750002" />
+          <ConnectorPoint PointX="5.020833333333333" PointY="10.937246093750002" />
+          <ConnectorPoint PointX="5.25" PointY="10.937246093750002" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_cuentaconc" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="22.547760416666662" />
+          <ConnectorPoint PointX="7.916666666666667" PointY="22.547760416666662" />
+          <ConnectorPoint PointX="8.1458333333333339" PointY="22.547760416666662" />
+          <ConnectorPoint PointX="8.25" PointY="22.547760416666662" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_formapago" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.15625" PointY="14.162985026041667" />
+          <ConnectorPoint PointX="7.15625" PointY="22.321638124999993" />
+          <ConnectorPoint PointX="7.666666666666667" PointY="22.321638124999993" />
+          <ConnectorPoint PointX="7.833333333333333" PointY="22.321638124999993" />
+          <ConnectorPoint PointX="7.916666666666667" PointY="22.321638124999993" />
+          <ConnectorPoint PointX="8.2083333333333339" PointY="22.321638124999993" />
+          <ConnectorPoint PointX="8.25" PointY="22.321638124999993" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_usuariod" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="6.125" />
+          <ConnectorPoint PointX="1.5" PointY="3.0958968098958337" />
+          <ConnectorPoint PointX="3" PointY="3.0958968098958337" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_depto" ManuallyRouted="false">
+          <ConnectorPoint PointX="5" PointY="27.03125" />
+          <ConnectorPoint PointX="5.416666666666667" PointY="27.03125" />
+          <ConnectorPoint PointX="5.583333333333333" PointY="27.03125" />
+          <ConnectorPoint PointX="7.26156951282051" PointY="27.03125" />
+          <ConnectorPoint PointX="7.4282361794871763" PointY="27.03125" />
+          <ConnectorPoint PointX="8" PointY="27.03125" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_dptocli" ManuallyRouted="false">
+          <ConnectorPoint PointX="5" PointY="28.819343634114581" />
+          <ConnectorPoint PointX="5.5" PointY="28.819343634114581" />
+          <ConnectorPoint PointX="5.5" PointY="26.875" />
+          <ConnectorPoint PointX="7.41781951282051" PointY="26.875" />
+          <ConnectorPoint PointX="7.5844861794871763" PointY="26.875" />
+          <ConnectorPoint PointX="7.875" PointY="26.875" />
+          <ConnectorPoint PointX="7.875" PointY="25.625" />
+          <ConnectorPoint PointX="7.979166666666667" PointY="25.625" />
+          <ConnectorPoint PointX="8.1458333333333339" PointY="25.625" />
+          <ConnectorPoint PointX="10.369788666666667" PointY="25.625" />
+          <ConnectorPoint PointX="10.536455333333334" PointY="25.625" />
+          <ConnectorPoint PointX="10.635414666666666" PointY="25.625" />
+          <ConnectorPoint PointX="10.802081333333334" PointY="25.625" />
+          <ConnectorPoint PointX="11.557292666666667" PointY="25.625" />
+          <ConnectorPoint PointX="11.723959333333335" PointY="25.625" />
+          <ConnectorPoint PointX="12.031252" PointY="25.625" />
+          <ConnectorPoint PointX="12.031252" PointY="25.124329427083332" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_pais" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.75" PointY="28.240143229166662" />
+          <ConnectorPoint PointX="3.5" PointY="28.240143229166662" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_cuentafinafo" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="23.5045068359375" />
+          <ConnectorPoint PointX="4.916666666666667" PointY="23.5045068359375" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="23.5045068359375" />
+          <ConnectorPoint PointX="5.25" PointY="23.5045068359375" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_cuentainifo" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="23.189753417968753" />
+          <ConnectorPoint PointX="4.916666666666667" PointY="23.189753417968753" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="23.189753417968753" />
+          <ConnectorPoint PointX="5.25" PointY="23.189753417968753" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_mesinfla" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.75" PointY="6.75" />
+          <ConnectorPoint PointX="3.75" PointY="5.8124994999999995" />
+          <ConnectorPoint PointX="4.822916666666667" PointY="5.8124994999999986" />
+          <ConnectorPoint PointX="4.989583333333333" PointY="5.8124994999999995" />
+          <ConnectorPoint PointX="5.25" PointY="5.8124994999999995" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_cuentaclie" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.75" PointY="24.009013671875003" />
+          <ConnectorPoint PointX="3.75" PointY="24.259013671875003" />
+          <ConnectorPoint PointX="5" PointY="24.259013671875003" />
+          <ConnectorPoint PointX="5" PointY="22.720520833333325" />
+          <ConnectorPoint PointX="8" PointY="22.720520833333325" />
+          <ConnectorPoint PointX="8" PointY="21.562246093750005" />
+          <ConnectorPoint PointX="8.0416666666666661" PointY="21.562246093750005" />
+          <ConnectorPoint PointX="8.2083333333333339" PointY="21.562246093750005" />
+          <ConnectorPoint PointX="10.369788666666667" PointY="21.562246093750005" />
+          <ConnectorPoint PointX="10.536455333333334" PointY="21.562246093750005" />
+          <ConnectorPoint PointX="11.25" PointY="21.562246093750005" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_paiscli" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.75" PointY="27.713819614583336" />
+          <ConnectorPoint PointX="3.25" PointY="27.713819614583336" />
+          <ConnectorPoint PointX="3.25" PointY="26.75" />
+          <ConnectorPoint PointX="7.5" PointY="26.75" />
+          <ConnectorPoint PointX="7.5" PointY="25.75" />
+          <ConnectorPoint PointX="7.541666666666667" PointY="25.75" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="25.75" />
+          <ConnectorPoint PointX="7.979166666666667" PointY="25.75" />
+          <ConnectorPoint PointX="8.1458333333333339" PointY="25.75" />
+          <ConnectorPoint PointX="10.369788666666667" PointY="25.75" />
+          <ConnectorPoint PointX="10.536455333333334" PointY="25.75" />
+          <ConnectorPoint PointX="10.635414666666666" PointY="25.75" />
+          <ConnectorPoint PointX="10.802081333333334" PointY="25.75" />
+          <ConnectorPoint PointX="11.640626000000001" PointY="25.75" />
+          <ConnectorPoint PointX="11.640626000000001" PointY="25.124329427083332" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_cuenta" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="21.288082402994789" />
+          <ConnectorPoint PointX="4.666666666666667" PointY="21.288082402994789" />
+          <ConnectorPoint PointX="4.833333333333333" PointY="21.288082402994789" />
+          <ConnectorPoint PointX="5" PointY="21.288082402994789" />
+          <ConnectorPoint PointX="5" PointY="22.408020833333325" />
+          <ConnectorPoint PointX="7.75" PointY="22.408020833333325" />
+          <ConnectorPoint PointX="7.75" PointY="21.37449218750001" />
+          <ConnectorPoint PointX="7.979166666666667" PointY="21.37449218750001" />
+          <ConnectorPoint PointX="8.2083333333333339" PointY="21.37449218750001" />
+          <ConnectorPoint PointX="9" PointY="21.37449218750001" />
+          <ConnectorPoint PointX="9" PointY="21.12449218750001" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_cuentamov" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="19.170454694661451" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="19.170454694661451" />
+          <ConnectorPoint PointX="4.989583333333333" PointY="19.170454694661451" />
+          <ConnectorPoint PointX="5.041666666666667" PointY="19.170454694661451" />
+          <ConnectorPoint PointX="5.208333333333333" PointY="19.170454694661451" />
+          <ConnectorPoint PointX="5.25" PointY="19.170454694661451" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_cuentapagos" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="20.658243396158852" />
+          <ConnectorPoint PointX="4.75" PointY="20.658243396158852" />
+          <ConnectorPoint PointX="4.75" PointY="22.470520833333325" />
+          <ConnectorPoint PointX="7.916666666666667" PointY="22.470520833333325" />
+          <ConnectorPoint PointX="8.0833333333333339" PointY="22.470520833333325" />
+          <ConnectorPoint PointX="8.125" PointY="22.470520833333325" />
+          <ConnectorPoint PointX="8.125" PointY="21.24949218750001" />
+          <ConnectorPoint PointX="8.9166666666666661" PointY="21.24949218750001" />
+          <ConnectorPoint PointX="9.0833333333333339" PointY="21.24949218750001" />
+          <ConnectorPoint PointX="10.453122" PointY="21.24949218750001" />
+          <ConnectorPoint PointX="10.453122" PointY="26.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_cuentasal" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="21.87930411816405" />
+          <ConnectorPoint PointX="4.666666666666667" PointY="21.87930411816405" />
+          <ConnectorPoint PointX="4.833333333333333" PointY="21.87930411816405" />
+          <ConnectorPoint PointX="4.916666666666667" PointY="21.87930411816405" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="21.87930411816405" />
+          <ConnectorPoint PointX="5.125" PointY="21.87930411816405" />
+          <ConnectorPoint PointX="5.125" PointY="15" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="15" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="15" />
+          <ConnectorPoint PointX="7.75" PointY="15" />
+          <ConnectorPoint PointX="7.75" PointY="18.125" />
+          <ConnectorPoint PointX="7.979166666666667" PointY="18.125" />
+          <ConnectorPoint PointX="8.1458333333333339" PointY="18.125" />
+          <ConnectorPoint PointX="8.6250004999999987" PointY="18.125" />
+          <ConnectorPoint PointX="8.6250004999999987" PointY="17.364889322916667" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_ippais" ManuallyRouted="false">
+          <ConnectorPoint PointX="2" PointY="29.230286458333325" />
+          <ConnectorPoint PointX="2" PointY="29.744944661458334" />
+          <ConnectorPoint PointX="8" PointY="29.744944661458334" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_nitpagos" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.5" PointY="27.74974609375" />
+          <ConnectorPoint PointX="10.25" PointY="27.74974609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_nitsmovi" ManuallyRouted="false">
+          <ConnectorPoint PointX="8.0625" PointY="25.875" />
+          <ConnectorPoint PointX="8.0625" PointY="17.869944661458334" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="17.869944661458334" />
+          <ConnectorPoint PointX="7.666666666666667" PointY="17.869944661458334" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="17.869944661458334" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="17.869944661458334" />
+          <ConnectorPoint PointX="6.75" PointY="17.869944661458334" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_tipo" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.25" PointY="30.5285546875" />
+          <ConnectorPoint PointX="8" PointY="30.5285546875" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_tributariopagos" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="32.482687174479167" />
+          <ConnectorPoint PointX="11" PointY="32.482687174479167" />
+          <ConnectorPoint PointX="11" PointY="29.124492187500003" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_mes" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="7.6776432291666694" />
+          <ConnectorPoint PointX="4.822916666666667" PointY="7.6776432291666685" />
+          <ConnectorPoint PointX="4.989583333333333" PointY="7.6776432291666694" />
+          <ConnectorPoint PointX="7.5" PointY="7.6776432291666694" />
+          <ConnectorPoint PointX="7.5" PointY="9.5956835937500031" />
+          <ConnectorPoint PointX="7.875" PointY="9.5956835937500031" />
+          <ConnectorPoint PointX="7.875" PointY="18" />
+          <ConnectorPoint PointX="7.979166666666667" PointY="18" />
+          <ConnectorPoint PointX="8.1458333333333339" PointY="18" />
+          <ConnectorPoint PointX="8.5416671666666648" PointY="18" />
+          <ConnectorPoint PointX="8.7083338333333327" PointY="18" />
+          <ConnectorPoint PointX="8.9166666666666661" PointY="18" />
+          <ConnectorPoint PointX="9.0833333333333339" PointY="18" />
+          <ConnectorPoint PointX="9.406252" PointY="18" />
+          <ConnectorPoint PointX="9.406252" PointY="18.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_mesmovim" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="8.8602791983173042" />
+          <ConnectorPoint PointX="4.9375" PointY="9.2977791983173042" />
+          <ConnectorPoint PointX="4.9375" PointY="17.273791445312508" />
+          <ConnectorPoint PointX="5.041666666666667" PointY="17.273791445312508" />
+          <ConnectorPoint PointX="5.208333333333333" PointY="17.273791445312508" />
+          <ConnectorPoint PointX="5.25" PointY="17.273791445312508" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_messal" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="7.26646234375001" />
+          <ConnectorPoint PointX="4.822916666666667" PointY="7.2664623437500095" />
+          <ConnectorPoint PointX="4.989583333333333" PointY="7.26646234375001" />
+          <ConnectorPoint PointX="9.5" PointY="7.26646234375001" />
+          <ConnectorPoint PointX="9.5" PointY="15" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.fk_usuariogu" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="4.535638773637821" />
+          <ConnectorPoint PointX="4.90625" PointY="4.941888773637821" />
+          <ConnectorPoint PointX="4.90625" PointY="20.720748396158839" />
+          <ConnectorPoint PointX="5.041666666666667" PointY="20.720748396158839" />
+          <ConnectorPoint PointX="5.208333333333333" PointY="20.720748396158839" />
+          <ConnectorPoint PointX="5.25" PointY="20.720748396158839" />
+        </AssociationConnector>
+        <AssociationConnector Association="contableModel.permiso" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="9.2511528461538468" />
+          <ConnectorPoint PointX="2.625" PointY="8.8761528461538468" />
+          <ConnectorPoint PointX="2.625" PointY="3.8625972148437442" />
+          <ConnectorPoint PointX="3" PointY="3.8625972148437442" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

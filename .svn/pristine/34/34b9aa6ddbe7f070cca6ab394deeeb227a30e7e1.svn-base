@@ -1,0 +1,148 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using Negocios.Contable;
+using Entities.Types;
+using System.Globalization;
+
+namespace App.Forms.Contable
+{
+    public partial class Frm_inflacion : Form
+    {
+        private inflacionn negocioInflacion;
+
+        private bool usrClose;
+
+        private Funciones funtions;
+
+        public Frm_inflacion()
+        {
+            InitializeComponent();
+            this.negocioInflacion = new inflacionn();
+            this.funtions = new Funciones();
+            this.CargarCampos();
+        }
+
+        private bool ValidarCampos()
+        {
+            bool result = false;
+            if (!txtenero.Text.Equals(string.Empty) && !txtfebrero.Text.Equals(string.Empty) && !txtmarzo.Text.Equals(string.Empty)
+                && !txtmayo.Text.Equals(string.Empty) && !txtjunio.Text.Equals(string.Empty) && !txtjulio.Text.Equals(string.Empty)
+                && !txtagosto.Text.Equals(string.Empty) && !txtsepti.Text.Equals(string.Empty) && !txtoctu.Text.Equals(string.Empty)
+                && !txtnov.Text.Equals(string.Empty) && !txtdici.Text.Equals(string.Empty))
+            {
+                result = true;
+            }
+            else
+            {
+                result = false;
+                MessageBox.Show("Debe ingresar todos los campos", "ERROR", MessageBoxButtons.OK);
+            }
+
+            return result;
+        }
+
+        private void Sumar()
+        {
+            decimal acumulado = decimal.Parse(txtenero.Text) + decimal.Parse(txtfebrero.Text) + decimal.Parse(txtmarzo.Text) + decimal.Parse(txtabril.Text)
+                + decimal.Parse(txtmayo.Text) + decimal.Parse(txtjunio.Text) + decimal.Parse(txtjulio.Text) + decimal.Parse(txtagosto.Text)
+                + decimal.Parse(txtsepti.Text) + decimal.Parse(txtoctu.Text) + decimal.Parse(txtnov.Text) + decimal.Parse(txtdici.Text);
+            txt_acumulado.Text = Convert.ToString(acumulado);
+        }
+
+        private void CargarCampos()
+        {
+            List<InflacionDataSource> inflac = new List<InflacionDataSource>();
+            inflac = this.negocioInflacion.CargarDatos();
+           /* txtenero.Text = Convert.ToString(inflac[0].inflacion);
+            txtfebrero.Text = Convert.ToString(inflac[1].inflacion);
+            txtmarzo.Text = Convert.ToString(inflac[2].inflacion);
+            txtabril.Text = Convert.ToString(inflac[3].inflacion);
+            txtmayo.Text = Convert.ToString(inflac[4].inflacion);
+            txtjunio.Text = Convert.ToString(inflac[5].inflacion);
+            txtjulio.Text = Convert.ToString(inflac[6].inflacion);
+            txtagosto.Text = Convert.ToString(inflac[7].inflacion);
+            txtsepti.Text = Convert.ToString(inflac[8].inflacion);
+            txtoctu.Text = Convert.ToString(inflac[9].inflacion);
+            txtnov.Text = Convert.ToString(inflac[10].inflacion);
+            txtdici.Text = Convert.ToString(inflac[11].inflacion);
+            decimal acumulado = inflac[0].inflacion + inflac[1].inflacion + inflac[2].inflacion + inflac[3].inflacion +
+            inflac[4].inflacion + inflac[5].inflacion + inflac[6].inflacion + inflac[7].inflacion + inflac[8].inflacion +
+            inflac[9].inflacion + inflac[10].inflacion + inflac[11].inflacion;
+            txt_acumulado.Text = Convert.ToString(acumulado);*/
+        }
+
+        private void btnguardar_Click(object sender, EventArgs e)
+        {
+            bool guardar = this.ValidarCampos();
+            if (guardar)
+            {
+                List<InflacionDataSource> inflac = new List<InflacionDataSource>();
+                inflac = this.negocioInflacion.CargarDatos();
+
+                inflac[0].inflacion = decimal.Parse(txtenero.Text);
+                inflac[1].inflacion = decimal.Parse(txtfebrero.Text);
+                inflac[2].inflacion = decimal.Parse(txtmarzo.Text);
+                inflac[3].inflacion = decimal.Parse(txtabril.Text);
+                inflac[4].inflacion = decimal.Parse(txtmayo.Text);
+                inflac[5].inflacion = decimal.Parse(txtjunio.Text);
+                inflac[6].inflacion = decimal.Parse(txtjulio.Text);
+                inflac[7].inflacion = decimal.Parse(txtagosto.Text);
+                inflac[8].inflacion = decimal.Parse(txtsepti.Text);
+                inflac[9].inflacion = decimal.Parse(txtoctu.Text);
+                inflac[10].inflacion = decimal.Parse(txtnov.Text);
+                inflac[11].inflacion = decimal.Parse(txtdici.Text);
+                bool guardo = this.negocioInflacion.GuardarInflacion(inflac);
+                if (guardo)
+                {
+                    MessageBox.Show("Los ajustes han sido Guardados", "GUARDAR", MessageBoxButtons.OK);
+                }
+            }
+        }
+
+        private void teclas_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Tab)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+                this.Sumar();
+            }
+            else
+            {
+                e.Handled = this.funtions.ValidacionDecimal(e).Handled;
+            }
+        }
+
+        #region CERRAR FORMULARIO
+
+        private void salircuent_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Esta seguro que desea salir?", "SALIR", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                this.usrClose = true;
+                this.Close();
+            }
+        }
+
+        private void Frm_inflacion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!this.usrClose)
+            {
+                DialogResult result = MessageBox.Show("Esta seguro que desea salir?", "SALIR", MessageBoxButtons.YesNo);
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        #endregion
+    }
+}

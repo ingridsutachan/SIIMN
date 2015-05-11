@@ -1,0 +1,196 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Entities;
+
+namespace Datos.Factura
+{
+    public class VendedorC
+    {
+        public VendedorC()
+        {
+        }
+
+        public List<vendedor> Busqueda(string tipo, string buscar)
+        {
+            List<vendedor> vend = new List<vendedor>();
+            using (contableEntities bd = new contableEntities())
+            {
+                try
+                {
+                    if (tipo.Equals("codigo"))
+                    {
+                        var query = bd.vendedor.Where(ved => ved.codigovend.Contains(buscar)).ToList();
+                        vend = query;
+                    }
+                    if (tipo.Equals("nombre"))
+                    {
+                        var query = bd.vendedor.Where(ved => ved.nombrevend.Contains(buscar)).ToList();
+                        vend = query;
+                    }
+                    if (tipo.Equals("cedula"))
+                    {
+                        var query = bd.vendedor.Where(ved => ved.cedula.Contains(buscar)).ToList();
+                        vend = query;
+                    }
+                    if (tipo.Equals("busqueda"))
+                    {
+                        var query = bd.vendedor.Where(ved => ved.cedula.Contains(buscar) || ved.codigovend.Contains(buscar) || ved.nombrevend.Contains(buscar)).ToList();
+                        vend = query;
+                    }
+                    if (tipo.Equals("todos"))
+                    {
+                        vend = bd.vendedor.ToList();
+                    }
+                    if (tipo.Equals("activos"))
+                    {
+                        var query = bd.vendedor.Where(ved => ved.activo == true).ToList();
+                        vend = query;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return vend;
+        }
+
+        public bool CodigoExiste(string codigo)
+        {
+            bool val = false;
+            using (contableEntities bd = new contableEntities())
+            {
+                try
+                {
+                    var query = bd.vendedor.Where(ved => ved.codigovend == codigo).Count();
+                    if (query > 0)
+                    {
+                        val = false;
+                    }
+                    else
+                    {
+                        val = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+            return val;
+        }
+
+        public bool Guardar(vendedor ved)
+        {
+            bool val = false;
+            using (contableEntities bd = new contableEntities())
+            {
+                try
+                {
+                    bd.vendedor.Add(ved);
+                    bd.SaveChanges();
+                    val = true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return val;
+        }
+
+        public vendedor DevolverVendedor(string codigvend)
+        {
+            vendedor vend = new vendedor();
+            using (contableEntities bd = new contableEntities())
+            {
+                try
+                {
+                    var query = bd.vendedor.Where(ven => ven.codigovend == codigvend).First();
+                    vend = query;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+            return vend;
+        }
+
+        public bool Editar(vendedor ved)
+        {
+            bool val = false;
+            using (contableEntities bd = new contableEntities())
+            {
+                try
+                {
+                    var query = bd.vendedor.Where(ven => ven.codigovend == ved.codigovend).First();
+                    query.cedula = ved.cedula;
+                    query.nombrevend = ved.nombrevend;
+                    query.tipo = ved.tipo;
+                    query.Telefono = ved.Telefono;
+                    query.emailvend = ved.emailvend;
+                    query.direcvend = ved.direcvend;
+                    query.activo = ved.activo;
+                    query.comisionrango = ved.comisionrango;
+                    query.comision = ved.comision;
+                    query.compania = ved.compania;
+                    bd.SaveChanges();
+                    val = true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return val;
+        }
+
+        public bool Editar(string codig)
+        {
+            bool val = false;
+            using (contableEntities bd = new contableEntities())
+            {
+                try
+                {
+                    var query = bd.vendedor.Where(ven => ven.codigovend == codig).First();
+                    bd.vendedor.Remove(query);
+                    bd.SaveChanges();
+                    val = true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return val;
+        }
+
+        public List<movvend> CargarVendedorReporte(int compa)
+        {
+            List<movvend> vend = new List<movvend>();
+            using (contableEntities bd = new contableEntities())
+            {
+                try
+                {
+                    var query = bd.movvend.Include("vendedor")
+                                          .Where(mov => mov.idcompania == compa);
+                    if (query.Count() > 0)
+                        vend = query.ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return vend;
+        }
+    }
+}

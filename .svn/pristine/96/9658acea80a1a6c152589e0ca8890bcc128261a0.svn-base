@@ -1,0 +1,190 @@
+﻿namespace App.Forms.Contable.reportes
+{
+    partial class Form_reportecuentas
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.txt_cuentainiinforme = new System.Windows.Forms.TextBox();
+            this.lbl_cuentainicial = new System.Windows.Forms.Label();
+            this.txt_cuentafininforme = new System.Windows.Forms.TextBox();
+            this.lbl_cuentafinal = new System.Windows.Forms.Label();
+            this.lbl_fecha = new System.Windows.Forms.Label();
+            this.fecha_informecuenta = new System.Windows.Forms.DateTimePicker();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btn_generar = new System.Windows.Forms.ToolStripSplitButton();
+            this.btn_salir = new System.Windows.Forms.ToolStripButton();
+            this.crystal_reportecuenta = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.reporteCuentas1 = new App.Forms.Contable.reportes.ReporteCuentas();
+            this.toolStrip1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // txt_cuentainiinforme
+            // 
+            this.txt_cuentainiinforme.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txt_cuentainiinforme.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txt_cuentainiinforme.Location = new System.Drawing.Point(213, 43);
+            this.txt_cuentainiinforme.MaxLength = 12;
+            this.txt_cuentainiinforme.Name = "txt_cuentainiinforme";
+            this.txt_cuentainiinforme.Size = new System.Drawing.Size(110, 20);
+            this.txt_cuentainiinforme.TabIndex = 220;
+            this.txt_cuentainiinforme.Text = "**";
+            // 
+            // lbl_cuentainicial
+            // 
+            this.lbl_cuentainicial.AutoSize = true;
+            this.lbl_cuentainicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_cuentainicial.Location = new System.Drawing.Point(25, 47);
+            this.lbl_cuentainicial.Name = "lbl_cuentainicial";
+            this.lbl_cuentainicial.Size = new System.Drawing.Size(173, 13);
+            this.lbl_cuentainicial.TabIndex = 221;
+            this.lbl_cuentainicial.Text = "CUENTA INICIAL [**] TODAS";
+            // 
+            // txt_cuentafininforme
+            // 
+            this.txt_cuentafininforme.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txt_cuentafininforme.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txt_cuentafininforme.Location = new System.Drawing.Point(213, 71);
+            this.txt_cuentafininforme.MaxLength = 12;
+            this.txt_cuentafininforme.Name = "txt_cuentafininforme";
+            this.txt_cuentafininforme.Size = new System.Drawing.Size(110, 20);
+            this.txt_cuentafininforme.TabIndex = 222;
+            this.txt_cuentafininforme.Text = "**";
+            // 
+            // lbl_cuentafinal
+            // 
+            this.lbl_cuentafinal.AutoSize = true;
+            this.lbl_cuentafinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_cuentafinal.Location = new System.Drawing.Point(25, 75);
+            this.lbl_cuentafinal.Name = "lbl_cuentafinal";
+            this.lbl_cuentafinal.Size = new System.Drawing.Size(164, 13);
+            this.lbl_cuentafinal.TabIndex = 223;
+            this.lbl_cuentafinal.Text = "CUENTA FINAL [**] TODAS";
+            // 
+            // lbl_fecha
+            // 
+            this.lbl_fecha.AutoSize = true;
+            this.lbl_fecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_fecha.Location = new System.Drawing.Point(25, 105);
+            this.lbl_fecha.Name = "lbl_fecha";
+            this.lbl_fecha.Size = new System.Drawing.Size(47, 13);
+            this.lbl_fecha.TabIndex = 224;
+            this.lbl_fecha.Text = "FECHA";
+            // 
+            // fecha_informecuenta
+            // 
+            this.fecha_informecuenta.Location = new System.Drawing.Point(213, 101);
+            this.fecha_informecuenta.Name = "fecha_informecuenta";
+            this.fecha_informecuenta.Size = new System.Drawing.Size(200, 20);
+            this.fecha_informecuenta.TabIndex = 225;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btn_generar,
+            this.btn_salir});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(420, 31);
+            this.toolStrip1.TabIndex = 227;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btn_generar
+            // 
+            this.btn_generar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_generar.Image = global::App.Properties.Resources.informe24;
+            this.btn_generar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btn_generar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_generar.Name = "btn_generar";
+            this.btn_generar.Size = new System.Drawing.Size(40, 28);
+            this.btn_generar.Text = "Buscar";
+            this.btn_generar.ButtonClick += new System.EventHandler(this.btn_generar_ButtonClick);
+            // 
+            // btn_salir
+            // 
+            this.btn_salir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_salir.Image = global::App.Properties.Resources.salir24;
+            this.btn_salir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_salir.Name = "btn_salir";
+            this.btn_salir.Size = new System.Drawing.Size(28, 28);
+            this.btn_salir.Text = "btn_salir";
+            // 
+            // crystal_reportecuenta
+            // 
+            this.crystal_reportecuenta.ActiveViewIndex = 0;
+            this.crystal_reportecuenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystal_reportecuenta.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystal_reportecuenta.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crystal_reportecuenta.Location = new System.Drawing.Point(0, 0);
+            this.crystal_reportecuenta.Name = "crystal_reportecuenta";
+            this.crystal_reportecuenta.ReportSource = this.reporteCuentas1;
+            this.crystal_reportecuenta.ShowGroupTreeButton = false;
+            this.crystal_reportecuenta.ShowParameterPanelButton = false;
+            this.crystal_reportecuenta.Size = new System.Drawing.Size(420, 157);
+            this.crystal_reportecuenta.TabIndex = 0;
+            this.crystal_reportecuenta.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.crystal_reportecuenta.Visible = false;
+            // 
+            // Form_reportecuentas
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(420, 157);
+            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.fecha_informecuenta);
+            this.Controls.Add(this.lbl_fecha);
+            this.Controls.Add(this.txt_cuentafininforme);
+            this.Controls.Add(this.lbl_cuentafinal);
+            this.Controls.Add(this.txt_cuentainiinforme);
+            this.Controls.Add(this.lbl_cuentainicial);
+            this.Controls.Add(this.crystal_reportecuenta);
+            this.Name = "Form_reportecuentas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "INFORME CUENTAS O PUC";
+            this.Load += new System.EventHandler(this.Form_reportecuentas_Load);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private ReporteCuentas reporteCuentas1;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystal_reportecuenta;
+        private System.Windows.Forms.TextBox txt_cuentainiinforme;
+        private System.Windows.Forms.Label lbl_cuentainicial;
+        private System.Windows.Forms.TextBox txt_cuentafininforme;
+        private System.Windows.Forms.Label lbl_cuentafinal;
+        private System.Windows.Forms.Label lbl_fecha;
+        private System.Windows.Forms.DateTimePicker fecha_informecuenta;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripSplitButton btn_generar;
+        private System.Windows.Forms.ToolStripButton btn_salir;
+    }
+}

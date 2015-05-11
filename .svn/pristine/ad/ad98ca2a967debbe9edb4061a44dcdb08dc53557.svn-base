@@ -1,0 +1,75 @@
+CREATE DATABASE  IF NOT EXISTS `contable` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `contable`;
+-- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
+--
+-- Host: localhost    Database: contable
+-- ------------------------------------------------------
+-- Server version	5.6.14-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `maeconta`
+--
+
+DROP TABLE IF EXISTS `maeconta`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `maeconta` (
+  `cuenta` varchar(12) NOT NULL DEFAULT '' COMMENT 'numero cuenta',
+  `idclaseconta` varchar(1) NOT NULL,
+  `idgrupo` varchar(2) NOT NULL,
+  `idcompania` int(3) NOT NULL COMMENT 'Compañia que realiza movimiento',
+  `tipocta` varchar(1) NOT NULL COMMENT 'Tipo de cuenta (GENERAL O DETALLE) G o D',
+  `nombre` varchar(45) NOT NULL COMMENT 'Nombre de la cuenta',
+  `pidenit` bit(1) NOT NULL COMMENT 'Campo que establece si la cuenta pide nit ',
+  `centro` bit(1) NOT NULL COMMENT 'Este campo establece si hay o no hay centro de costos',
+  `ajustesinteg` bit(1) NOT NULL,
+  `nitajustes` varchar(20) DEFAULT NULL,
+  `cueaju` varchar(10) DEFAULT NULL COMMENT 'base ',
+  `cuencorre` varchar(10) DEFAULT NULL,
+  `ajudoc` varchar(1) DEFAULT NULL,
+  `cuentret` bit(1) NOT NULL,
+  `porete` int(3) DEFAULT NULL COMMENT 'Porcentaje de retencion ',
+  `concepret` varchar(45) DEFAULT NULL,
+  `cuentacierreimp` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`cuenta`),
+  UNIQUE KEY `cuenta_UNIQUE` (`cuenta`),
+  KEY `fk_ciaconta_idx` (`idcompania`),
+  KEY `fk_claseconta_idx` (`idclaseconta`),
+  KEY `fk_grupoconta_idx` (`idgrupo`),
+  CONSTRAINT `fk_claseconta` FOREIGN KEY (`idclaseconta`) REFERENCES `claseconta` (`idclaseconta`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_compania` FOREIGN KEY (`idcompania`) REFERENCES `compania` (`idcompania`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_grupoconta` FOREIGN KEY (`idgrupo`) REFERENCES `grupoconta` (`idgrupo`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Cuentas o puc ';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `maeconta`
+--
+
+LOCK TABLES `maeconta` WRITE;
+/*!40000 ALTER TABLE `maeconta` DISABLE KEYS */;
+INSERT INTO `maeconta` VALUES ('1105','1','11',1,'G','Caja','','','',NULL,NULL,NULL,NULL,'\0',NULL,NULL,NULL),('11050505','1','11',1,'D','bancos trasnacionales','','','\0','','','','','\0',0,'',NULL),('1110','1','11',1,'G','bancos','','','','12346','1105','1105','D','',50,'prueba de otra cuenta',NULL),('1110505','1','11',1,'G','bancos nacionales','','','\0','','','','','\0',0,'',NULL),('121005','1','12',1,'D','inversiones internacionales','','','','45545','11050505','11050505','D','',55,'sdad',NULL);
+/*!40000 ALTER TABLE `maeconta` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2014-03-19 17:44:30

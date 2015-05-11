@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <connectionStrings>
+    <add name="contableEntities" connectionString="metadata=res://*/ModelContable.csdl|res://*/ModelContable.ssdl|res://*/ModelContable.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;server=localhost;User Id=usersiimn;password=BdUSER9182;Persist Security Info=True;database=contable&quot;" providerName="System.Data.EntityClient" />
+  </connectionStrings>
+</configuration>

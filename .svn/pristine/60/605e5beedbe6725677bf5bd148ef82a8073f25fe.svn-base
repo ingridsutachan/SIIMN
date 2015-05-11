@@ -1,0 +1,44 @@
+﻿////*********************************************************
+//
+//    <copyright file="Tipos.cs" company="Marketing Software de Colombia LTDA">
+//    @Autor Ingrid Sutachan
+//    @fecha 01 marzo 2014
+//    </copyright>
+//
+////*********************************************************
+namespace Entities.Types
+{
+    using System;
+
+    /// <summary>
+    /// Clase empresa data source
+    /// </summary>
+    public class EmpresaDataSource
+    {
+        /// <summary>
+        /// Gets or sets the idcompania.
+        /// </summary>
+        /// <value>
+        /// The idcompania.
+        /// </value>
+        public int Idcompania { get; set; }
+
+        /// <summary>
+        /// Gets or sets the nombrecia.
+        /// </summary>
+        /// <value>
+        /// The nombrecia.
+        /// </value>
+        public string Nombrecia { get; set; }
+
+        public string NombreSucursal { get; set; }
+
+        public string NitCia { get; set; }
+
+        public string DigitoCia { get; set; }
+
+        public string NombreCiudad { get; set; }
+
+        public string Fecha { get; set; }
+    }
+}

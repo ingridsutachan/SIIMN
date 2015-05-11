@@ -517,7 +517,8 @@
     </Key>
     <Property Name="idinflacion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="idsucursal" Type="int" Nullable="false" />
-    <Property Name="mes" Type="varchar" Nullable="false" MaxLength="2" />
+    <Property Name="anio" Type="varchar" Nullable="false" MaxLength="4" />
+    <Property Name="mes" Type="int" Nullable="false" />
     <Property Name="inflamensual" Type="decimal" Nullable="false" Precision="4" Scale="2" />
   </EntityType>
   <EntityType Name="maebanta">

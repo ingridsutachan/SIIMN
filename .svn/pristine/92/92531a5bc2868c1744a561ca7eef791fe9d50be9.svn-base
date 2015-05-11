@@ -1,0 +1,184 @@
+﻿namespace App.Forms.Contable
+{
+    partial class Form_Actualizar
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.dt_desde = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dt_hasta = new System.Windows.Forms.DateTimePicker();
+            this.panel_actodos = new System.Windows.Forms.Panel();
+            this.pan_actuno = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txt_numeroasiento = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbx_comprobante = new System.Windows.Forms.ComboBox();
+            this.btn_actualizar = new System.Windows.Forms.Button();
+            this.panel_actodos.SuspendLayout();
+            this.pan_actuno.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // dt_desde
+            // 
+            this.dt_desde.Location = new System.Drawing.Point(53, 17);
+            this.dt_desde.Name = "dt_desde";
+            this.dt_desde.Size = new System.Drawing.Size(200, 20);
+            this.dt_desde.TabIndex = 19;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(7, 21);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(23, 13);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "De";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(7, 65);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Hasta";
+            // 
+            // dt_hasta
+            // 
+            this.dt_hasta.Location = new System.Drawing.Point(53, 61);
+            this.dt_hasta.Name = "dt_hasta";
+            this.dt_hasta.Size = new System.Drawing.Size(200, 20);
+            this.dt_hasta.TabIndex = 22;
+            // 
+            // panel_actodos
+            // 
+            this.panel_actodos.Controls.Add(this.dt_hasta);
+            this.panel_actodos.Controls.Add(this.dt_desde);
+            this.panel_actodos.Controls.Add(this.label1);
+            this.panel_actodos.Controls.Add(this.label3);
+            this.panel_actodos.Location = new System.Drawing.Point(12, 12);
+            this.panel_actodos.Name = "panel_actodos";
+            this.panel_actodos.Size = new System.Drawing.Size(338, 101);
+            this.panel_actodos.TabIndex = 25;
+            this.panel_actodos.Visible = false;
+            // 
+            // pan_actuno
+            // 
+            this.pan_actuno.Controls.Add(this.label6);
+            this.pan_actuno.Controls.Add(this.txt_numeroasiento);
+            this.pan_actuno.Controls.Add(this.label5);
+            this.pan_actuno.Controls.Add(this.cbx_comprobante);
+            this.pan_actuno.Location = new System.Drawing.Point(12, 12);
+            this.pan_actuno.Name = "pan_actuno";
+            this.pan_actuno.Size = new System.Drawing.Size(338, 101);
+            this.pan_actuno.TabIndex = 0;
+            this.pan_actuno.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(17, 65);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 13);
+            this.label6.TabIndex = 31;
+            this.label6.Text = "Número";
+            // 
+            // txt_numeroasiento
+            // 
+            this.txt_numeroasiento.Location = new System.Drawing.Point(113, 61);
+            this.txt_numeroasiento.MaxLength = 10;
+            this.txt_numeroasiento.Name = "txt_numeroasiento";
+            this.txt_numeroasiento.Size = new System.Drawing.Size(139, 20);
+            this.txt_numeroasiento.TabIndex = 28;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(17, 21);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(81, 13);
+            this.label5.TabIndex = 30;
+            this.label5.Text = "Comprobante";
+            // 
+            // cbx_comprobante
+            // 
+            this.cbx_comprobante.FormattingEnabled = true;
+            this.cbx_comprobante.Location = new System.Drawing.Point(113, 17);
+            this.cbx_comprobante.Name = "cbx_comprobante";
+            this.cbx_comprobante.Size = new System.Drawing.Size(158, 21);
+            this.cbx_comprobante.TabIndex = 27;
+            // 
+            // btn_actualizar
+            // 
+            this.btn_actualizar.Image = global::App.Properties.Resources.update;
+            this.btn_actualizar.Location = new System.Drawing.Point(371, 101);
+            this.btn_actualizar.Name = "btn_actualizar";
+            this.btn_actualizar.Size = new System.Drawing.Size(35, 33);
+            this.btn_actualizar.TabIndex = 24;
+            this.btn_actualizar.UseVisualStyleBackColor = true;
+            this.btn_actualizar.Click += new System.EventHandler(this.btn_actualizar_Click);
+            // 
+            // Form_Actualizar
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(418, 146);
+            this.Controls.Add(this.pan_actuno);
+            this.Controls.Add(this.btn_actualizar);
+            this.Controls.Add(this.panel_actodos);
+            this.MaximizeBox = false;
+            this.Name = "Form_Actualizar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "ACTUALIZAR ASIENTOS";
+            this.panel_actodos.ResumeLayout(false);
+            this.panel_actodos.PerformLayout();
+            this.pan_actuno.ResumeLayout(false);
+            this.pan_actuno.PerformLayout();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.DateTimePicker dt_desde;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dt_hasta;
+        private System.Windows.Forms.Button btn_actualizar;
+        private System.Windows.Forms.Panel panel_actodos;
+        private System.Windows.Forms.Panel pan_actuno;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txt_numeroasiento;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cbx_comprobante;
+    }
+}

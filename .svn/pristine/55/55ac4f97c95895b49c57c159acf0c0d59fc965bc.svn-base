@@ -1,0 +1,459 @@
+﻿// -----------------------------------------------------------------------
+// <copyright file="asientosc.cs" company="">
+// TODO: Update copyright text.
+// </copyright>
+// -----------------------------------------------------------------------
+
+namespace Datos.Contable
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using Entities;
+
+
+    /// <summary>
+    /// TODO: Update summary.
+    /// </summary>
+    public class asientosc
+    {
+        public asientosc()
+        {
+        }
+
+        public List<movimi> CargarAsiento(int documento)
+        {
+            List<movimi> asiento = new List<movimi>();
+            using (contableEntities bd = new contableEntities())
+            {
+                try
+                {
+                    asiento = bd.movimi.Include("centro").Include("comprobante").Include("maeconta").Where(mov => mov.documento == documento).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return asiento;
+        }
+
+        public bool GuardarAsiento(List<movimi> asiento)
+        {
+            bool result = false;
+            using (contableEntities bd = new contableEntities())
+            {
+                try
+                {
+                    foreach (movimi item in asiento)
+                    {
+                        bd.movimi.Add(item);
+                    }
+
+                    bd.SaveChanges();
+                    result = true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return result;
+        }
+
+        public List<movimi> CargarTodosAsientos()
+        {
+            List<movimi> AsiFijo = new List<movimi>();
+            try
+            {
+                using (contableEntities bd = new contableEntities())
+                {
+                    var query = bd.movimi.Include("centro").Include("maenits").Include("maeconta").Include("comprobante").
+                        Where(mov => mov.asientofijo == true).OrderBy(mov => mov.idmovimi).ToList();
+                    AsiFijo = query;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return AsiFijo;
+        }
+
+        public List<movimi> CargarAsientoFijo(int documento)
+        {
+            List<movimi> asiento = new List<movimi>();
+            using (contableEntities bd = new contableEntities())
+            {
+                try
+                {
+                    asiento = bd.movimi.Include("centro").Include("comprobante").Include("maeconta").Include("maenits").Where(mov => mov.documento == documento && mov.asientofijo == true).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return asiento;
+        }
+
+        public bool ExisteAsiento(int documento, int codcompr)
+        {
+            bool result = false;
+            using (contableEntities bd = new contableEntities())
+            {
+                var query = bd.movimi.Where(mov => mov.documento == documento && mov.asientofijo == false && mov.codicomp == codcompr).Count();
+                result = query > 0 ? true : false;
+            }
+
+            return result;
+        }
+
+        public List<movimi> DevolverNumeroDocumento(int comprobante)
+        {
+            List<movimi> asientos = new List<movimi>();
+            using (contableEntities bd = new contableEntities())
+            {
+                var query1 = bd.movimi.Where(mov => mov.codicomp == comprobante).Count();
+                if (query1 > 0)
+                {
+                    asientos = bd.movimi.Where(mov => mov.codicomp == comprobante).ToList();
+                }
+            }
+
+            return asientos;
+        }
+
+        public List<movimi> DevolverAsiento(int codcompr, int documento)
+        {
+            List<movimi> asiento = new List<movimi>();
+            using (contableEntities bd = new contableEntities())
+            {
+                try
+                {
+                    asiento = bd.movimi.Include("centro").Include("comprobante").Include("maeconta").Include("maenits").Where(mov => mov.documento == documento && mov.asientofijo == false && mov.codicomp == codcompr).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return asiento;
+        }
+
+        public List<movimi> DevolverNumeroAsientoFijo()
+        {
+            List<movimi> asientos = new List<movimi>();
+            using (contableEntities bd = new contableEntities())
+            {
+                var query1 = bd.movimi.Where(mov => mov.asientofijo == true).Count();
+                if (query1 > 0)
+                {
+                    asientos = bd.movimi.Where(mov => mov.asientofijo == true).ToList();
+                }
+            }
+
+            return asientos;
+        }
+
+        public bool ExisteAsientoFijo(int documento)
+        {
+            bool result = false;
+            using (contableEntities bd = new contableEntities())
+            {
+                var query = bd.movimi.Where(mov => mov.documento == documento && mov.asientofijo == true).Count();
+                result = query > 0 ? true : false;
+            }
+
+            return result;
+        }
+
+        public int DevolverIdAsiento(int documento, int codcompr)
+        {
+            int idasiento;
+            using (contableEntities bd = new contableEntities())
+            {
+                var query = bd.movimi.Where(mov => mov.documento == documento && mov.codicomp == codcompr).First();
+                idasiento = query.idasiento;
+            }
+
+            return idasiento;
+        }
+
+        public bool ActualizarAsiento(List<movimi> asiento, int cantidad)
+        {
+            bool result = false;
+            using (contableEntities bd = new contableEntities())
+            {
+                try
+                {
+                    int idasi = asiento[0].idasiento;
+                    var query = bd.movimi.Where(mov => mov.idasiento == idasi).ToList();
+                    if (query.Count == cantidad)
+                    {
+                        foreach (movimi item in asiento)
+                        {
+                            var queryig = bd.movimi.Where(mov => mov.idasiento == item.idasiento).First();
+                            queryig.fecha = item.fecha;
+                            queryig.fechaactualiz = item.fechaactualiz;
+                            queryig.codicomp = item.codicomp;
+                            queryig.documento = item.documento;
+                            queryig.cuenta = item.cuenta;
+                            queryig.descrip = item.descrip;
+                            queryig.idcentro = item.idcentro;
+                            queryig.idnit = item.idnit;
+                            queryig.cheque = item.cheque;
+                            queryig.valordebito = item.valordebito;
+                            queryig.valorcredito = item.valorcredito;
+                            bd.SaveChanges();
+                        }
+                        result = true;
+                    }
+                    if (query.Count > cantidad)
+                    {
+                        for (int i = 0; i < cantidad; i++)
+                        {
+                            var queryig = bd.movimi.Where(mov => mov.idasiento == asiento[i].idasiento).First();
+                            queryig.fecha = asiento[i].fecha;
+                            queryig.fechaactualiz = asiento[i].fechaactualiz;
+                            queryig.codicomp = asiento[i].codicomp;
+                            queryig.documento = asiento[i].documento;
+                            queryig.cuenta = asiento[i].cuenta;
+                            queryig.descrip = asiento[i].descrip;
+                            queryig.idcentro = asiento[i].idcentro;
+                            queryig.idnit = asiento[i].idnit;
+                            queryig.cheque = asiento[i].cheque;
+                            queryig.valordebito = asiento[i].valordebito;
+                            queryig.valorcredito = asiento[i].valorcredito;
+                            bd.SaveChanges();
+                        }
+
+                        for (int i = query.Count - cantidad; i < query.Count; i++)
+                        {
+                            bd.movimi.Add(asiento[i]);
+                        }
+                        result = true;
+                    }
+                    if (query.Count < cantidad)
+                    {
+                        for (int i = cantidad - query.Count; i < cantidad; i++)
+                        {
+                            var queryig = bd.movimi.Where(mov => mov.idasiento == asiento[i].idasiento).First();
+                            bd.movimi.Remove(queryig);
+                        }
+
+                        for (int i = 0; i < query.Count; i++)
+                        {
+                            var queryig = bd.movimi.Where(mov => mov.idasiento == asiento[i].idasiento).First();
+                            queryig.fecha = asiento[i].fecha;
+                            queryig.fechaactualiz = asiento[i].fechaactualiz;
+                            queryig.codicomp = asiento[i].codicomp;
+                            queryig.documento = asiento[i].documento;
+                            queryig.cuenta = asiento[i].cuenta;
+                            queryig.descrip = asiento[i].descrip;
+                            queryig.idcentro = asiento[i].idcentro;
+                            queryig.idnit = asiento[i].idnit;
+                            queryig.cheque = asiento[i].cheque;
+                            queryig.valordebito = asiento[i].valordebito;
+                            queryig.valorcredito = asiento[i].valorcredito;
+                            bd.SaveChanges();
+                        }
+                        result = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return result;
+        }
+
+        public int DevolverIdAsientoCon()
+        {
+            int idasi = 0;
+            using (contableEntities bd = new contableEntities())
+            {
+                idasi = bd.movimi.ToList().Max(mov => mov.idasiento);
+            }
+
+            return idasi;
+        }
+
+        public List<mes> CargarMeses()
+        {
+            List<mes> meses = new List<mes>();
+            using (contableEntities bd = new contableEntities())
+            {
+                meses = bd.mes.ToList();
+            }
+
+            return meses;
+        }
+
+        public int ActualizarTodosAsientos(DateTime fechade, DateTime fechahasta)
+        {
+            int cantasientos = 0;
+            using (contableEntities bd = new contableEntities())
+            {
+                try
+                {
+                    var items = bd.movimi.Where(mov => mov.actualizado == false && (mov.fecha.Year >= fechade.Year && mov.fecha.Month >= fechade.Month && mov.fecha.Day >=
+                        fechade.Day && mov.fecha.Year <= fechahasta.Year && mov.fecha.Month <= fechahasta.Month && mov.fecha.Day <= fechahasta.Day)).ToList();
+                    foreach (var item in items)
+                    {
+                        saldoscuentas saldos = new saldoscuentas();
+                        var query = bd.saldoscuentas.Where(sal => sal.cuenta == item.cuenta && sal.anio == item.anio && sal.idmes == item.idmes).Count();
+                        if (query > 0)
+                        {
+                            var query1 = bd.saldoscuentas.Where(sal => sal.cuenta == item.cuenta && sal.anio == item.anio && sal.idmes == item.idmes).First();
+                            query1.saldo = item.valordebito + item.valorcredito;
+                            bd.SaveChanges();
+                        }
+                        else
+                        {
+                            saldos.cuenta = item.cuenta;
+                            saldos.anio = item.anio;
+                            saldos.idmes = item.idmes;
+                            saldos.saldo = item.valordebito + item.valorcredito;
+                            bd.saldoscuentas.Add(saldos);
+                            bd.SaveChanges();
+                        }
+
+                        cantasientos++;
+                        item.actualizado = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return cantasientos;
+        }
+
+        public bool ActualizarUnAsiento(int comprob, int numeroas)
+        {
+            bool actualizar = false;
+            using (contableEntities bd = new contableEntities())
+            {
+                try
+                {
+                    var query = bd.movimi.Where(mov => mov.actualizado == false && mov.codicomp == comprob && mov.documento == numeroas).First();
+                    saldoscuentas saldos = new saldoscuentas();
+                    var query1 = bd.saldoscuentas.Where(sal => sal.cuenta == query.cuenta && sal.anio == query.anio && sal.idmes == query.idmes).Count();
+                    if (query1 > 0)
+                    {
+                        var query2 = bd.saldoscuentas.Where(sal => sal.cuenta == query.cuenta && sal.anio == query.anio && sal.idmes == query.idmes).First();
+                        query2.saldo = query.valordebito + query.valorcredito;
+                        bd.SaveChanges();
+                    }
+                    else
+                    {
+                        saldos.cuenta = query.cuenta;
+                        saldos.anio = query.anio;
+                        saldos.idmes = query.idmes;
+                        saldos.saldo = query.valordebito + query.valorcredito;
+                        bd.saldoscuentas.Add(saldos);
+                        bd.SaveChanges();
+                    }
+                    query.actualizado = true;
+                    actualizar = true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return actualizar;
+        }
+
+        public bool ExMovimiSinAct(string anio, int mesde, int meshasta, int compro, int docde, int dochasta, bool todcom, bool toddoc)
+        {
+            bool existe = false;
+            try
+            {
+                using (contableEntities bd = new contableEntities())
+                {
+                    int cant = 0;
+                    if (todcom == false && toddoc == false)
+                    {
+                        cant = bd.movimi.Where(mov => mov.anio == anio && mov.idmes >= mesde && mov.idmes <= meshasta
+                                 && mov.codicomp == compro && mov.documento >= docde && mov.documento <= dochasta && mov.actualizado == false).Count();
+                    }
+                    else if (todcom == true && toddoc == false)
+                    {
+                        cant = bd.movimi.Where(mov => mov.anio == anio && mov.idmes >= mesde && mov.idmes <= meshasta
+                                && mov.documento >= docde && mov.documento <= dochasta && mov.actualizado == false).Count();
+                    }
+                    else if (todcom == false && toddoc == true)
+                    {
+                        cant = bd.movimi.Where(mov => mov.anio == anio && mov.idmes >= mesde && mov.idmes <= meshasta
+                                && mov.codicomp == compro && mov.actualizado == false).Count();
+                    }
+                    else if (todcom == true && toddoc == true)
+                    {
+                        cant = bd.movimi.Where(mov => mov.anio == anio && mov.idmes >= mesde && mov.idmes <= meshasta && mov.actualizado == false).Count();
+                    }
+
+                    if (cant > 0)
+                    {
+                        existe = true;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return existe;
+        }
+
+        public List<movimi> DevolverAsientoSinAct(string anio, int mesde, int meshasta, int compro, int docde, int dochasta, bool todcom, bool toddoc)
+        {
+            List<movimi> asiento = new List<movimi>();
+            try
+            {
+                using (contableEntities bd = new contableEntities())
+                {
+                    if (todcom == false && toddoc == false)
+                    {
+                        asiento = bd.movimi.Include("compania").Include("comprobante").Include("maenits").Where(mov => mov.anio == anio && mov.idmes >= mesde && mov.idmes <= meshasta
+                                 && mov.codicomp == compro && mov.documento >= docde && mov.documento <= dochasta && mov.actualizado == false).ToList();
+                    }
+                    else if (todcom == true && toddoc == false)
+                    {
+                        asiento = bd.movimi.Include("compania").Include("comprobante").Include("maenits").Where(mov => mov.anio == anio && mov.idmes >= mesde && mov.idmes <= meshasta
+                                && mov.documento >= docde && mov.documento <= dochasta && mov.actualizado == false).ToList();
+                    }
+                    else if (todcom == false && toddoc == true)
+                    {
+                        asiento = bd.movimi.Include("compania").Include("comprobante").Include("maenits").Where(mov => mov.anio == anio && mov.idmes >= mesde && mov.idmes <= meshasta
+                                && mov.codicomp == compro && mov.actualizado == false).ToList();
+                    }
+                    else if (todcom == true && toddoc == true)
+                    {
+                        asiento = bd.movimi.Include("compania").Include("comprobante").Include("maenits").Where(mov => mov.anio == anio && mov.idmes >= mesde && mov.idmes <= meshasta && mov.actualizado == false).ToList();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return asiento;
+        }
+    }
+}
