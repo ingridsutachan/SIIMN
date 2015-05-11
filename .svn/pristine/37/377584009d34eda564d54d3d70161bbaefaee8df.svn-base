@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <connectionStrings>
-    <add name="siimnEntities" connectionString="metadata=res://*/Model_Siimn.csdl|res://*/Model_Siimn.ssdl|res://*/Model_Siimn.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;server=localhost;user id=usersiimn;password=BdUSER9182;persistsecurityinfo=True;database=siimn&quot;" providerName="System.Data.EntityClient" />
-  </connectionStrings>
-</configuration>
